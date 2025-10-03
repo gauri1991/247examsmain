@@ -22,17 +22,6 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 ENV DOCKER_BUILD=true
 
-# Debug: Check if files exist before build
-RUN echo "=== Checking file structure ===" && \
-    ls -la && \
-    echo "=== Checking src directory ===" && \
-    ls -la src/ && \
-    echo "=== Checking lib directory ===" && \
-    ls -la src/lib/ && \
-    echo "=== Checking config files ===" && \
-    ls -la *.json *.ts && \
-    echo "=== Building application ===" 
-
 # Build the application
 RUN npm run build
 
