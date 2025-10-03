@@ -17,8 +17,11 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   webpack: (config, { isServer }) => {
-    // Force absolute path resolution
-    const srcPath = path.resolve(__dirname, 'src');
+    // Fix __dirname context for Docker compatibility
+    // In Docker, we're always in /app, so use absolute path
+    const isDocker = process.env.DOCKER_BUILD === 'true' || process.cwd() === '/app';
+    const rootPath = isDocker ? '/app' : __dirname;
+    const srcPath = path.resolve(rootPath, 'src');
     
     config.resolve.alias = {
       ...config.resolve.alias,
@@ -40,10 +43,14 @@ const nextConfig: NextConfig = {
       '.js', '.jsx', '.ts', '.tsx', '.json', '.mjs'
     ];
     
-    // Debug logging in development
-    if (process.env.NODE_ENV === 'development') {
-      console.log('Webpack aliases configured:', config.resolve.alias);
-    }
+    // Debug logging
+    console.log('=== WEBPACK DEBUG ===');
+    console.log('isDocker:', isDocker);
+    console.log('rootPath:', rootPath);
+    console.log('srcPath:', srcPath);
+    console.log('Current working directory:', process.cwd());
+    console.log('Webpack aliases:', config.resolve.alias);
+    console.log('====================');
     
     return config;
   },
@@ -51,6 +58,16 @@ const nextConfig: NextConfig = {
     serverActions: {
       allowedOrigins: ['localhost:3000', '*.vercel.app']
     }
+  },
+  turbopack: {
+    resolveAlias: {
+      '@': './src',
+      '@/components': './src/components',
+      '@/lib': './src/lib',
+      '@/contexts': './src/contexts',
+      '@/app': './src/app',
+    },
+    resolveExtensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
   },
   async headers() {
     return [

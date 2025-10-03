@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "dev:prod": "next dev",
-    "build": "next build",
-    "build:turbo": "next build --turbopack",
-    "build:prod": "NODE_ENV=production next build",
+    "build": "next build --turbopack",
+    "build:webpack": "next build",
+    "build:prod": "NODE_ENV=production next build --turbopack",
     "start": "next start",
     "lint": "eslint",
     "type-check": "tsc --noEmit"
