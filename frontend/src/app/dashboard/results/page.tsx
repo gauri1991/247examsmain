@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { DashboardHeader } from '@/components/dashboard/dashboard-header';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -67,7 +67,7 @@ interface PerformanceStats {
   weak_areas: string[];
 }
 
-export default function ResultsPage() {
+function ResultsPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const highlightId = searchParams.get('highlight');
@@ -919,5 +919,22 @@ export default function ResultsPage() {
         </DialogContent>
       </Dialog>
     </>
+  );
+}
+
+export default function ResultsPage() {
+  return (
+    <Suspense fallback={
+      <>
+        <DashboardHeader title="My Results" />
+        <div className="flex-1 overflow-auto px-6 py-8">
+          <div className="flex items-center justify-center min-h-96">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+          </div>
+        </div>
+      </>
+    }>
+      <ResultsPageContent />
+    </Suspense>
   );
 }
