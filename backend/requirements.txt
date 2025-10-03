@@ -6,3 +6,4 @@ python-decouple==3.8
 psycopg2-binary==2.9.9
 gunicorn==22.0.0
 whitenoise==6.8.1
+Pillow==10.4.0
