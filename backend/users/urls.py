@@ -3,10 +3,16 @@ from rest_framework_simplejwt.views import TokenRefreshView
 from . import views
 
 urlpatterns = [
-    # Authentication
+    # Traditional Authentication
     path('register/', views.RegisterView.as_view(), name='register'),
     path('login/', views.LoginView.as_view(), name='login'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    
+    # Mobile Authentication
+    path('mobile/send-otp/', views.MobileSendOTPView.as_view(), name='mobile_send_otp'),
+    path('mobile/verify-otp/', views.MobileVerifyOTPView.as_view(), name='mobile_verify_otp'),
+    path('mobile/register/', views.MobileRegistrationView.as_view(), name='mobile_register'),
+    path('mobile/login/', views.MobileLoginView.as_view(), name='mobile_login'),
     
     # Profile
     path('profile/', views.ProfileView.as_view(), name='profile'),

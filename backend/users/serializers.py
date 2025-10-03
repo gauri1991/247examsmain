@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
-from .models import User, UserProfile
+from .models import User, UserProfile, MobileOTP
+import re
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
@@ -108,3 +109,129 @@ class PasswordChangeSerializer(serializers.Serializer):
         if not user.check_password(value):
             raise serializers.ValidationError("Old password is incorrect.")
         return value
+
+
+class MobileSendOTPSerializer(serializers.Serializer):
+    phone = serializers.CharField(max_length=15)
+    purpose = serializers.ChoiceField(choices=[
+        ('registration', 'Registration'),
+        ('login', 'Login'),
+    ], default='registration')
+    
+    def validate_phone(self, value):
+        # Clean the phone number (remove non-digits)
+        clean_phone = re.sub(r'[^0-9]', '', value)
+        
+        # Validate phone number format (basic validation)
+        if len(clean_phone) < 10 or len(clean_phone) > 15:
+            raise serializers.ValidationError("Invalid phone number format")
+        
+        return clean_phone
+    
+    def validate(self, attrs):
+        phone = attrs['phone']
+        purpose = attrs['purpose']
+        
+        # For registration, check if phone already exists
+        if purpose == 'registration':
+            if User.objects.filter(phone=phone).exists():
+                raise serializers.ValidationError("Phone number already registered. Try signing in.")
+        
+        # For login, check if phone exists
+        elif purpose == 'login':
+            if not User.objects.filter(phone=phone).exists():
+                raise serializers.ValidationError("Phone number not registered. Please sign up first.")
+        
+        return attrs
+
+
+class MobileVerifyOTPSerializer(serializers.Serializer):
+    phone = serializers.CharField(max_length=15)
+    otp = serializers.CharField(max_length=6, min_length=6)
+    purpose = serializers.ChoiceField(choices=[
+        ('registration', 'Registration'),
+        ('login', 'Login'),
+    ], default='registration')
+    
+    def validate_phone(self, value):
+        # Clean the phone number (remove non-digits)
+        return re.sub(r'[^0-9]', '', value)
+    
+    def validate_otp(self, value):
+        if not value.isdigit():
+            raise serializers.ValidationError("OTP must contain only digits")
+        return value
+
+
+class MobileRegistrationSerializer(serializers.Serializer):
+    phone = serializers.CharField(max_length=15)
+    otp = serializers.CharField(max_length=6, min_length=6)
+    first_name = serializers.CharField(max_length=150, required=False, allow_blank=True)
+    last_name = serializers.CharField(max_length=150, required=False, allow_blank=True)
+    
+    def validate_phone(self, value):
+        return re.sub(r'[^0-9]', '', value)
+    
+    def validate(self, attrs):
+        phone = attrs['phone']
+        otp = attrs['otp']
+        
+        # Verify OTP
+        is_valid, message = MobileOTP.verify_otp(phone, otp, 'registration')
+        if not is_valid:
+            raise serializers.ValidationError(message)
+        
+        # Check if user already exists
+        if User.objects.filter(phone=phone).exists():
+            raise serializers.ValidationError("Phone number already registered")
+        
+        return attrs
+    
+    def create(self, validated_data):
+        phone = validated_data['phone']
+        first_name = validated_data.get('first_name', '')
+        last_name = validated_data.get('last_name', '')
+        
+        # Create user with phone as username and email
+        user = User.objects.create_user(
+            username=phone,
+            email=f"{phone}@mobile.247exams.com",
+            phone=phone,
+            first_name=first_name,
+            last_name=last_name,
+            role='student',
+            is_verified=True  # Auto-verify since OTP was successful
+        )
+        
+        # Create user profile
+        UserProfile.objects.create(user=user)
+        
+        return user
+
+
+class MobileLoginSerializer(serializers.Serializer):
+    phone = serializers.CharField(max_length=15)
+    otp = serializers.CharField(max_length=6, min_length=6)
+    
+    def validate_phone(self, value):
+        return re.sub(r'[^0-9]', '', value)
+    
+    def validate(self, attrs):
+        phone = attrs['phone']
+        otp = attrs['otp']
+        
+        # Verify OTP
+        is_valid, message = MobileOTP.verify_otp(phone, otp, 'login')
+        if not is_valid:
+            raise serializers.ValidationError(message)
+        
+        # Get user
+        try:
+            user = User.objects.get(phone=phone)
+            if not user.is_active:
+                raise serializers.ValidationError("User account is disabled")
+            attrs['user'] = user
+        except User.DoesNotExist:
+            raise serializers.ValidationError("Phone number not registered")
+        
+        return attrs

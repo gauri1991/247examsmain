@@ -18,6 +18,29 @@ interface RegisterData {
   confirm_password: string;
 }
 
+interface MobileSendOTPData {
+  phone: string;
+  purpose: 'registration' | 'login';
+}
+
+interface MobileVerifyOTPData {
+  phone: string;
+  otp: string;
+  purpose: 'registration' | 'login';
+}
+
+interface MobileRegistrationData {
+  phone: string;
+  otp: string;
+  first_name?: string;
+  last_name?: string;
+}
+
+interface MobileLoginData {
+  phone: string;
+  otp: string;
+}
+
 interface ApiResponse<T = any> {
   user?: T;
   tokens?: {
@@ -270,6 +293,57 @@ class ApiService {
     return Promise.all(promises);
   }
 
+  // Mobile Authentication methods
+  async mobileSendOTP(data: MobileSendOTPData): Promise<any> {
+    return this.makeRequest('/auth/mobile/send-otp/', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      skipAuth: true,
+    });
+  }
+
+  async mobileVerifyOTP(data: MobileVerifyOTPData): Promise<any> {
+    return this.makeRequest('/auth/mobile/verify-otp/', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      skipAuth: true,
+    });
+  }
+
+  async mobileRegister(data: MobileRegistrationData): Promise<ApiResponse> {
+    const response = await this.makeRequest<ApiResponse>('/auth/mobile/register/', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      skipAuth: true,
+    });
+
+    // Store tokens in localStorage
+    if (response.tokens) {
+      localStorage.setItem('access_token', response.tokens.access);
+      localStorage.setItem('refresh_token', response.tokens.refresh);
+      localStorage.setItem('user', JSON.stringify(response.user));
+    }
+
+    return response;
+  }
+
+  async mobileLogin(data: MobileLoginData): Promise<ApiResponse> {
+    const response = await this.makeRequest<ApiResponse>('/auth/mobile/login/', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      skipAuth: true,
+    });
+
+    // Store tokens in localStorage
+    if (response.tokens) {
+      localStorage.setItem('access_token', response.tokens.access);
+      localStorage.setItem('refresh_token', response.tokens.refresh);
+      localStorage.setItem('user', JSON.stringify(response.user));
+    }
+
+    return response;
+  }
+
   // Upload file
   async uploadFile(endpoint: string, file: File, onProgress?: (progress: number) => void): Promise<any> {
     const formData = new FormData();
@@ -329,4 +403,13 @@ export const apiService = new ApiService();
 export const apiRequest = (endpoint: string, options?: RequestInit) => 
   apiService.request(endpoint, options);
 
-export type { LoginData, RegisterData, ApiResponse, RequestOptions };
+export type { 
+  LoginData, 
+  RegisterData, 
+  MobileSendOTPData,
+  MobileVerifyOTPData,
+  MobileRegistrationData,
+  MobileLoginData,
+  ApiResponse, 
+  RequestOptions 
+};

@@ -5,10 +5,12 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth import authenticate
 
-from .models import User, UserProfile
+from .models import User, UserProfile, MobileOTP
 from .serializers import (
     UserSerializer, UserRegistrationSerializer, UserLoginSerializer,
-    PasswordChangeSerializer, UserProfileSerializer
+    PasswordChangeSerializer, UserProfileSerializer,
+    MobileSendOTPSerializer, MobileVerifyOTPSerializer,
+    MobileRegistrationSerializer, MobileLoginSerializer
 )
 
 
@@ -145,3 +147,103 @@ def recent_activity(request):
     ]
     
     return Response(activities, status=status.HTTP_200_OK)
+
+
+class MobileSendOTPView(generics.GenericAPIView):
+    """Send OTP to mobile number"""
+    serializer_class = MobileSendOTPSerializer
+    permission_classes = [permissions.AllowAny]
+    
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        
+        phone = serializer.validated_data['phone']
+        purpose = serializer.validated_data['purpose']
+        
+        # Generate and save OTP
+        mobile_otp = MobileOTP.generate_otp(phone, purpose)
+        
+        # In production, send OTP via SMS service (Twilio, AWS SNS, etc.)
+        # For development, we'll log it
+        print(f"OTP for {phone}: {mobile_otp.otp}")
+        
+        return Response({
+            'message': f'OTP sent to {phone}',
+            'phone': phone,
+            'expires_in': 300  # 5 minutes
+        }, status=status.HTTP_200_OK)
+
+
+class MobileVerifyOTPView(generics.GenericAPIView):
+    """Verify OTP for mobile number"""
+    serializer_class = MobileVerifyOTPSerializer
+    permission_classes = [permissions.AllowAny]
+    
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        
+        phone = serializer.validated_data['phone']
+        otp = serializer.validated_data['otp']
+        purpose = serializer.validated_data['purpose']
+        
+        # Verify OTP
+        is_valid, message = MobileOTP.verify_otp(phone, otp, purpose)
+        
+        if is_valid:
+            return Response({
+                'message': message,
+                'phone': phone,
+                'verified': True
+            }, status=status.HTTP_200_OK)
+        else:
+            return Response({
+                'message': message,
+                'verified': False
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+
+class MobileRegistrationView(generics.CreateAPIView):
+    """Register user with mobile OTP"""
+    serializer_class = MobileRegistrationSerializer
+    permission_classes = [permissions.AllowAny]
+    
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        
+        # Generate JWT tokens
+        refresh = RefreshToken.for_user(user)
+        
+        return Response({
+            'user': UserSerializer(user).data,
+            'tokens': {
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
+            },
+            'message': 'Registration successful'
+        }, status=status.HTTP_201_CREATED)
+
+
+class MobileLoginView(generics.GenericAPIView):
+    """Login user with mobile OTP"""
+    serializer_class = MobileLoginSerializer
+    permission_classes = [permissions.AllowAny]
+    
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        
+        user = serializer.validated_data['user']
+        refresh = RefreshToken.for_user(user)
+        
+        return Response({
+            'user': UserSerializer(user).data,
+            'tokens': {
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
+            },
+            'message': 'Login successful'
+        }, status=status.HTTP_200_OK)
