@@ -16,21 +16,34 @@ const nextConfig: NextConfig = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
+    // Force absolute path resolution
+    const srcPath = path.resolve(__dirname, 'src');
+    
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': path.resolve(__dirname, 'src'),
-      '@/components': path.resolve(__dirname, 'src/components'),
-      '@/lib': path.resolve(__dirname, 'src/lib'),
-      '@/contexts': path.resolve(__dirname, 'src/contexts'),
-      '@/app': path.resolve(__dirname, 'src/app'),
+      '@': srcPath,
+      '@/components': path.resolve(srcPath, 'components'),
+      '@/lib': path.resolve(srcPath, 'lib'),
+      '@/contexts': path.resolve(srcPath, 'contexts'),
+      '@/app': path.resolve(srcPath, 'app'),
     };
     
     // Ensure module resolution works correctly
     config.resolve.modules = [
-      path.resolve(__dirname, 'src'),
+      srcPath,
       'node_modules'
     ];
+    
+    // Additional resolve options for better compatibility
+    config.resolve.extensions = [
+      '.js', '.jsx', '.ts', '.tsx', '.json', '.mjs'
+    ];
+    
+    // Debug logging in development
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Webpack aliases configured:', config.resolve.alias);
+    }
     
     return config;
   },
