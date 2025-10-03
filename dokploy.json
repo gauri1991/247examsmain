@@ -1,0 +1,69 @@
+{
+  "name": "247exams",
+  "description": "247 Exams Application",
+  "repository": "https://github.com/gauri1991/247examsmain.git",
+  "services": [
+    {
+      "name": "backend",
+      "type": "docker",
+      "dockerfile": "./backend/Dockerfile",
+      "port": 8000,
+      "healthcheck": "/health/",
+      "environment": {
+        "SECRET_KEY": "${SECRET_KEY}",
+        "DEBUG": "False",
+        "ALLOWED_HOSTS": "${ALLOWED_HOSTS}",
+        "DB_ENGINE": "django.db.backends.postgresql",
+        "DB_NAME": "${DB_NAME}",
+        "DB_USER": "${DB_USER}",
+        "DB_PASSWORD": "${DB_PASSWORD}",
+        "DB_HOST": "db",
+        "DB_PORT": "5432",
+        "CORS_ALLOWED_ORIGINS": "${CORS_ALLOWED_ORIGINS}"
+      },
+      "volumes": [
+        "./backend/logs:/app/logs",
+        "./backend/media:/app/media"
+      ]
+    },
+    {
+      "name": "frontend",
+      "type": "docker",
+      "dockerfile": "./frontend/Dockerfile",
+      "port": 3000,
+      "environment": {
+        "NEXT_PUBLIC_API_URL": "${NEXT_PUBLIC_API_URL}",
+        "NEXT_PUBLIC_APP_ENV": "production"
+      }
+    },
+    {
+      "name": "db",
+      "type": "postgresql",
+      "version": "15",
+      "database": "${DB_NAME}",
+      "username": "${DB_USER}",
+      "password": "${DB_PASSWORD}",
+      "volumes": [
+        "postgres_data:/var/lib/postgresql/data"
+      ]
+    }
+  ],
+  "proxy": {
+    "type": "nginx",
+    "config": "./nginx/nginx.conf",
+    "ssl": true,
+    "domains": [
+      "${DOMAIN_NAME}"
+    ]
+  },
+  "environment": {
+    "required": [
+      "SECRET_KEY",
+      "DB_PASSWORD",
+      "ALLOWED_HOSTS",
+      "DOMAIN_NAME",
+      "NEXT_PUBLIC_API_URL",
+      "CORS_ALLOWED_ORIGINS"
+    ]
+  }
+}
