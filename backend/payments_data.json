@@ -1,0 +1,188 @@
+[
+{
+  "model": "payments.subscriptionplan",
+  "pk": "5f04ef2b-81b5-4281-9248-441850d75cc8",
+  "fields": {
+    "name": "Pro Plan",
+    "plan_type": "pro",
+    "description": "Best value for serious exam preparation",
+    "price": "599.00",
+    "billing_cycle": "monthly",
+    "max_tests": 50,
+    "max_questions": 500,
+    "pdf_extraction": true,
+    "analytics_access": true,
+    "priority_support": true,
+    "custom_branding": false,
+    "api_access": false,
+    "is_active": true,
+    "is_popular": true,
+    "trial_days": 14,
+    "created_at": "2025-08-25T14:14:13.753Z",
+    "updated_at": "2025-08-25T14:14:13.753Z"
+  }
+},
+{
+  "model": "payments.subscriptionplan",
+  "pk": "ada7f790-7e7d-46b7-8601-2dfcbc8d7813",
+  "fields": {
+    "name": "Annual Pro",
+    "plan_type": "pro",
+    "description": "2 months free with annual billing",
+    "price": "5990.00",
+    "billing_cycle": "yearly",
+    "max_tests": 50,
+    "max_questions": 500,
+    "pdf_extraction": true,
+    "analytics_access": true,
+    "priority_support": true,
+    "custom_branding": false,
+    "api_access": false,
+    "is_active": true,
+    "is_popular": false,
+    "trial_days": 14,
+    "created_at": "2025-08-25T14:14:13.771Z",
+    "updated_at": "2025-08-25T14:14:13.771Z"
+  }
+},
+{
+  "model": "payments.subscriptionplan",
+  "pk": "c7974985-74ff-4f23-b84e-0cd90334ec1a",
+  "fields": {
+    "name": "Basic Plan",
+    "plan_type": "basic",
+    "description": "Perfect for students starting their exam preparation",
+    "price": "299.00",
+    "billing_cycle": "monthly",
+    "max_tests": 10,
+    "max_questions": 100,
+    "pdf_extraction": false,
+    "analytics_access": false,
+    "priority_support": false,
+    "custom_branding": false,
+    "api_access": false,
+    "is_active": true,
+    "is_popular": false,
+    "trial_days": 7,
+    "created_at": "2025-08-25T14:14:13.742Z",
+    "updated_at": "2025-08-25T14:14:13.743Z"
+  }
+},
+{
+  "model": "payments.subscriptionplan",
+  "pk": "f56c616f-c36a-41b7-ba80-db36419e6e99",
+  "fields": {
+    "name": "Enterprise Plan",
+    "plan_type": "enterprise",
+    "description": "Unlimited access for institutes and professionals",
+    "price": "1299.00",
+    "billing_cycle": "monthly",
+    "max_tests": -1,
+    "max_questions": -1,
+    "pdf_extraction": true,
+    "analytics_access": true,
+    "priority_support": true,
+    "custom_branding": true,
+    "api_access": true,
+    "is_active": true,
+    "is_popular": false,
+    "trial_days": 30,
+    "created_at": "2025-08-25T14:14:13.764Z",
+    "updated_at": "2025-08-25T14:14:13.764Z"
+  }
+},
+{
+  "model": "payments.usersubscription",
+  "pk": "6f308cdc-dc3b-46ed-8cce-f5f1b551fdee",
+  "fields": {
+    "user": "4c249882-c2a3-46f3-af84-14d33b6c1208",
+    "plan": "c7974985-74ff-4f23-b84e-0cd90334ec1a",
+    "status": "active",
+    "start_date": "2025-08-25T14:30:33.596Z",
+    "end_date": "2025-09-24T14:30:33.596Z",
+    "next_billing_date": null,
+    "stripe_subscription_id": null,
+    "stripe_customer_id": null,
+    "tests_used": 0,
+    "questions_used": 0,
+    "auto_renew": true,
+    "cancelled_at": null,
+    "created_at": "2025-08-25T14:30:33.599Z",
+    "updated_at": "2025-08-25T14:30:33.599Z"
+  }
+},
+{
+  "model": "payments.usersubscription",
+  "pk": "985fbb3a-9fbc-429e-9d84-1937a53a17bb",
+  "fields": {
+    "user": "f3c9cafb-065a-4746-b4c0-278a760bf931",
+    "plan": "c7974985-74ff-4f23-b84e-0cd90334ec1a",
+    "status": "active",
+    "start_date": "2025-08-25T14:26:50.454Z",
+    "end_date": "2025-09-24T14:26:50.454Z",
+    "next_billing_date": null,
+    "stripe_subscription_id": null,
+    "stripe_customer_id": null,
+    "tests_used": 0,
+    "questions_used": 0,
+    "auto_renew": true,
+    "cancelled_at": null,
+    "created_at": "2025-08-25T14:26:50.455Z",
+    "updated_at": "2025-08-25T14:26:50.455Z"
+  }
+},
+{
+  "model": "payments.usersubscription",
+  "pk": "9adfb0ca-64a4-41a0-802b-35e4ec763b93",
+  "fields": {
+    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
+    "plan": "c7974985-74ff-4f23-b84e-0cd90334ec1a",
+    "status": "active",
+    "start_date": "2025-08-25T14:28:15.922Z",
+    "end_date": "2025-09-24T14:28:15.922Z",
+    "next_billing_date": null,
+    "stripe_subscription_id": null,
+    "stripe_customer_id": null,
+    "tests_used": 0,
+    "questions_used": 0,
+    "auto_renew": true,
+    "cancelled_at": null,
+    "created_at": "2025-08-25T14:28:15.923Z",
+    "updated_at": "2025-08-25T14:28:15.923Z"
+  }
+},
+{
+  "model": "payments.payment",
+  "pk": "aa8d017e-8537-4408-9ebc-3de657e6311a",
+  "fields": {
+    "user": "4c249882-c2a3-46f3-af84-14d33b6c1208",
+    "subscription": "6f308cdc-dc3b-46ed-8cce-f5f1b551fdee",
+    "plan": "c7974985-74ff-4f23-b84e-0cd90334ec1a",
+    "amount": "299.00",
+    "currency": "INR",
+    "status": "completed",
+    "gateway": "mock",
+    "gateway_transaction_id": "2420ca07-5a8e-45e8-8a5b-add6ebfb8d40",
+    "gateway_payment_intent_id": null,
+    "description": null,
+    "metadata": {},
+    "paid_at": "2025-08-25T14:30:33.607Z",
+    "refunded_at": null,
+    "created_at": "2025-08-25T14:30:33.608Z",
+    "updated_at": "2025-08-25T14:30:33.608Z"
+  }
+},
+{
+  "model": "payments.paymenthistory",
+  "pk": "af9845b4-52d0-4213-8264-3ec1b0e5e987",
+  "fields": {
+    "user": "4c249882-c2a3-46f3-af84-14d33b6c1208",
+    "payment": null,
+    "subscription": "6f308cdc-dc3b-46ed-8cce-f5f1b551fdee",
+    "action": "subscription_created",
+    "description": "New Basic Plan subscription created via Mock Gateway (Development)",
+    "metadata": {},
+    "created_at": "2025-08-25T14:30:33.613Z"
+  }
+}
+]

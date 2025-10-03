@@ -1,0 +1,140 @@
+[
+{
+  "model": "users.user",
+  "pk": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$jLr4LiSSYAAM02BQqXqfgV$hUQnwvgTZNlf2rKAVMC9F+SqoAPZsMulrPmQUTx7UQY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "teacher1",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-08-25T14:05:50.050Z",
+    "email": "teacher@test.com",
+    "phone": null,
+    "role": "teacher",
+    "first_name": "Test",
+    "last_name": "Teacher",
+    "is_verified": false,
+    "created_at": "2025-08-25T14:05:50.854Z",
+    "updated_at": "2025-09-26T07:13:15.363Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "11f731a7-6df4-4e21-b090-89c8ee4580d3",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$vs9ghZKGtC5cEASKTJc7Qo$V3fTwrnqPMNA5IyrdtlgKtMNgzlciSgW+x/sMT5Pqew=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "student247",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-08-25T14:29:34.544Z",
+    "email": "student@247exams.com",
+    "phone": null,
+    "role": "student",
+    "first_name": "Test",
+    "last_name": "Student",
+    "is_verified": false,
+    "created_at": "2025-08-25T14:29:34.545Z",
+    "updated_at": "2025-09-26T07:13:18.844Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "4c249882-c2a3-46f3-af84-14d33b6c1208",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$ztLXN9m7ReRw6ELmCmmVm6$Tr29j7c0QQFe5ixLF+29UJZVltWXTFtueofet+ONdF4=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "teacher247",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-08-25T14:29:36.082Z",
+    "email": "teacher@247exams.com",
+    "phone": null,
+    "role": "student",
+    "first_name": "Test",
+    "last_name": "Teacher",
+    "is_verified": false,
+    "created_at": "2025-08-25T14:29:36.082Z",
+    "updated_at": "2025-09-26T07:13:20.508Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "5181a4a8-e1bc-4b98-a387-5847078312a9",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$NKmwJ9V9fASVnDI5BHAxkw$oTvygQhlwvGyxDY5k/f3icSN3FhYS6V1I00FSTZzoF0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "admin1",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-08-25T14:05:50.862Z",
+    "email": "admin@test.com",
+    "phone": null,
+    "role": "admin",
+    "first_name": "Test",
+    "last_name": "Admin",
+    "is_verified": false,
+    "created_at": "2025-08-25T14:05:51.683Z",
+    "updated_at": "2025-09-26T07:13:16.974Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$96cxlzT7f7ywmo5i5piCbz$Fs79SzeP/3oe0BEdR9FZJmSof5rss8xz4MZM6nNspy8=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "admin247",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-08-25T14:29:36.902Z",
+    "email": "admin@247exams.com",
+    "phone": null,
+    "role": "student",
+    "first_name": "Test",
+    "last_name": "Admin",
+    "is_verified": false,
+    "created_at": "2025-08-25T14:29:36.902Z",
+    "updated_at": "2025-09-26T07:13:22.063Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "f3c9cafb-065a-4746-b4c0-278a760bf931",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$LovpbiR5Lsg3HU7EHgIeRE$2n/zTM8LQFT+9+XtTsyQ+VUCyNnwiZgOmYIFKa5ay58=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "student1",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-08-25T14:05:48.517Z",
+    "email": "student@test.com",
+    "phone": null,
+    "role": "student",
+    "first_name": "Test",
+    "last_name": "Student",
+    "is_verified": false,
+    "created_at": "2025-08-25T14:05:50.042Z",
+    "updated_at": "2025-09-26T07:13:13.604Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

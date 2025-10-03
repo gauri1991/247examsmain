@@ -27,6 +27,19 @@ python manage.py migrate --noinput
 echo "📦 Collecting static files..."
 python manage.py collectstatic --noinput --clear
 
+# Load initial data if database is empty
+echo "📥 Loading initial data if needed..."
+python manage.py shell -c "
+from django.contrib.auth import get_user_model
+User = get_user_model()
+if User.objects.count() == 0:
+    print('🗄️ Database is empty, loading fixtures...')
+    import subprocess
+    subprocess.run(['python', 'load_data.py'])
+else:
+    print('✅ Database already has data, skipping fixture loading')
+"
+
 # Create superuser if it doesn't exist
 echo "👤 Creating superuser if needed..."
 python manage.py shell -c "
