@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import path from 'path';
 
 const nextConfig: NextConfig = {
   output: 'standalone',
@@ -14,6 +15,24 @@ const nextConfig: NextConfig = {
     // your project has type errors.
     // !! WARN !!
     ignoreBuildErrors: true,
+  },
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, 'src'),
+      '@/components': path.resolve(__dirname, 'src/components'),
+      '@/lib': path.resolve(__dirname, 'src/lib'),
+      '@/contexts': path.resolve(__dirname, 'src/contexts'),
+      '@/app': path.resolve(__dirname, 'src/app'),
+    };
+    
+    // Ensure module resolution works correctly
+    config.resolve.modules = [
+      path.resolve(__dirname, 'src'),
+      'node_modules'
+    ];
+    
+    return config;
   },
   experimental: {
     serverActions: {
