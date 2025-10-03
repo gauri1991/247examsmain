@@ -6,7 +6,14 @@ echo "🚀 Starting 247 Exams Backend..."
 
 # Wait for database to be ready
 echo "⏳ Waiting for database..."
-while ! pg_isready -h $DB_HOST -p $DB_PORT -U $DB_USER; do
+echo "🔍 Database config: Host=${DB_HOST:-localhost}, Port=${DB_PORT:-5432}, User=${DB_USER:-postgres}"
+
+# Use default values if environment variables are empty
+DB_HOST_CHECK=${DB_HOST:-localhost}
+DB_PORT_CHECK=${DB_PORT:-5432}
+DB_USER_CHECK=${DB_USER:-postgres}
+
+while ! pg_isready -h "$DB_HOST_CHECK" -p "$DB_PORT_CHECK" -U "$DB_USER_CHECK"; do
     echo "💤 Database is not ready - sleeping"
     sleep 2
 done
