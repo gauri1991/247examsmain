@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY', default='django-insecure-build-time-key-only-for-collectstatic')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
@@ -90,16 +90,28 @@ WSGI_APPLICATION = 'exam_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': config('DB_ENGINE', default='django.db.backends.postgresql'),
-        'NAME': config('DB_NAME', default='247exams'),
-        'USER': config('DB_USER', default='postgres'),
-        'PASSWORD': config('DB_PASSWORD', default=''),
-        'HOST': config('DB_HOST', default='localhost'),
-        'PORT': config('DB_PORT', default='5432'),
+# Use SQLite for build time (when environment variables are not available)
+# PostgreSQL for runtime
+DB_ENGINE = config('DB_ENGINE', default='django.db.backends.sqlite3')
+
+if DB_ENGINE == 'django.db.backends.sqlite3':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': config('DB_ENGINE', default='django.db.backends.postgresql'),
+            'NAME': config('DB_NAME', default='247exams'),
+            'USER': config('DB_USER', default='postgres'),
+            'PASSWORD': config('DB_PASSWORD', default=''),
+            'HOST': config('DB_HOST', default='localhost'),
+            'PORT': config('DB_PORT', default='5432'),
+        }
+    }
 
 
 # Password validation
