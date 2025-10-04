@@ -1,0 +1,228 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block title %}{{ title }} | Django Admin{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+<style>
+    .processing-form {
+        background: #f9f9f9;
+        padding: 20px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+    .upload-info {
+        background: #e9ecef;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+    .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    .info-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+        border-bottom: 1px solid #ddd;
+    }
+    .info-label {
+        font-weight: bold;
+        color: #333;
+    }
+    .validation-results {
+        background: #d1ecf1;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        border-left: 4px solid #17a2b8;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .checkbox-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+    .checkbox-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+    }
+    .checkbox-item input {
+        margin-right: 8px;
+    }
+    .help-text {
+        font-size: 12px;
+        color: #666;
+        margin-top: 5px;
+    }
+    .btn-group {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        text-decoration: none;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
+    .error-message {
+        color: #dc3545;
+        font-style: italic;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<div class="upload-info">
+    <h3>Upload Information</h3>
+    <div class="info-grid">
+        <div class="info-item">
+            <span class="info-label">Upload ID:</span>
+            <span>{{ upload.id }}</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Title:</span>
+            <span>{{ upload.title }}</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Content Type:</span>
+            <span>{{ upload.get_content_type_display }}</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Status:</span>
+            <span>{{ upload.get_status_display }}</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Items Count:</span>
+            <span>{{ upload.items_count }}</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">File Size:</span>
+            <span>{{ upload.json_file.size|filesizeformat }}</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Uploaded By:</span>
+            <span>{{ upload.uploaded_by.username }}</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Created At:</span>
+            <span>{{ upload.created_at|date:"M d, Y H:i" }}</span>
+        </div>
+    </div>
+</div>
+
+{% if upload.validation_results %}
+<div class="validation-results">
+    <h3>Validation Results</h3>
+    <p><strong>Summary:</strong> {{ upload.validation_results.summary }}</p>
+    <p><strong>Items Found:</strong> {{ upload.validation_results.items_count }}</p>
+    {% if upload.validation_results.details %}
+        <p><strong>Details:</strong> {{ upload.validation_results.details }}</p>
+    {% endif %}
+</div>
+{% endif %}
+
+<div class="processing-form">
+    <h3>Processing Options</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.upload_id }}
+        
+        <div class="form-group">
+            <label for="{{ form.import_batch_name.id_for_label }}">{{ form.import_batch_name.label }}:</label>
+            {{ form.import_batch_name }}
+            <div class="help-text">{{ form.import_batch_name.help_text }}</div>
+            {% if form.import_batch_name.errors %}
+                <div class="error-message">{{ form.import_batch_name.errors.0 }}</div>
+            {% endif %}
+        </div>
+        
+        <h4>Content Creation Options</h4>
+        <div class="checkbox-group">
+            <div class="checkbox-item">
+                {{ form.create_question_banks }}
+                <label for="{{ form.create_question_banks.id_for_label }}">
+                    {{ form.create_question_banks.label }}
+                    <div class="help-text">{{ form.create_question_banks.help_text }}</div>
+                </label>
+            </div>
+            
+            <div class="checkbox-item">
+                {{ form.create_exams }}
+                <label for="{{ form.create_exams.id_for_label }}">
+                    {{ form.create_exams.label }}
+                    <div class="help-text">{{ form.create_exams.help_text }}</div>
+                </label>
+            </div>
+            
+            <div class="checkbox-item">
+                {{ form.create_tests }}
+                <label for="{{ form.create_tests.id_for_label }}">
+                    {{ form.create_tests.label }}
+                    <div class="help-text">{{ form.create_tests.help_text }}</div>
+                </label>
+            </div>
+            
+            <div class="checkbox-item">
+                {{ form.overwrite_existing }}
+                <label for="{{ form.overwrite_existing.id_for_label }}">
+                    {{ form.overwrite_existing.label }}
+                    <div class="help-text">{{ form.overwrite_existing.help_text }}</div>
+                </label>
+            </div>
+        </div>
+        
+        {% if form.non_field_errors %}
+            <div class="error-message">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <div class="btn-group">
+            <button type="submit" class="btn btn-primary">Start Processing</button>
+            <a href="{% url 'admin:questions_content_upload' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<div style="margin-top: 20px;">
+    <h3>Processing Information</h3>
+    <ul>
+        <li><strong>Import Batch:</strong> All created content will be tagged with the specified batch name for easy identification and management.</li>
+        <li><strong>Validation:</strong> Content structure has already been validated. Processing will create database objects based on the JSON data.</li>
+        <li><strong>Duplicates:</strong> By default, existing content with the same name/title will be skipped. Enable "Overwrite Existing" to replace them.</li>
+        <li><strong>Transaction:</strong> All processing is done in a database transaction. If any error occurs, all changes will be rolled back.</li>
+    </ul>
+</div>
+
+{% endblock %}

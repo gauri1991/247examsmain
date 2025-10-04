@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 import uuid
+import json
 
 
 class QuestionBank(models.Model):
@@ -141,6 +142,10 @@ class QuestionBank(models.Model):
     total_questions = models.IntegerField(default=0)
     avg_difficulty = models.CharField(max_length=20, blank=True)
     usage_count = models.IntegerField(default=0, help_text="Number of times used in tests")
+    
+    # Import tracking
+    imported_from_json = models.BooleanField(default=False)
+    json_import_batch = models.CharField(max_length=100, blank=True, help_text="Batch ID from JSON import")
     
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -347,6 +352,10 @@ class Question(models.Model):
     # Media
     image = models.ImageField(upload_to='questions/', blank=True, null=True)
     
+    # Import tracking
+    imported_from_json = models.BooleanField(default=False)
+    json_import_batch = models.CharField(max_length=100, blank=True, help_text="Batch ID from JSON import")
+    
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='created_questions')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -365,6 +374,65 @@ class QuestionOption(models.Model):
     class Meta:
         db_table = 'question_options'
         ordering = ['order']
+
+
+class ContentUpload(models.Model):
+    """Track JSON content uploads and their processing status"""
+    
+    STATUS_CHOICES = [
+        ('uploaded', 'Uploaded'),
+        ('validating', 'Validating'),
+        ('valid', 'Valid'),
+        ('invalid', 'Invalid'),
+        ('processing', 'Processing'),
+        ('completed', 'Completed'),
+        ('failed', 'Failed'),
+    ]
+    
+    CONTENT_TYPES = [
+        ('exam', 'Exam'),
+        ('test', 'Test'),
+        ('question_bank', 'Question Bank'),
+        ('mixed', 'Mixed Content'),
+    ]
+    
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    file_name = models.CharField(max_length=255)
+    content_type = models.CharField(max_length=20, choices=CONTENT_TYPES)
+    file_size = models.BigIntegerField(help_text="File size in bytes")
+    file_hash = models.CharField(max_length=64, help_text="SHA-256 hash of file content")
+    
+    # Upload details
+    uploaded_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='content_uploads')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    
+    # Processing status
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='uploaded')
+    validation_results = models.JSONField(default=dict, blank=True)
+    processing_logs = models.TextField(blank=True)
+    
+    # JSON data storage
+    json_data = models.JSONField(default=dict, blank=True, help_text="Stored JSON content for processing")
+    is_processed = models.BooleanField(default=False, help_text="Whether content has been processed into database")
+    processing_log = models.JSONField(default=list, blank=True, help_text="Processing log entries")
+    
+    # Content summary
+    content_summary = models.JSONField(default=dict, blank=True, help_text="Summary of content to be imported")
+    items_imported = models.IntegerField(default=0)
+    items_failed = models.IntegerField(default=0)
+    
+    # Processing timestamps
+    validation_started_at = models.DateTimeField(null=True, blank=True)
+    validation_completed_at = models.DateTimeField(null=True, blank=True)
+    processing_started_at = models.DateTimeField(null=True, blank=True)
+    processing_completed_at = models.DateTimeField(null=True, blank=True)
+    
+    class Meta:
+        db_table = 'content_uploads'
+        ordering = ['-uploaded_at']
+    
+    def __str__(self):
+        return f"{self.file_name} - {self.status}"
 
 
 class TestQuestion(models.Model):
@@ -407,3 +475,140 @@ class UserAnswer(models.Model):
     class Meta:
         db_table = 'user_answers'
         unique_together = ['test_attempt', 'question']
+
+
+# New models for content linking and hierarchical management
+class ExamTest(models.Model):
+    """Many-to-Many relationship between Exams and Tests with ordering"""
+    
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    exam = models.ForeignKey('exams.Exam', on_delete=models.CASCADE, related_name='exam_tests')
+    test = models.ForeignKey('exams.Test', on_delete=models.CASCADE, related_name='test_exams')
+    
+    # Ordering and section info
+    order = models.IntegerField(default=0)
+    section_name = models.CharField(max_length=100, blank=True, help_text="Custom section name if different from test name")
+    
+    # Time allocation
+    allocated_time_minutes = models.IntegerField(null=True, blank=True, help_text="Override test duration for this exam")
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        db_table = 'exam_tests'
+        ordering = ['order']
+        unique_together = ['exam', 'test']
+    
+    def __str__(self):
+        return f"{self.exam.name} -> {self.test.name}"
+
+
+class TestQuestionBank(models.Model):
+    """Many-to-Many relationship between Tests and Question Banks"""
+    
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    test = models.ForeignKey('exams.Test', on_delete=models.CASCADE, related_name='test_question_banks')
+    question_bank = models.ForeignKey(QuestionBank, on_delete=models.CASCADE, related_name='bank_tests')
+    
+    # Question selection rules
+    question_count = models.IntegerField(default=10, help_text="Number of questions to select from this bank")
+    difficulty_filter = models.CharField(max_length=20, blank=True, help_text="Filter by difficulty: basic, intermediate, advanced, expert")
+    topic_filter = models.CharField(max_length=100, blank=True, help_text="Filter by specific topic")
+    
+    # Selection method
+    SELECTION_METHODS = [
+        ('random', 'Random Selection'),
+        ('sequential', 'Sequential Order'),
+        ('difficulty_asc', 'Easy to Hard'),
+        ('difficulty_desc', 'Hard to Easy'),
+    ]
+    selection_method = models.CharField(max_length=25, choices=SELECTION_METHODS, default='random')
+    
+    # Weightage in test
+    weightage_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=100.0, help_text="Percentage weightage in total test marks")
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        db_table = 'test_question_banks'
+        unique_together = ['test', 'question_bank']
+    
+    def __str__(self):
+        return f"{self.test.name} -> {self.question_bank.name} ({self.question_count} questions)"
+
+
+class TestDirectQuestion(models.Model):
+    """Direct questions linked to tests (not through question banks)"""
+    
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    test = models.ForeignKey('exams.Test', on_delete=models.CASCADE, related_name='test_direct_questions')
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='question_tests')
+    
+    # Question order in test
+    order = models.IntegerField(default=0)
+    
+    # Override question settings for this test
+    override_marks = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    override_time_limit = models.IntegerField(null=True, blank=True, help_text="Override time limit in seconds")
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        db_table = 'test_direct_questions'
+        ordering = ['order']
+        unique_together = ['test', 'question']
+    
+    def __str__(self):
+        return f"{self.test.name} -> Question {self.question.id}"
+
+
+class ContentReference(models.Model):
+    """Track references between content pieces for JSON upload processing"""
+    
+    REFERENCE_TYPES = [
+        ('name', 'Reference by Name'),
+        ('id', 'Reference by ID/UUID'),
+        ('batch', 'Reference by Batch ID'),
+        ('tag', 'Reference by Tags'),
+    ]
+    
+    CONTENT_TYPES = [
+        ('exam', 'Exam'),
+        ('test', 'Test'),
+        ('question_bank', 'Question Bank'),
+        ('question', 'Individual Question'),
+    ]
+    
+    STATUS_CHOICES = [
+        ('pending', 'Pending Resolution'),
+        ('resolved', 'Successfully Resolved'),
+        ('failed', 'Failed to Resolve'),
+        ('partial', 'Partially Resolved'),
+    ]
+    
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    
+    # Source content (what is making the reference)
+    source_upload = models.ForeignKey(ContentUpload, on_delete=models.CASCADE, related_name='content_references')
+    source_content_type = models.CharField(max_length=20, choices=CONTENT_TYPES)
+    source_content_name = models.CharField(max_length=200, help_text="Name of the content making the reference")
+    
+    # Target content (what is being referenced)
+    reference_type = models.CharField(max_length=20, choices=REFERENCE_TYPES)
+    reference_value = models.CharField(max_length=200, help_text="Value used to find the referenced content")
+    target_content_type = models.CharField(max_length=20, choices=CONTENT_TYPES)
+    
+    # Resolution details
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+    resolved_content_id = models.CharField(max_length=36, blank=True, help_text="UUID of resolved content")
+    resolution_notes = models.TextField(blank=True)
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    resolved_at = models.DateTimeField(null=True, blank=True)
+    
+    class Meta:
+        db_table = 'content_references'
+        ordering = ['-created_at']
+    
+    def __str__(self):
+        return f"{self.source_content_name} -> {self.reference_value} ({self.status})"

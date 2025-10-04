@@ -26,11 +26,13 @@ class UserSerializer(serializers.ModelSerializer):
             'phone', 'role', 'is_verified', 'full_name', 'profile',
             'subscription_type', 'subscription_start', 'subscription_end', 
             'is_active_subscriber', 'has_active_subscription',
+            'is_staff', 'is_superuser',
             'created_at', 'updated_at'
         ]
         read_only_fields = [
             'id', 'is_verified', 'subscription_type', 'subscription_start', 
             'subscription_end', 'is_active_subscriber', 'has_active_subscription',
+            'is_staff', 'is_superuser',
             'created_at', 'updated_at'
         ]
 

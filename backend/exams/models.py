@@ -129,6 +129,10 @@ class Exam(models.Model):
     is_active = models.BooleanField(default=True)
     is_featured = models.BooleanField(default=False, help_text="Featured exams appear first")
     
+    # Import tracking
+    imported_from_json = models.BooleanField(default=False)
+    json_import_batch = models.CharField(max_length=100, blank=True, help_text="Batch ID from JSON import")
+    
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
@@ -236,6 +240,10 @@ class Test(models.Model):
     # Scheduling
     start_time = models.DateTimeField(null=True, blank=True)
     end_time = models.DateTimeField(null=True, blank=True)
+    
+    # Import tracking
+    imported_from_json = models.BooleanField(default=False)
+    json_import_batch = models.CharField(max_length=100, blank=True, help_text="Batch ID from JSON import")
     
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='created_tests')
     created_at = models.DateTimeField(auto_now_add=True)

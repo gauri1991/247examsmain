@@ -107,3 +107,31 @@ env/
 
 # Docker
 .dockerignore
+
+# Database files
+*.sqlite3
+*.db
+
+# Test and sample data
+**/sample_*.json
+**/test_*.json
+data/
+backend/questions_data.json
+
+# Django migrations (keep initial migrations, ignore others)
+**/migrations/[0-9][0-9][0-9][0-9]_*.py
+**/migrations/[0-9][0-9][0-9][0-9]_*.pyc
+
+# Temporary files
+*.tmp
+*.temp
+
+# IDE and editor files
+.vscode/settings.json
+.idea/workspace.xml
+
+# Production environment
+.env.production
+
+# Testing and documentation
+TESTING_GUIDE.md

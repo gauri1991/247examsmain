@@ -58,10 +58,11 @@ urlpatterns = [
     path('api/v1/', api_root, name='api_root'),
     path('api/v1/health/', health_check, name='health_check'),
     path('api/v1/auth/', include('users.urls')),
+    path('api/v1/users/', include('users.urls')),
     path('api/v1/payments/', include('payments.urls')),
     path('api/v1/exams/', include('exams.api_urls')),
-    # Future endpoints
-    # path('api/v1/questions/', include('questions.urls')),
+    path('api/v1/questions/', include('questions.urls')),
+    path('api/v1/analytics/', include('analytics.urls')),
 ]
 
 # Serve media files during development

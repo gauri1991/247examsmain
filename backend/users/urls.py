@@ -1,6 +1,6 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenRefreshView
-from . import views
+from . import views, admin_views
 
 urlpatterns = [
     # Traditional Authentication
@@ -26,4 +26,11 @@ urlpatterns = [
     # Dashboard
     path('dashboard/stats/', views.dashboard_stats, name='dashboard_stats'),
     path('dashboard/activity/', views.recent_activity, name='recent_activity'),
+    
+    # Admin endpoints
+    path('admin/list/', admin_views.admin_user_list, name='admin_user_list'),
+    path('admin/<str:user_id>/toggle-status/', admin_views.admin_toggle_user_status, name='admin_toggle_user_status'),
+    path('admin/<str:user_id>/toggle-admin/', admin_views.admin_toggle_admin_role, name='admin_toggle_admin_role'),
+    path('admin/<str:user_id>/delete/', admin_views.admin_delete_user, name='admin_delete_user'),
+    path('admin/<str:user_id>/detail/', admin_views.admin_user_detail, name='admin_user_detail'),
 ]
