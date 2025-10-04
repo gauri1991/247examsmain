@@ -17,15 +17,22 @@ class UserProfileSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     profile = UserProfileSerializer(read_only=True)
     full_name = serializers.ReadOnlyField()
+    has_active_subscription = serializers.ReadOnlyField()
     
     class Meta:
         model = User
         fields = [
             'id', 'username', 'email', 'first_name', 'last_name', 
             'phone', 'role', 'is_verified', 'full_name', 'profile',
+            'subscription_type', 'subscription_start', 'subscription_end', 
+            'is_active_subscriber', 'has_active_subscription',
             'created_at', 'updated_at'
         ]
-        read_only_fields = ['id', 'is_verified', 'created_at', 'updated_at']
+        read_only_fields = [
+            'id', 'is_verified', 'subscription_type', 'subscription_start', 
+            'subscription_end', 'is_active_subscriber', 'has_active_subscription',
+            'created_at', 'updated_at'
+        ]
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
@@ -233,5 +240,88 @@ class MobileLoginSerializer(serializers.Serializer):
             attrs['user'] = user
         except User.DoesNotExist:
             raise serializers.ValidationError("Phone number not registered")
+        
+        return attrs
+
+
+class MobilePasswordRegistrationSerializer(serializers.Serializer):
+    phone = serializers.CharField(max_length=15)
+    otp = serializers.CharField(max_length=6, min_length=6)
+    password = serializers.CharField(write_only=True, validators=[validate_password])
+    confirm_password = serializers.CharField(write_only=True)
+    first_name = serializers.CharField(max_length=150, required=False, allow_blank=True)
+    last_name = serializers.CharField(max_length=150, required=False, allow_blank=True)
+    
+    def validate_phone(self, value):
+        return re.sub(r'[^0-9]', '', value)
+    
+    def validate(self, attrs):
+        phone = attrs['phone']
+        otp = attrs['otp']
+        password = attrs['password']
+        confirm_password = attrs['confirm_password']
+        
+        # Check password confirmation
+        if password != confirm_password:
+            raise serializers.ValidationError("Password confirmation doesn't match")
+        
+        # Verify OTP
+        is_valid, message = MobileOTP.verify_otp(phone, otp, 'registration')
+        if not is_valid:
+            raise serializers.ValidationError(message)
+        
+        # Check if user already exists
+        if User.objects.filter(phone=phone).exists():
+            raise serializers.ValidationError("Phone number already registered")
+        
+        return attrs
+    
+    def create(self, validated_data):
+        phone = validated_data['phone']
+        password = validated_data['password']
+        first_name = validated_data.get('first_name', '')
+        last_name = validated_data.get('last_name', '')
+        
+        # Create user with phone as username and email
+        user = User.objects.create_user(
+            username=phone,
+            email=f"{phone}@mobile.247exams.com",
+            phone=phone,
+            password=password,
+            first_name=first_name,
+            last_name=last_name,
+            role='student',
+            is_verified=True
+        )
+        
+        # Note: Subscription activation happens after payment
+        
+        # Create user profile
+        UserProfile.objects.create(user=user)
+        
+        return user
+
+
+class MobilePasswordLoginSerializer(serializers.Serializer):
+    phone = serializers.CharField(max_length=15)
+    password = serializers.CharField(write_only=True)
+    
+    def validate_phone(self, value):
+        return re.sub(r'[^0-9]', '', value)
+    
+    def validate(self, attrs):
+        phone = attrs['phone']
+        password = attrs['password']
+        
+        # Get user and check password
+        try:
+            user = User.objects.get(phone=phone)
+            if not user.check_password(password):
+                raise serializers.ValidationError("Invalid credentials")
+            if not user.is_active:
+                raise serializers.ValidationError("User account is disabled")
+            attrs['user'] = user
+        except User.DoesNotExist:
+            raise serializers.ValidationError("Invalid credentials")
         
         return attrs

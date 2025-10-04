@@ -4,13 +4,19 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth import authenticate
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+import logging
+
+logger = logging.getLogger(__name__)
 
 from .models import User, UserProfile, MobileOTP
 from .serializers import (
     UserSerializer, UserRegistrationSerializer, UserLoginSerializer,
     PasswordChangeSerializer, UserProfileSerializer,
     MobileSendOTPSerializer, MobileVerifyOTPSerializer,
-    MobileRegistrationSerializer, MobileLoginSerializer
+    MobileRegistrationSerializer, MobileLoginSerializer,
+    MobilePasswordRegistrationSerializer, MobilePasswordLoginSerializer
 )
 
 
@@ -103,13 +109,67 @@ def dashboard_stats(request):
     """Get dashboard statistics for the user"""
     user = request.user
     
-    # This would be replaced with actual statistics from related models
+    # Import necessary models
+    from exams.models import TestAttempt
+    from django.db.models import Avg, Count, Q
+    from django.utils import timezone
+    from datetime import datetime, timedelta
+    
+    # Get user's test attempts
+    user_attempts = TestAttempt.objects.filter(
+        user=user,
+        status__in=['submitted', 'evaluated']
+    )
+    
+    # Calculate stats
+    tests_taken = user_attempts.count()
+    
+    # Average score from completed tests
+    avg_score_data = user_attempts.aggregate(avg_score=Avg('percentage'))
+    average_score = round(avg_score_data['avg_score'] or 0, 1)
+    
+    # Study streak calculation (consecutive days with test activity)
+    study_streak = 0
+    if tests_taken > 0:
+        # Get recent attempts ordered by date
+        recent_attempts = user_attempts.values('start_time__date').distinct().order_by('-start_time__date')[:30]
+        
+        current_date = timezone.now().date()
+        consecutive_days = 0
+        
+        for attempt in recent_attempts:
+            attempt_date = attempt['start_time__date']
+            if attempt_date == current_date or attempt_date == current_date - timedelta(days=consecutive_days):
+                consecutive_days += 1
+                current_date = attempt_date
+            else:
+                break
+        
+        study_streak = consecutive_days
+    
+    # Calculate rank among all users
+    total_students = User.objects.filter(role='student').count()
+    
+    if average_score > 0:
+        # Count users with better average scores
+        better_users = User.objects.filter(
+            test_attempts__status__in=['submitted', 'evaluated']
+        ).annotate(
+            user_avg_score=Avg('test_attempts__percentage')
+        ).filter(
+            user_avg_score__gt=average_score
+        ).count()
+        
+        rank = better_users + 1
+    else:
+        rank = total_students
+    
     stats = {
-        'tests_taken': 24,
-        'average_score': 78,
-        'study_streak': 12,
-        'rank': 156,
-        'total_students': 3000,  # For percentage calculation
+        'tests_taken': tests_taken,
+        'average_score': average_score,
+        'study_streak': study_streak,
+        'rank': rank,
+        'total_students': total_students,
     }
     
     return Response(stats, status=status.HTTP_200_OK)
@@ -121,34 +181,56 @@ def recent_activity(request):
     """Get recent user activity"""
     user = request.user
     
-    # This would be replaced with actual activity from related models
-    activities = [
-        {
-            'id': 1,
-            'title': 'UPSC Prelims Mock Test #5',
-            'subtitle': 'General Studies Paper 1',
-            'score': 85,
-            'timestamp': '2 hours ago'
-        },
-        {
-            'id': 2,
-            'title': 'SSC CGL Practice Set #12',
-            'subtitle': 'Quantitative Aptitude',
-            'score': 72,
-            'timestamp': '1 day ago'
-        },
-        {
-            'id': 3,
-            'title': 'Banking Awareness Quiz',
-            'subtitle': 'Current Affairs',
-            'score': 91,
-            'timestamp': '2 days ago'
+    # Import necessary models
+    from exams.models import TestAttempt
+    from django.utils import timezone
+    from datetime import datetime, timedelta
+    
+    # Get user's recent test attempts
+    recent_attempts = TestAttempt.objects.filter(
+        user=user,
+        status__in=['submitted', 'evaluated']
+    ).select_related('test', 'test__exam').order_by('-start_time')[:10]
+    
+    activities = []
+    
+    for attempt in recent_attempts:
+        # Calculate time difference for timestamp
+        time_diff = timezone.now() - attempt.start_time
+        
+        if time_diff.days == 0:
+            if time_diff.seconds < 3600:  # Less than 1 hour
+                minutes = time_diff.seconds // 60
+                timestamp = f"{minutes} minutes ago" if minutes > 1 else "Just now"
+            else:  # Less than 24 hours
+                hours = time_diff.seconds // 3600
+                timestamp = f"{hours} hour{'s' if hours > 1 else ''} ago"
+        elif time_diff.days == 1:
+            timestamp = "1 day ago"
+        else:
+            timestamp = f"{time_diff.days} days ago"
+        
+        # Get exam and test details
+        test = attempt.test
+        exam = test.exam if test else None
+        
+        activity = {
+            'id': attempt.id,
+            'title': test.title if test else 'Unknown Test',
+            'subtitle': exam.title if exam else 'General Knowledge',
+            'score': round(attempt.percentage) if attempt.percentage else 0,
+            'timestamp': timestamp
         }
-    ]
+        activities.append(activity)
+    
+    # If no activities, return empty list
+    if not activities:
+        activities = []
     
     return Response(activities, status=status.HTTP_200_OK)
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class MobileSendOTPView(generics.GenericAPIView):
     """Send OTP to mobile number"""
     serializer_class = MobileSendOTPSerializer
@@ -156,7 +238,13 @@ class MobileSendOTPView(generics.GenericAPIView):
     
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
+        
+        if not serializer.is_valid():
+            logger.info(f"OTP Send Validation Error - Data: {request.data}, Errors: {serializer.errors}")
+            return Response({
+                'message': 'Validation failed',
+                'errors': serializer.errors
+            }, status=status.HTTP_400_BAD_REQUEST)
         
         phone = serializer.validated_data['phone']
         purpose = serializer.validated_data['purpose']
@@ -165,8 +253,9 @@ class MobileSendOTPView(generics.GenericAPIView):
         mobile_otp = MobileOTP.generate_otp(phone, purpose)
         
         # In production, send OTP via SMS service (Twilio, AWS SNS, etc.)
-        # For development, we'll log it
-        print(f"OTP for {phone}: {mobile_otp.otp}")
+        # For development/testing, we'll log it
+        print(f"FIXED OTP for {phone}: {mobile_otp.otp} (always 123456)")
+        logger.info(f"FIXED OTP for {phone}: {mobile_otp.otp} (always 123456)")
         
         return Response({
             'message': f'OTP sent to {phone}',
@@ -175,6 +264,7 @@ class MobileSendOTPView(generics.GenericAPIView):
         }, status=status.HTTP_200_OK)
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class MobileVerifyOTPView(generics.GenericAPIView):
     """Verify OTP for mobile number"""
     serializer_class = MobileVerifyOTPSerializer
@@ -204,6 +294,7 @@ class MobileVerifyOTPView(generics.GenericAPIView):
             }, status=status.HTTP_400_BAD_REQUEST)
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class MobileRegistrationView(generics.CreateAPIView):
     """Register user with mobile OTP"""
     serializer_class = MobileRegistrationSerializer
@@ -227,9 +318,58 @@ class MobileRegistrationView(generics.CreateAPIView):
         }, status=status.HTTP_201_CREATED)
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class MobileLoginView(generics.GenericAPIView):
     """Login user with mobile OTP"""
     serializer_class = MobileLoginSerializer
+    permission_classes = [permissions.AllowAny]
+    
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        
+        user = serializer.validated_data['user']
+        refresh = RefreshToken.for_user(user)
+        
+        return Response({
+            'user': UserSerializer(user).data,
+            'tokens': {
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
+            },
+            'message': 'Login successful'
+        }, status=status.HTTP_200_OK)
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class MobilePasswordRegistrationView(generics.CreateAPIView):
+    """Register user with mobile + password (requires payment)"""
+    serializer_class = MobilePasswordRegistrationSerializer
+    permission_classes = [permissions.AllowAny]
+    
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        
+        # Generate JWT tokens
+        refresh = RefreshToken.for_user(user)
+        
+        return Response({
+            'user': UserSerializer(user).data,
+            'tokens': {
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
+            },
+            'message': 'Registration successful - payment required for activation',
+            'requires_payment': True
+        }, status=status.HTTP_201_CREATED)
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class MobilePasswordLoginView(generics.GenericAPIView):
+    """Login user with mobile + password"""
+    serializer_class = MobilePasswordLoginSerializer
     permission_classes = [permissions.AllowAny]
     
     def post(self, request, *args, **kwargs):

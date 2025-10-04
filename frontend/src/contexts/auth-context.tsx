@@ -18,6 +18,10 @@ interface AuthContextType {
   loading: boolean;
   login: (data: LoginData) => Promise<void>;
   register: (data: RegisterData) => Promise<void>;
+  mobileLogin: (data: { phone: string; otp: string }) => Promise<void>;
+  mobilePasswordLogin: (data: { phone: string; password: string }) => Promise<void>;
+  mobileRegister: (data: { phone: string; otp: string; first_name?: string; last_name?: string }) => Promise<void>;
+  mobilePasswordRegister: (data: { phone: string; otp: string; password: string; confirm_password: string; first_name?: string; last_name?: string }) => Promise<void>;
   logout: () => void;
   isAuthenticated: boolean;
 }
@@ -76,6 +80,58 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const mobileLogin = async (data: { phone: string; otp: string }) => {
+    try {
+      setLoading(true);
+      const response = await apiService.mobileLogin(data);
+      setUser(response.user);
+    } catch (error) {
+      setLoading(false);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const mobilePasswordLogin = async (data: { phone: string; password: string }) => {
+    try {
+      setLoading(true);
+      const response = await apiService.mobilePasswordLogin(data);
+      setUser(response.user);
+    } catch (error) {
+      setLoading(false);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const mobileRegister = async (data: { phone: string; otp: string; first_name?: string; last_name?: string }) => {
+    try {
+      setLoading(true);
+      const response = await apiService.mobileRegister(data);
+      setUser(response.user);
+    } catch (error) {
+      setLoading(false);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const mobilePasswordRegister = async (data: { phone: string; otp: string; password: string; confirm_password: string; first_name?: string; last_name?: string }) => {
+    try {
+      setLoading(true);
+      const response = await apiService.mobilePasswordRegister(data);
+      setUser(response.user);
+    } catch (error) {
+      setLoading(false);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const logout = () => {
     apiService.logout();
     setUser(null);
@@ -86,6 +142,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     loading,
     login,
     register,
+    mobileLogin,
+    mobilePasswordLogin,
+    mobileRegister,
+    mobilePasswordRegister,
     logout,
     isAuthenticated,
   };

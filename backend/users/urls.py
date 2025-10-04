@@ -14,6 +14,10 @@ urlpatterns = [
     path('mobile/register/', views.MobileRegistrationView.as_view(), name='mobile_register'),
     path('mobile/login/', views.MobileLoginView.as_view(), name='mobile_login'),
     
+    # Mobile + Password Authentication
+    path('mobile/password/register/', views.MobilePasswordRegistrationView.as_view(), name='mobile_password_register'),
+    path('mobile/password/login/', views.MobilePasswordLoginView.as_view(), name='mobile_password_login'),
+    
     # Profile
     path('profile/', views.ProfileView.as_view(), name='profile'),
     path('profile/details/', views.ProfileDetailView.as_view(), name='profile_details'),

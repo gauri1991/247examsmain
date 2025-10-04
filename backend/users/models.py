@@ -14,28 +14,57 @@ class User(AbstractUser):
         ('admin', 'Admin'),
     ]
     
+    SUBSCRIPTION_CHOICES = [
+        ('free', 'Free'),
+        ('basic', 'Basic'),
+        ('premium', 'Premium'),
+    ]
+    
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True, blank=True, null=True)
     phone = models.CharField(max_length=15, unique=True, blank=True, null=True)
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='student')
     first_name = models.CharField(max_length=150, blank=True)
     last_name = models.CharField(max_length=150, blank=True)
     is_verified = models.BooleanField(default=False)
+    
+    # Subscription fields
+    subscription_type = models.CharField(max_length=10, choices=SUBSCRIPTION_CHOICES, default='free')
+    subscription_start = models.DateTimeField(blank=True, null=True)
+    subscription_end = models.DateTimeField(blank=True, null=True)
+    is_active_subscriber = models.BooleanField(default=False)
+    
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = []
     
     class Meta:
         db_table = 'users'
         
     def __str__(self):
-        return self.email
+        return self.email or self.phone or self.username
         
     @property
     def full_name(self):
         return f"{self.first_name} {self.last_name}".strip()
+    
+    @property
+    def has_active_subscription(self):
+        """Check if user has an active subscription"""
+        if not self.subscription_end:
+            return False
+        return timezone.now() <= self.subscription_end
+    
+    def activate_subscription(self, subscription_type='basic', duration_days=365):
+        """Activate user subscription for specified duration"""
+        from django.utils import timezone
+        self.subscription_type = subscription_type
+        self.subscription_start = timezone.now()
+        self.subscription_end = timezone.now() + timezone.timedelta(days=duration_days)
+        self.is_active_subscriber = True
+        self.save()
 
 
 class UserProfile(models.Model):
@@ -98,8 +127,8 @@ class MobileOTP(models.Model):
         # Invalidate existing OTPs for this phone and purpose
         cls.objects.filter(phone=phone, purpose=purpose, is_verified=False).update(is_verified=True)
         
-        # Generate 6-digit OTP
-        otp = ''.join(random.choices(string.digits, k=6))
+        # Use fixed OTP for testing - TODO: Change this in production
+        otp = '123456'  # Fixed OTP for testing
         
         # Create new OTP record
         mobile_otp = cls.objects.create(

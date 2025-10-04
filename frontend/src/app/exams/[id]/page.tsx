@@ -6,9 +6,17 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
 import { 
   BookOpen, Clock, Trophy, Users, ChevronRight, ArrowLeft,
-  Calendar, Target, FileText, CheckCircle2, XCircle, AlertCircle
+  Calendar, Target, FileText, CheckCircle2, XCircle, AlertCircle, Eye, EyeOff
 } from 'lucide-react';
 import { apiRequest } from '@/lib/api';
 import { toast } from 'sonner';
@@ -53,7 +61,7 @@ export default function ExamDetailPage() {
   const [exam, setExam] = useState<Exam | null>(null);
   const [tests, setTests] = useState<Test[]>([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('tests');
+  const [activeTab, setActiveTab] = useState('info');
   const [startingTest, setStartingTest] = useState<string | null>(null);
 
   useEffect(() => {
@@ -103,7 +111,9 @@ export default function ExamDetailPage() {
       }
     } catch (error: any) {
       console.error('Failed to start test:', error);
-      toast.error(error.error || 'Failed to start test');
+      // Show specific error message from the API
+      const errorMessage = error.message || error.error || error.detail || 'Failed to start test';
+      toast.error(errorMessage);
     } finally {
       setStartingTest(null);
     }
@@ -199,97 +209,29 @@ export default function ExamDetailPage() {
       <DashboardHeader title={exam.name} />
       
       <div className="flex-1 overflow-auto px-6 py-8">
-        {/* Back Button */}
-        <div className="mb-6">
-          <Button 
-            variant="ghost" 
-            onClick={() => router.push('/exams')}
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Exams
-          </Button>
-        </div>
-
         {/* Header Section */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-3 text-foreground">{exam.name}</h1>
-          <p className="text-muted-foreground mb-4">{exam.description}</p>
-          <div className="flex gap-2 flex-wrap">
-            <Badge className={examTypeColors[exam.exam_type] || 'bg-gray-100'} variant="secondary">
-              {(exam.exam_type || 'other').toUpperCase()}
-            </Badge>
-            <Badge variant="outline">{organization}</Badge>
-            <Badge variant="outline">{qualification}</Badge>
-            <Badge variant="secondary" className="capitalize">{exam.difficulty_level || 'intermediate'}</Badge>
+          <div className="flex items-center justify-between mb-3">
+            <h1 className="text-3xl font-bold text-foreground">{exam.name}</h1>
+            <Button 
+              variant="ghost" 
+              onClick={() => router.push('/exams')}
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Exams
+            </Button>
           </div>
+          <p className="text-muted-foreground mb-4">{exam.description}</p>
         </div>
 
-        {/* Stats Cards */}
-        <div className="grid md:grid-cols-4 gap-6 mb-8">
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Total Tests</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center">
-                <BookOpen className="h-5 w-5 text-primary mr-3" />
-                <div className="text-2xl font-bold text-foreground">{tests.length}</div>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Avg Duration</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center">
-                <Clock className="h-5 w-5 text-primary mr-3" />
-                <div className="text-2xl font-bold text-foreground">
-                  {tests.length > 0 
-                    ? Math.round(tests.reduce((acc, t) => acc + t.duration_minutes, 0) / tests.length)
-                    : 0} min
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Total Questions</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center">
-                <Target className="h-5 w-5 text-primary mr-3" />
-                <div className="text-2xl font-bold text-foreground">
-                  {tests.reduce((acc, t) => acc + t.questions_count, 0)}
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Total Attempts</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center">
-                <Trophy className="h-5 w-5 text-primary mr-3" />
-                <div className="text-2xl font-bold text-foreground">
-                  {tests.reduce((acc, t) => acc + t.attempts_count, 0)}
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
 
         {/* Content Tabs */}
         <div className="grid lg:grid-cols-1 gap-8">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
             <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="tests">Available Tests</TabsTrigger>
-              <TabsTrigger value="syllabus">Syllabus</TabsTrigger>
               <TabsTrigger value="info">Exam Info</TabsTrigger>
+              <TabsTrigger value="syllabus">Syllabus</TabsTrigger>
+              <TabsTrigger value="tests">Available Tests</TabsTrigger>
             </TabsList>
 
             <TabsContent value="tests" className="space-y-4">
@@ -302,14 +244,52 @@ export default function ExamDetailPage() {
                   </CardContent>
                 </Card>
               ) : (
-                tests.map(test => (
-                  <TestCard 
-                    key={test.id} 
-                    test={test} 
-                    onStart={handleStartTest}
-                    isStarting={startingTest === test.id}
-                  />
-                ))
+                <div className="w-full overflow-x-auto">
+                  <Table className="min-w-full">
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead className="whitespace-nowrap">Test Name</TableHead>
+                        <TableHead className="whitespace-nowrap">Action</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {tests.map((test) => {
+                        const isAvailable = test.is_published && 
+                          (!test.start_time || new Date(test.start_time) <= new Date()) &&
+                          (!test.end_time || new Date(test.end_time) >= new Date());
+                        
+                        return (
+                          <TableRow key={test.id}>
+                            <TableCell className="max-w-0 w-full">
+                              <div className="truncate">
+                                <h3 className="font-medium truncate">{test.title}</h3>
+                              </div>
+                            </TableCell>
+                            <TableCell className="whitespace-nowrap">
+                              <Button 
+                                onClick={() => handleStartTest(test.id)}
+                                disabled={!isAvailable || startingTest === test.id}
+                                size="sm"
+                              >
+                                {startingTest === test.id ? (
+                                  <>
+                                    <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white mr-2"></div>
+                                    Starting...
+                                  </>
+                                ) : (
+                                  <>
+                                    Start Test
+                                    <ChevronRight className="ml-2 h-4 w-4" />
+                                  </>
+                                )}
+                              </Button>
+                            </TableCell>
+                          </TableRow>
+                        );
+                      })}
+                    </TableBody>
+                  </Table>
+                </div>
               )}
             </TabsContent>
 
@@ -379,88 +359,35 @@ function TestCard({
   onStart: (id: string) => void;
   isStarting: boolean;
 }) {
+  const [showTopics, setShowTopics] = useState(false);
   const isAvailable = test.is_published && 
     (!test.start_time || new Date(test.start_time) <= new Date()) &&
     (!test.end_time || new Date(test.end_time) >= new Date());
 
+  // Mock data for syllabus coverage - in real app this would come from API
+  const syllabusData = {
+    coverage: "Partial", // or "Full"
+    topics: [
+      "Quantitative Aptitude",
+      "Logical Reasoning", 
+      "English Language",
+      "General Awareness",
+      "Computer Knowledge"
+    ]
+  };
+
   return (
     <Card className="border rounded-md">
       <CardHeader>
-        <div className="flex items-start justify-between">
-          <div>
-            <CardTitle className="text-foreground">{test.title}</CardTitle>
-            <CardDescription className="text-muted-foreground mt-1">{test.description}</CardDescription>
-          </div>
-          {isAvailable ? (
-            <Badge className="bg-green-100 text-green-800" variant="secondary">Available</Badge>
-          ) : (
-            <Badge className="bg-gray-100 text-gray-800" variant="secondary">Not Available</Badge>
-          )}
+        <div>
+          <CardTitle className="text-foreground">{test.title}</CardTitle>
         </div>
       </CardHeader>
-      <CardContent>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-          <div>
-            <p className="text-sm text-muted-foreground mb-1">Duration</p>
-            <div className="flex items-center">
-              <Clock className="h-4 w-4 text-muted-foreground mr-2" />
-              <p className="font-medium text-foreground">{test.duration_minutes} min</p>
-            </div>
-          </div>
-          <div>
-            <p className="text-sm text-muted-foreground mb-1">Total Marks</p>
-            <div className="flex items-center">
-              <Trophy className="h-4 w-4 text-muted-foreground mr-2" />
-              <p className="font-medium text-foreground">{test.total_marks}</p>
-            </div>
-          </div>
-          <div>
-            <p className="text-sm text-muted-foreground mb-1">Questions</p>
-            <div className="flex items-center">
-              <FileText className="h-4 w-4 text-muted-foreground mr-2" />
-              <p className="font-medium text-foreground">{test.questions_count}</p>
-            </div>
-          </div>
-          <div>
-            <p className="text-sm text-muted-foreground mb-1">Pass %</p>
-            <div className="flex items-center">
-              <Target className="h-4 w-4 text-muted-foreground mr-2" />
-              <p className="font-medium text-foreground">{test.pass_percentage}%</p>
-            </div>
-          </div>
-        </div>
-        
-        <div className="flex flex-wrap gap-2">
-          {test.show_result_immediately && (
-            <Badge variant="outline" className="text-xs">
-              <CheckCircle2 className="mr-1 h-3 w-3" />
-              Instant Results
-            </Badge>
-          )}
-          {test.allow_review && (
-            <Badge variant="outline" className="text-xs">
-              <CheckCircle2 className="mr-1 h-3 w-3" />
-              Review Allowed
-            </Badge>
-          )}
-          {test.randomize_questions && (
-            <Badge variant="outline" className="text-xs">
-              <AlertCircle className="mr-1 h-3 w-3" />
-              Randomized
-            </Badge>
-          )}
-          {test.max_attempts && (
-            <Badge variant="outline" className="text-xs">
-              Max Attempts: {test.max_attempts}
-            </Badge>
-          )}
-        </div>
-      </CardContent>
       <CardFooter className="pt-4">
         <Button 
           onClick={() => onStart(test.id)}
           disabled={!isAvailable || isStarting}
-          className="w-full"
+          size="sm"
         >
           {isStarting ? (
             <>
