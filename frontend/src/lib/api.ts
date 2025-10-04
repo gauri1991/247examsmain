@@ -41,6 +41,20 @@ interface MobileLoginData {
   otp: string;
 }
 
+interface MobilePasswordRegistrationData {
+  phone: string;
+  otp: string;
+  password: string;
+  confirm_password: string;
+  first_name?: string;
+  last_name?: string;
+}
+
+interface MobilePasswordLoginData {
+  phone: string;
+  password: string;
+}
+
 interface ApiResponse<T = any> {
   user?: T;
   tokens?: {
@@ -129,11 +143,19 @@ class ApiService {
           }
 
           if (res.status === 422) {
+            console.error('422 Validation Error:', errorData);
             throw new ValidationError(
               errorData.message || 'Validation failed',
               errorData.errors || errorData.detail
             );
           }
+
+          console.error('API Error Response:', {
+            status: res.status,
+            errorData: errorData,
+            url: url,
+            method: config.method
+          });
 
           throw new ApiError(
             errorData.detail || errorData.message || `Request failed with status ${res.status}`,
@@ -295,11 +317,27 @@ class ApiService {
 
   // Mobile Authentication methods
   async mobileSendOTP(data: MobileSendOTPData): Promise<any> {
-    return this.makeRequest('/auth/mobile/send-otp/', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      skipAuth: true,
-    });
+    console.log('mobileSendOTP called with:', data);
+    console.log('API Base URL:', this.baseUrl);
+    try {
+      const result = await this.makeRequest('/auth/mobile/send-otp/', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        skipAuth: true,
+      });
+      console.log('mobileSendOTP success:', result);
+      return result;
+    } catch (error: any) {
+      console.error('mobileSendOTP error:', error);
+      console.error('Error details:', {
+        message: error?.message,
+        status: error?.status,
+        code: error?.code,
+        data: error?.data,
+        fullError: JSON.stringify(error)
+      });
+      throw error;
+    }
   }
 
   async mobileVerifyOTP(data: MobileVerifyOTPData): Promise<any> {
@@ -342,6 +380,110 @@ class ApiService {
     }
 
     return response;
+  }
+
+  async mobilePasswordRegister(data: MobilePasswordRegistrationData): Promise<ApiResponse> {
+    const response = await this.makeRequest<ApiResponse>('/auth/mobile/password/register/', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      skipAuth: true,
+    });
+
+    // Store tokens in localStorage
+    if (response.tokens) {
+      localStorage.setItem('access_token', response.tokens.access);
+      localStorage.setItem('refresh_token', response.tokens.refresh);
+      localStorage.setItem('user', JSON.stringify(response.user));
+    }
+
+    return response;
+  }
+
+  async mobilePasswordLogin(data: MobilePasswordLoginData): Promise<ApiResponse> {
+    const response = await this.makeRequest<ApiResponse>('/auth/mobile/password/login/', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      skipAuth: true,
+    });
+
+    // Store tokens in localStorage
+    if (response.tokens) {
+      localStorage.setItem('access_token', response.tokens.access);
+      localStorage.setItem('refresh_token', response.tokens.refresh);
+      localStorage.setItem('user', JSON.stringify(response.user));
+    }
+
+    return response;
+  }
+
+  // Test and Exam API methods
+  async getExams(params?: { category?: string; search?: string }): Promise<any> {
+    const searchParams = new URLSearchParams();
+    if (params?.category) searchParams.append('category', params.category);
+    if (params?.search) searchParams.append('search', params.search);
+    
+    const query = searchParams.toString() ? `?${searchParams.toString()}` : '';
+    return this.makeRequest(`/exams/exams/${query}`);
+  }
+
+  async getExam(examId: string): Promise<any> {
+    return this.makeRequest(`/exams/exams/${examId}/`);
+  }
+
+  async getExamTests(examId: string): Promise<any> {
+    return this.makeRequest(`/exams/exams/${examId}/tests/`);
+  }
+
+  async getTests(params?: { exam?: string; active_only?: boolean }): Promise<any> {
+    const searchParams = new URLSearchParams();
+    if (params?.exam) searchParams.append('exam', params.exam);
+    if (params?.active_only) searchParams.append('active_only', 'true');
+    
+    const query = searchParams.toString() ? `?${searchParams.toString()}` : '';
+    return this.makeRequest(`/exams/tests/${query}`);
+  }
+
+  async getTest(testId: string): Promise<any> {
+    return this.makeRequest(`/exams/tests/${testId}/`);
+  }
+
+  async startTestAttempt(testId: string): Promise<any> {
+    return this.makeRequest(`/exams/tests/${testId}/start_attempt/`, {
+      method: 'POST',
+    });
+  }
+
+  async getTestAttempts(): Promise<any> {
+    return this.makeRequest('/exams/test-attempts/');
+  }
+
+  async getTestAttempt(attemptId: string): Promise<any> {
+    return this.makeRequest(`/exams/test-attempts/${attemptId}/`);
+  }
+
+  async getTestAttemptQuestions(attemptId: string): Promise<any> {
+    return this.makeRequest(`/exams/test-attempts/${attemptId}/questions/`);
+  }
+
+  async getTestAttemptAnswers(attemptId: string): Promise<any> {
+    return this.makeRequest(`/exams/test-attempts/${attemptId}/answers/`);
+  }
+
+  async autoSaveTestAnswers(attemptId: string, answers: Record<string, any>): Promise<any> {
+    return this.makeRequest(`/exams/test-attempts/${attemptId}/auto_save/`, {
+      method: 'POST',
+      body: JSON.stringify({ answers }),
+    });
+  }
+
+  async submitTestAttempt(attemptId: string): Promise<any> {
+    return this.makeRequest(`/exams/test-attempts/${attemptId}/submit/`, {
+      method: 'POST',
+    });
+  }
+
+  async getTestAttemptResults(attemptId: string): Promise<any> {
+    return this.makeRequest(`/exams/test-attempts/${attemptId}/results/`);
   }
 
   // Upload file
@@ -410,6 +552,8 @@ export type {
   MobileVerifyOTPData,
   MobileRegistrationData,
   MobileLoginData,
+  MobilePasswordRegistrationData,
+  MobilePasswordLoginData,
   ApiResponse, 
   RequestOptions 
 };

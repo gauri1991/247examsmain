@@ -32,6 +32,11 @@ export function ResumableTestsSection({
     hasResumableSessions,
     getSessionsByStatus,
     getRecentSessions,
+    resumeTestAttempt,
+    pauseTestAttempt,
+    abandonTestAttempt,
+    formatTimeRemaining,
+    formatLastActivity,
     refresh
   } = useTestResumption({
     userId: user?.id,
@@ -157,6 +162,11 @@ export function ResumableTestsSection({
                 key={session.id}
                 session={session}
                 onSessionUpdate={refresh}
+                resumeTestAttempt={resumeTestAttempt}
+                pauseTestAttempt={pauseTestAttempt}
+                abandonTestAttempt={abandonTestAttempt}
+                formatTimeRemaining={formatTimeRemaining}
+                formatLastActivity={formatLastActivity}
               />
             ))}
           </div>
@@ -184,6 +194,11 @@ export function ResumableTestsSection({
             key={session.id}
             session={session}
             onSessionUpdate={refresh}
+            resumeTestAttempt={resumeTestAttempt}
+            pauseTestAttempt={pauseTestAttempt}
+            abandonTestAttempt={abandonTestAttempt}
+            formatTimeRemaining={formatTimeRemaining}
+            formatLastActivity={formatLastActivity}
           />
         ))}
       </div>
@@ -239,6 +254,11 @@ export function ResumableTestsSection({
                   key={session.id}
                   session={session}
                   onSessionUpdate={refresh}
+                  resumeTestAttempt={resumeTestAttempt}
+                  pauseTestAttempt={pauseTestAttempt}
+                  abandonTestAttempt={abandonTestAttempt}
+                  formatTimeRemaining={formatTimeRemaining}
+                  formatLastActivity={formatLastActivity}
                 />
               ))}
             </div>
@@ -252,6 +272,11 @@ export function ResumableTestsSection({
                     key={session.id}
                     session={session}
                     onSessionUpdate={refresh}
+                    resumeTestAttempt={resumeTestAttempt}
+                    pauseTestAttempt={pauseTestAttempt}
+                    abandonTestAttempt={abandonTestAttempt}
+                    formatTimeRemaining={formatTimeRemaining}
+                    formatLastActivity={formatLastActivity}
                   />
                 ))
               ) : (
@@ -271,6 +296,11 @@ export function ResumableTestsSection({
                     key={session.id}
                     session={session}
                     onSessionUpdate={refresh}
+                    resumeTestAttempt={resumeTestAttempt}
+                    pauseTestAttempt={pauseTestAttempt}
+                    abandonTestAttempt={abandonTestAttempt}
+                    formatTimeRemaining={formatTimeRemaining}
+                    formatLastActivity={formatLastActivity}
                   />
                 ))
               ) : (
@@ -290,6 +320,11 @@ export function ResumableTestsSection({
                     key={session.id}
                     session={session}
                     onSessionUpdate={refresh}
+                    resumeTestAttempt={resumeTestAttempt}
+                    pauseTestAttempt={pauseTestAttempt}
+                    abandonTestAttempt={abandonTestAttempt}
+                    formatTimeRemaining={formatTimeRemaining}
+                    formatLastActivity={formatLastActivity}
                   />
                 ))
               ) : (

@@ -21,7 +21,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
-import { useTestResumption } from '@/hooks/useTestResumption';
 import { toast } from 'sonner';
 
 interface TestAttemptSession {
@@ -44,17 +43,61 @@ interface TestAttemptSession {
 interface ResumeTestCardProps {
   session: TestAttemptSession;
   onSessionUpdate?: () => void;
+  resumeTestAttempt?: (attemptId: string) => Promise<string>;
+  pauseTestAttempt?: (attemptId: string) => Promise<boolean>;
+  abandonTestAttempt?: (attemptId: string) => Promise<boolean>;
+  formatTimeRemaining?: (seconds: number) => string;
+  formatLastActivity?: (timestamp: string) => string;
 }
 
-export function ResumeTestCard({ session, onSessionUpdate }: ResumeTestCardProps) {
+export function ResumeTestCard({ 
+  session, 
+  onSessionUpdate,
+  resumeTestAttempt: resumeTestAttemptProp,
+  pauseTestAttempt: pauseTestAttemptProp,
+  abandonTestAttempt: abandonTestAttemptProp,
+  formatTimeRemaining: formatTimeRemainingProp,
+  formatLastActivity: formatLastActivityProp
+}: ResumeTestCardProps) {
   const router = useRouter();
-  const { 
-    resumeTestAttempt, 
-    pauseTestAttempt, 
-    abandonTestAttempt,
-    formatTimeRemaining,
-    formatLastActivity
-  } = useTestResumption();
+  
+  // Default formatting functions if not provided
+  const formatTimeRemaining = formatTimeRemainingProp || ((seconds: number) => {
+    if (seconds <= 0) return '00:00:00';
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  });
+  
+  const formatLastActivity = formatLastActivityProp || ((timestamp: string) => {
+    const now = new Date();
+    const lastActivity = new Date(timestamp);
+    const diffMs = now.getTime() - lastActivity.getTime();
+    const diffMinutes = Math.floor(diffMs / (1000 * 60));
+    const diffHours = Math.floor(diffMinutes / 60);
+    const diffDays = Math.floor(diffHours / 24);
+
+    if (diffMinutes < 1) return 'Just now';
+    if (diffMinutes < 60) return `${diffMinutes} minute${diffMinutes > 1 ? 's' : ''} ago`;
+    if (diffHours < 24) return `${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
+    return `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
+  });
+  
+  const resumeTestAttempt = resumeTestAttemptProp || (async (attemptId: string) => {
+    // Default implementation - just navigate to a generic test page
+    return `/tests/${session.testId}/attempt/${attemptId}`;
+  });
+  
+  const pauseTestAttempt = pauseTestAttemptProp || (async (attemptId: string) => {
+    // Default implementation - just return true
+    return true;
+  });
+  
+  const abandonTestAttempt = abandonTestAttemptProp || (async (attemptId: string) => {
+    // Default implementation - just return true
+    return true;
+  });
   
   const [isResuming, setIsResuming] = useState(false);
   const [isPausing, setIsPausing] = useState(false);

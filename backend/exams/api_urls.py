@@ -9,7 +9,7 @@ from .api_views import (
 router = DefaultRouter()
 router.register(r'exams', ExamViewSet, basename='exam')
 router.register(r'tests', TestViewSet, basename='test')
-router.register(r'attempts', TestAttemptViewSet, basename='testattempt')
+router.register(r'test-attempts', TestAttemptViewSet, basename='testattempt')
 router.register(r'organizations', OrganizationViewSet, basename='organization')
 router.register(r'syllabus', SyllabusViewSet, basename='syllabus')
 

@@ -10,12 +10,14 @@ from .models import (
 
 class ExamSerializer(serializers.ModelSerializer):
     created_by_name = serializers.CharField(source='created_by.get_full_name', read_only=True)
-    tests_count = serializers.IntegerField(source='tests.count', read_only=True)
+    tests_count = serializers.IntegerField(read_only=True)  # This will be annotated in the viewset
+    organization_id = serializers.CharField(source='organization.id', read_only=True)
     
     class Meta:
         model = Exam
-        fields = ('id', 'name', 'description', 'category', 'is_active', 
-                 'created_by', 'created_by_name', 'tests_count', 'created_at', 'updated_at')
+        fields = ('id', 'name', 'description', 'category', 'exam_type', 'difficulty_level',
+                 'organization_id', 'is_active', 'created_by', 'created_by_name', 
+                 'tests_count', 'created_at', 'updated_at')
         read_only_fields = ('id', 'created_by', 'created_at', 'updated_at')
 
 

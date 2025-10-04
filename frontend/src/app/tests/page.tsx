@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { DashboardHeader } from '@/components/dashboard/dashboard-header';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 import {
   Table,
   TableBody,
@@ -14,49 +13,34 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Clock, Trophy, FileText, Eye, Calendar, CheckCircle2, XCircle, AlertTriangle, RotateCcw } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Search, Clock, FileText, Target } from 'lucide-react';
 import { apiRequest } from '@/lib/api';
 import { toast } from 'sonner';
 import { useAuth } from '@/contexts/auth-context';
+import { showErrorToast } from '@/lib/error-handler';
+import { TableLoading, EmptyState } from '@/components/ui/loading-states';
 
 interface TestAttempt {
   id: string;
   test_name: string;
   exam_name: string;
-  score: number;
-  total_marks: number;
-  percentage: number;
-  status: 'completed' | 'in_progress' | 'abandoned';
+  score: number | string;
+  total_marks: number | string;
+  percentage: number | string | null;
+  status: string;
   started_at: string;
   completed_at: string | null;
-  duration_minutes: number;
-  questions_count: number;
-  correct_answers: number;
-  wrong_answers: number;
-  unanswered: number;
+  duration_minutes: number | string;
+  questions_count: number | string;
+  correct_answers: number | string;
 }
 
-const statusColors = {
-  completed: 'bg-green-100 text-green-800',
-  in_progress: 'bg-blue-100 text-blue-800',
-  abandoned: 'bg-red-100 text-red-800'
-};
-
-const statusIcons = {
-  completed: CheckCircle2,
-  in_progress: Clock,
-  abandoned: XCircle
-};
-
 export default function TestsPage() {
-  const [testAttempts, setTestAttempts] = useState<TestAttempt[]>([]);
+  const [attempts, setAttempts] = useState<TestAttempt[]>([]);
+  const [filteredAttempts, setFilteredAttempts] = useState<TestAttempt[]>([]);
   const [loading, setLoading] = useState(true);
-  const [stats, setStats] = useState({
-    total_attempts: 0,
-    completed: 0,
-    average_score: 0,
-    best_score: 0
-  });
+  const [searchTerm, setSearchTerm] = useState('');
   const router = useRouter();
   const { isAuthenticated } = useAuth();
 
@@ -66,163 +50,66 @@ export default function TestsPage() {
       return;
     }
     
-    fetchTestAttempts();
+    fetchAttempts();
   }, [isAuthenticated]);
 
-  const fetchTestAttempts = async () => {
+  const fetchAttempts = async () => {
     try {
-      // For now, use mock data to demonstrate restart functionality
-      // In production, this would be: const response = await apiRequest('/exams/attempts/');
-      const mockAttempts: TestAttempt[] = [
-        {
-          id: '1',
-          test_name: 'UPSC Prelims Mock Test 1',
-          exam_name: 'UPSC Civil Services',
-          score: 85,
-          total_marks: 100,
-          percentage: 85,
-          status: 'completed',
-          started_at: '2025-09-26T10:00:00Z',
-          completed_at: '2025-09-26T11:30:00Z',
-          duration_minutes: 90,
-          questions_count: 100,
-          correct_answers: 85,
-          wrong_answers: 10,
-          unanswered: 5
-        },
-        {
-          id: '2',
-          test_name: 'General Studies Paper 2',
-          exam_name: 'UPSC Civil Services',
-          score: 0,
-          total_marks: 100,
-          percentage: 0,
-          status: 'in_progress',
-          started_at: '2025-09-27T09:00:00Z',
-          completed_at: null,
-          duration_minutes: 45,
-          questions_count: 100,
-          correct_answers: 0,
-          wrong_answers: 0,
-          unanswered: 0
-        },
-        {
-          id: '3',
-          test_name: 'SSC CGL Tier 1 Mock',
-          exam_name: 'SSC CGL',
-          score: 90,
-          total_marks: 100,
-          percentage: 90,
-          status: 'completed',
-          started_at: '2025-09-24T09:00:00Z',
-          completed_at: '2025-09-24T10:00:00Z',
-          duration_minutes: 60,
-          questions_count: 100,
-          correct_answers: 90,
-          wrong_answers: 8,
-          unanswered: 2
-        },
-        {
-          id: '4',
-          test_name: 'Banking Awareness Test',
-          exam_name: 'IBPS PO',
-          score: 0,
-          total_marks: 100,
-          percentage: 0,
-          status: 'in_progress',
-          started_at: '2025-09-25T14:30:00Z',
-          completed_at: null,
-          duration_minutes: 30,
-          questions_count: 50,
-          correct_answers: 0,
-          wrong_answers: 0,
-          unanswered: 0
-        },
-        {
-          id: '5',
-          test_name: 'Railway RRB Practice Test',
-          exam_name: 'Railway RRB',
-          score: 0,
-          total_marks: 80,
-          percentage: 0,
-          status: 'abandoned',
-          started_at: '2025-09-23T16:00:00Z',
-          completed_at: null,
-          duration_minutes: 15,
-          questions_count: 80,
-          correct_answers: 0,
-          wrong_answers: 0,
-          unanswered: 0
-        }
-      ];
-
-      setTestAttempts(mockAttempts);
-      
-      // Calculate stats
-      const completed = mockAttempts.filter((attempt: TestAttempt) => attempt.status === 'completed');
-      const averageScore = completed.length > 0 
-        ? completed.reduce((acc: number, attempt: TestAttempt) => acc + attempt.percentage, 0) / completed.length
-        : 0;
-      const bestScore = completed.length > 0
-        ? Math.max(...completed.map((attempt: TestAttempt) => attempt.percentage))
-        : 0;
-
-      setStats({
-        total_attempts: mockAttempts.length,
-        completed: completed.length,
-        average_score: Math.round(averageScore),
-        best_score: Math.round(bestScore)
-      });
+      console.log('Fetching test attempts...');
+      const response = await apiRequest('/exams/test-attempts/', { retries: 2 });
+      console.log('Test attempts response:', response);
+      setAttempts(response.results || []);
     } catch (error) {
       console.error('Failed to fetch test attempts:', error);
-      toast.error('Failed to load test attempts');
+      showErrorToast(error);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleViewResults = (attemptId: string) => {
-    // Navigate to the dashboard results page with the test ID as a query parameter
-    router.push(`/dashboard/results?highlight=${attemptId}`);
-  };
+  // Search filtering logic
+  useEffect(() => {
+    let result = [...attempts];
 
-  const handleRestartTest = async (attempt: TestAttempt) => {
-    try {
-      // For now, simulate creating a new attempt for the same test
-      // In production, this would make an API call to restart or create a new attempt
-      
-      // Generate a mock new attempt ID
-      const newAttemptId = `new-${Date.now()}`;
-      
-      toast.success(`Restarting ${attempt.test_name}...`);
-      
-      // Simulate navigation to the test attempt page
-      // For now, we'll redirect to a mock test attempt
-      router.push(`/tests/f0e412c9-7fd0-492c-aa18-e9935f53a209/attempt/${newAttemptId}`);
-      
-      // In production, this would be:
-      // const response = await apiRequest(`/exams/tests/${actualTestId}/start_attempt/`, {
-      //   method: 'POST'
-      // });
-      // if (response.id) {
-      //   toast.success('Test restarted successfully!');
-      //   router.push(`/tests/${actualTestId}/attempt/${response.id}`);
-      // }
-      
-    } catch (error: any) {
-      console.error('Failed to restart test:', error);
-      toast.error(error.message || 'Failed to restart test');
+    if (searchTerm.trim()) {
+      const searchLower = searchTerm.toLowerCase();
+      result = result.filter(attempt =>
+        attempt.test_name.toLowerCase().includes(searchLower) ||
+        attempt.exam_name.toLowerCase().includes(searchLower)
+      );
+    }
+
+    setFilteredAttempts(result);
+  }, [attempts, searchTerm]);
+
+  const getStatusBadge = (status: string) => {
+    switch (status) {
+      case 'completed':
+        return <Badge variant="default" className="bg-green-100 text-green-800">Completed</Badge>;
+      case 'in_progress':
+        return <Badge variant="secondary" className="bg-blue-100 text-blue-800">In Progress</Badge>;
+      case 'submitted':
+        return <Badge variant="outline" className="bg-gray-100 text-gray-800">Submitted</Badge>;
+      default:
+        return <Badge variant="outline">{status}</Badge>;
     }
   };
 
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
+  const getPerformanceBadge = (percentage: number | string | null) => {
+    const numPercentage = Number(percentage || 0);
+    if (numPercentage >= 80) {
+      return <Badge variant="default" className="bg-green-100 text-green-800">Excellent</Badge>;
+    } else if (numPercentage >= 60) {
+      return <Badge variant="secondary" className="bg-blue-100 text-blue-800">Good</Badge>;
+    } else if (numPercentage >= 40) {
+      return <Badge variant="outline" className="bg-yellow-100 text-yellow-800">Average</Badge>;
+    } else {
+      return <Badge variant="destructive" className="bg-red-100 text-red-800">Needs Improvement</Badge>;
+    }
+  };
+
+  const formatDateTime = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString() + ' ' + new Date(dateString).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
   const formatDuration = (minutes: number) => {
@@ -235,188 +122,108 @@ export default function TestsPage() {
   };
 
   if (!isAuthenticated) {
-    return null;
+    return null; // Will redirect in useEffect
   }
 
   if (loading) {
     return (
-      <>
-        <DashboardHeader title="My Tests" />
-        <div className="flex-1 overflow-auto px-6 py-8">
-          <div className="flex items-center justify-center min-h-96">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-          </div>
+      <div className="min-h-screen bg-background">
+        <DashboardHeader />
+        <div className="container mx-auto px-4 py-6">
+          <TableLoading rows={8} columns={6} />
         </div>
-      </>
+      </div>
     );
   }
 
   return (
-    <>
-      <DashboardHeader title="My Tests" />
-      
-      <div className="flex-1 overflow-auto px-6 py-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2 text-foreground">My Test Attempts</h1>
-          <p className="text-muted-foreground">Track your progress and view detailed results</p>
+    <div className="min-h-screen bg-background">
+      <DashboardHeader />
+      <div className="container mx-auto px-4 py-6">
+        <div className="mb-6">
+          <h1 className="text-2xl font-bold mb-4">My Test Attempts</h1>
+          
+          {/* Search */}
+          <div className="relative max-w-md">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+            <Input
+              type="text"
+              placeholder="Search tests..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-10"
+            />
+          </div>
         </div>
 
-        {/* Stats Cards */}
-        <div className="grid md:grid-cols-4 gap-6 mb-8">
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Total Attempts</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center">
-                <FileText className="h-5 w-5 text-primary mr-3" />
-                <div className="text-2xl font-bold text-foreground">{stats.total_attempts}</div>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Completed</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center">
-                <CheckCircle2 className="h-5 w-5 text-green-600 mr-3" />
-                <div className="text-2xl font-bold text-foreground">{stats.completed}</div>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Average Score</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center">
-                <Trophy className="h-5 w-5 text-blue-600 mr-3" />
-                <div className="text-2xl font-bold text-foreground">{stats.average_score}%</div>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Best Score</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center">
-                <Trophy className="h-5 w-5 text-yellow-600 mr-3" />
-                <div className="text-2xl font-bold text-foreground">{stats.best_score}%</div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Test Attempts Table */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Test History</CardTitle>
-            <CardDescription>Your complete test attempt history</CardDescription>
-          </CardHeader>
-          <CardContent>
-            {testAttempts.length === 0 ? (
-              <div className="text-center py-12">
-                <FileText className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
-                <h3 className="text-lg font-medium mb-2 text-foreground">No test attempts yet</h3>
-                <p className="text-muted-foreground mb-4">Start taking tests to see your progress here</p>
+        {/* Tests Table */}
+        {filteredAttempts.length > 0 ? (
+          <div className="w-full overflow-x-auto">
+            <Table className="min-w-full">
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="whitespace-nowrap">Test Details</TableHead>
+                  <TableHead className="text-center whitespace-nowrap">Score</TableHead>
+                  <TableHead className="text-center whitespace-nowrap">Performance</TableHead>
+                  <TableHead className="text-center whitespace-nowrap">Duration</TableHead>
+                  <TableHead className="text-center whitespace-nowrap">Status</TableHead>
+                  <TableHead className="whitespace-nowrap">Date</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {filteredAttempts.map((attempt) => (
+                  <TableRow key={attempt.id}>
+                    <TableCell className="max-w-0 w-full">
+                      <div className="truncate">
+                        <h3 className="font-medium truncate">{attempt.test_name}</h3>
+                        <p className="text-sm text-muted-foreground truncate">{attempt.exam_name}</p>
+                      </div>
+                    </TableCell>
+                    <TableCell className="text-center whitespace-nowrap">
+                      <div className="font-medium">{Number(attempt.score || 0)}/{Number(attempt.total_marks || 0)}</div>
+                      <div className="text-sm text-muted-foreground">{Number(attempt.percentage || 0).toFixed(1)}%</div>
+                    </TableCell>
+                    <TableCell className="text-center whitespace-nowrap">
+                      {getPerformanceBadge(attempt.percentage)}
+                    </TableCell>
+                    <TableCell className="text-center whitespace-nowrap">
+                      <div className="flex items-center justify-center gap-1">
+                        <Clock className="h-3 w-3" />
+                        {formatDuration(Number(attempt.duration_minutes || 0))}
+                      </div>
+                    </TableCell>
+                    <TableCell className="text-center whitespace-nowrap">
+                      {getStatusBadge(attempt.status)}
+                    </TableCell>
+                    <TableCell className="whitespace-nowrap text-sm">
+                      {formatDateTime(attempt.started_at)}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+        ) : (
+          <div className="text-center py-8">
+            <FileText className="mx-auto h-12 w-12 text-muted-foreground" />
+            <h3 className="mt-2 text-sm font-medium text-muted-foreground">No test attempts found</h3>
+            <p className="mt-1 text-sm text-muted-foreground">
+              {searchTerm.trim() 
+                ? "No test attempts match your search criteria."
+                : "You haven't taken any tests yet."
+              }
+            </p>
+            {!searchTerm.trim() && (
+              <div className="mt-4">
                 <Button onClick={() => router.push('/exams')}>
+                  <Target className="mr-2 h-4 w-4" />
                   Browse Exams
                 </Button>
               </div>
-            ) : (
-              <div className="border rounded-md overflow-x-auto">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Test & Exam</TableHead>
-                      <TableHead>Status</TableHead>
-                      <TableHead>Score</TableHead>
-                      <TableHead>Duration</TableHead>
-                      <TableHead>Started</TableHead>
-                      <TableHead>Action</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {testAttempts.map((attempt) => {
-                      const StatusIcon = statusIcons[attempt.status];
-                      
-                      return (
-                        <TableRow key={attempt.id}>
-                          <TableCell>
-                            <div>
-                              <div className="font-medium text-foreground">{attempt.test_name}</div>
-                              <div className="text-sm text-muted-foreground">{attempt.exam_name}</div>
-                            </div>
-                          </TableCell>
-                          <TableCell>
-                            <Badge className={statusColors[attempt.status]} variant="secondary">
-                              <StatusIcon className="mr-1 h-3 w-3" />
-                              {attempt.status.replace('_', ' ')}
-                            </Badge>
-                          </TableCell>
-                          <TableCell>
-                            {attempt.status === 'completed' ? (
-                              <div>
-                                <div className="font-medium text-foreground">{attempt.percentage}%</div>
-                                <div className="text-sm text-muted-foreground">
-                                  {attempt.score}/{attempt.total_marks}
-                                </div>
-                              </div>
-                            ) : (
-                              <span className="text-muted-foreground">-</span>
-                            )}
-                          </TableCell>
-                          <TableCell>
-                            <div className="flex items-center">
-                              <Clock className="h-4 w-4 text-muted-foreground mr-2" />
-                              {formatDuration(attempt.duration_minutes)}
-                            </div>
-                          </TableCell>
-                          <TableCell>
-                            <div className="flex items-center">
-                              <Calendar className="h-4 w-4 text-muted-foreground mr-2" />
-                              {formatDate(attempt.started_at)}
-                            </div>
-                          </TableCell>
-                          <TableCell>
-                            {attempt.status === 'completed' ? (
-                              <Button 
-                                onClick={() => handleViewResults(attempt.id)}
-                                variant="outline"
-                                size="sm"
-                              >
-                                <Eye className="mr-2 h-4 w-4" />
-                                View Results
-                              </Button>
-                            ) : attempt.status === 'in_progress' ? (
-                              <Button 
-                                onClick={() => handleRestartTest(attempt)}
-                                variant="outline"
-                                size="sm"
-                                className="text-blue-600 hover:text-blue-700"
-                              >
-                                <RotateCcw className="mr-2 h-4 w-4" />
-                                Restart
-                              </Button>
-                            ) : (
-                              <span className="text-muted-foreground text-sm">No action available</span>
-                            )}
-                          </TableCell>
-                        </TableRow>
-                      );
-                    })}
-                  </TableBody>
-                </Table>
-              </div>
             )}
-          </CardContent>
-        </Card>
+          </div>
+        )}
       </div>
-    </>
+    </div>
   );
 }
