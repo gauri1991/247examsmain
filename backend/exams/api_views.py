@@ -35,7 +35,7 @@ class ExamViewSet(viewsets.ReadOnlyModelViewSet):
     
     def get_queryset(self):
         # For admin users accessing requirements or specific actions, include inactive exams
-        if (self.request.user.is_staff or self.request.user.is_superuser) and self.action in ['requirements', 'retrieve']:
+        if (self.request.user.is_staff or self.request.user.is_superuser) and self.action in ['requirements', 'retrieve', 'update_status']:
             queryset = Exam.objects.annotate(
                 tests_count=Count('tests')
             ).select_related('created_by', 'organization')
@@ -138,7 +138,7 @@ class TestViewSet(viewsets.ReadOnlyModelViewSet):
     
     def get_queryset(self):
         # For admin users accessing requirements or specific actions, include unpublished tests
-        if (self.request.user.is_staff or self.request.user.is_superuser) and self.action in ['requirements', 'retrieve']:
+        if (self.request.user.is_staff or self.request.user.is_superuser) and self.action in ['requirements', 'retrieve', 'update_status']:
             queryset = Test.objects.select_related(
                 'exam', 'created_by'
             ).prefetch_related('sections').annotate(
