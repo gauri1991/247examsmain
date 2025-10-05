@@ -126,7 +126,7 @@ class TestViewSet(viewsets.ReadOnlyModelViewSet):
     ViewSet for listing and retrieving tests.
     Students can view test details before purchasing.
     """
-    queryset = Test.objects.filter(is_published=True).select_related(
+    queryset = Test.objects.filter(status='active').select_related(
         'exam', 'created_by'
     ).prefetch_related('sections').annotate(
         questions_count=Count('test_questions'),
@@ -137,8 +137,8 @@ class TestViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     
     def get_queryset(self):
-        # For admin users accessing requirements or specific actions, include unpublished tests
-        if (self.request.user.is_staff or self.request.user.is_superuser) and self.action in ['requirements', 'retrieve', 'update_status']:
+        # For admin users accessing requirements or specific actions, include all tests regardless of status
+        if (self.request.user.is_staff or self.request.user.is_superuser) and self.action in ['requirements', 'retrieve', 'update_status', 'start_attempt']:
             queryset = Test.objects.select_related(
                 'exam', 'created_by'
             ).prefetch_related('sections').annotate(
