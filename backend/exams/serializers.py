@@ -39,7 +39,7 @@ class TestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Test
         fields = ('id', 'exam', 'exam_name', 'title', 'description', 'duration_minutes',
-                 'total_marks', 'pass_percentage', 'is_published', 'randomize_questions',
+                 'total_marks', 'pass_percentage', 'status', 'is_published', 'randomize_questions',
                  'show_result_immediately', 'allow_review', 'max_attempts',
                  'start_time', 'end_time', 'created_by', 'created_by_name',
                  'sections', 'questions_count', 'attempts_count', 'created_at', 'updated_at')

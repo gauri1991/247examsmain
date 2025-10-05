@@ -41,6 +41,7 @@ interface Test {
   duration_minutes: number;
   total_marks: number;
   pass_percentage: number;
+  status: string;
   is_published: boolean;
   randomize_questions: boolean;
   show_result_immediately: boolean;
@@ -254,7 +255,7 @@ export default function ExamDetailPage() {
                     </TableHeader>
                     <TableBody>
                       {tests.map((test) => {
-                        const isAvailable = test.is_published && 
+                        const isAvailable = test.status === 'active' && 
                           (!test.start_time || new Date(test.start_time) <= new Date()) &&
                           (!test.end_time || new Date(test.end_time) >= new Date());
                         
@@ -360,7 +361,7 @@ function TestCard({
   isStarting: boolean;
 }) {
   const [showTopics, setShowTopics] = useState(false);
-  const isAvailable = test.is_published && 
+  const isAvailable = test.status === 'active' && 
     (!test.start_time || new Date(test.start_time) <= new Date()) &&
     (!test.end_time || new Date(test.end_time) >= new Date());
 
