@@ -85,18 +85,18 @@ export default function ContentManagementSection() {
         body: JSON.stringify({ status: newStatus })
       })
       
-      if (response.success) {
-        // Update local state
+      if (response.message && response.status) {
+        // Update local state with the actual status from response
         setContentData(prev => {
           if (!prev) return prev
           const updatedData = { ...prev }
           if (type === 'exam') {
             updatedData.exams = updatedData.exams.map(exam => 
-              exam.id === item.id ? { ...exam, status: newStatus } : exam
+              exam.id === item.id ? { ...exam, status: response.status } : exam
             )
           } else {
             updatedData.tests = updatedData.tests.map(test => 
-              test.id === item.id ? { ...test, status: newStatus } : test
+              test.id === item.id ? { ...test, status: response.status } : test
             )
           }
           return updatedData
@@ -111,7 +111,7 @@ export default function ContentManagementSection() {
         
         toast.success(`${type === 'exam' ? 'Exam' : 'Test'} ${newStatus === 'active' ? 'activated' : 'deactivated'} successfully`)
       } else {
-        throw new Error(response.message || 'Failed to update status')
+        throw new Error('Failed to update status: Invalid response format')
       }
     } catch (error: any) {
       toast.error(`Failed to update status: ${error.message}`)
