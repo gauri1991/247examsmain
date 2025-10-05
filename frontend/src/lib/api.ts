@@ -542,21 +542,21 @@ class ApiService {
 
   // Content update methods
   async updateQuestionBank(bankId: string, data: any): Promise<ApiResponse> {
-    return this.makeRequest(`/api/v1/questions/admin/update-question-bank/${bankId}/`, {
+    return this.makeRequest(`/questions/admin/update-question-bank/${bankId}/`, {
       method: 'PUT',
       body: JSON.stringify(data),
     });
   }
 
   async updateExam(examId: number, data: any): Promise<ApiResponse> {
-    return this.makeRequest(`/api/v1/questions/admin/update-exam/${examId}/`, {
+    return this.makeRequest(`/questions/admin/update-exam/${examId}/`, {
       method: 'PUT',
       body: JSON.stringify(data),
     });
   }
 
   async updateTest(testId: number, data: any): Promise<ApiResponse> {
-    return this.makeRequest(`/api/v1/questions/admin/update-test/${testId}/`, {
+    return this.makeRequest(`/questions/admin/update-test/${testId}/`, {
       method: 'PUT',
       body: JSON.stringify(data),
     });
@@ -564,25 +564,25 @@ class ApiService {
 
   // Content deletion methods
   async deleteQuestionBank(bankId: string): Promise<ApiResponse> {
-    return this.makeRequest(`/api/v1/questions/admin/delete-question-bank/${bankId}/`, {
+    return this.makeRequest(`/questions/admin/delete-question-bank/${bankId}/`, {
       method: 'DELETE',
     });
   }
 
   async deleteExam(examId: number): Promise<ApiResponse> {
-    return this.makeRequest(`/api/v1/questions/admin/delete-exam/${examId}/`, {
+    return this.makeRequest(`/questions/admin/delete-exam/${examId}/`, {
       method: 'DELETE',
     });
   }
 
   async deleteTest(testId: number): Promise<ApiResponse> {
-    return this.makeRequest(`/api/v1/questions/admin/delete-test/${testId}/`, {
+    return this.makeRequest(`/questions/admin/delete-test/${testId}/`, {
       method: 'DELETE',
     });
   }
 
   async deleteContent(uploadId: string): Promise<ApiResponse> {
-    return this.makeRequest(`/api/v1/questions/admin/content-delete/${uploadId}/`, {
+    return this.makeRequest(`/questions/admin/content-delete/${uploadId}/`, {
       method: 'DELETE',
     });
   }

@@ -9,7 +9,8 @@ import {
   EyeIcon,
   PencilIcon,
   TrashIcon,
-  CloudArrowUpIcon
+  CloudArrowUpIcon,
+  ArrowPathIcon
 } from '@heroicons/react/24/outline'
 import { apiService } from '@/lib/api'
 import ViewContentModal from './ViewContentModal'
@@ -27,6 +28,20 @@ interface ContentData {
     totalTests: number
     totalQuestions: number
   }
+}
+
+interface RequirementsData {
+  is_ready: boolean
+  total_questions: number
+  missing_questions: number
+  ready_tests: number
+  total_tests: number
+  question_banks: Array<{
+    bank_name: string
+    requested: number
+    available: number
+    missing: number
+  }>
 }
 
 interface UploadItem {
@@ -55,7 +70,196 @@ export default function ContentManagementSection() {
   const [editModal, setEditModal] = useState<{ isOpen: boolean; content: any; contentType: 'question_bank' | 'exam' | 'test' | 'upload' | null }>({ isOpen: false, content: null, contentType: null })
   const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set())
   const [bulkActionMode, setBulkActionMode] = useState(false)
+  const [requirementsCache, setRequirementsCache] = useState<Map<string, RequirementsData>>(new Map())
+  const [loadingRequirements, setLoadingRequirements] = useState<Set<string>>(new Set())
+  // Removed deletedItems state since we're eliminating auto-deletion logic
   const { ConfirmationDialog, confirm } = useConfirmation()
+
+  // Handle status change (activation/deactivation)
+  const handleStatusChange = async (item: any, newStatus: string, type: 'exam' | 'test') => {
+    try {
+      const endpoint = type === 'exam' ? `/exams/exams/${item.id}/update_status/` : `/exams/tests/${item.id}/update_status/`
+      const response = await apiService.request(endpoint, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: newStatus })
+      })
+      
+      if (response.success) {
+        // Update local state
+        setContentData(prev => {
+          if (!prev) return prev
+          const updatedData = { ...prev }
+          if (type === 'exam') {
+            updatedData.exams = updatedData.exams.map(exam => 
+              exam.id === item.id ? { ...exam, status: newStatus } : exam
+            )
+          } else {
+            updatedData.tests = updatedData.tests.map(test => 
+              test.id === item.id ? { ...test, status: newStatus } : test
+            )
+          }
+          return updatedData
+        })
+        
+        // Clear requirements cache for this item
+        setRequirementsCache(prev => {
+          const newCache = new Map(prev)
+          newCache.delete(item.id)
+          return newCache
+        })
+        
+        toast.success(`${type === 'exam' ? 'Exam' : 'Test'} ${newStatus === 'active' ? 'activated' : 'deactivated'} successfully`)
+      } else {
+        throw new Error(response.message || 'Failed to update status')
+      }
+    } catch (error: any) {
+      toast.error(`Failed to update status: ${error.message}`)
+    }
+  }
+
+  // Requirements Display Component
+  const RequirementsDisplay = ({ item, type }: { item: any; type: 'exam' | 'test' }) => {
+    const [requirements, setRequirements] = useState<RequirementsData | null>(null)
+    const [showDetails, setShowDetails] = useState(false)
+    const isLoading = loadingRequirements.has(item.id)
+    
+    const statusBadge = getStatusBadge(item.status || 'draft')
+
+    const loadRequirements = async () => {
+      const req = await fetchRequirements(item.id, type)
+      setRequirements(req)
+    }
+
+    // Removed auto-loading useEffect to prevent infinite loops
+    // Users can click on status badges to manually load requirements
+
+    return (
+      <div className="space-y-2">
+        <div className="flex items-center space-x-2">
+          <span 
+            className={`px-2 py-1 text-xs rounded-full cursor-pointer ${statusBadge.className}`}
+            title={statusBadge.description}
+            onClick={() => {
+              if (!requirements && !isLoading) {
+                loadRequirements()
+              }
+              setShowDetails(!showDetails)
+            }}
+          >
+            {statusBadge.text}
+          </span>
+          {isLoading && (
+            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
+          )}
+        </div>
+        
+        {showDetails && requirements && !requirements.is_ready && (
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 text-sm">
+            <div className="font-medium text-yellow-800 mb-2">⚠️ Requirements Not Met</div>
+            <div className="space-y-1 text-yellow-700">
+              <div>Missing {requirements.missing_questions} questions</div>
+              {type === 'exam' && (
+                <div>Ready tests: {requirements.ready_tests}/{requirements.total_tests}</div>
+              )}
+              {requirements.question_banks.filter(bank => bank.missing > 0).length > 0 && (
+                <div className="mt-2">
+                  <div className="font-medium">Question Banks:</div>
+                  {requirements.question_banks.filter(bank => bank.missing > 0).map((bank, idx) => (
+                    <div key={idx} className="ml-2">
+                      • {bank.bank_name}: needs {bank.missing} more ({bank.available}/{bank.requested})
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+        
+        {showDetails && requirements && requirements.is_ready && (
+          <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-sm">
+            <div className="font-medium text-green-800">✅ All Requirements Met</div>
+            <div className="text-green-700">
+              Total questions: {requirements.total_questions}
+              {type === 'exam' && ` • Ready tests: ${requirements.ready_tests}/${requirements.total_tests}`}
+            </div>
+          </div>
+        )}
+
+        {/* Activation Controls */}
+        <div className="flex items-center space-x-2 mt-2">
+          {item.status === 'ready' && (
+            <button
+              onClick={async () => {
+                const confirmed = await confirm({
+                  title: `Activate ${type === 'exam' ? 'Exam' : 'Test'}`,
+                  message: `Are you sure you want to activate "${item.name}"? It will be available to students.`,
+                  confirmText: 'Activate',
+                  cancelText: 'Cancel'
+                })
+                if (confirmed) {
+                  handleStatusChange(item, 'active', type)
+                }
+              }}
+              className="px-3 py-1 text-xs bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+            >
+              🔵 Activate
+            </button>
+          )}
+          
+          {item.status === 'active' && (
+            <button
+              onClick={async () => {
+                const confirmed = await confirm({
+                  title: `Deactivate ${type === 'exam' ? 'Exam' : 'Test'}`,
+                  message: `Are you sure you want to deactivate "${item.name}"? It will no longer be available to students.`,
+                  confirmText: 'Deactivate',
+                  cancelText: 'Cancel'
+                })
+                if (confirmed) {
+                  handleStatusChange(item, 'inactive', type)
+                }
+              }}
+              className="px-3 py-1 text-xs bg-gray-600 text-white rounded hover:bg-gray-700 transition-colors"
+            >
+              🔴 Deactivate
+            </button>
+          )}
+          
+          {item.status === 'inactive' && (
+            <button
+              onClick={async () => {
+                // First check requirements before allowing reactivation
+                const req = await fetchRequirements(item.id, type)
+                if (req && req.is_ready) {
+                  const confirmed = await confirm({
+                    title: `Reactivate ${type === 'exam' ? 'Exam' : 'Test'}`,
+                    message: `Are you sure you want to reactivate "${item.name}"? It will be available to students again.`,
+                    confirmText: 'Reactivate',
+                    cancelText: 'Cancel'
+                  })
+                  if (confirmed) {
+                    handleStatusChange(item, 'active', type)
+                  }
+                } else {
+                  toast.error('Cannot reactivate: Requirements are no longer met. Please check question banks.')
+                }
+              }}
+              className="px-3 py-1 text-xs bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+            >
+              🔵 Reactivate
+            </button>
+          )}
+          
+          {item.status === 'draft' && (
+            <div className="text-xs text-gray-500">
+              Complete requirements to enable activation
+            </div>
+          )}
+        </div>
+      </div>
+    )
+  }
 
   const tabs = [
     { id: 'overview', name: 'Overview', icon: ChartBarIcon },
@@ -94,6 +298,57 @@ export default function ContentManagementSection() {
       }
     } catch (error) {
       console.error('Failed to fetch upload items:', error)
+    }
+  }
+
+  // Fetch requirements for exam or test
+  const fetchRequirements = async (id: string, type: 'exam' | 'test') => {
+    if (requirementsCache.has(id)) {
+      return requirementsCache.get(id)
+    }
+
+    setLoadingRequirements(prev => new Set(prev).add(id))
+    try {
+      const endpoint = type === 'exam' ? `/exams/exams/${id}/requirements/` : `/exams/tests/${id}/requirements/`
+      console.log(`Fetching requirements for ${type} with ID: ${id}`)
+      const response = await apiService.request(endpoint)
+      
+      if (response && (response.success !== false)) {
+        // The response is the requirements data directly from the ViewSet action
+        const requirements = response
+        setRequirementsCache(prev => new Map(prev).set(id, requirements))
+        return requirements
+      }
+    } catch (error: any) {
+      console.error('Failed to fetch requirements:', error)
+      // Just log the error and return null - NO AUTO-DELETION LOGIC
+      const errorMessage = error?.message || error?.detail || JSON.stringify(error)
+      console.warn(`Could not fetch requirements for ${type} ${id}: ${errorMessage}`)
+      // Don't mark as deleted automatically - this was causing unwanted auto-deletions
+      return null
+    } finally {
+      setLoadingRequirements(prev => {
+        const newSet = new Set(prev)
+        newSet.delete(id)
+        return newSet
+      })
+    }
+    return null
+  }
+
+  // Get status badge styling
+  const getStatusBadge = (status: string) => {
+    switch (status) {
+      case 'draft':
+        return { className: 'bg-yellow-100 text-yellow-800', text: '🟡 Draft', description: 'Missing question requirements' }
+      case 'ready':
+        return { className: 'bg-green-100 text-green-800', text: '🟢 Ready', description: 'All requirements met, can be activated' }
+      case 'active':
+        return { className: 'bg-blue-100 text-blue-800', text: '🔵 Active', description: 'Live and available to students' }
+      case 'inactive':
+        return { className: 'bg-gray-100 text-gray-800', text: '🔴 Inactive', description: 'Manually deactivated' }
+      default:
+        return { className: 'bg-gray-100 text-gray-800', text: status, description: '' }
     }
   }
 
@@ -178,6 +433,24 @@ export default function ContentManagementSection() {
   }
 
   const handleDelete = async (content: any, contentType: 'question_bank' | 'exam' | 'test' | 'upload') => {
+    // Prevent deletion of draft items - they should be completed instead
+    if ((contentType === 'exam' || contentType === 'test') && content.status === 'draft') {
+      toast.error(
+        `Cannot delete ${contentType} "${content.name}" because it's in draft status. ` +
+        `Please complete the requirements or change the status before deleting.`
+      )
+      return
+    }
+
+    // Prevent deletion of active items - they should be deactivated first
+    if ((contentType === 'exam' || contentType === 'test') && content.status === 'active') {
+      toast.error(
+        `Cannot delete ${contentType} "${content.name}" because it's currently active. ` +
+        `Please deactivate it first before deleting.`
+      )
+      return
+    }
+
     const getDeleteDetails = () => {
       switch (contentType) {
         case 'question_bank':
@@ -189,13 +462,13 @@ export default function ContentManagementSection() {
         case 'exam':
           return {
             title: 'Delete Exam',
-            message: `Are you sure you want to delete the exam "${content.name}"? This action cannot be undone and will remove all associated tests.`,
+            message: `Are you sure you want to delete the exam "${content.name}"? This action cannot be undone and will remove all associated tests. Only inactive or ready exams can be deleted.`,
             endpoint: `/questions/admin/delete-exam/${content.id}/`
           }
         case 'test':
           return {
             title: 'Delete Test',
-            message: `Are you sure you want to delete the test "${content.name}"? This action cannot be undone.`,
+            message: `Are you sure you want to delete the test "${content.name}"? This action cannot be undone. Only inactive or ready tests can be deleted.`,
             endpoint: `/questions/admin/delete-test/${content.id}/`
           }
         case 'upload':
@@ -274,6 +547,42 @@ export default function ContentManagementSection() {
     } else {
       // Select all
       setSelectedItems(new Set(itemIds))
+    }
+  }
+
+  const handleRelinkTests = async () => {
+    try {
+      const response = await apiService.request('/questions/admin/relink-tests/', {
+        method: 'POST',
+        body: JSON.stringify({
+          test_ids: selectedItems.size > 0 ? Array.from(selectedItems) : [],
+          clear_existing: false
+        })
+      })
+      
+      if (response.success) {
+        const { stats, warnings } = response
+        
+        let message = `Re-linking completed: ${stats.links_created} links created`
+        if (stats.links_skipped > 0) {
+          message += `, ${stats.links_skipped} links already existed`
+        }
+        
+        toast.success(message)
+        
+        if (warnings && warnings.length > 0) {
+          warnings.forEach((warning: string) => {
+            toast.warning(warning)
+          })
+        }
+        
+        // Refresh the content to show updated question counts
+        fetchAllContent()
+      } else {
+        toast.error('Failed to re-link tests')
+      }
+    } catch (error: any) {
+      toast.error(error.message || 'Failed to re-link tests')
     }
   }
 
@@ -377,12 +686,26 @@ export default function ContentManagementSection() {
     <div className="space-y-6">
       {/* Header */}
       <div className="bg-white rounded-lg shadow p-6">
-        <div className="flex items-center space-x-3 mb-4">
-          <FolderIcon className="h-8 w-8 text-blue-600" />
-          <div>
-            <h2 className="text-2xl font-bold text-gray-900">Content Management</h2>
-            <p className="text-gray-600">View and manage all your exams, tests, question banks, and uploads</p>
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center space-x-3">
+            <FolderIcon className="h-8 w-8 text-blue-600" />
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900">Content Management</h2>
+              <p className="text-gray-600">View and manage all your exams, tests, question banks, and uploads</p>
+            </div>
           </div>
+          <button
+            onClick={() => {
+              fetchAllContent()
+              fetchUploadItems()
+              setRequirementsCache(new Map()) // Clear requirements cache
+              toast.success('Content refreshed successfully')
+            }}
+            className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          >
+            <ArrowPathIcon className="h-4 w-4 mr-2" />
+            Refresh
+          </button>
         </div>
 
         {/* Summary Stats */}
@@ -723,9 +1046,7 @@ export default function ContentManagementSection() {
                           <span className={`px-2 py-1 text-xs rounded-full ${getDifficultyColor(exam.difficulty)}`}>
                             {exam.difficulty}
                           </span>
-                          <span className={`px-2 py-1 text-xs rounded-full ${exam.isActive ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}`}>
-                            {exam.isActive ? 'Active' : 'Inactive'}
-                          </span>
+                          <RequirementsDisplay item={exam} type="exam" />
                           {exam.isPublic && (
                             <span className="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">
                               Public
@@ -761,8 +1082,17 @@ export default function ContentManagementSection() {
                       </button>
                       <button 
                         onClick={() => handleDelete(exam, 'exam')}
-                        className="p-2 text-gray-400 hover:text-red-600" 
-                        title="Delete"
+                        className={`p-2 ${(exam.status === 'draft' || exam.status === 'active') 
+                          ? 'text-gray-300 cursor-not-allowed' 
+                          : 'text-gray-400 hover:text-red-600'}`} 
+                        title={
+                          exam.status === 'draft' 
+                            ? 'Cannot delete draft items - complete requirements first'
+                            : exam.status === 'active'
+                            ? 'Cannot delete active items - deactivate first'
+                            : 'Delete'
+                        }
+                        disabled={exam.status === 'draft' || exam.status === 'active'}
                       >
                         <TrashIcon className="h-4 w-4" />
                       </button>
@@ -798,6 +1128,14 @@ export default function ContentManagementSection() {
                   <span className="text-sm text-gray-700">
                     {selectedItems.size > 0 ? `${selectedItems.size} selected` : 'Select all'}
                   </span>
+                  <button
+                    onClick={handleRelinkTests}
+                    className="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 flex items-center space-x-1"
+                    title="Re-link tests to question banks based on their JSON references"
+                  >
+                    <ArrowPathIcon className="h-4 w-4" />
+                    <span>Re-link Question Banks</span>
+                  </button>
                 </div>
                 {selectedItems.size > 0 && (
                   <div className="flex items-center space-x-2">
@@ -833,9 +1171,7 @@ export default function ContentManagementSection() {
                           <span className={`px-2 py-1 text-xs rounded-full ${getDifficultyColor(test.difficulty)}`}>
                             {test.difficulty}
                           </span>
-                          <span className={`px-2 py-1 text-xs rounded-full ${test.isActive ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}`}>
-                            {test.isActive ? 'Active' : 'Inactive'}
-                          </span>
+                          <RequirementsDisplay item={test} type="test" />
                           {test.isPublic && (
                             <span className="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">
                               Public
@@ -871,8 +1207,17 @@ export default function ContentManagementSection() {
                       </button>
                       <button 
                         onClick={() => handleDelete(test, 'test')}
-                        className="p-2 text-gray-400 hover:text-red-600" 
-                        title="Delete"
+                        className={`p-2 ${(test.status === 'draft' || test.status === 'active') 
+                          ? 'text-gray-300 cursor-not-allowed' 
+                          : 'text-gray-400 hover:text-red-600'}`} 
+                        title={
+                          test.status === 'draft' 
+                            ? 'Cannot delete draft items - complete requirements first'
+                            : test.status === 'active'
+                            ? 'Cannot delete active items - deactivate first'
+                            : 'Delete'
+                        }
+                        disabled={test.status === 'draft' || test.status === 'active'}
                       >
                         <TrashIcon className="h-4 w-4" />
                       </button>

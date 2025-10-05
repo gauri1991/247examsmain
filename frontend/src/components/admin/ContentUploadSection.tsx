@@ -1,8 +1,9 @@
 'use client'
 
 import { useState, useRef } from 'react'
-import { CloudArrowUpIcon, DocumentTextIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline'
+import { CloudArrowUpIcon, DocumentTextIcon, CheckCircleIcon, XCircleIcon, QueueListIcon } from '@heroicons/react/24/outline'
 import { apiService } from '@/lib/api'
+import BatchUploadModal from './BatchUploadModal'
 
 interface UploadStatus {
   status: 'idle' | 'uploading' | 'validating' | 'success' | 'error'
@@ -34,6 +35,7 @@ export default function ContentUploadSection() {
   const [existingBanks, setExistingBanks] = useState([])
   const [loadingBanks, setLoadingBanks] = useState(false)
   const [showExistingBanks, setShowExistingBanks] = useState(false)
+  const [showBatchUpload, setShowBatchUpload] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const contentTypes = [
@@ -265,12 +267,21 @@ export default function ContentUploadSection() {
     <div className="space-y-6">
       {/* Header */}
       <div className="bg-white rounded-lg shadow p-6">
-        <div className="flex items-center space-x-3 mb-4">
-          <CloudArrowUpIcon className="h-8 w-8 text-blue-600" />
-          <div>
-            <h2 className="text-2xl font-bold text-gray-900">JSON Content Upload</h2>
-            <p className="text-gray-600">Upload and validate JSON files containing questions, exams, and tests</p>
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center space-x-3">
+            <CloudArrowUpIcon className="h-8 w-8 text-blue-600" />
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900">JSON Content Upload</h2>
+              <p className="text-gray-600">Upload and validate JSON files containing questions, exams, and tests</p>
+            </div>
           </div>
+          <button
+            onClick={() => setShowBatchUpload(true)}
+            className="flex items-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
+          >
+            <QueueListIcon className="h-5 w-5 mr-2" />
+            Batch Upload
+          </button>
         </div>
       </div>
 
@@ -623,6 +634,16 @@ export default function ContentUploadSection() {
           </div>
         </div>
       </div>
+
+      {/* Batch Upload Modal */}
+      <BatchUploadModal 
+        isOpen={showBatchUpload}
+        onClose={() => setShowBatchUpload(false)}
+        onComplete={(results) => {
+          console.log('Batch upload completed:', results)
+          // Optionally refresh content or show summary
+        }}
+      />
     </div>
   )
 }

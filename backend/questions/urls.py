@@ -13,10 +13,12 @@ urlpatterns = [
     path('admin/dashboard-stats/', views.api_dashboard_stats, name='api_dashboard_stats'),
     # Content deletion endpoints
     path('admin/delete-question-bank/<uuid:bank_id>/', views.api_delete_question_bank, name='api_delete_question_bank'),
-    path('admin/delete-exam/<int:exam_id>/', views.api_delete_exam, name='api_delete_exam'),
-    path('admin/delete-test/<int:test_id>/', views.api_delete_test, name='api_delete_test'),
+    path('admin/delete-exam/<uuid:exam_id>/', views.api_delete_exam, name='api_delete_exam'),
+    path('admin/delete-test/<uuid:test_id>/', views.api_delete_test, name='api_delete_test'),
     # Content update endpoints
     path('admin/update-question-bank/<uuid:bank_id>/', views.api_update_question_bank, name='api_update_question_bank'),
-    path('admin/update-exam/<int:exam_id>/', views.api_update_exam, name='api_update_exam'),
-    path('admin/update-test/<int:test_id>/', views.api_update_test, name='api_update_test'),
+    path('admin/update-exam/<uuid:exam_id>/', views.api_update_exam, name='api_update_exam'),
+    path('admin/update-test/<uuid:test_id>/', views.api_update_test, name='api_update_test'),
+    # Re-link endpoint
+    path('admin/relink-tests/', views.api_relink_tests, name='api_relink_tests'),
 ]

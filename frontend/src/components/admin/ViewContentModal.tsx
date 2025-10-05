@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Modal from '@/components/ui/modal'
 import { 
   FolderIcon, 
@@ -10,7 +11,10 @@ import {
   TagIcon,
   BookOpenIcon,
   ChartBarIcon,
-  EyeIcon
+  EyeIcon,
+  ChevronDownIcon,
+  ChevronRightIcon,
+  CodeBracketIcon
 } from '@heroicons/react/24/outline'
 
 interface ViewContentModalProps {
@@ -21,6 +25,8 @@ interface ViewContentModalProps {
 }
 
 export default function ViewContentModal({ isOpen, onClose, content, contentType }: ViewContentModalProps) {
+  const [showRawJSON, setShowRawJSON] = useState(false)
+  
   if (!content) return null
 
   const formatDate = (dateString: string) => {
@@ -158,6 +164,45 @@ export default function ViewContentModal({ isOpen, onClose, content, contentType
           </div>
         </div>
       )}
+
+      {/* Raw JSON Section for Question Banks */}
+      {content.jsonData && (
+        <div className="border-t border-gray-200 pt-6">
+          <button
+            onClick={() => setShowRawJSON(!showRawJSON)}
+            className="flex items-center space-x-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
+          >
+            {showRawJSON ? (
+              <ChevronDownIcon className="h-4 w-4" />
+            ) : (
+              <ChevronRightIcon className="h-4 w-4" />
+            )}
+            <CodeBracketIcon className="h-4 w-4" />
+            <span>Original JSON Data</span>
+          </button>
+
+          {showRawJSON && (
+            <div className="mt-4">
+              <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                <pre className="text-xs text-gray-700 overflow-x-auto whitespace-pre-wrap max-h-96 overflow-y-auto">
+                  {JSON.stringify(content.jsonData, null, 2)}
+                </pre>
+              </div>
+              <div className="mt-2 flex items-center justify-between text-xs text-gray-500">
+                <span>Original JSON structure used during import</span>
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(JSON.stringify(content.jsonData, null, 2))
+                  }}
+                  className="px-2 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors"
+                >
+                  Copy JSON
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   )
 
@@ -243,6 +288,45 @@ export default function ViewContentModal({ isOpen, onClose, content, contentType
           </div>
         </div>
       </div>
+
+      {/* Raw JSON Section for Exams */}
+      {content.jsonData && (
+        <div className="border-t border-gray-200 pt-6">
+          <button
+            onClick={() => setShowRawJSON(!showRawJSON)}
+            className="flex items-center space-x-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
+          >
+            {showRawJSON ? (
+              <ChevronDownIcon className="h-4 w-4" />
+            ) : (
+              <ChevronRightIcon className="h-4 w-4" />
+            )}
+            <CodeBracketIcon className="h-4 w-4" />
+            <span>Original JSON Data</span>
+          </button>
+
+          {showRawJSON && (
+            <div className="mt-4">
+              <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                <pre className="text-xs text-gray-700 overflow-x-auto whitespace-pre-wrap max-h-96 overflow-y-auto">
+                  {JSON.stringify(content.jsonData, null, 2)}
+                </pre>
+              </div>
+              <div className="mt-2 flex items-center justify-between text-xs text-gray-500">
+                <span>Original JSON structure used during import</span>
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(JSON.stringify(content.jsonData, null, 2))
+                  }}
+                  className="px-2 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors"
+                >
+                  Copy JSON
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   )
 
@@ -328,6 +412,45 @@ export default function ViewContentModal({ isOpen, onClose, content, contentType
           </div>
         </div>
       </div>
+
+      {/* Raw JSON Section for Tests */}
+      {content.jsonData && (
+        <div className="border-t border-gray-200 pt-6">
+          <button
+            onClick={() => setShowRawJSON(!showRawJSON)}
+            className="flex items-center space-x-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
+          >
+            {showRawJSON ? (
+              <ChevronDownIcon className="h-4 w-4" />
+            ) : (
+              <ChevronRightIcon className="h-4 w-4" />
+            )}
+            <CodeBracketIcon className="h-4 w-4" />
+            <span>Original JSON Data</span>
+          </button>
+
+          {showRawJSON && (
+            <div className="mt-4">
+              <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                <pre className="text-xs text-gray-700 overflow-x-auto whitespace-pre-wrap max-h-96 overflow-y-auto">
+                  {JSON.stringify(content.jsonData, null, 2)}
+                </pre>
+              </div>
+              <div className="mt-2 flex items-center justify-between text-xs text-gray-500">
+                <span>Original JSON structure used during import</span>
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(JSON.stringify(content.jsonData, null, 2))
+                  }}
+                  className="px-2 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors"
+                >
+                  Copy JSON
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   )
 
@@ -379,6 +502,46 @@ export default function ViewContentModal({ isOpen, onClose, content, contentType
           </div>
         </div>
       </div>
+
+      {/* Raw JSON Section */}
+      {content.jsonData && (
+        <div className="border-t border-gray-200 pt-6">
+          <button
+            onClick={() => setShowRawJSON(!showRawJSON)}
+            className="flex items-center space-x-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
+          >
+            {showRawJSON ? (
+              <ChevronDownIcon className="h-4 w-4" />
+            ) : (
+              <ChevronRightIcon className="h-4 w-4" />
+            )}
+            <CodeBracketIcon className="h-4 w-4" />
+            <span>Raw JSON Data</span>
+          </button>
+
+          {showRawJSON && (
+            <div className="mt-4">
+              <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                <pre className="text-xs text-gray-700 overflow-x-auto whitespace-pre-wrap max-h-96 overflow-y-auto">
+                  {JSON.stringify(content.jsonData, null, 2)}
+                </pre>
+              </div>
+              <div className="mt-2 flex items-center justify-between text-xs text-gray-500">
+                <span>Click to copy JSON</span>
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(JSON.stringify(content.jsonData, null, 2))
+                    // Could add a toast notification here
+                  }}
+                  className="px-2 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors"
+                >
+                  Copy JSON
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   )
 

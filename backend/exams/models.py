@@ -126,12 +126,22 @@ class Exam(models.Model):
     # Settings
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='created_exams')
     year = models.IntegerField(null=True, blank=True, help_text="Year of exam or creation")
-    is_active = models.BooleanField(default=True)
+    # Status for requirement validation
+    STATUS_CHOICES = [
+        ('draft', '🟡 Draft'),           # Missing question requirements
+        ('ready', '🟢 Ready'),           # All requirements met, can be activated
+        ('active', '🔵 Active'),         # Live and available to students
+        ('inactive', '🔴 Inactive'),     # Manually deactivated
+    ]
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='draft')
+    
+    is_active = models.BooleanField(default=True)  # Legacy field, use status instead
     is_featured = models.BooleanField(default=False, help_text="Featured exams appear first")
     
     # Import tracking
     imported_from_json = models.BooleanField(default=False)
     json_import_batch = models.CharField(max_length=100, blank=True, help_text="Batch ID from JSON import")
+    original_json_data = models.JSONField(null=True, blank=True, help_text="Original JSON data from import")
     
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -144,6 +154,59 @@ class Exam(models.Model):
     def published_tests_count(self):
         """Return count of published tests for this exam"""
         return self.tests.filter(is_published=True).count()
+    
+    def check_question_requirements(self):
+        """Check if all tests in this exam have sufficient questions in their linked question banks"""
+        from questions.models import QuestionBank
+        
+        requirements_check = {
+            'is_ready': True,
+            'total_tests': 0,
+            'ready_tests': 0,
+            'missing_questions': 0,
+            'test_details': []
+        }
+        
+        for test in self.tests.all():
+            test_check = test.check_question_requirements()
+            requirements_check['total_tests'] += 1
+            requirements_check['missing_questions'] += test_check['missing_questions']
+            
+            if test_check['is_ready']:
+                requirements_check['ready_tests'] += 1
+            else:
+                requirements_check['is_ready'] = False
+            
+            requirements_check['test_details'].append({
+                'test_name': test.title,
+                'test_id': str(test.id),
+                'is_ready': test_check['is_ready'],
+                'requested_questions': test_check['requested_questions'],
+                'available_questions': test_check['available_questions'],
+                'missing_questions': test_check['missing_questions'],
+                'question_banks': test_check['question_banks']
+            })
+        
+        return requirements_check
+    
+    def update_status_based_on_requirements(self):
+        """Update exam status based on question requirements check"""
+        requirements = self.check_question_requirements()
+        
+        if requirements['is_ready']:
+            # All tests have sufficient questions
+            if self.status == 'draft':
+                self.status = 'ready'
+                self.save(update_fields=['status'])
+                return 'ready'
+        else:
+            # Some tests don't have sufficient questions
+            if self.status in ['ready', 'active']:
+                self.status = 'draft'
+                self.save(update_fields=['status'])
+                return 'draft'
+        
+        return self.status
 
 
 class TestSelectionRule(models.Model):
@@ -230,8 +293,17 @@ class Test(models.Model):
     total_marks = models.IntegerField()
     pass_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=40.00)
     
+    # Status for requirement validation
+    STATUS_CHOICES = [
+        ('draft', '🟡 Draft'),           # Missing question requirements
+        ('ready', '🟢 Ready'),           # All requirements met, can be activated
+        ('active', '🔵 Active'),         # Live and available to students
+        ('inactive', '🔴 Inactive'),     # Manually deactivated
+    ]
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='draft')
+    
     # Test settings
-    is_published = models.BooleanField(default=False)
+    is_published = models.BooleanField(default=False)  # Legacy field, use status instead
     randomize_questions = models.BooleanField(default=False)
     show_result_immediately = models.BooleanField(default=True)
     allow_review = models.BooleanField(default=True)
@@ -244,10 +316,69 @@ class Test(models.Model):
     # Import tracking
     imported_from_json = models.BooleanField(default=False)
     json_import_batch = models.CharField(max_length=100, blank=True, help_text="Batch ID from JSON import")
+    original_json_data = models.JSONField(null=True, blank=True, help_text="Original JSON data from import")
     
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='created_tests')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    
+    def check_question_requirements(self):
+        """Check if this test has sufficient questions in its linked question banks"""
+        from questions.models import QuestionBank
+        
+        requirements_check = {
+            'is_ready': True,
+            'requested_questions': 0,
+            'available_questions': 0,
+            'missing_questions': 0,
+            'question_banks': []
+        }
+        
+        # Check each linked question bank
+        for test_question_bank in self.test_question_banks.all():
+            bank = test_question_bank.question_bank
+            requested = test_question_bank.question_count
+            available = bank.questions.count()
+            missing = max(0, requested - available)
+            
+            requirements_check['requested_questions'] += requested
+            requirements_check['available_questions'] += available
+            requirements_check['missing_questions'] += missing
+            
+            bank_status = {
+                'bank_name': bank.name,
+                'bank_id': str(bank.id),
+                'requested': requested,
+                'available': available,
+                'missing': missing,
+                'is_sufficient': available >= requested
+            }
+            
+            requirements_check['question_banks'].append(bank_status)
+            
+            if missing > 0:
+                requirements_check['is_ready'] = False
+        
+        return requirements_check
+    
+    def update_status_based_on_requirements(self):
+        """Update test status based on question requirements check"""
+        requirements = self.check_question_requirements()
+        
+        if requirements['is_ready']:
+            # All question banks have sufficient questions
+            if self.status == 'draft':
+                self.status = 'ready'
+                self.save(update_fields=['status'])
+                return 'ready'
+        else:
+            # Some question banks don't have sufficient questions
+            if self.status in ['ready', 'active']:
+                self.status = 'draft'
+                self.save(update_fields=['status'])
+                return 'draft'
+        
+        return self.status
     
     class Meta:
         db_table = 'tests'

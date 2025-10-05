@@ -146,6 +146,7 @@ class QuestionBank(models.Model):
     # Import tracking
     imported_from_json = models.BooleanField(default=False)
     json_import_batch = models.CharField(max_length=100, blank=True, help_text="Batch ID from JSON import")
+    original_json_data = models.JSONField(null=True, blank=True, help_text="Original JSON data from import")
     
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

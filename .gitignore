@@ -117,6 +117,7 @@ env/
 **/test_*.json
 data/
 backend/questions_data.json
+export_data/
 
 # Django migrations (keep initial migrations, ignore others)
 **/migrations/[0-9][0-9][0-9][0-9]_*.py

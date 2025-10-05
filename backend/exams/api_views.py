@@ -34,7 +34,13 @@ class ExamViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     
     def get_queryset(self):
-        queryset = super().get_queryset()
+        # For admin users accessing requirements or specific actions, include inactive exams
+        if (self.request.user.is_staff or self.request.user.is_superuser) and self.action in ['requirements', 'retrieve']:
+            queryset = Exam.objects.annotate(
+                tests_count=Count('tests')
+            ).select_related('created_by', 'organization')
+        else:
+            queryset = super().get_queryset()
         
         # Filter by category if provided
         category = self.request.query_params.get('category', None)
@@ -73,6 +79,46 @@ class ExamViewSet(viewsets.ReadOnlyModelViewSet):
         
         serializer = TestSerializer(tests, many=True)
         return Response(serializer.data)
+    
+    @action(detail=True, methods=['get'])
+    def requirements(self, request, pk=None):
+        """Check question requirements for an exam"""
+        exam = self.get_object()
+        requirements = exam.check_question_requirements()
+        return Response(requirements)
+    
+    @action(detail=True, methods=['patch'])
+    def update_status(self, request, pk=None):
+        """Update exam status (for activation/deactivation)"""
+        exam = self.get_object()
+        new_status = request.data.get('status')
+        
+        if not new_status:
+            return Response({'error': 'Status is required'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        if new_status not in ['draft', 'ready', 'active', 'inactive']:
+            return Response({'error': 'Invalid status'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Validate requirements before activation
+        if new_status == 'active':
+            requirements = exam.check_question_requirements()
+            if not requirements['is_ready']:
+                return Response({
+                    'error': 'Cannot activate exam: Requirements not met',
+                    'requirements': requirements
+                }, status=status.HTTP_400_BAD_REQUEST)
+        
+        exam.status = new_status
+        exam.save(update_fields=['status'])
+        
+        # Re-check status to return updated requirements
+        updated_requirements = exam.check_question_requirements()
+        
+        return Response({
+            'message': f'Exam status updated to {new_status}',
+            'status': new_status,
+            'requirements': updated_requirements
+        })
 
 
 class TestViewSet(viewsets.ReadOnlyModelViewSet):
@@ -91,7 +137,16 @@ class TestViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     
     def get_queryset(self):
-        queryset = super().get_queryset()
+        # For admin users accessing requirements or specific actions, include unpublished tests
+        if (self.request.user.is_staff or self.request.user.is_superuser) and self.action in ['requirements', 'retrieve']:
+            queryset = Test.objects.select_related(
+                'exam', 'created_by'
+            ).prefetch_related('sections').annotate(
+                questions_count=Count('test_questions'),
+                attempts_count=Count('attempts')
+            )
+        else:
+            queryset = super().get_queryset()
         
         # Filter by exam if provided
         exam_id = self.request.query_params.get('exam', None)
@@ -118,6 +173,46 @@ class TestViewSet(viewsets.ReadOnlyModelViewSet):
         
         serializer = TestDetailSerializer(test)
         return Response(serializer.data)
+    
+    @action(detail=True, methods=['get'])
+    def requirements(self, request, pk=None):
+        """Check question requirements for a test"""
+        test = self.get_object()
+        requirements = test.check_question_requirements()
+        return Response(requirements)
+    
+    @action(detail=True, methods=['patch'])
+    def update_status(self, request, pk=None):
+        """Update test status (for activation/deactivation)"""
+        test = self.get_object()
+        new_status = request.data.get('status')
+        
+        if not new_status:
+            return Response({'error': 'Status is required'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        if new_status not in ['draft', 'ready', 'active', 'inactive']:
+            return Response({'error': 'Invalid status'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Validate requirements before activation
+        if new_status == 'active':
+            requirements = test.check_question_requirements()
+            if not requirements['is_ready']:
+                return Response({
+                    'error': 'Cannot activate test: Requirements not met',
+                    'requirements': requirements
+                }, status=status.HTTP_400_BAD_REQUEST)
+        
+        test.status = new_status
+        test.save(update_fields=['status'])
+        
+        # Re-check status to return updated requirements
+        updated_requirements = test.check_question_requirements()
+        
+        return Response({
+            'message': f'Test status updated to {new_status}',
+            'status': new_status,
+            'requirements': updated_requirements
+        })
     
     @action(detail=True, methods=['post'])
     def start_attempt(self, request, pk=None):

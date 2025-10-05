@@ -126,7 +126,8 @@ export function useConfirmation() {
     confirmText: 'Confirm',
     cancelText: 'Cancel',
     type: 'warning' as 'danger' | 'warning' | 'info',
-    onConfirm: () => {}
+    onConfirm: (() => {}) as (() => void | Promise<void>),
+    resolve: null as ((value: boolean) => void) | null
   })
   const [loading, setLoading] = useState(false)
 
@@ -136,26 +137,42 @@ export function useConfirmation() {
     confirmText?: string
     cancelText?: string
     type?: 'danger' | 'warning' | 'info'
-    onConfirm: () => void | Promise<void>
-  }) => {
-    setConfig({
-      title: options.title,
-      message: options.message,
-      confirmText: options.confirmText || 'Confirm',
-      cancelText: options.cancelText || 'Cancel',
-      type: options.type || 'warning',
-      onConfirm: options.onConfirm
+    onConfirm?: () => void | Promise<void>
+  }): Promise<boolean> => {
+    return new Promise((resolve) => {
+      setConfig({
+        title: options.title,
+        message: options.message,
+        confirmText: options.confirmText || 'Confirm',
+        cancelText: options.cancelText || 'Cancel',
+        type: options.type || 'warning',
+        onConfirm: options.onConfirm || (() => {}),
+        resolve
+      })
+      setIsOpen(true)
     })
-    setIsOpen(true)
   }
 
   const handleConfirm = async () => {
     setLoading(true)
     try {
-      await config.onConfirm()
+      // Call the onConfirm callback if provided
+      if (config.onConfirm) {
+        await config.onConfirm()
+      }
+      
+      // Resolve the Promise with true if there's a resolve function
+      if (config.resolve) {
+        config.resolve(true)
+      }
+      
       setIsOpen(false)
     } catch (error) {
       console.error('Confirmation action failed:', error)
+      // If there's an error and we have a resolve function, still resolve with false
+      if (config.resolve) {
+        config.resolve(false)
+      }
     } finally {
       setLoading(false)
     }
@@ -163,6 +180,10 @@ export function useConfirmation() {
 
   const handleClose = () => {
     if (!loading) {
+      // Resolve the Promise with false if there's a resolve function
+      if (config.resolve) {
+        config.resolve(false)
+      }
       setIsOpen(false)
     }
   }

@@ -636,7 +636,8 @@ def api_all_content(request):
                 'importedFromJson': bank.imported_from_json,
                 'jsonImportBatch': bank.json_import_batch,
                 'totalQuestions': bank.total_questions,
-                'usageCount': bank.usage_count
+                'usageCount': bank.usage_count,
+                'jsonData': bank.original_json_data if hasattr(bank, 'original_json_data') else None
             })
         
         # Get exams
@@ -658,12 +659,14 @@ def api_all_content(request):
                 'totalMarks': 0,  # Will be calculated from tests
                 'passingMarks': 0,  # Will be calculated from tests
                 'testsCount': tests_count,
+                'status': exam.status,  # Add status field
                 'createdBy': exam.created_by.username if hasattr(exam.created_by, 'username') else str(exam.created_by),
                 'createdAt': exam.created_at.isoformat(),
                 'updatedAt': exam.updated_at.isoformat(),
                 'isActive': exam.is_active,
                 'isPublic': False,  # Exams don't have is_public field
-                'importedFromJson': exam.imported_from_json
+                'importedFromJson': exam.imported_from_json,
+                'jsonData': exam.original_json_data if hasattr(exam, 'original_json_data') else None
             })
         
         # Get tests
@@ -684,13 +687,18 @@ def api_all_content(request):
                 'duration': test.duration_minutes,
                 'totalMarks': test.total_marks,
                 'passingMarks': passing_marks,
-                'questionsCount': 0,  # Would need to count from test_questions relationship
+                'questionsCount': sum(
+                    min(test_question_bank.question_count, test_question_bank.question_bank.questions.count())
+                    for test_question_bank in test.test_question_banks.all()
+                ),
+                'status': test.status,  # Add status field
                 'createdBy': test.created_by.username if hasattr(test.created_by, 'username') else str(test.created_by),
                 'createdAt': test.created_at.isoformat(),
                 'updatedAt': test.updated_at.isoformat(),
                 'isActive': test.is_published,  # Tests use 'is_published' not 'is_active'
                 'isPublic': False,  # Tests don't have is_public field
-                'importedFromJson': test.imported_from_json
+                'importedFromJson': test.imported_from_json,
+                'jsonData': test.original_json_data if hasattr(test, 'original_json_data') else None
             })
         
         return Response({
@@ -942,11 +950,177 @@ class ContentProcessor:
     
     def _process_exam(self, upload, data, batch_name, options):
         """Process exam JSON data"""
-        upload.processing_log.append("Exam processing not fully implemented yet")
+        if not options.get('create_exams', True):
+            upload.processing_log.append("Skipped exam creation (disabled in options)")
+            return
+        
+        from exams.models import Exam
+        
+        # Check if exam exists
+        existing = None
+        if not options.get('overwrite_existing', False):
+            existing = Exam.objects.filter(name=data.get('name', '')).first()
+        
+        if existing and not options.get('overwrite_existing', False):
+            upload.processing_log.append(f"Exam '{data.get('name', '')}' already exists, skipping")
+            upload.items_imported = 0
+            upload.items_failed = 0
+            upload.save()
+            return
+        
+        # Create exam
+        exam = Exam.objects.create(
+            name=data.get('name', f'Exam {batch_name}'),
+            description=data.get('description', ''),
+            category=data.get('category', 'other'),
+            exam_type=data.get('exam_type', 'other'),
+            subject=data.get('subject', ''),
+            topic=data.get('topic', ''),
+            difficulty_level=data.get('difficulty_level', 'intermediate'),
+            target_audience=data.get('target_audience', 'general'),
+            language=data.get('language', 'english'),
+            year=data.get('year'),
+            imported_from_json=True,
+            json_import_batch=batch_name,
+            original_json_data=data,  # Store the original JSON data
+            created_by=upload.uploaded_by
+        )
+        
+        upload.processing_log.append(f"Created exam: {exam.name}")
+        
+        # Process linked tests if they exist
+        tests_created = 0
+        if 'tests' in data and isinstance(data['tests'], list):
+            for test_data in data['tests']:
+                test = self._create_test_for_exam(exam, test_data, batch_name, upload)
+                if test:
+                    tests_created += 1
+        
+        upload.processing_log.append(f"Created {tests_created} tests for exam {exam.name}")
+        
+        # Validate question requirements and set status
+        requirements = exam.check_question_requirements()
+        if requirements['is_ready']:
+            exam.status = 'ready'
+            exam.save(update_fields=['status'])
+            upload.processing_log.append(f"✅ Exam '{exam.name}' is ready - all question requirements met")
+        else:
+            exam.status = 'draft'
+            exam.save(update_fields=['status'])
+            upload.processing_log.append(f"⚠️ Exam '{exam.name}' set to draft - missing {requirements['missing_questions']} questions")
+            upload.processing_log.append(f"   Ready tests: {requirements['ready_tests']}/{requirements['total_tests']}")
+        
+        upload.items_imported += 1  # +1 for the exam itself
+        upload.items_imported += tests_created  # +tests created
     
     def _process_test(self, upload, data, batch_name, options):
         """Process test JSON data"""
-        upload.processing_log.append("Test processing not fully implemented yet")
+        if not options.get('create_tests', True):
+            upload.processing_log.append("Skipped test creation (disabled in options)")
+            return
+        
+        from exams.models import Exam, Test
+        
+        # Check if test exists
+        existing = None
+        test_name = data.get('title', data.get('name', ''))
+        if not options.get('overwrite_existing', False):
+            existing = Test.objects.filter(title=test_name).first()
+        
+        if existing and not options.get('overwrite_existing', False):
+            upload.processing_log.append(f"Test '{test_name}' already exists, skipping")
+            upload.items_imported = 0
+            upload.items_failed = 0
+            upload.save()
+            return
+        
+        # For standalone tests, we need to create or get a default exam
+        # since Test model requires an exam field
+        default_exam_name = "Standalone Tests Container"
+        default_exam, created = Exam.objects.get_or_create(
+            name=default_exam_name,
+            defaults={
+                'description': 'Container for standalone tests imported from JSON',
+                'category': 'other',
+                'exam_type': 'other',
+                'difficulty_level': 'intermediate',
+                'created_by': upload.uploaded_by,
+                'imported_from_json': True,
+                'json_import_batch': 'auto_created_for_tests'
+            }
+        )
+        
+        if created:
+            upload.processing_log.append(f"Created default exam container: {default_exam.name}")
+        
+        # Create test
+        test = Test.objects.create(
+            exam=default_exam,
+            title=test_name,
+            description=data.get('description', ''),
+            duration_minutes=data.get('duration_minutes', data.get('duration', 180)),
+            total_marks=data.get('total_marks', 100),
+            pass_percentage=data.get('pass_percentage', 40.0),
+            is_published=data.get('is_published', False),
+            randomize_questions=data.get('randomize_questions', False),
+            show_result_immediately=data.get('show_result_immediately', True),
+            allow_review=data.get('allow_review', True),
+            max_attempts=data.get('max_attempts', 1),
+            imported_from_json=True,
+            json_import_batch=batch_name,
+            original_json_data=data,  # Store the original JSON data
+            created_by=upload.uploaded_by
+        )
+        
+        upload.processing_log.append(f"Created standalone test: {test.title}")
+        
+        # Process question bank references if they exist
+        question_banks_linked = 0
+        if 'question_bank_references' in data and isinstance(data['question_bank_references'], list):
+            from questions.models import TestQuestionBank, QuestionBank
+            
+            for bank_ref in data['question_bank_references']:
+                bank_name = bank_ref.get('bank_name', '')
+                question_count = bank_ref.get('question_count', 10)
+                selection_criteria = bank_ref.get('selection_criteria', {})
+                
+                # Find the question bank by name
+                try:
+                    question_bank = QuestionBank.objects.filter(name=bank_name).first()
+                    if question_bank:
+                        # Create the test-question bank relationship
+                        test_question_bank = TestQuestionBank.objects.create(
+                            test=test,
+                            question_bank=question_bank,
+                            question_count=question_count,
+                            difficulty_filter=','.join(selection_criteria.get('difficulty', [])),
+                            topic_filter=','.join(selection_criteria.get('topics', [])),
+                            selection_method='random'  # default to random
+                        )
+                        question_banks_linked += 1
+                        upload.processing_log.append(f"Linked to question bank: {bank_name} ({question_count} questions)")
+                    else:
+                        upload.processing_log.append(f"Warning: Question bank '{bank_name}' not found")
+                except Exception as e:
+                    upload.processing_log.append(f"Error linking to question bank '{bank_name}': {str(e)}")
+        
+        upload.processing_log.append(f"Test created with {question_banks_linked} question bank links")
+        
+        # Validate question requirements and set status
+        requirements = test.check_question_requirements()
+        if requirements['is_ready']:
+            test.status = 'ready'
+            test.save(update_fields=['status'])
+            upload.processing_log.append(f"✅ Test '{test.title}' is ready - all question requirements met")
+        else:
+            test.status = 'draft'
+            test.save(update_fields=['status'])
+            upload.processing_log.append(f"⚠️ Test '{test.title}' set to draft - missing {requirements['missing_questions']} questions")
+            for bank in requirements['question_banks']:
+                if bank['missing'] > 0:
+                    upload.processing_log.append(f"   - {bank['bank_name']}: needs {bank['missing']} more questions ({bank['available']}/{bank['requested']})")
+        
+        upload.items_imported += 1  # +1 for the test
     
     def _process_mixed_content(self, upload, data, batch_name, options):
         """Process mixed content JSON data"""
@@ -972,10 +1146,86 @@ class ContentProcessor:
             difficulty_level=data.get('difficulty_level', 'intermediate'),
             imported_from_json=True,
             json_import_batch=batch_name,
+            original_json_data=data,  # Store the original JSON data
             created_by=upload.uploaded_by
         )
         upload.processing_log.append(f"Created question bank: {question_bank.name}")
         return question_bank
+    
+    def _create_test_for_exam(self, exam, test_data, batch_name, upload):
+        """Helper method to create a test for an exam"""
+        try:
+            from exams.models import Test
+            
+            test = Test.objects.create(
+                exam=exam,
+                title=test_data.get('title', test_data.get('name', f'Test for {exam.name}')),
+                description=test_data.get('description', ''),
+                duration_minutes=test_data.get('duration_minutes', test_data.get('duration', 180)),
+                total_marks=test_data.get('total_marks', 100),
+                pass_percentage=test_data.get('pass_percentage', 40.0),
+                is_published=test_data.get('is_published', False),
+                randomize_questions=test_data.get('randomize_questions', False),
+                show_result_immediately=test_data.get('show_result_immediately', True),
+                allow_review=test_data.get('allow_review', True),
+                max_attempts=test_data.get('max_attempts', 1),
+                imported_from_json=True,
+                json_import_batch=batch_name,
+                original_json_data=test_data,  # Store the original JSON data
+                created_by=upload.uploaded_by
+            )
+            
+            upload.processing_log.append(f"Created test: {test.title} for exam {exam.name}")
+            
+            # Process question bank references if they exist in test_data
+            question_banks_linked = 0
+            if 'question_bank_references' in test_data and isinstance(test_data['question_bank_references'], list):
+                from questions.models import TestQuestionBank, QuestionBank
+                
+                for bank_ref in test_data['question_bank_references']:
+                    bank_name = bank_ref.get('bank_name', '')
+                    question_count = bank_ref.get('question_count', 10)
+                    selection_criteria = bank_ref.get('selection_criteria', {})
+                    
+                    # Find the question bank by name
+                    try:
+                        question_bank = QuestionBank.objects.filter(name=bank_name).first()
+                        if question_bank:
+                            # Create the test-question bank relationship
+                            test_question_bank = TestQuestionBank.objects.create(
+                                test=test,
+                                question_bank=question_bank,
+                                question_count=question_count,
+                                difficulty_filter=','.join(selection_criteria.get('difficulty', [])),
+                                topic_filter=','.join(selection_criteria.get('topics', [])),
+                                selection_method='random'
+                            )
+                            question_banks_linked += 1
+                            upload.processing_log.append(f"Linked question bank '{bank_name}' to test '{test.title}' ({question_count} questions)")
+                        else:
+                            upload.processing_log.append(f"Warning: Question bank '{bank_name}' not found for test '{test.title}'")
+                    except Exception as e:
+                        upload.processing_log.append(f"Error linking question bank '{bank_name}' to test '{test.title}': {str(e)}")
+            
+            if question_banks_linked > 0:
+                upload.processing_log.append(f"Successfully linked {question_banks_linked} question banks to test '{test.title}'")
+            
+            # Validate question requirements and set status for the test
+            requirements = test.check_question_requirements()
+            if requirements['is_ready']:
+                test.status = 'ready'
+                test.save(update_fields=['status'])
+                upload.processing_log.append(f"✅ Test '{test.title}' is ready - all question requirements met")
+            else:
+                test.status = 'draft'
+                test.save(update_fields=['status'])
+                upload.processing_log.append(f"⚠️ Test '{test.title}' set to draft - missing {requirements['missing_questions']} questions")
+            
+            return test
+            
+        except Exception as e:
+            upload.processing_log.append(f"Failed to create test: {str(e)}")
+            return None
 
 
 def detect_duplicates(json_data, target_bank, import_mode):
@@ -1396,6 +1646,21 @@ def api_delete_exam(request, exam_id):
     try:
         exam = get_object_or_404(Exam, id=exam_id)
         exam_name = exam.name
+        
+        # Prevent deletion of draft exams - they should be completed instead
+        if exam.status == 'draft':
+            return Response({
+                'success': False,
+                'message': f'Cannot delete exam "{exam_name}" because it\'s in draft status. Please complete the requirements first.'
+            }, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Prevent deletion of active exams - they should be deactivated first
+        if exam.status == 'active':
+            return Response({
+                'success': False,
+                'message': f'Cannot delete exam "{exam_name}" because it\'s currently active. Please deactivate it first before deleting.'
+            }, status=status.HTTP_400_BAD_REQUEST)
+        
         exam.delete()
         
         return Response({
@@ -1417,6 +1682,21 @@ def api_delete_test(request, test_id):
     try:
         test = get_object_or_404(Test, id=test_id)
         test_name = test.title  # Note: Test model uses 'title' field
+        
+        # Prevent deletion of draft tests - they should be completed instead
+        if test.status == 'draft':
+            return Response({
+                'success': False,
+                'message': f'Cannot delete test "{test_name}" because it\'s in draft status. Please complete the requirements first.'
+            }, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Prevent deletion of active tests - they should be deactivated first
+        if test.status == 'active':
+            return Response({
+                'success': False,
+                'message': f'Cannot delete test "{test_name}" because it\'s currently active. Please deactivate it first before deleting.'
+            }, status=status.HTTP_400_BAD_REQUEST)
+        
         test.delete()
         
         return Response({
@@ -1446,6 +1726,10 @@ def api_update_question_bank(request, bank_id):
         bank.is_public = request.data.get('isPublic', bank.is_public)
         bank.is_featured = request.data.get('isFeatured', bank.is_featured)
         
+        # Handle original JSON data update
+        if 'originalJsonData' in request.data:
+            bank.original_json_data = request.data['originalJsonData']
+        
         bank.save()
         
         return Response({
@@ -1464,18 +1748,26 @@ def api_update_question_bank(request, bank_id):
 @permission_classes([IsAuthenticated, IsAdminUser])
 def api_update_exam(request, exam_id):
     try:
+        from exams.models import Exam
         exam = get_object_or_404(Exam, id=exam_id)
         
-        # Update fields
+        # Update fields (using correct Exam model field names)
         exam.name = request.data.get('name', exam.name)
         exam.description = request.data.get('description', exam.description)
         exam.category = request.data.get('category', exam.category)
-        exam.organization = request.data.get('organization', exam.organization)
-        exam.difficulty = request.data.get('difficulty', exam.difficulty)
-        exam.duration = request.data.get('duration', exam.duration)
-        exam.total_marks = request.data.get('totalMarks', exam.total_marks)
+        exam.exam_type = request.data.get('examType', exam.exam_type)
+        exam.subject = request.data.get('subject', exam.subject)
+        exam.topic = request.data.get('topic', exam.topic)
+        exam.difficulty_level = request.data.get('difficulty', exam.difficulty_level)  # difficulty_level, not difficulty
+        exam.target_audience = request.data.get('targetAudience', exam.target_audience)
+        exam.language = request.data.get('language', exam.language)
+        exam.year = request.data.get('year', exam.year)
         exam.is_active = request.data.get('isActive', exam.is_active)
-        exam.is_public = request.data.get('isPublic', exam.is_public)
+        exam.is_featured = request.data.get('isFeatured', exam.is_featured)
+        
+        # Handle original JSON data update
+        if 'originalJsonData' in request.data:
+            exam.original_json_data = request.data['originalJsonData']
         
         exam.save()
         
@@ -1495,28 +1787,158 @@ def api_update_exam(request, exam_id):
 @permission_classes([IsAuthenticated, IsAdminUser])
 def api_update_test(request, test_id):
     try:
-        test = get_object_or_404(ExamTest, id=test_id)
+        from exams.models import Test
+        test = get_object_or_404(Test, id=test_id)
         
-        # Update fields
-        test.name = request.data.get('name', test.name)
+        # Update fields (using correct Test model field names)
+        test.title = request.data.get('name', test.title)  # Test model uses 'title', not 'name'
         test.description = request.data.get('description', test.description)
-        test.category = request.data.get('category', test.category)
-        test.subject = request.data.get('subject', test.subject)
-        test.difficulty = request.data.get('difficulty', test.difficulty)
-        test.duration = request.data.get('duration', test.duration)
+        test.duration_minutes = request.data.get('duration', test.duration_minutes)
         test.total_marks = request.data.get('totalMarks', test.total_marks)
-        test.is_active = request.data.get('isActive', test.is_active)
-        test.is_public = request.data.get('isPublic', test.is_public)
+        test.is_published = request.data.get('isActive', test.is_published)  # Test model uses 'is_published'
+        test.pass_percentage = request.data.get('passPercentage', test.pass_percentage)
+        test.randomize_questions = request.data.get('randomizeQuestions', test.randomize_questions)
+        test.show_result_immediately = request.data.get('showResultImmediately', test.show_result_immediately)
+        test.allow_review = request.data.get('allowReview', test.allow_review)
+        test.max_attempts = request.data.get('maxAttempts', test.max_attempts)
+        
+        # Handle original JSON data update
+        if 'originalJsonData' in request.data:
+            # Update the entire original JSON data
+            test.original_json_data = request.data['originalJsonData']
+        elif 'questionBankReferences' in request.data:
+            # Update just the question bank references
+            if not test.original_json_data:
+                test.original_json_data = {}
+            test.original_json_data['question_bank_references'] = request.data['questionBankReferences']
         
         test.save()
         
+        # If question bank references were updated (either directly or via JSON), re-link test to question banks
+        question_bank_refs = None
+        if 'originalJsonData' in request.data and 'question_bank_references' in request.data['originalJsonData']:
+            question_bank_refs = request.data['originalJsonData']['question_bank_references']
+        elif 'questionBankReferences' in request.data:
+            question_bank_refs = request.data['questionBankReferences']
+            
+        if question_bank_refs:
+            from questions.models import TestQuestionBank, QuestionBank
+            
+            # Clear existing links for this test
+            TestQuestionBank.objects.filter(test=test).delete()
+            
+            # Create new links based on updated references
+            for ref in question_bank_refs:
+                bank_name = ref.get('bank_name', '').strip()
+                question_count = ref.get('question_count', 10)
+                
+                if bank_name:
+                    # Try to find matching question bank
+                    try:
+                        question_bank = QuestionBank.objects.get(name__iexact=bank_name)
+                        TestQuestionBank.objects.create(
+                            test=test,
+                            question_bank=question_bank,
+                            question_count=question_count
+                        )
+                    except QuestionBank.DoesNotExist:
+                        # Bank doesn't exist yet, will be linked when bank is uploaded
+                        pass
+        
         return Response({
             'success': True,
-            'message': f'Test "{test.name}" updated successfully'
+            'message': f'Test "{test.title}" updated successfully'
         })
         
     except Exception as e:
         return Response({
             'success': False,
             'message': f'Failed to update test: {str(e)}'
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated, IsAdminUser])
+def api_relink_tests(request):
+    """API endpoint to re-link tests to question banks based on their original JSON references"""
+    try:
+        from exams.models import Test
+        from questions.models import TestQuestionBank, QuestionBank
+        
+        tests_processed = 0
+        links_created = 0
+        links_skipped = 0
+        warnings = []
+        
+        # Get all tests or specific test IDs if provided
+        test_ids = request.data.get('test_ids', [])
+        if test_ids:
+            tests = Test.objects.filter(id__in=test_ids)
+        else:
+            tests = Test.objects.all()
+        
+        for test in tests:
+            tests_processed += 1
+            
+            # Check if test has original JSON data with question_bank_references
+            if not test.original_json_data:
+                continue
+                
+            json_data = test.original_json_data
+            if 'question_bank_references' not in json_data:
+                continue
+            
+            # Clear existing links if requested
+            if request.data.get('clear_existing', False):
+                deleted_count = test.test_question_banks.all().delete()[0]
+                if deleted_count > 0:
+                    warnings.append(f"Cleared {deleted_count} existing links for test '{test.title}'")
+            
+            # Process question bank references
+            for bank_ref in json_data['question_bank_references']:
+                bank_name = bank_ref.get('bank_name', '')
+                question_count = bank_ref.get('question_count', 10)
+                selection_criteria = bank_ref.get('selection_criteria', {})
+                
+                # Check if link already exists
+                existing_link = TestQuestionBank.objects.filter(
+                    test=test,
+                    question_bank__name=bank_name
+                ).first()
+                
+                if existing_link:
+                    links_skipped += 1
+                    continue
+                
+                # Find the question bank by name
+                question_bank = QuestionBank.objects.filter(name=bank_name).first()
+                if question_bank:
+                    # Create the test-question bank relationship
+                    TestQuestionBank.objects.create(
+                        test=test,
+                        question_bank=question_bank,
+                        question_count=question_count,
+                        difficulty_filter=','.join(selection_criteria.get('difficulty', [])),
+                        topic_filter=','.join(selection_criteria.get('topics', [])),
+                        selection_method='random'
+                    )
+                    links_created += 1
+                else:
+                    warnings.append(f"Question bank '{bank_name}' not found for test '{test.title}'")
+        
+        return Response({
+            'success': True,
+            'message': f'Re-linking completed successfully',
+            'stats': {
+                'tests_processed': tests_processed,
+                'links_created': links_created,
+                'links_skipped': links_skipped,
+            },
+            'warnings': warnings
+        })
+        
+    except Exception as e:
+        return Response({
+            'success': False,
+            'message': f'Failed to re-link tests: {str(e)}'
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
