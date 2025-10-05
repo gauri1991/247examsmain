@@ -71,7 +71,7 @@ class ExamViewSet(viewsets.ReadOnlyModelViewSet):
         exam = self.get_object()
         tests = Test.objects.filter(
             exam=exam, 
-            is_published=True
+            status='active'
         ).select_related('created_by').annotate(
             questions_count=Count('test_questions'),
             attempts_count=Count('attempts')
