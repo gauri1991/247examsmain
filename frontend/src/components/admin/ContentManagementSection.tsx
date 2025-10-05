@@ -79,11 +79,15 @@ export default function ContentManagementSection() {
   const handleStatusChange = async (item: any, newStatus: string, type: 'exam' | 'test') => {
     try {
       const endpoint = type === 'exam' ? `/exams/exams/${item.id}/update_status/` : `/exams/tests/${item.id}/update_status/`
+      console.log('🔵 ACTIVATION DEBUG:', { type, item: item.name || item.title, endpoint, newStatus })
+      
       const response = await apiService.request(endpoint, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newStatus })
       })
+      
+      console.log('🔵 ACTIVATION RESPONSE:', response)
       
       if (response.message && response.status) {
         // Update local state with the actual status from response
