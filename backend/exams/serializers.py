@@ -47,6 +47,7 @@ class TestSerializer(serializers.ModelSerializer):
 
 
 class TestAttemptSerializer(serializers.ModelSerializer):
+    test = serializers.SerializerMethodField()
     test_name = serializers.CharField(source='test.title', read_only=True)
     exam_name = serializers.CharField(source='test.exam.name', read_only=True)
     user_name = serializers.CharField(source='user.get_full_name', read_only=True)
@@ -55,6 +56,7 @@ class TestAttemptSerializer(serializers.ModelSerializer):
     total_marks = serializers.IntegerField(source='test.total_marks', read_only=True)
     wrong_answers = serializers.SerializerMethodField()
     unanswered = serializers.SerializerMethodField()
+    start_time = serializers.DateTimeField(read_only=True)
     started_at = serializers.DateTimeField(source='start_time', read_only=True)
     completed_at = serializers.DateTimeField(source='end_time', read_only=True)
     questions_count = serializers.IntegerField(source='total_questions', read_only=True)
@@ -62,9 +64,19 @@ class TestAttemptSerializer(serializers.ModelSerializer):
     class Meta:
         model = TestAttempt
         fields = ('id', 'test', 'test_name', 'exam_name', 'user_name', 'score', 'total_marks', 'percentage',
-                 'status', 'started_at', 'completed_at', 'duration_minutes', 
+                 'status', 'start_time', 'started_at', 'completed_at', 'duration_minutes', 
                  'questions_count', 'correct_answers', 'wrong_answers', 'unanswered')
         read_only_fields = ('id', 'user', 'start_time')
+    
+    def get_test(self, obj):
+        """Return test details needed by frontend"""
+        return {
+            'id': str(obj.test.id),
+            'title': obj.test.title,
+            'duration_minutes': obj.test.duration_minutes,
+            'total_marks': obj.test.total_marks,
+            'randomize_questions': obj.test.randomize_questions,
+        }
     
     def get_duration_minutes(self, obj):
         """Calculate duration in minutes from time_spent_seconds"""
