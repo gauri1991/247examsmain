@@ -27,7 +27,7 @@ class ExamViewSet(viewsets.ReadOnlyModelViewSet):
     Students can view available exams to purchase.
     """
     queryset = Exam.objects.filter(is_active=True).annotate(
-        tests_count=Count('tests', filter=Q(tests__is_published=True))
+        tests_count=Count('tests', filter=Q(tests__status='active'))
     ).select_related('created_by', 'organization')
     serializer_class = ExamSerializer
     pagination_class = StandardResultsSetPagination
