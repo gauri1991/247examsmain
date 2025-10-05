@@ -250,8 +250,12 @@ class TestViewSet(viewsets.ReadOnlyModelViewSet):
         # Calculate attempt number
         attempt_number = TestAttempt.objects.filter(test=test, user=user).count() + 1
         
-        # Calculate total questions using the test_questions relationship
+        # Generate questions if test doesn't have any
         total_questions_count = test.test_questions.count()
+        if total_questions_count == 0:
+            print(f"DEBUG: No questions found for test {test.title}, generating from question banks...")
+            total_questions_count = self._generate_test_questions(test)
+            print(f"DEBUG: Generated {total_questions_count} questions")
         
         # Create new attempt
         attempt = TestAttempt.objects.create(
@@ -264,6 +268,57 @@ class TestViewSet(viewsets.ReadOnlyModelViewSet):
         
         serializer = TestAttemptSerializer(attempt)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+    def _generate_test_questions(self, test):
+        """Generate questions for a test from its linked question banks"""
+        import random
+        from questions.models import TestQuestion
+        from django.db import transaction
+        
+        with transaction.atomic():
+            # Clear any existing questions
+            TestQuestion.objects.filter(test=test).delete()
+            
+            total_generated = 0
+            test_questions = []
+            
+            # Get all question bank links for this test
+            test_question_banks = test.test_question_banks.all()
+            
+            for tqb in test_question_banks:
+                bank = tqb.question_bank
+                requested_count = tqb.question_count
+                
+                # Get available questions from this bank
+                available_questions = list(bank.questions.all())
+                
+                # Select random questions (up to requested count)
+                if available_questions:
+                    selected_count = min(len(available_questions), requested_count)
+                    selected_questions = random.sample(available_questions, selected_count)
+                    
+                    # Create TestQuestion objects
+                    for order, question in enumerate(selected_questions):
+                        test_questions.append(
+                            TestQuestion(
+                                test=test,
+                                question=question,
+                                order=total_generated + order + 1,
+                                marks=question.marks or 1  # Use question's marks or default to 1
+                            )
+                        )
+                    
+                    total_generated += selected_count
+                    print(f"DEBUG: Selected {selected_count} questions from {bank.name}")
+                else:
+                    print(f"DEBUG: No questions available in bank {bank.name}")
+            
+            # Bulk create all test questions
+            if test_questions:
+                TestQuestion.objects.bulk_create(test_questions)
+                print(f"DEBUG: Created {len(test_questions)} TestQuestion objects")
+            
+            return total_generated
 
 
 class TestAttemptViewSet(viewsets.ReadOnlyModelViewSet):
