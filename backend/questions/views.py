@@ -1647,12 +1647,7 @@ def api_delete_exam(request, exam_id):
         exam = get_object_or_404(Exam, id=exam_id)
         exam_name = exam.name
         
-        # Prevent deletion of draft exams - they should be completed instead
-        if exam.status == 'draft':
-            return Response({
-                'success': False,
-                'message': f'Cannot delete exam "{exam_name}" because it\'s in draft status. Please complete the requirements first.'
-            }, status=status.HTTP_400_BAD_REQUEST)
+        # Allow deletion of draft exams - admin can clean up drafts
         
         # Prevent deletion of active exams - they should be deactivated first
         if exam.status == 'active':
