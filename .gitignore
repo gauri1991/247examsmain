@@ -31,9 +31,12 @@ media/
 staticfiles/
 
 # Environment variables
+# Ignore local environment files
 .env
 .env.local
-.env.production
+# But track production templates in frontend/ and backend/
+!frontend/.env.production
+!backend/.env.production
 
 # IDEs
 .vscode/
@@ -131,8 +134,7 @@ export_data/
 .vscode/settings.json
 .idea/workspace.xml
 
-# Production environment
-.env.production
+# Production environment files in root are ignored
 
 # Testing and documentation
 TESTING_GUIDE.md
