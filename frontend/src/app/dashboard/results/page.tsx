@@ -108,118 +108,127 @@ function ResultsPageContent() {
 
   const fetchResults = async () => {
     try {
-      // Mock data for now - replace with API call
-      const mockResults: TestResult[] = [
+      // Fetch test attempts from backend API
+      const response = await apiRequest<{ results: TestResult[] }>(
+        '/api/v1/exams/test-attempts/',
         {
-          id: '1',
-          test_name: 'UPSC Prelims Mock Test 1',
-          exam_name: 'UPSC Civil Services',
-          score: 85,
-          total_marks: 100,
-          percentage: 85,
-          status: 'completed',
-          started_at: '2025-09-26T10:00:00Z',
-          completed_at: '2025-09-26T11:30:00Z',
-          duration_minutes: 90,
-          questions_count: 100,
-          correct_answers: 85,
-          wrong_answers: 10,
-          unanswered: 5
-        },
-        {
-          id: '2',
-          test_name: 'General Studies Paper 2',
-          exam_name: 'UPSC Civil Services',
-          score: 72,
-          total_marks: 100,
-          percentage: 72,
-          status: 'completed',
-          started_at: '2025-09-25T14:00:00Z',
-          completed_at: '2025-09-25T15:45:00Z',
-          duration_minutes: 105,
-          questions_count: 100,
-          correct_answers: 72,
-          wrong_answers: 20,
-          unanswered: 8
-        },
-        {
-          id: '3',
-          test_name: 'SSC CGL Tier 1 Mock',
-          exam_name: 'SSC CGL',
-          score: 90,
-          total_marks: 100,
-          percentage: 90,
-          status: 'completed',
-          started_at: '2025-09-24T09:00:00Z',
-          completed_at: '2025-09-24T10:00:00Z',
-          duration_minutes: 60,
-          questions_count: 100,
-          correct_answers: 90,
-          wrong_answers: 8,
-          unanswered: 2
-        },
-        {
-          id: '4',
-          test_name: 'Banking Awareness Test',
-          exam_name: 'IBPS PO',
-          score: 68,
-          total_marks: 100,
-          percentage: 68,
-          status: 'completed',
-          started_at: '2025-09-23T16:00:00Z',
-          completed_at: '2025-09-23T17:30:00Z',
-          duration_minutes: 90,
-          questions_count: 100,
-          correct_answers: 68,
-          wrong_answers: 25,
-          unanswered: 7
-        },
-        {
-          id: '5',
-          test_name: 'Railway RRB Practice Test',
-          exam_name: 'Railway RRB',
-          score: 78,
-          total_marks: 100,
-          percentage: 78,
-          status: 'completed',
-          started_at: '2025-09-22T11:00:00Z',
-          completed_at: '2025-09-22T12:30:00Z',
-          duration_minutes: 90,
-          questions_count: 100,
-          correct_answers: 78,
-          wrong_answers: 15,
-          unanswered: 7
+          method: 'GET'
         }
-      ];
+      );
 
-      setResults(mockResults);
+      // Filter only completed/submitted attempts for results display
+      const completedResults = response.results.filter(
+        (result) => result.status === 'submitted' || result.status === 'evaluated'
+      );
+
+      setResults(completedResults);
     } catch (error) {
       console.error('Failed to fetch results:', error);
-      toast.error('Failed to load results');
+      showErrorToast(error, 'Failed to load results');
+      setResults([]); // Set empty array on error
     }
   };
 
   const fetchPerformanceStats = async () => {
     try {
-      // Mock data for performance stats
-      const mockStats: PerformanceStats = {
-        total_tests: 15,
-        average_score: 78.6,
-        highest_score: 95,
-        lowest_score: 62,
-        total_time_spent: 1350, // minutes
-        improvement_rate: 12.5,
-        current_streak: 5,
-        best_category: 'General Knowledge',
-        weak_areas: ['Current Affairs', 'Mathematics']
-      };
-
-      setStats(mockStats);
+      // Calculate performance stats from results
+      // Note: Results will be fetched first, so we wait for that
+      // For now, stats will be calculated in useEffect when results change
+      setLoading(false);
     } catch (error) {
       console.error('Failed to fetch stats:', error);
-    } finally {
       setLoading(false);
     }
+  };
+
+  // Calculate performance stats whenever results change
+  useEffect(() => {
+    if (results.length > 0) {
+      const calculatedStats: PerformanceStats = {
+        total_tests: results.length,
+        average_score: results.reduce((sum, r) => sum + r.percentage, 0) / results.length,
+        highest_score: Math.max(...results.map(r => r.percentage)),
+        lowest_score: Math.min(...results.map(r => r.percentage)),
+        total_time_spent: results.reduce((sum, r) => sum + (r.duration_minutes || 0), 0),
+        improvement_rate: calculateImprovementRate(results),
+        current_streak: calculateStudyStreak(results),
+        best_category: findBestCategory(results),
+        weak_areas: findWeakAreas(results)
+      };
+      setStats(calculatedStats);
+    }
+  }, [results]);
+
+  const calculateImprovementRate = (results: TestResult[]): number => {
+    if (results.length < 5) return 0;
+    const recent = results.slice(0, 5);
+    const older = results.slice(5, 10);
+    if (older.length === 0) return 0;
+    const recentAvg = recent.reduce((sum, r) => sum + r.percentage, 0) / recent.length;
+    const olderAvg = older.reduce((sum, r) => sum + r.percentage, 0) / older.length;
+    return Number((recentAvg - olderAvg).toFixed(1));
+  };
+
+  const calculateStudyStreak = (results: TestResult[]): number => {
+    if (results.length === 0) return 0;
+    let streak = 0;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    for (let i = 0; i < results.length; i++) {
+      const resultDate = new Date(results[i].completed_at);
+      resultDate.setHours(0, 0, 0, 0);
+      const diffDays = Math.floor((today.getTime() - resultDate.getTime()) / (1000 * 60 * 60 * 24));
+
+      if (diffDays === streak || (streak === 0 && diffDays === 0)) {
+        streak++;
+      } else {
+        break;
+      }
+    }
+    return streak;
+  };
+
+  const findBestCategory = (results: TestResult[]): string => {
+    const categoryScores: { [key: string]: number[] } = {};
+    results.forEach(r => {
+      if (!categoryScores[r.exam_name]) {
+        categoryScores[r.exam_name] = [];
+      }
+      categoryScores[r.exam_name].push(r.percentage);
+    });
+
+    let bestCategory = 'General';
+    let highestAvg = 0;
+    Object.entries(categoryScores).forEach(([category, scores]) => {
+      const avg = scores.reduce((sum, s) => sum + s, 0) / scores.length;
+      if (avg > highestAvg) {
+        highestAvg = avg;
+        bestCategory = category;
+      }
+    });
+
+    return bestCategory;
+  };
+
+  const findWeakAreas = (results: TestResult[]): string[] => {
+    const categoryScores: { [key: string]: number[] } = {};
+    results.forEach(r => {
+      if (!categoryScores[r.exam_name]) {
+        categoryScores[r.exam_name] = [];
+      }
+      categoryScores[r.exam_name].push(r.percentage);
+    });
+
+    const weakAreas: string[] = [];
+    Object.entries(categoryScores).forEach(([category, scores]) => {
+      const avg = scores.reduce((sum, s) => sum + s, 0) / scores.length;
+      if (avg < 70) {
+        weakAreas.push(category);
+      }
+    });
+
+    return weakAreas.slice(0, 2); // Return top 2 weak areas
   };
 
   const getScoreColor = (percentage: number) => {
@@ -370,11 +379,11 @@ function ResultsPageContent() {
   return (
     <>
       <DashboardHeader title="My Results" />
-      
-      <div className="flex-1 overflow-auto px-6 py-8">
+
+      <div className="flex-1 overflow-auto px-3 sm:px-6 py-4 sm:py-8">
         {/* Performance Overview */}
         {stats && (
-          <div className="grid md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
             <Card>
               <CardHeader className="pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground">Average Score</CardTitle>
@@ -448,11 +457,11 @@ function ResultsPageContent() {
         )}
 
         {/* Results Tabs */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full max-w-md grid-cols-3">
-            <TabsTrigger value="all">All Results</TabsTrigger>
-            <TabsTrigger value="recent">Recent</TabsTrigger>
-            <TabsTrigger value="analytics">Analytics</TabsTrigger>
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4 sm:space-y-6">
+          <TabsList className="grid w-full max-w-full sm:max-w-md grid-cols-3">
+            <TabsTrigger value="all" className="text-xs sm:text-sm">All Results</TabsTrigger>
+            <TabsTrigger value="recent" className="text-xs sm:text-sm">Recent</TabsTrigger>
+            <TabsTrigger value="analytics" className="text-xs sm:text-sm">Analytics</TabsTrigger>
           </TabsList>
 
           <TabsContent value="all" className="space-y-4">
@@ -462,16 +471,16 @@ function ResultsPageContent() {
                 <CardDescription>Your complete test history and performance</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto -mx-4 sm:mx-0">
                   <Table>
                     <TableHeader>
                       <TableRow>
-                        <TableHead>Test Name</TableHead>
-                        <TableHead>Date</TableHead>
-                        <TableHead>Score</TableHead>
-                        <TableHead>Performance</TableHead>
-                        <TableHead>Duration</TableHead>
-                        <TableHead>Actions</TableHead>
+                        <TableHead className="min-w-[200px]">Test Name</TableHead>
+                        <TableHead className="min-w-[140px]">Date</TableHead>
+                        <TableHead className="min-w-[100px]">Score</TableHead>
+                        <TableHead className="min-w-[120px]">Performance</TableHead>
+                        <TableHead className="min-w-[80px]">Duration</TableHead>
+                        <TableHead className="min-w-[100px]">Actions</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -560,48 +569,50 @@ function ResultsPageContent() {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-4">
                       <div>
-                        <p className="text-sm text-muted-foreground mb-1">Score</p>
-                        <p className={`text-2xl font-bold ${getScoreColor(result.percentage)}`}>
+                        <p className="text-xs sm:text-sm text-muted-foreground mb-1">Score</p>
+                        <p className={`text-xl sm:text-2xl font-bold ${getScoreColor(result.percentage)}`}>
                           {result.percentage}%
                         </p>
                       </div>
                       <div>
-                        <p className="text-sm text-muted-foreground mb-1">Correct</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground mb-1">Correct</p>
                         <div className="flex items-center">
-                          <CheckCircle2 className="h-4 w-4 text-green-500 mr-1" />
-                          <span className="font-medium">{result.correct_answers}</span>
+                          <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 text-green-500 mr-1" />
+                          <span className="text-sm sm:text-base font-medium">{result.correct_answers}</span>
                         </div>
                       </div>
                       <div>
-                        <p className="text-sm text-muted-foreground mb-1">Wrong</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground mb-1">Wrong</p>
                         <div className="flex items-center">
-                          <XCircle className="h-4 w-4 text-red-500 mr-1" />
-                          <span className="font-medium">{result.wrong_answers}</span>
+                          <XCircle className="h-3 w-3 sm:h-4 sm:w-4 text-red-500 mr-1" />
+                          <span className="text-sm sm:text-base font-medium">{result.wrong_answers}</span>
                         </div>
                       </div>
                       <div>
-                        <p className="text-sm text-muted-foreground mb-1">Skipped</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground mb-1">Skipped</p>
                         <div className="flex items-center">
-                          <AlertCircle className="h-4 w-4 text-yellow-500 mr-1" />
-                          <span className="font-medium">{result.unanswered}</span>
+                          <AlertCircle className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-500 mr-1" />
+                          <span className="text-sm sm:text-base font-medium">{result.unanswered}</span>
                         </div>
                       </div>
                     </div>
                     <Progress value={result.percentage} className="h-2" />
-                    <div className="flex justify-between mt-4">
-                      <Button 
-                        variant="outline" 
+                    <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-0 mt-4">
+                      <Button
+                        variant="outline"
                         size="sm"
+                        className="w-full sm:w-auto"
                         onClick={() => handleViewDetails(result)}
                       >
                         <Eye className="mr-2 h-4 w-4" />
                         View Details
                       </Button>
-                      <Button 
-                        variant="outline" 
+                      <Button
+                        variant="outline"
                         size="sm"
+                        className="w-full sm:w-auto"
                         onClick={() => handleDownloadReport(result)}
                       >
                         <Download className="mr-2 h-4 w-4" />
@@ -625,11 +636,11 @@ function ResultsPageContent() {
               improvementTrend={analytics.improvementTrend}
             />
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>Performance Trend</CardTitle>
-                  <CardDescription>Your score progression over time</CardDescription>
+                  <CardTitle className="text-base sm:text-lg">Performance Trend</CardTitle>
+                  <CardDescription className="text-xs sm:text-sm">Your score progression over time</CardDescription>
                 </CardHeader>
                 <CardContent>
                   {analytics.trendData.length > 0 ? (
@@ -647,8 +658,8 @@ function ResultsPageContent() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Answer Distribution</CardTitle>
-                  <CardDescription>Overall breakdown of your answers across all tests</CardDescription>
+                  <CardTitle className="text-base sm:text-lg">Answer Distribution</CardTitle>
+                  <CardDescription className="text-xs sm:text-sm">Overall breakdown of your answers across all tests</CardDescription>
                 </CardHeader>
                 <CardContent>
                   {analytics.totalTests > 0 ? (
@@ -672,24 +683,24 @@ function ResultsPageContent() {
                   <CardDescription>Based on your recent performance</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                     <div>
-                      <h4 className="font-medium mb-2 flex items-center">
+                      <h4 className="text-sm sm:text-base font-medium mb-2 flex items-center">
                         <Trophy className="h-4 w-4 mr-2 text-green-500" />
                         Strengths
                       </h4>
-                      <ul className="space-y-1 text-sm">
+                      <ul className="space-y-1 text-xs sm:text-sm">
                         <li>• Best performance in {stats.best_category}</li>
                         <li>• Consistent improvement trend</li>
                         <li>• Good time management skills</li>
                       </ul>
                     </div>
                     <div>
-                      <h4 className="font-medium mb-2 flex items-center">
+                      <h4 className="text-sm sm:text-base font-medium mb-2 flex items-center">
                         <Target className="h-4 w-4 mr-2 text-orange-500" />
                         Areas for Improvement
                       </h4>
-                      <ul className="space-y-1 text-sm">
+                      <ul className="space-y-1 text-xs sm:text-sm">
                         {stats.weak_areas.map((area, index) => (
                           <li key={index}>• Focus more on {area}</li>
                         ))}
@@ -706,18 +717,18 @@ function ResultsPageContent() {
 
       {/* Details Dialog */}
       <Dialog open={showDetailsDialog} onOpenChange={setShowDetailsDialog}>
-        <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+        <DialogContent className="max-w-full sm:max-w-2xl lg:max-w-4xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle>Test Result Details</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="text-lg sm:text-xl">Test Result Details</DialogTitle>
+            <DialogDescription className="text-xs sm:text-sm">
               Detailed breakdown of your test performance
             </DialogDescription>
           </DialogHeader>
-          
+
           {selectedResult && (
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {/* Test Info */}
-              <div className="grid grid-cols-2 gap-4 p-4 bg-muted/50 rounded-lg">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 p-3 sm:p-4 bg-muted/50 rounded-lg">
                 <div>
                   <p className="text-sm text-muted-foreground mb-1">Test Name</p>
                   <p className="font-medium">{selectedResult.test_name}</p>
@@ -737,7 +748,7 @@ function ResultsPageContent() {
               </div>
 
               {/* Score Overview */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                 <Card>
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm">Overall Score</CardTitle>
@@ -796,10 +807,10 @@ function ResultsPageContent() {
               </div>
 
               {/* Performance Analysis */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold">Performance Analysis</h3>
-                
-                <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-3 sm:space-y-4">
+                <h3 className="text-base sm:text-lg font-semibold">Performance Analysis</h3>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                   <Card>
                     <CardHeader>
                       <CardTitle className="text-base">Answer Distribution</CardTitle>
@@ -902,15 +913,16 @@ function ResultsPageContent() {
               </Card>
 
               {/* Action Buttons */}
-              <div className="flex justify-end gap-2 pt-4">
-                <Button 
-                  variant="outline" 
+              <div className="flex flex-col sm:flex-row justify-end gap-2 pt-4">
+                <Button
+                  variant="outline"
+                  className="w-full sm:w-auto"
                   onClick={() => handleDownloadReport(selectedResult)}
                 >
                   <Download className="mr-2 h-4 w-4" />
                   Download Report
                 </Button>
-                <Button onClick={() => setShowDetailsDialog(false)}>
+                <Button className="w-full sm:w-auto" onClick={() => setShowDetailsDialog(false)}>
                   Close
                 </Button>
               </div>
