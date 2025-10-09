@@ -25,7 +25,7 @@ export default function StudyMaterialsPage() {
     <div className="flex-1 flex flex-col min-h-screen">
       <DashboardHeader title="Study Materials" />
       
-      <div className="flex-1 overflow-auto px-6 py-8">
+      <div className="flex-1 overflow-auto px-3 sm:px-6 py-4 sm:py-8">
         <StudyMaterialsLibrary />
       </div>
     </div>

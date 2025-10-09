@@ -82,39 +82,41 @@ export default function SettingsPage() {
   return (
     <>
       <DashboardHeader title="Settings" />
-      <div className="flex-1 overflow-auto px-6 py-8">
-        <div className="max-w-4xl mx-auto space-y-6">
+      <div className="flex-1 overflow-auto px-3 sm:px-6 py-4 sm:py-8">
+        <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
           <div>
-            <h2 className="text-2xl font-bold tracking-tight">Account Settings</h2>
-            <p className="text-muted-foreground">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Account Settings</h2>
+            <p className="text-sm sm:text-base text-muted-foreground">
               Manage your account preferences and exam settings.
             </p>
           </div>
 
-          <Tabs defaultValue="appearance" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="appearance">Appearance</TabsTrigger>
-              <TabsTrigger value="exam">Exam Settings</TabsTrigger>
-              <TabsTrigger value="notifications">Notifications</TabsTrigger>
-              <TabsTrigger value="privacy">Privacy</TabsTrigger>
-            </TabsList>
+          <Tabs defaultValue="appearance" className="space-y-4 sm:space-y-6">
+            <div className="overflow-x-auto">
+              <TabsList className="grid w-full grid-cols-4 min-w-max">
+                <TabsTrigger value="appearance" className="text-xs sm:text-sm">Appearance</TabsTrigger>
+                <TabsTrigger value="exam" className="text-xs sm:text-sm">Exam Settings</TabsTrigger>
+                <TabsTrigger value="notifications" className="text-xs sm:text-sm">Notifications</TabsTrigger>
+                <TabsTrigger value="privacy" className="text-xs sm:text-sm">Privacy</TabsTrigger>
+              </TabsList>
+            </div>
 
             {/* Appearance Settings */}
-            <TabsContent value="appearance" className="space-y-6">
+            <TabsContent value="appearance" className="space-y-4 sm:space-y-6">
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Palette className="h-4 w-4" />
+                  <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                    <Palette className="h-4 w-4 sm:h-5 sm:w-5" />
                     Appearance & Display
                   </CardTitle>
-                  <CardDescription>
+                  <CardDescription className="text-xs sm:text-sm">
                     Customize how the application looks and feels.
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
+                <CardContent className="space-y-4 sm:space-y-6">
                   {/* Theme Selection */}
                   <div className="space-y-2">
-                    <Label htmlFor="theme">Theme</Label>
+                    <Label htmlFor="theme" className="text-sm sm:text-base">Theme</Label>
                     <Select
                       value={preferences.theme}
                       onValueChange={(value: 'light' | 'dark' | 'system') => 
@@ -151,7 +153,7 @@ export default function SettingsPage() {
 
                   {/* Font Size */}
                   <div className="space-y-2">
-                    <Label htmlFor="fontSize">Font Size</Label>
+                    <Label htmlFor="fontSize" className="text-sm sm:text-base">Font Size</Label>
                     <Select
                       value={preferences.fontSize}
                       onValueChange={(value: 'small' | 'medium' | 'large') => 
@@ -173,7 +175,7 @@ export default function SettingsPage() {
 
                   {/* Language */}
                   <div className="space-y-2">
-                    <Label htmlFor="language">Language</Label>
+                    <Label htmlFor="language" className="text-sm sm:text-base">Language</Label>
                     <Select
                       value={preferences.language}
                       onValueChange={(value) => updatePreference('language', value)}
@@ -200,9 +202,9 @@ export default function SettingsPage() {
 
                   {/* Animations */}
                   <div className="flex items-center justify-between">
-                    <div className="space-y-0.5">
-                      <Label>Enable Animations</Label>
-                      <p className="text-sm text-muted-foreground">
+                    <div className="space-y-0.5 flex-1">
+                      <Label className="text-sm sm:text-base">Enable Animations</Label>
+                      <p className="text-xs sm:text-sm text-muted-foreground">
                         Show smooth transitions and animations
                       </p>
                     </div>
@@ -216,21 +218,21 @@ export default function SettingsPage() {
             </TabsContent>
 
             {/* Exam Settings */}
-            <TabsContent value="exam" className="space-y-6">
+            <TabsContent value="exam" className="space-y-4 sm:space-y-6">
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Clock className="h-4 w-4" />
+                  <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                    <Clock className="h-4 w-4 sm:h-5 sm:w-5" />
                     Exam Preferences
                   </CardTitle>
-                  <CardDescription>
+                  <CardDescription className="text-xs sm:text-sm">
                     Configure your exam taking experience.
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
+                <CardContent className="space-y-4 sm:space-y-6">
                   {/* Default Exam Duration */}
                   <div className="space-y-2">
-                    <Label htmlFor="examDuration">Default Exam Duration (minutes)</Label>
+                    <Label htmlFor="examDuration" className="text-sm sm:text-base">Default Exam Duration (minutes)</Label>
                     <Select
                       value={preferences.defaultExamDuration.toString()}
                       onValueChange={(value) => updatePreference('defaultExamDuration', parseInt(value))}
@@ -251,9 +253,9 @@ export default function SettingsPage() {
 
                   {/* Auto Save */}
                   <div className="flex items-center justify-between">
-                    <div className="space-y-0.5">
-                      <Label>Auto-save Progress</Label>
-                      <p className="text-sm text-muted-foreground">
+                    <div className="space-y-0.5 flex-1">
+                      <Label className="text-sm sm:text-base">Auto-save Progress</Label>
+                      <p className="text-xs sm:text-sm text-muted-foreground">
                         Automatically save your answers while taking exams
                       </p>
                     </div>
@@ -267,9 +269,9 @@ export default function SettingsPage() {
 
                   {/* Sound Effects */}
                   <div className="flex items-center justify-between">
-                    <div className="space-y-0.5">
-                      <Label>Sound Effects</Label>
-                      <p className="text-sm text-muted-foreground">
+                    <div className="space-y-0.5 flex-1">
+                      <Label className="text-sm sm:text-base">Sound Effects</Label>
+                      <p className="text-xs sm:text-sm text-muted-foreground">
                         Play sounds for timer warnings and submission
                       </p>
                     </div>
@@ -283,7 +285,7 @@ export default function SettingsPage() {
 
                   {/* Timezone */}
                   <div className="space-y-2">
-                    <Label htmlFor="timezone">Timezone</Label>
+                    <Label htmlFor="timezone" className="text-sm sm:text-base">Timezone</Label>
                     <Select
                       value={preferences.timezone}
                       onValueChange={(value) => updatePreference('timezone', value)}
@@ -304,23 +306,23 @@ export default function SettingsPage() {
             </TabsContent>
 
             {/* Notifications */}
-            <TabsContent value="notifications" className="space-y-6">
+            <TabsContent value="notifications" className="space-y-4 sm:space-y-6">
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Bell className="h-4 w-4" />
+                  <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                    <Bell className="h-4 w-4 sm:h-5 sm:w-5" />
                     Notifications
                   </CardTitle>
-                  <CardDescription>
+                  <CardDescription className="text-xs sm:text-sm">
                     Manage how and when you receive notifications.
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
+                <CardContent className="space-y-4 sm:space-y-6">
                   {/* Exam Reminders */}
                   <div className="flex items-center justify-between">
-                    <div className="space-y-0.5">
-                      <Label>Exam Reminders</Label>
-                      <p className="text-sm text-muted-foreground">
+                    <div className="space-y-0.5 flex-1">
+                      <Label className="text-sm sm:text-base">Exam Reminders</Label>
+                      <p className="text-xs sm:text-sm text-muted-foreground">
                         Get notified about upcoming scheduled exams
                       </p>
                     </div>
@@ -334,9 +336,9 @@ export default function SettingsPage() {
 
                   {/* Email Notifications */}
                   <div className="flex items-center justify-between">
-                    <div className="space-y-0.5">
-                      <Label>Email Results</Label>
-                      <p className="text-sm text-muted-foreground">
+                    <div className="space-y-0.5 flex-1">
+                      <Label className="text-sm sm:text-base">Email Results</Label>
+                      <p className="text-xs sm:text-sm text-muted-foreground">
                         Receive exam results via email
                       </p>
                     </div>
@@ -350,9 +352,9 @@ export default function SettingsPage() {
 
                   {/* Weekly Reports */}
                   <div className="flex items-center justify-between">
-                    <div className="space-y-0.5">
-                      <Label>Weekly Progress Reports</Label>
-                      <p className="text-sm text-muted-foreground">
+                    <div className="space-y-0.5 flex-1">
+                      <Label className="text-sm sm:text-base">Weekly Progress Reports</Label>
+                      <p className="text-xs sm:text-sm text-muted-foreground">
                         Get weekly summary of your performance
                       </p>
                     </div>
@@ -366,52 +368,52 @@ export default function SettingsPage() {
             </TabsContent>
 
             {/* Privacy Settings */}
-            <TabsContent value="privacy" className="space-y-6">
+            <TabsContent value="privacy" className="space-y-4 sm:space-y-6">
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Shield className="h-4 w-4" />
+                  <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                    <Shield className="h-4 w-4 sm:h-5 sm:w-5" />
                     Privacy & Security
                   </CardTitle>
-                  <CardDescription>
+                  <CardDescription className="text-xs sm:text-sm">
                     Control your privacy and data sharing preferences.
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="space-y-4">
-                    <div className="p-4 border rounded-lg">
-                      <h4 className="font-medium mb-2">Data Collection</h4>
-                      <p className="text-sm text-muted-foreground mb-3">
-                        We collect anonymized performance data to improve our platform. 
+                <CardContent className="space-y-4 sm:space-y-6">
+                  <div className="space-y-3 sm:space-y-4">
+                    <div className="p-3 sm:p-4 border rounded-lg">
+                      <h4 className="font-medium mb-2 text-sm sm:text-base">Data Collection</h4>
+                      <p className="text-xs sm:text-sm text-muted-foreground mb-3">
+                        We collect anonymized performance data to improve our platform.
                         Your personal information is never shared with third parties.
                       </p>
-                      <Button variant="outline" size="sm">
+                      <Button variant="outline" size="sm" className="text-xs sm:text-sm w-full sm:w-auto">
                         View Privacy Policy
                       </Button>
                     </div>
 
-                    <div className="p-4 border rounded-lg">
-                      <h4 className="font-medium mb-2">Account Security</h4>
-                      <p className="text-sm text-muted-foreground mb-3">
-                        Keep your account secure by using a strong password and enabling 
+                    <div className="p-3 sm:p-4 border rounded-lg">
+                      <h4 className="font-medium mb-2 text-sm sm:text-base">Account Security</h4>
+                      <p className="text-xs sm:text-sm text-muted-foreground mb-3">
+                        Keep your account secure by using a strong password and enabling
                         two-factor authentication.
                       </p>
-                      <div className="flex gap-2">
-                        <Button variant="outline" size="sm">
+                      <div className="flex flex-col sm:flex-row gap-2">
+                        <Button variant="outline" size="sm" className="text-xs sm:text-sm w-full sm:w-auto">
                           Change Password
                         </Button>
-                        <Button variant="outline" size="sm">
+                        <Button variant="outline" size="sm" className="text-xs sm:text-sm w-full sm:w-auto">
                           Enable 2FA
                         </Button>
                       </div>
                     </div>
 
-                    <div className="p-4 border rounded-lg">
-                      <h4 className="font-medium mb-2">Export Data</h4>
-                      <p className="text-sm text-muted-foreground mb-3">
+                    <div className="p-3 sm:p-4 border rounded-lg">
+                      <h4 className="font-medium mb-2 text-sm sm:text-base">Export Data</h4>
+                      <p className="text-xs sm:text-sm text-muted-foreground mb-3">
                         Download a copy of your exam data and performance history.
                       </p>
-                      <Button variant="outline" size="sm">
+                      <Button variant="outline" size="sm" className="text-xs sm:text-sm w-full sm:w-auto">
                         Download My Data
                       </Button>
                     </div>
@@ -422,11 +424,11 @@ export default function SettingsPage() {
           </Tabs>
 
           {/* Save Button */}
-          <div className="flex justify-end gap-4 pt-6 border-t">
-            <Button variant="outline" onClick={resetToDefaults}>
+          <div className="flex flex-col sm:flex-row justify-end gap-3 sm:gap-4 pt-4 sm:pt-6 border-t">
+            <Button variant="outline" onClick={resetToDefaults} className="w-full sm:w-auto text-sm">
               Reset to Defaults
             </Button>
-            <Button onClick={savePreferences} disabled={loading}>
+            <Button onClick={savePreferences} disabled={loading} className="w-full sm:w-auto text-sm">
               {loading ? 'Saving...' : 'Save Settings'}
             </Button>
           </div>

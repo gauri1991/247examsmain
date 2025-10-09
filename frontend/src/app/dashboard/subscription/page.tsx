@@ -118,12 +118,12 @@ export default function SubscriptionPage() {
     return (
       <div className="flex-1 flex flex-col min-h-screen">
         <DashboardHeader title="Subscription" />
-        <div className="flex-1 overflow-auto px-6 py-8">
-          <div className="space-y-6">
+        <div className="flex-1 overflow-auto px-3 sm:px-6 py-4 sm:py-8">
+          <div className="space-y-3 sm:space-y-4">
             {[...Array(3)].map((_, i) => (
               <Card key={i}>
-                <CardContent className="pt-6">
-                  <div className="animate-pulse space-y-4">
+                <CardContent className="pt-4 sm:pt-6">
+                  <div className="animate-pulse space-y-3 sm:space-y-4">
                     <div className="h-4 bg-gray-200 rounded w-3/4"></div>
                     <div className="h-32 bg-gray-200 rounded"></div>
                   </div>
@@ -142,7 +142,7 @@ export default function SubscriptionPage() {
     <div className="flex-1 flex flex-col min-h-screen">
       <DashboardHeader title="Subscription & Billing" />
       
-      <div className="flex-1 overflow-auto px-6 py-8">
+      <div className="flex-1 overflow-auto px-3 sm:px-6 py-4 sm:py-8">
         {currentView === 'checkout' && selectedPlan ? (
           <PaymentCheckout
             plan={selectedPlan}
@@ -154,42 +154,42 @@ export default function SubscriptionPage() {
         ) : (
           <>
             {/* Header Section */}
-            <div className="mb-8">
-              <h1 className="text-3xl font-bold mb-2 text-foreground">
+            <div className="mb-4 sm:mb-6">
+              <h1 className="text-2xl sm:text-3xl font-bold mb-2 text-foreground">
                 Subscription & Billing
               </h1>
-              <p className="text-muted-foreground">
+              <p className="text-sm sm:text-base text-muted-foreground">
                 Manage your subscription, billing details, and access premium features
               </p>
             </div>
 
             {/* Current Plan Status */}
             {subscription && (
-              <Card className="mb-8 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
-                <CardContent className="pt-6">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+              <Card className="mb-4 sm:mb-6 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
+                <CardContent className="pt-4 sm:pt-6">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div className="flex items-center gap-3 sm:gap-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                         {subscription.plan.id.includes('pro') ? (
-                          <Crown className="w-6 h-6 text-purple-600" />
+                          <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" />
                         ) : (
-                          <Star className="w-6 h-6 text-blue-600" />
+                          <Star className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
                         )}
                       </div>
                       <div>
-                        <h3 className="text-xl font-semibold">{subscription.plan.name} Plan</h3>
-                        <p className="text-muted-foreground">
-                          {subscription.status === 'active' ? 'Active' : subscription.status} • 
+                        <h3 className="text-lg sm:text-xl font-semibold">{subscription.plan.name} Plan</h3>
+                        <p className="text-xs sm:text-sm text-muted-foreground">
+                          {subscription.status === 'active' ? 'Active' : subscription.status} •
                           Renews on {new Date(subscription.currentPeriodEnd).toLocaleDateString()}
                         </p>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <div className="text-2xl font-bold">
+                    <div className="text-left sm:text-right w-full sm:w-auto">
+                      <div className="text-xl sm:text-2xl font-bold">
                         ₹{subscription.plan.price}/{subscription.plan.interval === 'yearly' ? 'year' : 'month'}
                       </div>
                       {subscription.plan.interval === 'yearly' && (
-                        <Badge className="bg-green-100 text-green-800 mt-1">
+                        <Badge className="bg-green-100 text-green-800 mt-1 text-xs">
                           Save 2 months free
                         </Badge>
                       )}
@@ -200,63 +200,65 @@ export default function SubscriptionPage() {
             )}
 
             <Tabs defaultValue="overview" className="w-full">
-              <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="overview">Overview</TabsTrigger>
-                <TabsTrigger value="plans">Plans & Pricing</TabsTrigger>
-                <TabsTrigger value="billing">Billing & Payment</TabsTrigger>
-              </TabsList>
+              <div className="overflow-x-auto">
+                <TabsList className="grid w-full grid-cols-3 min-w-max">
+                  <TabsTrigger value="overview" className="text-xs sm:text-sm">Overview</TabsTrigger>
+                  <TabsTrigger value="plans" className="text-xs sm:text-sm">Plans & Pricing</TabsTrigger>
+                  <TabsTrigger value="billing" className="text-xs sm:text-sm">Billing & Payment</TabsTrigger>
+                </TabsList>
+              </div>
 
-              <TabsContent value="overview" className="space-y-6 mt-6">
+              <TabsContent value="overview" className="space-y-4 sm:space-y-6 mt-4 sm:mt-6">
                 {/* Feature Access Overview */}
-                <div className="grid gap-6 md:grid-cols-2">
+                <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2">
                   <Card>
                     <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <Sparkles className="w-5 h-5 text-yellow-600" />
+                      <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                        <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-600" />
                         Feature Access
                       </CardTitle>
-                      <CardDescription>Your current plan includes these features</CardDescription>
+                      <CardDescription className="text-xs sm:text-sm">Your current plan includes these features</CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <div className="space-y-3">
-                        <div className="flex items-center justify-between">
+                      <div className="space-y-2 sm:space-y-3">
+                        <div className="flex items-center justify-between text-sm sm:text-base">
                           <span>Practice Tests</span>
                           <div className="flex items-center gap-2">
                             {canAccessFeature('unlimited_tests') ? (
                               <>
-                                <CheckCircle2 className="w-4 h-4 text-green-600" />
-                                <span className="text-green-600">Unlimited</span>
+                                <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-green-600" />
+                                <span className="text-green-600 text-xs sm:text-sm">Unlimited</span>
                               </>
                             ) : (
-                              <span>{getCurrentPlan()?.maxTests || 0} per month</span>
+                              <span className="text-xs sm:text-sm">{getCurrentPlan()?.maxTests || 0} per month</span>
                             )}
                           </div>
                         </div>
-                        
-                        <div className="flex items-center justify-between">
+
+                        <div className="flex items-center justify-between text-sm sm:text-base">
                           <span>Advanced Analytics</span>
                           {canAccessFeature('advanced_analytics') ? (
-                            <CheckCircle2 className="w-4 h-4 text-green-600" />
+                            <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-green-600" />
                           ) : (
-                            <Badge variant="outline">Upgrade for access</Badge>
+                            <Badge variant="outline" className="text-xs">Upgrade for access</Badge>
                           )}
                         </div>
-                        
-                        <div className="flex items-center justify-between">
+
+                        <div className="flex items-center justify-between text-sm sm:text-base">
                           <span>Video Lectures</span>
                           {canAccessFeature('video_lectures') ? (
-                            <CheckCircle2 className="w-4 h-4 text-green-600" />
+                            <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-green-600" />
                           ) : (
-                            <Badge variant="outline">Upgrade for access</Badge>
+                            <Badge variant="outline" className="text-xs">Upgrade for access</Badge>
                           )}
                         </div>
-                        
-                        <div className="flex items-center justify-between">
+
+                        <div className="flex items-center justify-between text-sm sm:text-base">
                           <span>Priority Support</span>
                           {canAccessFeature('priority_support') ? (
-                            <CheckCircle2 className="w-4 h-4 text-green-600" />
+                            <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-green-600" />
                           ) : (
-                            <Badge variant="outline">Upgrade for access</Badge>
+                            <Badge variant="outline" className="text-xs">Upgrade for access</Badge>
                           )}
                         </div>
                       </div>
@@ -267,14 +269,14 @@ export default function SubscriptionPage() {
                   {subscription && (
                     <Card>
                       <CardHeader>
-                        <CardTitle className="flex items-center gap-2">
-                          <Users className="w-5 h-5 text-blue-600" />
+                        <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                          <Users className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
                           Usage This Period
                         </CardTitle>
-                        <CardDescription>Your current usage and limits</CardDescription>
+                        <CardDescription className="text-xs sm:text-sm">Your current usage and limits</CardDescription>
                       </CardHeader>
                       <CardContent>
-                        <div className="space-y-4">
+                        <div className="space-y-3 sm:space-y-4">
                           <div>
                             <div className="flex justify-between text-sm mb-1">
                               <span>Practice Tests</span>
@@ -309,8 +311,8 @@ export default function SubscriptionPage() {
                           </div>
 
                           {isNearLimit('tests') && (
-                            <div className="p-3 bg-orange-50 border-l-4 border-orange-500 rounded">
-                              <p className="text-orange-800 text-sm font-medium">
+                            <div className="p-2 sm:p-3 bg-orange-50 border-l-4 border-orange-500 rounded">
+                              <p className="text-orange-800 text-xs sm:text-sm font-medium">
                                 You're approaching your test limit. Consider upgrading for unlimited access.
                               </p>
                             </div>
@@ -324,36 +326,36 @@ export default function SubscriptionPage() {
                 {/* Upgrade Promotion */}
                 {(!subscription || subscription.plan.id !== 'pro_yearly') && (
                   <Card className="bg-gradient-to-r from-purple-500 to-blue-600 text-white">
-                    <CardContent className="pt-6">
-                      <div className="flex items-center justify-between">
+                    <CardContent className="pt-4 sm:pt-6">
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                         <div>
-                          <h3 className="text-xl font-semibold mb-2">Unlock Premium Features</h3>
-                          <p className="opacity-90">
+                          <h3 className="text-lg sm:text-xl font-semibold mb-2">Unlock Premium Features</h3>
+                          <p className="opacity-90 text-sm sm:text-base">
                             Get unlimited tests, advanced analytics, video lectures, and priority support
                           </p>
-                          <div className="flex items-center gap-4 mt-4">
+                          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-3 sm:mt-4">
                             <div className="flex items-center gap-2">
-                              <CheckCircle2 className="w-4 h-4" />
-                              <span className="text-sm">Unlimited Tests</span>
+                              <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4" />
+                              <span className="text-xs sm:text-sm">Unlimited Tests</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <CheckCircle2 className="w-4 h-4" />
-                              <span className="text-sm">AI Analytics</span>
+                              <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4" />
+                              <span className="text-xs sm:text-sm">AI Analytics</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <CheckCircle2 className="w-4 h-4" />
-                              <span className="text-sm">Video Content</span>
+                              <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4" />
+                              <span className="text-xs sm:text-sm">Video Content</span>
                             </div>
                           </div>
                         </div>
-                        <div className="text-right">
-                          <Button 
+                        <div className="text-left sm:text-right w-full sm:w-auto">
+                          <Button
                             variant="secondary"
                             onClick={() => setCurrentView('plans')}
-                            className="text-purple-600 hover:text-purple-700"
+                            className="text-purple-600 hover:text-purple-700 w-full sm:w-auto"
                           >
                             View Plans
-                            <ArrowRight className="w-4 h-4 ml-2" />
+                            <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-2" />
                           </Button>
                         </div>
                       </div>
@@ -362,37 +364,37 @@ export default function SubscriptionPage() {
                 )}
 
                 {/* Quick Actions */}
-                <div className="grid gap-4 md:grid-cols-3">
-                  <Button 
-                    variant="outline" 
+                <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                  <Button
+                    variant="outline"
                     onClick={() => setCurrentView('plans')}
-                    className="h-16 flex flex-col gap-2"
+                    className="h-14 sm:h-16 flex flex-col gap-1 sm:gap-2"
                   >
-                    <Crown className="w-5 h-5" />
-                    <span>View Plans</span>
+                    <Crown className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <span className="text-xs sm:text-sm">View Plans</span>
                   </Button>
-                  
-                  <Button 
-                    variant="outline" 
+
+                  <Button
+                    variant="outline"
                     onClick={() => setCurrentView('billing')}
-                    className="h-16 flex flex-col gap-2"
+                    className="h-14 sm:h-16 flex flex-col gap-1 sm:gap-2"
                   >
-                    <CreditCard className="w-5 h-5" />
-                    <span>Billing Details</span>
+                    <CreditCard className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <span className="text-xs sm:text-sm">Billing Details</span>
                   </Button>
-                  
-                  <Button 
-                    variant="outline" 
+
+                  <Button
+                    variant="outline"
                     onClick={() => router.push('/dashboard/advanced-analytics')}
-                    className="h-16 flex flex-col gap-2"
+                    className="h-14 sm:h-16 flex flex-col gap-1 sm:gap-2"
                   >
-                    <Sparkles className="w-5 h-5" />
-                    <span>Analytics</span>
+                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <span className="text-xs sm:text-sm">Analytics</span>
                   </Button>
                 </div>
               </TabsContent>
 
-              <TabsContent value="plans" className="mt-6">
+              <TabsContent value="plans" className="mt-4 sm:mt-6">
                 <SubscriptionPlans
                   plans={plans}
                   currentSubscription={subscription}
@@ -401,7 +403,7 @@ export default function SubscriptionPage() {
                 />
               </TabsContent>
 
-              <TabsContent value="billing" className="mt-6">
+              <TabsContent value="billing" className="mt-4 sm:mt-6">
                 <BillingDashboard
                   subscription={subscription}
                   paymentMethods={paymentMethods}
