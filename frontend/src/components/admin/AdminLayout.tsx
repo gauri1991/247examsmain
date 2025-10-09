@@ -9,7 +9,8 @@ import {
   UsersIcon, 
   ChartBarIcon,
   Cog6ToothIcon,
-  ArrowRightOnRectangleIcon
+  ArrowRightOnRectangleIcon,
+  CubeTransparentIcon
 } from '@heroicons/react/24/outline'
 
 interface AdminLayoutProps {
@@ -24,6 +25,7 @@ const navigationItems = [
   { id: 'content-management', name: 'Content Management', icon: DocumentTextIcon },
   { id: 'users', name: 'User Management', icon: UsersIcon },
   { id: 'analytics', name: 'Analytics', icon: ChartBarIcon },
+  { id: 'feature-management', name: 'Feature Management', icon: CubeTransparentIcon },
 ]
 
 export default function AdminLayout({ children, activeSection, onSectionChange }: AdminLayoutProps) {

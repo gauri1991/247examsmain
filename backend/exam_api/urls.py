@@ -63,6 +63,7 @@ urlpatterns = [
     path('api/v1/exams/', include('exams.api_urls')),
     path('api/v1/questions/', include('questions.urls')),
     path('api/v1/analytics/', include('analytics.urls')),
+    path('api/v1/core/', include('core.urls')),
 ]
 
 # Serve media files during development

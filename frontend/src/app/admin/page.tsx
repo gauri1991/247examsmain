@@ -9,9 +9,10 @@ import ContentManagementSection from '@/components/admin/ContentManagementSectio
 import DashboardOverview from '@/components/admin/DashboardOverview'
 import UserManagementSection from '@/components/admin/UserManagementSection'
 import AnalyticsSection from '@/components/admin/AnalyticsSection'
+import FeatureManagementSection from '@/components/admin/FeatureManagementSection'
 import { useToast, ToastContainer, setGlobalToast } from '@/components/ui/toast'
 
-type AdminSection = 'dashboard' | 'content-upload' | 'content-management' | 'users' | 'analytics'
+type AdminSection = 'dashboard' | 'content-upload' | 'content-management' | 'users' | 'analytics' | 'feature-management'
 
 export default function AdminPage() {
   const { user, loading } = useAuth()
@@ -68,6 +69,8 @@ export default function AdminPage() {
         return <UserManagementSection />
       case 'analytics':
         return <AnalyticsSection />
+      case 'feature-management':
+        return <FeatureManagementSection />
       default:
         return <DashboardOverview />
     }
