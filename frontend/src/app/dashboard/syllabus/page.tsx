@@ -109,22 +109,22 @@ export default function SyllabusPage() {
   const availableExams = Object.keys(mockSyllabusData);
 
   return (
-    <div className="container mx-auto p-6 space-y-6">
+    <div className="container mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold flex items-center gap-2">
-            <BookOpen className="h-8 w-8" />
+          <h1 className="text-2xl sm:text-3xl font-bold flex items-center gap-2">
+            <BookOpen className="h-6 w-6 sm:h-8 sm:w-8" />
             Syllabus Management
           </h1>
-          <p className="text-muted-foreground mt-1">
+          <p className="text-sm sm:text-base text-muted-foreground mt-1">
             Track your study progress and manage exam syllabus
           </p>
         </div>
-        
-        <div className="flex items-center gap-4">
+
+        <div className="w-full sm:w-auto">
           <Select value={selectedExam} onValueChange={setSelectedExam}>
-            <SelectTrigger className="w-64">
+            <SelectTrigger className="w-full sm:w-64">
               <SelectValue placeholder="Select exam" />
             </SelectTrigger>
             <SelectContent>
@@ -142,11 +142,11 @@ export default function SyllabusPage() {
       </div>
 
       {syllabus && stats && (
-        <Tabs defaultValue="overview" className="space-y-6">
+        <Tabs defaultValue="overview" className="space-y-4 sm:space-y-6">
           <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="syllabus">Syllabus Tree</TabsTrigger>
-            <TabsTrigger value="progress">Progress Tracking</TabsTrigger>
+            <TabsTrigger value="overview" className="text-xs sm:text-sm">Overview</TabsTrigger>
+            <TabsTrigger value="syllabus" className="text-xs sm:text-sm">Syllabus</TabsTrigger>
+            <TabsTrigger value="progress" className="text-xs sm:text-sm">Progress</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-6">
@@ -163,7 +163,7 @@ export default function SyllabusPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="flex gap-4 mb-4">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-4">
                   <div className="flex-1">
                     <div className="relative">
                       <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -175,9 +175,9 @@ export default function SyllabusPage() {
                       />
                     </div>
                   </div>
-                  
+
                   <Select value={filterStatus} onValueChange={setFilterStatus}>
-                    <SelectTrigger className="w-48">
+                    <SelectTrigger className="w-full sm:w-48">
                       <Filter className="h-4 w-4 mr-2" />
                       <SelectValue />
                     </SelectTrigger>
@@ -192,22 +192,22 @@ export default function SyllabusPage() {
                 </div>
 
                 {/* Quick Stats */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                  <div className="text-center p-3 bg-muted rounded-lg">
-                    <div className="text-2xl font-bold text-green-600">{stats.completedTopics}</div>
-                    <div className="text-sm text-muted-foreground">Completed</div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
+                  <div className="text-center p-2 sm:p-3 bg-muted rounded-lg">
+                    <div className="text-xl sm:text-2xl font-bold text-green-600">{stats.completedTopics}</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">Completed</div>
                   </div>
-                  <div className="text-center p-3 bg-muted rounded-lg">
-                    <div className="text-2xl font-bold text-blue-600">{stats.inProgressTopics}</div>
-                    <div className="text-sm text-muted-foreground">In Progress</div>
+                  <div className="text-center p-2 sm:p-3 bg-muted rounded-lg">
+                    <div className="text-xl sm:text-2xl font-bold text-blue-600">{stats.inProgressTopics}</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">In Progress</div>
                   </div>
-                  <div className="text-center p-3 bg-muted rounded-lg">
-                    <div className="text-2xl font-bold text-gray-600">{stats.notStartedTopics}</div>
-                    <div className="text-sm text-muted-foreground">Not Started</div>
+                  <div className="text-center p-2 sm:p-3 bg-muted rounded-lg">
+                    <div className="text-xl sm:text-2xl font-bold text-gray-600">{stats.notStartedTopics}</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">Not Started</div>
                   </div>
-                  <div className="text-center p-3 bg-muted rounded-lg">
-                    <div className="text-2xl font-bold text-purple-600">{Math.round(stats.overallProgress)}%</div>
-                    <div className="text-sm text-muted-foreground">Overall Progress</div>
+                  <div className="text-center p-2 sm:p-3 bg-muted rounded-lg">
+                    <div className="text-xl sm:text-2xl font-bold text-purple-600">{Math.round(stats.overallProgress)}%</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">Overall</div>
                   </div>
                 </div>
               </CardContent>
@@ -221,29 +221,29 @@ export default function SyllabusPage() {
             />
           </TabsContent>
 
-          <TabsContent value="progress" className="space-y-6">
+          <TabsContent value="progress" className="space-y-4 sm:space-y-6">
             {/* Progress Summary */}
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <TrendingUp className="h-5 w-5 text-blue-600" />
+                  <CardTitle className="text-base sm:text-lg flex items-center gap-2">
+                    <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
                     Study Progress Timeline
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm">This Week</span>
-                      <Badge variant="outline">12h studied</Badge>
+                      <span className="text-xs sm:text-sm">This Week</span>
+                      <Badge variant="outline" className="text-xs">12h studied</Badge>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm">This Month</span>
-                      <Badge variant="outline">45h studied</Badge>
+                      <span className="text-xs sm:text-sm">This Month</span>
+                      <Badge variant="outline" className="text-xs">45h studied</Badge>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm">Total Time</span>
-                      <Badge>{Math.floor(stats.totalTimeSpent / 60)}h {stats.totalTimeSpent % 60}m</Badge>
+                      <span className="text-xs sm:text-sm">Total Time</span>
+                      <Badge className="text-xs">{Math.floor(stats.totalTimeSpent / 60)}h {stats.totalTimeSpent % 60}m</Badge>
                     </div>
                   </div>
                 </CardContent>
@@ -251,24 +251,24 @@ export default function SyllabusPage() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Target className="h-5 w-5 text-orange-600" />
+                  <CardTitle className="text-base sm:text-lg flex items-center gap-2">
+                    <Target className="h-4 w-4 sm:h-5 sm:w-5 text-orange-600" />
                     Study Goals
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm">Daily Goal</span>
-                      <Badge variant="outline">2h / 3h</Badge>
+                      <span className="text-xs sm:text-sm">Daily Goal</span>
+                      <Badge variant="outline" className="text-xs">2h / 3h</Badge>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm">Weekly Goal</span>
-                      <Badge variant="outline">12h / 20h</Badge>
+                      <span className="text-xs sm:text-sm">Weekly Goal</span>
+                      <Badge variant="outline" className="text-xs">12h / 20h</Badge>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm">Monthly Goal</span>
-                      <Badge>45h / 80h</Badge>
+                      <span className="text-xs sm:text-sm">Monthly Goal</span>
+                      <Badge className="text-xs">45h / 80h</Badge>
                     </div>
                   </div>
                 </CardContent>
@@ -278,36 +278,36 @@ export default function SyllabusPage() {
             {/* Recent Activity */}
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Calendar className="h-5 w-5" />
+                <CardTitle className="text-base sm:text-lg flex items-center gap-2">
+                  <Calendar className="h-4 w-4 sm:h-5 sm:w-5" />
                   Recent Study Activity
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   {userProgress
                     .filter(p => p.status === 'in_progress' || p.status === 'completed')
                     .slice(0, 5)
                     .map(progress => {
                       const item = syllabus.syllabus.find(s => s.id === progress.syllabusItemId);
                       if (!item) return null;
-                      
+
                       return (
-                        <div key={progress.syllabusItemId} className="flex items-center justify-between p-3 bg-muted rounded-lg">
-                          <div className="flex items-center gap-3">
+                        <div key={progress.syllabusItemId} className="flex items-center justify-between gap-2 p-2 sm:p-3 bg-muted rounded-lg">
+                          <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
                             {progress.status === 'completed' ? (
-                              <CheckCircle2 className="h-4 w-4 text-green-600" />
+                              <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-green-600" />
                             ) : (
-                              <PlayCircle className="h-4 w-4 text-blue-600" />
+                              <PlayCircle className="h-4 w-4 flex-shrink-0 text-blue-600" />
                             )}
-                            <div>
-                              <div className="font-medium">{item.title}</div>
-                              <div className="text-sm text-muted-foreground">
+                            <div className="min-w-0 flex-1">
+                              <div className="font-medium text-sm sm:text-base truncate">{item.title}</div>
+                              <div className="text-xs sm:text-sm text-muted-foreground">
                                 {Math.floor(progress.timeSpent / 60)}h {progress.timeSpent % 60}m studied
                               </div>
                             </div>
                           </div>
-                          <Badge variant={progress.status === 'completed' ? 'default' : 'secondary'}>
+                          <Badge variant={progress.status === 'completed' ? 'default' : 'secondary'} className="text-xs flex-shrink-0">
                             {progress.progressPercentage}%
                           </Badge>
                         </div>
