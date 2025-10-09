@@ -213,11 +213,11 @@ def recent_activity(request):
         # Get exam and test details
         test = attempt.test
         exam = test.exam if test else None
-        
+
         activity = {
             'id': attempt.id,
             'title': test.title if test else 'Unknown Test',
-            'subtitle': exam.title if exam else 'General Knowledge',
+            'subtitle': exam.name if exam else 'General Knowledge',
             'score': round(attempt.percentage) if attempt.percentage else 0,
             'timestamp': timestamp
         }
