@@ -427,21 +427,21 @@ export default function TestAttemptPage() {
       )}
 
       {/* Secure Test Header with Timer Only */}
-      <div className="bg-white border-b border-gray-200 px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-6">
-            <h1 className="text-xl font-semibold text-gray-900">
+      <div className="bg-white border-b border-gray-200 px-3 sm:px-6 py-3 sm:py-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 w-full sm:w-auto">
+            <h1 className="text-lg sm:text-xl font-semibold text-gray-900 truncate">
               {attempt?.test.title}
             </h1>
-            <div className="text-sm text-gray-600">
+            <div className="text-xs sm:text-sm text-gray-600">
               Question {currentQuestionIndex + 1} of {questions.length}
             </div>
           </div>
-          
-          <div className="flex items-center space-x-6">
+
+          <div className="flex items-center space-x-3 sm:space-x-6 w-full sm:w-auto justify-between sm:justify-end">
             {/* Timer Display */}
             <div className="flex items-center space-x-2">
-              <div className="text-lg font-mono font-bold text-red-600">
+              <div className="text-base sm:text-lg font-mono font-bold text-red-600">
                 {loading ? (
                   "--:--:--"
                 ) : timeRemaining >= 0 ? (
@@ -454,15 +454,15 @@ export default function TestAttemptPage() {
                   "00:00:00"
                 )}
               </div>
-              <span className="text-sm text-gray-500">Time Left</span>
+              <span className="text-xs sm:text-sm text-gray-500 hidden sm:inline">Time Left</span>
             </div>
-            
+
             {/* Submit Button */}
             <button
               onClick={() => setShowSubmitModal(true)}
-              className="px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 font-medium"
+              className="px-3 sm:px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 font-medium text-sm sm:text-base"
             >
-              Submit Test
+              Submit
             </button>
           </div>
         </div>
@@ -471,10 +471,10 @@ export default function TestAttemptPage() {
       {/* Main Test Interface - Fullscreen Layout */}
       <div className="h-[calc(100vh-160px)] flex relative">
         {/* Main Content Area - Split into Question and Answer Panels */}
-        <div className="flex-1 flex overflow-hidden">
+        <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
           {/* Question Panel - Left Side */}
-          <div className="w-1/2 border-r border-gray-200 overflow-y-auto bg-white">
-            <div className="p-6">
+          <div className="w-full lg:w-1/2 lg:border-r border-gray-200 overflow-y-auto bg-white">
+            <div className="p-4 sm:p-6">
               {/* Question Header */}
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-4">
@@ -508,8 +508,8 @@ export default function TestAttemptPage() {
           </div>
 
           {/* Answer Panel - Right Side */}
-          <div className="w-1/2 overflow-y-auto bg-gray-50">
-            <div className="p-6">
+          <div className="w-full lg:w-1/2 overflow-y-auto bg-gray-50 border-t lg:border-t-0">
+            <div className="p-4 sm:p-6">
               {/* Answer Header */}
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold text-gray-900">Your Answer</h3>
@@ -642,8 +642,8 @@ export default function TestAttemptPage() {
         {/* Collapse Toggle Button */}
         <button
           onClick={() => setShowQuestionNav(!showQuestionNav)}
-          className={`absolute top-4 z-10 bg-white border border-gray-300 rounded-l-lg p-2 
-                     hover:bg-gray-50 transition-all duration-300 shadow-sm ${
+          className={`absolute top-4 z-10 bg-white border border-gray-300 rounded-l-lg p-2
+                     hover:bg-gray-50 transition-all duration-300 shadow-sm lg:block hidden ${
             showQuestionNav ? 'right-80' : 'right-0'
           }`}
           title={showQuestionNav ? 'Hide question navigation' : 'Show question navigation'}
@@ -656,7 +656,7 @@ export default function TestAttemptPage() {
         </button>
 
         {/* Question Navigation Sidebar - Right Side */}
-        <div className={`bg-gray-50 border-l border-gray-200 overflow-y-auto transition-all duration-300 ${
+        <div className={`bg-gray-50 border-l border-gray-200 overflow-y-auto transition-all duration-300 hidden lg:block ${
           showQuestionNav ? 'w-80' : 'w-0'
         }`}>
           {showQuestionNav && (
@@ -685,8 +685,8 @@ export default function TestAttemptPage() {
               </div>
             </div>
 
-            {/* Question Grid - 5 columns responsive */}
-            <div className="grid grid-cols-5 gap-2">
+            {/* Question Grid - Responsive columns */}
+            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2">
               {questions.map((question, index) => {
                 const state = getQuestionState(index);
                 const isAnswered = answers[question.question.id];
@@ -734,21 +734,21 @@ export default function TestAttemptPage() {
       </div>
 
       {/* Bottom Navigation Controls */}
-      <div className="h-20 bg-white border-t border-gray-200 px-6 flex items-center justify-between">
+      <div className="h-auto sm:h-20 bg-white border-t border-gray-200 px-3 sm:px-6 py-3 sm:py-0 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0">
         <button
           onClick={previousQuestion}
           disabled={currentQuestionIndex === 0}
-          className="flex items-center px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium"
+          className="flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium text-sm sm:text-base w-full sm:w-auto justify-center"
         >
-          <ChevronLeft className="w-5 h-5 mr-2" />
+          <ChevronLeft className="w-4 sm:w-5 h-4 sm:h-5 mr-1 sm:mr-2" />
           Previous
         </button>
 
-        <div className="text-center">
-          <div className="text-lg font-semibold text-gray-900">
+        <div className="text-center order-first sm:order-none w-full sm:w-auto">
+          <div className="text-base sm:text-lg font-semibold text-gray-900">
             Question {currentQuestionIndex + 1} of {questions.length}
           </div>
-          <div className="text-sm text-gray-500">
+          <div className="text-xs sm:text-sm text-gray-500">
             {saving ? 'Saving...' : 'Auto-saved'}
           </div>
         </div>
@@ -756,10 +756,10 @@ export default function TestAttemptPage() {
         <button
           onClick={saveAndNext}
           disabled={currentQuestionIndex === questions.length - 1}
-          className="flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium"
+          className="flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium text-sm sm:text-base w-full sm:w-auto justify-center"
         >
           {currentQuestionIndex === questions.length - 1 ? 'Finish' : 'Save & Next'}
-          <ChevronRight className="w-5 h-5 ml-2" />
+          <ChevronRight className="w-4 sm:w-5 h-4 sm:h-5 ml-1 sm:ml-2" />
         </button>
       </div>
 
