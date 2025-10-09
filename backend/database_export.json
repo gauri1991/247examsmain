@@ -1,5 +1,2562 @@
 [
 {
+  "model": "users.user",
+  "pk": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$jLr4LiSSYAAM02BQqXqfgV$hUQnwvgTZNlf2rKAVMC9F+SqoAPZsMulrPmQUTx7UQY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "teacher1",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-08-25T14:05:50.050Z",
+    "email": "teacher@test.com",
+    "phone": null,
+    "role": "teacher",
+    "first_name": "Test",
+    "last_name": "Teacher",
+    "is_verified": false,
+    "subscription_type": "free",
+    "subscription_start": null,
+    "subscription_end": null,
+    "is_active_subscriber": false,
+    "created_at": "2025-08-25T14:05:50.854Z",
+    "updated_at": "2025-10-04T16:37:28.144Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "11f731a7-6df4-4e21-b090-89c8ee4580d3",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$vs9ghZKGtC5cEASKTJc7Qo$V3fTwrnqPMNA5IyrdtlgKtMNgzlciSgW+x/sMT5Pqew=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "student247",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-08-25T14:29:34.544Z",
+    "email": "student@247exams.com",
+    "phone": null,
+    "role": "student",
+    "first_name": "Test",
+    "last_name": "Student",
+    "is_verified": false,
+    "subscription_type": "free",
+    "subscription_start": null,
+    "subscription_end": null,
+    "is_active_subscriber": false,
+    "created_at": "2025-08-25T14:29:34.545Z",
+    "updated_at": "2025-09-26T07:13:18.844Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "1ff1f672-938a-41ea-bde9-d593d8fe2391",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$LyLFAdNSigCXVwymcRhQVd$o7Uh/wGWoiLTy4gCEtlL7jO+EzLCnadrfSLOXp1y4/U=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "8302012630",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-10-03T14:31:41.562Z",
+    "email": "8302012630@247exams.com",
+    "phone": "8302012630",
+    "role": "student",
+    "first_name": "Default",
+    "last_name": "User",
+    "is_verified": true,
+    "subscription_type": "premium",
+    "subscription_start": "2025-10-03T14:31:43.082Z",
+    "subscription_end": "2026-10-03T14:31:43.082Z",
+    "is_active_subscriber": true,
+    "created_at": "2025-10-03T14:31:43.070Z",
+    "updated_at": "2025-10-03T14:31:43.082Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "4c249882-c2a3-46f3-af84-14d33b6c1208",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$ztLXN9m7ReRw6ELmCmmVm6$Tr29j7c0QQFe5ixLF+29UJZVltWXTFtueofet+ONdF4=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "teacher247",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-08-25T14:29:36.082Z",
+    "email": "teacher@247exams.com",
+    "phone": null,
+    "role": "student",
+    "first_name": "Test",
+    "last_name": "Teacher",
+    "is_verified": false,
+    "subscription_type": "free",
+    "subscription_start": null,
+    "subscription_end": null,
+    "is_active_subscriber": false,
+    "created_at": "2025-08-25T14:29:36.082Z",
+    "updated_at": "2025-09-26T07:13:20.508Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "5181a4a8-e1bc-4b98-a387-5847078312a9",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$NKmwJ9V9fASVnDI5BHAxkw$oTvygQhlwvGyxDY5k/f3icSN3FhYS6V1I00FSTZzoF0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "admin1",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-08-25T14:05:50.862Z",
+    "email": "admin@test.com",
+    "phone": null,
+    "role": "admin",
+    "first_name": "Test",
+    "last_name": "Admin",
+    "is_verified": false,
+    "subscription_type": "free",
+    "subscription_start": null,
+    "subscription_end": null,
+    "is_active_subscriber": false,
+    "created_at": "2025-08-25T14:05:51.683Z",
+    "updated_at": "2025-09-26T07:13:16.974Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "a96b698e-d5aa-4821-9215-6a1dee9daaca",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$nymoTpRAGeGijbYNLcp9uT$E2bfN+cBbV2zEK7OJ2saYJzcgdP2V6KFws9cSfHxgR0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "918302012630",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-10-03T13:34:44.921Z",
+    "email": "918302012630@mobile.247exams.com",
+    "phone": "+918302012630",
+    "role": "student",
+    "first_name": "",
+    "last_name": "",
+    "is_verified": false,
+    "subscription_type": "free",
+    "subscription_start": null,
+    "subscription_end": null,
+    "is_active_subscriber": false,
+    "created_at": "2025-10-03T13:34:46.272Z",
+    "updated_at": "2025-10-03T13:34:46.272Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "af9847e7-7a8b-49b4-9f59-38798f0488a7",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$n7kaC9j7Tkp93gvluWRqfA$EbBVWCoGRKr3Heq9XPxLtF/joWKl9Ax+o74awIBLc5I=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "test_admin",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-10-05T11:24:22.590Z",
+    "email": "test@example.com",
+    "phone": null,
+    "role": "student",
+    "first_name": "",
+    "last_name": "",
+    "is_verified": false,
+    "subscription_type": "free",
+    "subscription_start": null,
+    "subscription_end": null,
+    "is_active_subscriber": false,
+    "created_at": "2025-10-05T11:24:22.591Z",
+    "updated_at": "2025-10-05T11:24:24.236Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$96cxlzT7f7ywmo5i5piCbz$Fs79SzeP/3oe0BEdR9FZJmSof5rss8xz4MZM6nNspy8=",
+    "last_login": "2025-10-05T10:46:54.507Z",
+    "is_superuser": true,
+    "username": "admin247",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-08-25T14:29:36.902Z",
+    "email": "admin@247exams.com",
+    "phone": null,
+    "role": "student",
+    "first_name": "Test",
+    "last_name": "Admin",
+    "is_verified": false,
+    "subscription_type": "free",
+    "subscription_start": null,
+    "subscription_end": null,
+    "is_active_subscriber": false,
+    "created_at": "2025-08-25T14:29:36.902Z",
+    "updated_at": "2025-09-26T07:13:22.063Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "c5622537-2223-45d9-8580-10585f1175a9",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$0hACCWuqamBS6wPD2MpJ2A$kd0ALXKHlAXXOQu+ABDyHO+SA7M6F+vpKuP4Jlf36NI=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "9252517941",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-10-04T14:10:48.267Z",
+    "email": "admin9252517941@247exams.com",
+    "phone": "9252517941",
+    "role": "student",
+    "first_name": "Admin",
+    "last_name": "User",
+    "is_verified": false,
+    "subscription_type": "free",
+    "subscription_start": null,
+    "subscription_end": null,
+    "is_active_subscriber": false,
+    "created_at": "2025-10-04T14:10:49.762Z",
+    "updated_at": "2025-10-04T14:25:49.075Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "cd1995ab-1480-491a-a815-2bd4ae6e1406",
+  "fields": {
+    "password": "!2O67yknjlDkIf2LMvWrkWzCEURT2HxipUy02I9ik",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "9876543211",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-10-03T14:04:51.529Z",
+    "email": "9876543211@mobile.247exams.com",
+    "phone": "9876543211",
+    "role": "student",
+    "first_name": "Test",
+    "last_name": "User",
+    "is_verified": true,
+    "subscription_type": "free",
+    "subscription_start": null,
+    "subscription_end": null,
+    "is_active_subscriber": false,
+    "created_at": "2025-10-03T14:04:51.529Z",
+    "updated_at": "2025-10-03T14:04:51.529Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "f3c9cafb-065a-4746-b4c0-278a760bf931",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$LovpbiR5Lsg3HU7EHgIeRE$2n/zTM8LQFT+9+XtTsyQ+VUCyNnwiZgOmYIFKa5ay58=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "student1",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-08-25T14:05:48.517Z",
+    "email": "student@test.com",
+    "phone": null,
+    "role": "student",
+    "first_name": "Test",
+    "last_name": "Student",
+    "is_verified": false,
+    "subscription_type": "free",
+    "subscription_start": null,
+    "subscription_end": null,
+    "is_active_subscriber": false,
+    "created_at": "2025-08-25T14:05:50.042Z",
+    "updated_at": "2025-09-26T07:13:13.604Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.userprofile",
+  "pk": 1,
+  "fields": {
+    "user": "a96b698e-d5aa-4821-9215-6a1dee9daaca",
+    "bio": "",
+    "avatar": null,
+    "date_of_birth": null,
+    "city": "",
+    "state": "",
+    "country": "",
+    "language": "en",
+    "timezone": "UTC",
+    "email_notifications": true,
+    "created_at": "2025-10-03T13:34:46.279Z",
+    "updated_at": "2025-10-03T13:34:46.279Z"
+  }
+},
+{
+  "model": "users.userprofile",
+  "pk": 2,
+  "fields": {
+    "user": "cd1995ab-1480-491a-a815-2bd4ae6e1406",
+    "bio": "",
+    "avatar": null,
+    "date_of_birth": null,
+    "city": "",
+    "state": "",
+    "country": "",
+    "language": "en",
+    "timezone": "UTC",
+    "email_notifications": true,
+    "created_at": "2025-10-03T14:04:51.549Z",
+    "updated_at": "2025-10-03T14:04:51.549Z"
+  }
+},
+{
+  "model": "users.userprofile",
+  "pk": 3,
+  "fields": {
+    "user": "1ff1f672-938a-41ea-bde9-d593d8fe2391",
+    "bio": "",
+    "avatar": null,
+    "date_of_birth": null,
+    "city": "",
+    "state": "",
+    "country": "",
+    "language": "en",
+    "timezone": "UTC",
+    "email_notifications": true,
+    "created_at": "2025-10-03T14:31:43.091Z",
+    "updated_at": "2025-10-03T14:31:43.091Z"
+  }
+},
+{
+  "model": "users.mobileotp",
+  "pk": 1,
+  "fields": {
+    "phone": "1234567890",
+    "otp": "962196",
+    "purpose": "registration",
+    "is_verified": false,
+    "created_at": "2025-10-03T14:02:06.333Z",
+    "expires_at": "2025-10-03T14:07:06.332Z",
+    "attempts": 0
+  }
+},
+{
+  "model": "users.mobileotp",
+  "pk": 2,
+  "fields": {
+    "phone": "9876543210",
+    "otp": "123456",
+    "purpose": "registration",
+    "is_verified": true,
+    "created_at": "2025-10-03T14:04:27.321Z",
+    "expires_at": "2025-10-03T14:09:27.321Z",
+    "attempts": 1
+  }
+},
+{
+  "model": "users.mobileotp",
+  "pk": 3,
+  "fields": {
+    "phone": "9876543211",
+    "otp": "123456",
+    "purpose": "registration",
+    "is_verified": true,
+    "created_at": "2025-10-03T14:04:51.456Z",
+    "expires_at": "2025-10-03T14:09:51.454Z",
+    "attempts": 1
+  }
+},
+{
+  "model": "users.mobileotp",
+  "pk": 4,
+  "fields": {
+    "phone": "8302012630",
+    "otp": "123456",
+    "purpose": "login",
+    "is_verified": true,
+    "created_at": "2025-10-03T16:43:49.494Z",
+    "expires_at": "2025-10-03T16:48:49.494Z",
+    "attempts": 1
+  }
+},
+{
+  "model": "users.mobileotp",
+  "pk": 5,
+  "fields": {
+    "phone": "8302012630",
+    "otp": "123456",
+    "purpose": "login",
+    "is_verified": true,
+    "created_at": "2025-10-04T13:01:27.029Z",
+    "expires_at": "2025-10-04T13:06:27.029Z",
+    "attempts": 1
+  }
+},
+{
+  "model": "exams.exam",
+  "pk": "1093cfca-caba-4a24-a5fe-902f94b7dedf",
+  "fields": {
+    "name": "JEE Main Science Mock Exam",
+    "description": "Complete JEE Main mock examination covering Physics, Chemistry, and Mathematics",
+    "organization": null,
+    "category": "exam",
+    "exam_type": "engineering",
+    "subject": "Mixed Sciences",
+    "topic": "JEE Main Preparation",
+    "subtopic": "",
+    "difficulty_level": "advanced",
+    "target_audience": "competitive_exam",
+    "language": "english",
+    "state_specific": "",
+    "tags": [],
+    "custom_fields": {},
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "year": 2024,
+    "status": "active",
+    "is_active": true,
+    "is_featured": false,
+    "imported_from_json": true,
+    "json_import_batch": "JEE Main Science Mock Exam_20251005_180210",
+    "original_json_data": {
+      "name": "JEE Main Science Mock Exam",
+      "description": "Complete JEE Main mock examination covering Physics, Chemistry, and Mathematics",
+      "category": "exam",
+      "exam_type": "engineering",
+      "subject": "Mixed Sciences",
+      "topic": "JEE Main Preparation",
+      "difficulty_level": "advanced",
+      "language": "english",
+      "year": 2024,
+      "target_audience": "competitive_exam",
+      "exam_settings": {
+        "total_duration_minutes": 180,
+        "total_marks": 300,
+        "pass_percentage": 40,
+        "negative_marking": true,
+        "negative_marks_per_wrong": -1,
+        "randomize_questions": true,
+        "show_result_immediately": false,
+        "allow_review": false,
+        "max_attempts": 1
+      },
+      "tests": [
+        {
+          "name": "Physics Section",
+          "description": "Physics questions covering mechanics, thermodynamics, and waves",
+          "duration_minutes": 60,
+          "total_marks": 100,
+          "question_count": 25,
+          "question_bank_references": [
+            {
+              "bank_name": "Physics Mechanics Question Bank",
+              "question_count": 10,
+              "selection_criteria": {
+                "difficulty": [
+                  "intermediate",
+                  "advanced"
+                ],
+                "topics": [
+                  "kinematics",
+                  "dynamics",
+                  "work_energy"
+                ],
+                "question_types": [
+                  "mcq",
+                  "numerical"
+                ]
+              }
+            },
+            {
+              "bank_name": "Physics Thermodynamics Question Bank",
+              "question_count": 10,
+              "selection_criteria": {
+                "difficulty": [
+                  "intermediate",
+                  "advanced"
+                ],
+                "topics": [
+                  "laws_of_thermodynamics",
+                  "heat_engines",
+                  "kinetic_theory"
+                ],
+                "question_types": [
+                  "mcq",
+                  "numerical"
+                ]
+              }
+            },
+            {
+              "bank_name": "Physics Advanced Question Bank",
+              "question_count": 5,
+              "selection_criteria": {
+                "difficulty": [
+                  "advanced",
+                  "expert"
+                ],
+                "topics": [
+                  "waves",
+                  "optics",
+                  "modern_physics"
+                ],
+                "question_types": [
+                  "mcq",
+                  "numerical"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Chemistry Section",
+          "description": "Chemistry questions covering organic, inorganic, and physical chemistry",
+          "duration_minutes": 60,
+          "total_marks": 100,
+          "question_count": 25,
+          "question_bank_references": [
+            {
+              "bank_name": "Chemistry Organic Question Bank",
+              "question_count": 10,
+              "selection_criteria": {
+                "difficulty": [
+                  "intermediate",
+                  "advanced"
+                ],
+                "topics": [
+                  "reactions",
+                  "mechanisms",
+                  "synthesis"
+                ],
+                "question_types": [
+                  "mcq",
+                  "assertion_reason"
+                ]
+              }
+            },
+            {
+              "bank_name": "Chemistry Inorganic Question Bank",
+              "question_count": 10,
+              "selection_criteria": {
+                "difficulty": [
+                  "intermediate",
+                  "advanced"
+                ],
+                "topics": [
+                  "periodic_table",
+                  "coordination_compounds",
+                  "metallurgy"
+                ],
+                "question_types": [
+                  "mcq",
+                  "structural"
+                ]
+              }
+            },
+            {
+              "bank_name": "Chemistry Organic Question Bank",
+              "question_count": 5,
+              "selection_criteria": {
+                "difficulty": [
+                  "advanced",
+                  "expert"
+                ],
+                "topics": [
+                  "spectroscopy",
+                  "stereochemistry"
+                ],
+                "question_types": [
+                  "mcq",
+                  "numerical"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Mathematics Section",
+          "description": "Mathematics questions covering algebra, calculus, and coordinate geometry",
+          "duration_minutes": 60,
+          "total_marks": 100,
+          "question_count": 25,
+          "question_bank_references": [
+            {
+              "bank_name": "Basic Mathematics Question Bank",
+              "question_count": 8,
+              "selection_criteria": {
+                "difficulty": [
+                  "intermediate",
+                  "advanced"
+                ],
+                "topics": [
+                  "algebra",
+                  "geometry",
+                  "trigonometry"
+                ],
+                "question_types": [
+                  "mcq",
+                  "numerical"
+                ]
+              }
+            },
+            {
+              "bank_name": "Advanced Mathematics Question Bank",
+              "question_count": 17,
+              "selection_criteria": {
+                "difficulty": [
+                  "advanced",
+                  "expert"
+                ],
+                "topics": [
+                  "calculus",
+                  "coordinate_geometry",
+                  "probability",
+                  "vectors"
+                ],
+                "question_types": [
+                  "mcq",
+                  "numerical"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "instructions": [
+        "This exam consists of 3 sections: Physics, Chemistry, and Mathematics",
+        "Each section has 60 minutes and 25 questions",
+        "Each question carries 4 marks",
+        "Wrong answers carry -1 mark (negative marking)",
+        "Use the on-screen calculator for numerical calculations",
+        "You can navigate between sections during the exam",
+        "Submit each section before moving to the next",
+        "Final submission cannot be undone"
+      ],
+      "metadata": {
+        "created_for": "JEE Main mock test preparation",
+        "target_audience": "Class 12 students and JEE aspirants",
+        "estimated_completion_time": "165-180 minutes",
+        "prerequisites": [
+          "Class 11-12 PCM syllabus",
+          "JEE Main syllabus knowledge"
+        ],
+        "difficulty_distribution": {
+          "easy": "20%",
+          "medium": "50%",
+          "hard": "30%"
+        }
+      }
+    },
+    "created_at": "2025-10-05T18:02:10.816Z",
+    "updated_at": "2025-10-05T18:02:10.816Z"
+  }
+},
+{
+  "model": "exams.exam",
+  "pk": "13b8270b-eb58-4f63-8442-877130bfd903",
+  "fields": {
+    "name": "General Aptitude & Reasoning Exam",
+    "description": "Comprehensive exam covering logical reasoning, general knowledge, and computer science fundamentals",
+    "organization": null,
+    "category": "exam",
+    "exam_type": "aptitude",
+    "subject": "General Aptitude",
+    "topic": "Competitive Exam Preparation",
+    "subtopic": "",
+    "difficulty_level": "intermediate",
+    "target_audience": "competitive_exam",
+    "language": "english",
+    "state_specific": "",
+    "tags": [],
+    "custom_fields": {},
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "year": 2024,
+    "status": "draft",
+    "is_active": true,
+    "is_featured": false,
+    "imported_from_json": true,
+    "json_import_batch": "General Aptitude & Reasoning Exam_20251005_180211",
+    "original_json_data": {
+      "name": "General Aptitude & Reasoning Exam",
+      "description": "Comprehensive exam covering logical reasoning, general knowledge, and computer science fundamentals",
+      "category": "exam",
+      "exam_type": "aptitude",
+      "subject": "General Aptitude",
+      "topic": "Competitive Exam Preparation",
+      "difficulty_level": "intermediate",
+      "language": "english",
+      "year": 2024,
+      "target_audience": "competitive_exam",
+      "exam_settings": {
+        "total_duration_minutes": 120,
+        "total_marks": 200,
+        "pass_percentage": 50,
+        "negative_marking": true,
+        "negative_marks_per_wrong": -0.5,
+        "randomize_questions": true,
+        "show_result_immediately": true,
+        "allow_review": true,
+        "max_attempts": 2
+      },
+      "tests": [
+        {
+          "name": "Logical Reasoning",
+          "description": "Questions testing logical thinking and problem-solving abilities",
+          "duration_minutes": 40,
+          "total_marks": 80,
+          "question_count": 20,
+          "question_bank_references": [
+            {
+              "bank_name": "Logical Reasoning Question Bank",
+              "question_count": 15,
+              "selection_criteria": {
+                "difficulty": [
+                  "basic",
+                  "intermediate"
+                ],
+                "topics": [
+                  "logical_sequences",
+                  "patterns",
+                  "analogies",
+                  "syllogisms"
+                ],
+                "question_types": [
+                  "mcq",
+                  "analytical"
+                ]
+              }
+            },
+            {
+              "bank_name": "Reasoning Logical Question Bank",
+              "question_count": 5,
+              "selection_criteria": {
+                "difficulty": [
+                  "intermediate",
+                  "advanced"
+                ],
+                "topics": [
+                  "critical_reasoning",
+                  "logical_puzzles"
+                ],
+                "question_types": [
+                  "mcq",
+                  "scenario_based"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "General Knowledge",
+          "description": "Current affairs, history, geography, and general awareness",
+          "duration_minutes": 30,
+          "total_marks": 60,
+          "question_count": 15,
+          "question_bank_references": [
+            {
+              "bank_name": "General Knowledge Question Bank",
+              "question_count": 15,
+              "selection_criteria": {
+                "difficulty": [
+                  "basic",
+                  "intermediate"
+                ],
+                "topics": [
+                  "current_affairs",
+                  "history",
+                  "geography",
+                  "politics",
+                  "economics"
+                ],
+                "question_types": [
+                  "mcq",
+                  "factual"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Computer Science Fundamentals",
+          "description": "Basic programming concepts, data structures, and computer fundamentals",
+          "duration_minutes": 50,
+          "total_marks": 60,
+          "question_count": 15,
+          "question_bank_references": [
+            {
+              "bank_name": "Computer Science Question Bank",
+              "question_count": 15,
+              "selection_criteria": {
+                "difficulty": [
+                  "basic",
+                  "intermediate"
+                ],
+                "topics": [
+                  "programming_basics",
+                  "data_structures",
+                  "algorithms",
+                  "computer_fundamentals"
+                ],
+                "question_types": [
+                  "mcq",
+                  "code_analysis"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "instructions": [
+        "This exam has 3 sections with different time allocations",
+        "Section 1: Logical Reasoning (40 minutes, 20 questions)",
+        "Section 2: General Knowledge (30 minutes, 15 questions)",
+        "Section 3: Computer Science (50 minutes, 15 questions)",
+        "Each correct answer: +4 marks, Wrong answer: -0.5 marks",
+        "You can switch between sections during the exam",
+        "Time spent in each section is tracked separately",
+        "Ensure you attempt questions across all sections"
+      ],
+      "metadata": {
+        "created_for": "General aptitude assessment for competitive exams",
+        "target_audience": "College students and job seekers",
+        "estimated_completion_time": "100-120 minutes",
+        "prerequisites": [
+          "Basic computer knowledge",
+          "General awareness",
+          "Logical thinking skills"
+        ],
+        "difficulty_distribution": {
+          "easy": "40%",
+          "medium": "45%",
+          "hard": "15%"
+        }
+      }
+    },
+    "created_at": "2025-10-05T18:02:11.805Z",
+    "updated_at": "2025-10-05T18:02:11.805Z"
+  }
+},
+{
+  "model": "exams.exam",
+  "pk": "144317f1-7815-4df7-9390-1d2bfcf9899b",
+  "fields": {
+    "name": "Standalone Tests Container",
+    "description": "Container for standalone tests imported from JSON",
+    "organization": null,
+    "category": "other",
+    "exam_type": "other",
+    "subject": "",
+    "topic": "",
+    "subtopic": "",
+    "difficulty_level": "intermediate",
+    "target_audience": "general",
+    "language": "english",
+    "state_specific": "",
+    "tags": [],
+    "custom_fields": {},
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "year": null,
+    "status": "draft",
+    "is_active": true,
+    "is_featured": false,
+    "imported_from_json": true,
+    "json_import_batch": "auto_created_for_tests",
+    "original_json_data": null,
+    "created_at": "2025-10-05T18:02:06.285Z",
+    "updated_at": "2025-10-05T18:02:06.285Z"
+  }
+},
+{
+  "model": "exams.exam",
+  "pk": "630d268b-be48-4837-ad6a-36d0b58e911e",
+  "fields": {
+    "name": "Complete JEE Main Mock Exam",
+    "description": "Full JEE Main examination linking existing subject-wise tests",
+    "organization": null,
+    "category": "exam",
+    "exam_type": "other",
+    "subject": "Mixed Sciences",
+    "topic": "JEE Main Preparation",
+    "subtopic": "",
+    "difficulty_level": "advanced",
+    "target_audience": "general",
+    "language": "english",
+    "state_specific": "",
+    "tags": [],
+    "custom_fields": {},
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "year": null,
+    "status": "active",
+    "is_active": true,
+    "is_featured": false,
+    "imported_from_json": true,
+    "json_import_batch": "Complete JEE Main Mock Exam_20251005_180206",
+    "original_json_data": {
+      "name": "Complete JEE Main Mock Exam",
+      "description": "Full JEE Main examination linking existing subject-wise tests",
+      "category": "exam",
+      "subject": "Mixed Sciences",
+      "topic": "JEE Main Preparation",
+      "difficulty_level": "advanced",
+      "language": "english",
+      "exam_settings": {
+        "total_duration_minutes": 180,
+        "total_marks": 300,
+        "allow_section_navigation": true,
+        "show_timer": true,
+        "auto_submit_on_timeout": true
+      },
+      "linked_tests": [
+        {
+          "reference_type": "name",
+          "reference_value": "JEE Mathematics Test",
+          "section_name": "Mathematics",
+          "allocated_time_minutes": 60
+        },
+        {
+          "reference_type": "name",
+          "reference_value": "Quick Science Test",
+          "section_name": "Physics & Chemistry",
+          "allocated_time_minutes": 120
+        }
+      ],
+      "instructions": [
+        "Total duration: 3 hours (180 minutes)",
+        "The exam consists of multiple sections",
+        "You can navigate between sections",
+        "Each section has its own time allocation",
+        "Negative marking applies as per individual test settings",
+        "Auto-submit will occur when time expires",
+        "Ensure stable internet connection throughout the exam"
+      ],
+      "embedded_tests": [
+        {
+          "name": "Logical Reasoning Section",
+          "description": "Additional reasoning questions for comprehensive assessment",
+          "duration_minutes": 30,
+          "total_marks": 40,
+          "questions": [
+            {
+              "text": "Find the next term in series: 1, 4, 9, 16, ?",
+              "question_type": "mcq",
+              "options": [
+                "20",
+                "25",
+                "30",
+                "36"
+              ],
+              "correct_answer": 1,
+              "explanation": "This is a series of perfect squares: 1², 2², 3², 4², 5² = 25",
+              "difficulty": "basic",
+              "marks": 4,
+              "topic": "Number Series",
+              "tags": [
+                "patterns",
+                "sequences"
+              ]
+            },
+            {
+              "text": "If CODING is written as DPEJOH, how is FLOWER written?",
+              "question_type": "mcq",
+              "options": [
+                "GMPXFS",
+                "GMPUDS",
+                "GKPXFS",
+                "HMPXFS"
+              ],
+              "correct_answer": 0,
+              "explanation": "Each letter is shifted by +1 position in alphabet: F→G, L→M, O→P, W→X, E→F, R→S",
+              "difficulty": "intermediate",
+              "marks": 4,
+              "topic": "Coding-Decoding",
+              "tags": [
+                "logical_reasoning",
+                "coding"
+              ]
+            }
+          ]
+        }
+      ],
+      "exam_metadata": {
+        "exam_type": "engineering",
+        "organization": "Mock Test Series",
+        "year": 2024,
+        "tags": [
+          "jee_main",
+          "engineering_entrance",
+          "mock_test"
+        ],
+        "target_audience": "competitive_exam"
+      }
+    },
+    "created_at": "2025-10-05T18:02:07.028Z",
+    "updated_at": "2025-10-05T18:02:07.028Z"
+  }
+},
+{
+  "model": "exams.exam",
+  "pk": "92cc2268-0eee-4709-99b8-3d605d426d41",
+  "fields": {
+    "name": "School Foundation Exam",
+    "description": "Comprehensive foundation exam covering basic mathematics, general science, and English language",
+    "organization": null,
+    "category": "exam",
+    "exam_type": "academic",
+    "subject": "Foundation Subjects",
+    "topic": "School Level Assessment",
+    "subtopic": "",
+    "difficulty_level": "basic",
+    "target_audience": "school_students",
+    "language": "english",
+    "state_specific": "",
+    "tags": [],
+    "custom_fields": {},
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "year": 2024,
+    "status": "draft",
+    "is_active": true,
+    "is_featured": false,
+    "imported_from_json": true,
+    "json_import_batch": "School Foundation Exam_20251005_180212",
+    "original_json_data": {
+      "name": "School Foundation Exam",
+      "description": "Comprehensive foundation exam covering basic mathematics, general science, and English language",
+      "category": "exam",
+      "exam_type": "academic",
+      "subject": "Foundation Subjects",
+      "topic": "School Level Assessment",
+      "difficulty_level": "basic",
+      "language": "english",
+      "year": 2024,
+      "target_audience": "school_students",
+      "exam_settings": {
+        "total_duration_minutes": 150,
+        "total_marks": 150,
+        "pass_percentage": 35,
+        "negative_marking": false,
+        "negative_marks_per_wrong": 0,
+        "randomize_questions": false,
+        "show_result_immediately": true,
+        "allow_review": true,
+        "max_attempts": 3
+      },
+      "tests": [
+        {
+          "name": "Mathematics Foundation",
+          "description": "Basic mathematics covering arithmetic, basic algebra, and geometry",
+          "duration_minutes": 60,
+          "total_marks": 60,
+          "question_count": 20,
+          "question_bank_references": [
+            {
+              "bank_name": "Basic Mathematics Question Bank",
+              "question_count": 20,
+              "selection_criteria": {
+                "difficulty": [
+                  "basic",
+                  "intermediate"
+                ],
+                "topics": [
+                  "arithmetic",
+                  "basic_algebra",
+                  "geometry",
+                  "mensuration"
+                ],
+                "question_types": [
+                  "mcq",
+                  "numerical",
+                  "word_problems"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "General Science",
+          "description": "Basic concepts from biology, chemistry, and physics",
+          "duration_minutes": 45,
+          "total_marks": 45,
+          "question_count": 15,
+          "question_bank_references": [
+            {
+              "bank_name": "Biology Genetics Question Bank",
+              "question_count": 5,
+              "selection_criteria": {
+                "difficulty": [
+                  "basic"
+                ],
+                "topics": [
+                  "basic_biology",
+                  "human_body",
+                  "plants"
+                ],
+                "question_types": [
+                  "mcq",
+                  "factual"
+                ]
+              }
+            },
+            {
+              "bank_name": "Chemistry Organic Question Bank",
+              "question_count": 5,
+              "selection_criteria": {
+                "difficulty": [
+                  "basic"
+                ],
+                "topics": [
+                  "basic_chemistry",
+                  "elements",
+                  "compounds"
+                ],
+                "question_types": [
+                  "mcq",
+                  "factual"
+                ]
+              }
+            },
+            {
+              "bank_name": "Physics Advanced Question Bank",
+              "question_count": 5,
+              "selection_criteria": {
+                "difficulty": [
+                  "basic"
+                ],
+                "topics": [
+                  "basic_physics",
+                  "motion",
+                  "energy",
+                  "light"
+                ],
+                "question_types": [
+                  "mcq",
+                  "conceptual"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "English Language",
+          "description": "Grammar, vocabulary, and basic literature comprehension",
+          "duration_minutes": 45,
+          "total_marks": 45,
+          "question_count": 15,
+          "question_bank_references": [
+            {
+              "bank_name": "English Grammar Question Bank",
+              "question_count": 10,
+              "selection_criteria": {
+                "difficulty": [
+                  "basic",
+                  "intermediate"
+                ],
+                "topics": [
+                  "grammar",
+                  "vocabulary",
+                  "sentence_formation"
+                ],
+                "question_types": [
+                  "mcq",
+                  "fill_blanks",
+                  "error_correction"
+                ]
+              }
+            },
+            {
+              "bank_name": "English Literature Question Bank",
+              "question_count": 5,
+              "selection_criteria": {
+                "difficulty": [
+                  "basic"
+                ],
+                "topics": [
+                  "comprehension",
+                  "basic_literature"
+                ],
+                "question_types": [
+                  "mcq",
+                  "short_answer"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "instructions": [
+        "This is a foundation level examination for school students",
+        "Section 1: Mathematics (60 minutes, 20 questions)",
+        "Section 2: General Science (45 minutes, 15 questions)",
+        "Section 3: English Language (45 minutes, 15 questions)",
+        "Each question carries 3 marks",
+        "No negative marking - attempt all questions",
+        "Read questions carefully before answering",
+        "Use rough paper for calculations where needed"
+      ],
+      "metadata": {
+        "created_for": "School foundation level assessment",
+        "target_audience": "Class 8-10 students",
+        "estimated_completion_time": "120-150 minutes",
+        "prerequisites": [
+          "Basic school level education",
+          "Elementary subject knowledge"
+        ],
+        "difficulty_distribution": {
+          "easy": "60%",
+          "medium": "35%",
+          "hard": "5%"
+        }
+      }
+    },
+    "created_at": "2025-10-05T18:02:12.678Z",
+    "updated_at": "2025-10-05T18:02:12.678Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "346c5291-88a1-4f13-b2df-a5d1df93419f",
+  "fields": {
+    "exam": "144317f1-7815-4df7-9390-1d2bfcf9899b",
+    "title": "English Language Comprehensive Test",
+    "description": "Complete English assessment covering grammar, literature, and comprehension from English question banks",
+    "duration_minutes": 180,
+    "total_marks": 100,
+    "pass_percentage": "40.00",
+    "status": "draft",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "English Language Comprehensive Test_20251005_180209",
+    "original_json_data": {
+      "name": "English Language Comprehensive Test",
+      "description": "Complete English assessment covering grammar, literature, and comprehension from English question banks",
+      "category": "test",
+      "subject": "English",
+      "topic": "Language & Literature",
+      "difficulty_level": "intermediate",
+      "language": "english",
+      "test_settings": {
+        "duration_minutes": 75,
+        "total_marks": 80,
+        "pass_percentage": 45,
+        "randomize_questions": false,
+        "show_result_immediately": true,
+        "allow_review": true,
+        "max_attempts": 2
+      },
+      "question_bank_references": [
+        {
+          "bank_name": "English Grammar Question Bank",
+          "question_count": 20,
+          "selection_criteria": {
+            "difficulty": [
+              "basic",
+              "intermediate"
+            ],
+            "topics": [
+              "grammar",
+              "syntax",
+              "vocabulary",
+              "sentence_structure"
+            ],
+            "question_types": [
+              "mcq",
+              "fill_blanks",
+              "error_correction"
+            ]
+          }
+        },
+        {
+          "bank_name": "English Literature Question Bank",
+          "question_count": 15,
+          "selection_criteria": {
+            "difficulty": [
+              "intermediate",
+              "advanced"
+            ],
+            "topics": [
+              "poetry",
+              "prose",
+              "drama",
+              "literary_devices"
+            ],
+            "question_types": [
+              "mcq",
+              "short_answer",
+              "analytical"
+            ]
+          }
+        }
+      ],
+      "sections": [
+        {
+          "name": "Grammar & Language",
+          "question_count": 20,
+          "marks": 40,
+          "time_limit": 35
+        },
+        {
+          "name": "Literature & Comprehension",
+          "question_count": 15,
+          "marks": 40,
+          "time_limit": 40
+        }
+      ],
+      "instructions": [
+        "Section A: Grammar & Language (35 minutes)",
+        "Section B: Literature & Comprehension (40 minutes)",
+        "Each question carries equal marks unless specified",
+        "No negative marking for this test",
+        "Read passages carefully before answering comprehension questions"
+      ],
+      "metadata": {
+        "created_for": "General English proficiency assessment",
+        "target_audience": "High school and college students",
+        "estimated_completion_time": "65-75 minutes",
+        "prerequisites": [
+          "Basic English knowledge",
+          "Familiarity with common literary works"
+        ]
+      }
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:10.050Z",
+    "updated_at": "2025-10-05T18:02:10.050Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "5906ec19-cf94-4153-a8c8-c6bb470201b5",
+  "fields": {
+    "exam": "144317f1-7815-4df7-9390-1d2bfcf9899b",
+    "title": "Physics Mechanics Test",
+    "description": "Comprehensive mechanics test covering kinematics, dynamics, and energy from physics mechanics question bank",
+    "duration_minutes": 180,
+    "total_marks": 100,
+    "pass_percentage": "40.00",
+    "status": "active",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "Physics Mechanics Test_20251005_180208",
+    "original_json_data": {
+      "name": "Physics Mechanics Test",
+      "description": "Comprehensive mechanics test covering kinematics, dynamics, and energy from physics mechanics question bank",
+      "category": "test",
+      "subject": "Physics",
+      "topic": "Mechanics",
+      "difficulty_level": "intermediate",
+      "language": "english",
+      "test_settings": {
+        "duration_minutes": 90,
+        "total_marks": 75,
+        "pass_percentage": 45,
+        "randomize_questions": true,
+        "show_result_immediately": false,
+        "allow_review": true,
+        "max_attempts": 1
+      },
+      "question_bank_references": [
+        {
+          "bank_name": "Physics Mechanics Question Bank",
+          "question_count": 30,
+          "selection_criteria": {
+            "difficulty": [
+              "intermediate",
+              "advanced"
+            ],
+            "topics": [
+              "kinematics",
+              "dynamics",
+              "work_energy",
+              "momentum"
+            ],
+            "question_types": [
+              "mcq",
+              "numerical",
+              "conceptual"
+            ]
+          }
+        }
+      ],
+      "instructions": [
+        "Use g = 9.8 m/s² unless specified otherwise",
+        "Show all calculation steps for numerical problems",
+        "Each MCQ carries 2 marks, numerical problems carry 3 marks",
+        "Negative marking: -0.5 marks for wrong MCQ answers",
+        "Calculator and formula sheet are allowed"
+      ],
+      "metadata": {
+        "created_for": "JEE Main Physics preparation",
+        "target_audience": "Class 11-12 students",
+        "estimated_completion_time": "75-90 minutes",
+        "prerequisites": [
+          "Basic mathematics",
+          "Vector knowledge",
+          "Trigonometry"
+        ]
+      }
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:08.565Z",
+    "updated_at": "2025-10-05T18:02:08.565Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "598a235d-e32f-4321-98c2-814d72faa709",
+  "fields": {
+    "exam": "92cc2268-0eee-4709-99b8-3d605d426d41",
+    "title": "English Language",
+    "description": "Grammar, vocabulary, and basic literature comprehension",
+    "duration_minutes": 45,
+    "total_marks": 45,
+    "pass_percentage": "40.00",
+    "status": "draft",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "School Foundation Exam_20251005_180212",
+    "original_json_data": {
+      "name": "English Language",
+      "description": "Grammar, vocabulary, and basic literature comprehension",
+      "duration_minutes": 45,
+      "total_marks": 45,
+      "question_count": 15,
+      "question_bank_references": [
+        {
+          "bank_name": "English Grammar Question Bank",
+          "question_count": 10,
+          "selection_criteria": {
+            "difficulty": [
+              "basic",
+              "intermediate"
+            ],
+            "topics": [
+              "grammar",
+              "vocabulary",
+              "sentence_formation"
+            ],
+            "question_types": [
+              "mcq",
+              "fill_blanks",
+              "error_correction"
+            ]
+          }
+        },
+        {
+          "bank_name": "English Literature Question Bank",
+          "question_count": 5,
+          "selection_criteria": {
+            "difficulty": [
+              "basic"
+            ],
+            "topics": [
+              "comprehension",
+              "basic_literature"
+            ],
+            "question_types": [
+              "mcq",
+              "short_answer"
+            ]
+          }
+        }
+      ]
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:12.826Z",
+    "updated_at": "2025-10-05T18:02:12.826Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "60e9eb5a-f726-4734-b1f9-42ea3ffabc8e",
+  "fields": {
+    "exam": "13b8270b-eb58-4f63-8442-877130bfd903",
+    "title": "Logical Reasoning",
+    "description": "Questions testing logical thinking and problem-solving abilities",
+    "duration_minutes": 40,
+    "total_marks": 80,
+    "pass_percentage": "40.00",
+    "status": "draft",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "General Aptitude & Reasoning Exam_20251005_180211",
+    "original_json_data": {
+      "name": "Logical Reasoning",
+      "description": "Questions testing logical thinking and problem-solving abilities",
+      "duration_minutes": 40,
+      "total_marks": 80,
+      "question_count": 20,
+      "question_bank_references": [
+        {
+          "bank_name": "Logical Reasoning Question Bank",
+          "question_count": 15,
+          "selection_criteria": {
+            "difficulty": [
+              "basic",
+              "intermediate"
+            ],
+            "topics": [
+              "logical_sequences",
+              "patterns",
+              "analogies",
+              "syllogisms"
+            ],
+            "question_types": [
+              "mcq",
+              "analytical"
+            ]
+          }
+        },
+        {
+          "bank_name": "Reasoning Logical Question Bank",
+          "question_count": 5,
+          "selection_criteria": {
+            "difficulty": [
+              "intermediate",
+              "advanced"
+            ],
+            "topics": [
+              "critical_reasoning",
+              "logical_puzzles"
+            ],
+            "question_types": [
+              "mcq",
+              "scenario_based"
+            ]
+          }
+        }
+      ]
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:11.820Z",
+    "updated_at": "2025-10-05T18:02:11.820Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "70974de9-ff0a-47fd-802f-2936f24bf392",
+  "fields": {
+    "exam": "144317f1-7815-4df7-9390-1d2bfcf9899b",
+    "title": "Basic Mathematics Test",
+    "description": "Comprehensive test covering fundamental mathematics concepts from basic mathematics question bank",
+    "duration_minutes": 180,
+    "total_marks": 100,
+    "pass_percentage": "40.00",
+    "status": "active",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "Basic Mathematics Test_20251005_180207",
+    "original_json_data": {
+      "name": "Basic Mathematics Test",
+      "description": "Comprehensive test covering fundamental mathematics concepts from basic mathematics question bank",
+      "category": "test",
+      "subject": "Mathematics",
+      "topic": "Basic Mathematics",
+      "difficulty_level": "basic",
+      "language": "english",
+      "test_settings": {
+        "duration_minutes": 60,
+        "total_marks": 50,
+        "pass_percentage": 40,
+        "randomize_questions": true,
+        "show_result_immediately": true,
+        "allow_review": true,
+        "max_attempts": 2
+      },
+      "question_bank_references": [
+        {
+          "bank_name": "Basic Mathematics Question Bank",
+          "question_count": 25,
+          "selection_criteria": {
+            "difficulty": [
+              "basic",
+              "intermediate"
+            ],
+            "topics": [
+              "arithmetic",
+              "algebra",
+              "geometry"
+            ],
+            "question_types": [
+              "mcq",
+              "numerical"
+            ]
+          }
+        }
+      ],
+      "instructions": [
+        "Read each question carefully before answering",
+        "Each question carries 2 marks",
+        "There is no negative marking",
+        "Use calculator where necessary",
+        "Submit your answers before time expires"
+      ],
+      "metadata": {
+        "created_for": "Students preparing for basic mathematics proficiency",
+        "target_audience": "High school students",
+        "estimated_completion_time": "45-60 minutes",
+        "prerequisites": [
+          "Basic arithmetic knowledge",
+          "Elementary algebra"
+        ]
+      }
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:07.788Z",
+    "updated_at": "2025-10-05T18:02:07.788Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "7a4b65a9-4ce8-4e99-aec7-ec9a22a43ddc",
+  "fields": {
+    "exam": "1093cfca-caba-4a24-a5fe-902f94b7dedf",
+    "title": "Mathematics Section",
+    "description": "Mathematics questions covering algebra, calculus, and coordinate geometry",
+    "duration_minutes": 60,
+    "total_marks": 100,
+    "pass_percentage": "40.00",
+    "status": "active",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "JEE Main Science Mock Exam_20251005_180210",
+    "original_json_data": {
+      "name": "Mathematics Section",
+      "description": "Mathematics questions covering algebra, calculus, and coordinate geometry",
+      "duration_minutes": 60,
+      "total_marks": 100,
+      "question_count": 25,
+      "question_bank_references": [
+        {
+          "bank_name": "Basic Mathematics Question Bank",
+          "question_count": 8,
+          "selection_criteria": {
+            "difficulty": [
+              "intermediate",
+              "advanced"
+            ],
+            "topics": [
+              "algebra",
+              "geometry",
+              "trigonometry"
+            ],
+            "question_types": [
+              "mcq",
+              "numerical"
+            ]
+          }
+        },
+        {
+          "bank_name": "Advanced Mathematics Question Bank",
+          "question_count": 17,
+          "selection_criteria": {
+            "difficulty": [
+              "advanced",
+              "expert"
+            ],
+            "topics": [
+              "calculus",
+              "coordinate_geometry",
+              "probability",
+              "vectors"
+            ],
+            "question_types": [
+              "mcq",
+              "numerical"
+            ]
+          }
+        }
+      ]
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:10.977Z",
+    "updated_at": "2025-10-05T18:02:10.977Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "8912c0c1-3e54-47af-ab24-75fdc5a5cf95",
+  "fields": {
+    "exam": "13b8270b-eb58-4f63-8442-877130bfd903",
+    "title": "General Knowledge",
+    "description": "Current affairs, history, geography, and general awareness",
+    "duration_minutes": 30,
+    "total_marks": 60,
+    "pass_percentage": "40.00",
+    "status": "active",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "General Aptitude & Reasoning Exam_20251005_180211",
+    "original_json_data": {
+      "name": "General Knowledge",
+      "description": "Current affairs, history, geography, and general awareness",
+      "duration_minutes": 30,
+      "total_marks": 60,
+      "question_count": 15,
+      "question_bank_references": [
+        {
+          "bank_name": "General Knowledge Question Bank",
+          "question_count": 15,
+          "selection_criteria": {
+            "difficulty": [
+              "basic",
+              "intermediate"
+            ],
+            "topics": [
+              "current_affairs",
+              "history",
+              "geography",
+              "politics",
+              "economics"
+            ],
+            "question_types": [
+              "mcq",
+              "factual"
+            ]
+          }
+        }
+      ]
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:11.858Z",
+    "updated_at": "2025-10-05T18:02:11.858Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "a265efd8-e9e1-48fb-8c7c-b974bf796396",
+  "fields": {
+    "exam": "92cc2268-0eee-4709-99b8-3d605d426d41",
+    "title": "General Science",
+    "description": "Basic concepts from biology, chemistry, and physics",
+    "duration_minutes": 45,
+    "total_marks": 45,
+    "pass_percentage": "40.00",
+    "status": "active",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "School Foundation Exam_20251005_180212",
+    "original_json_data": {
+      "name": "General Science",
+      "description": "Basic concepts from biology, chemistry, and physics",
+      "duration_minutes": 45,
+      "total_marks": 45,
+      "question_count": 15,
+      "question_bank_references": [
+        {
+          "bank_name": "Biology Genetics Question Bank",
+          "question_count": 5,
+          "selection_criteria": {
+            "difficulty": [
+              "basic"
+            ],
+            "topics": [
+              "basic_biology",
+              "human_body",
+              "plants"
+            ],
+            "question_types": [
+              "mcq",
+              "factual"
+            ]
+          }
+        },
+        {
+          "bank_name": "Chemistry Organic Question Bank",
+          "question_count": 5,
+          "selection_criteria": {
+            "difficulty": [
+              "basic"
+            ],
+            "topics": [
+              "basic_chemistry",
+              "elements",
+              "compounds"
+            ],
+            "question_types": [
+              "mcq",
+              "factual"
+            ]
+          }
+        },
+        {
+          "bank_name": "Physics Advanced Question Bank",
+          "question_count": 5,
+          "selection_criteria": {
+            "difficulty": [
+              "basic"
+            ],
+            "topics": [
+              "basic_physics",
+              "motion",
+              "energy",
+              "light"
+            ],
+            "question_types": [
+              "mcq",
+              "conceptual"
+            ]
+          }
+        }
+      ]
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:12.744Z",
+    "updated_at": "2025-10-05T18:02:12.744Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "b3c744f1-55e5-4a00-b6f7-730a7f4a4bd1",
+  "fields": {
+    "exam": "144317f1-7815-4df7-9390-1d2bfcf9899b",
+    "title": "JEE Mathematics Test",
+    "description": "Comprehensive mathematics test linking existing question banks",
+    "duration_minutes": 180,
+    "total_marks": 100,
+    "pass_percentage": "40.00",
+    "status": "active",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "JEE Mathematics Test_20251005_180206",
+    "original_json_data": {
+      "name": "JEE Mathematics Test",
+      "description": "Comprehensive mathematics test linking existing question banks",
+      "category": "test",
+      "subject": "Mathematics",
+      "topic": "JEE Preparation",
+      "difficulty_level": "advanced",
+      "language": "english",
+      "test_settings": {
+        "duration_minutes": 90,
+        "total_marks": 120,
+        "negative_marking": true,
+        "negative_marks_per_wrong": -1,
+        "shuffle_questions": true,
+        "show_results_immediately": false,
+        "allow_review": true
+      },
+      "linked_question_banks": [
+        {
+          "reference_type": "name",
+          "reference_value": "Basic Mathematics Question Bank",
+          "question_count": 15,
+          "difficulty_filter": "intermediate",
+          "selection_method": "random",
+          "weightage_percentage": 40.0
+        },
+        {
+          "reference_type": "name",
+          "reference_value": "Advanced Physics Question Bank",
+          "question_count": 10,
+          "difficulty_filter": "advanced",
+          "selection_method": "difficulty_asc",
+          "weightage_percentage": 60.0
+        }
+      ],
+      "question_selection": {
+        "Basic Mathematics Question Bank": {
+          "count": 15,
+          "difficulty": "intermediate",
+          "topics": [
+            "algebra",
+            "geometry"
+          ]
+        },
+        "Advanced Physics Question Bank": {
+          "count": 10,
+          "difficulty": "advanced",
+          "topics": [
+            "mechanics",
+            "thermodynamics"
+          ]
+        }
+      },
+      "embedded_questions": [
+        {
+          "text": "If f(x) = x² + 2x + 1, what is f'(x)?",
+          "question_type": "mcq",
+          "options": [
+            "2x + 2",
+            "x² + 2",
+            "2x + 1",
+            "x + 1"
+          ],
+          "correct_answer": 0,
+          "explanation": "The derivative of x² + 2x + 1 is 2x + 2",
+          "difficulty": "intermediate",
+          "marks": 4,
+          "topic": "Calculus",
+          "tags": [
+            "differentiation",
+            "polynomial"
+          ]
+        }
+      ],
+      "instructions": [
+        "Total duration: 90 minutes",
+        "Total questions: 26 (25 from linked banks + 1 embedded)",
+        "Each correct answer: +4 marks, wrong answer: -1 mark",
+        "Questions will be shuffled randomly",
+        "Review is allowed during the test"
+      ]
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:06.300Z",
+    "updated_at": "2025-10-05T18:02:06.300Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "be85234d-eb43-4931-b1fc-fb39eeaaa06d",
+  "fields": {
+    "exam": "1093cfca-caba-4a24-a5fe-902f94b7dedf",
+    "title": "Chemistry Section",
+    "description": "Chemistry questions covering organic, inorganic, and physical chemistry",
+    "duration_minutes": 60,
+    "total_marks": 100,
+    "pass_percentage": "40.00",
+    "status": "active",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "JEE Main Science Mock Exam_20251005_180210",
+    "original_json_data": {
+      "name": "Chemistry Section",
+      "description": "Chemistry questions covering organic, inorganic, and physical chemistry",
+      "duration_minutes": 60,
+      "total_marks": 100,
+      "question_count": 25,
+      "question_bank_references": [
+        {
+          "bank_name": "Chemistry Organic Question Bank",
+          "question_count": 10,
+          "selection_criteria": {
+            "difficulty": [
+              "intermediate",
+              "advanced"
+            ],
+            "topics": [
+              "reactions",
+              "mechanisms",
+              "synthesis"
+            ],
+            "question_types": [
+              "mcq",
+              "assertion_reason"
+            ]
+          }
+        },
+        {
+          "bank_name": "Chemistry Inorganic Question Bank",
+          "question_count": 10,
+          "selection_criteria": {
+            "difficulty": [
+              "intermediate",
+              "advanced"
+            ],
+            "topics": [
+              "periodic_table",
+              "coordination_compounds",
+              "metallurgy"
+            ],
+            "question_types": [
+              "mcq",
+              "structural"
+            ]
+          }
+        },
+        {
+          "bank_name": "Chemistry Organic Question Bank",
+          "question_count": 5,
+          "selection_criteria": {
+            "difficulty": [
+              "advanced",
+              "expert"
+            ],
+            "topics": [
+              "spectroscopy",
+              "stereochemistry"
+            ],
+            "question_types": [
+              "mcq",
+              "numerical"
+            ]
+          }
+        }
+      ]
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:10.908Z",
+    "updated_at": "2025-10-05T18:02:10.908Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "bef4f9d7-a389-4b15-93f2-f0e81f4764ef",
+  "fields": {
+    "exam": "144317f1-7815-4df7-9390-1d2bfcf9899b",
+    "title": "Organic Chemistry Test",
+    "description": "Advanced organic chemistry test covering reactions, mechanisms, and synthesis from organic chemistry question bank",
+    "duration_minutes": 180,
+    "total_marks": 100,
+    "pass_percentage": "40.00",
+    "status": "draft",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "Organic Chemistry Test_20251005_180209",
+    "original_json_data": {
+      "name": "Organic Chemistry Test",
+      "description": "Advanced organic chemistry test covering reactions, mechanisms, and synthesis from organic chemistry question bank",
+      "category": "test",
+      "subject": "Chemistry",
+      "topic": "Organic Chemistry",
+      "difficulty_level": "advanced",
+      "language": "english",
+      "test_settings": {
+        "duration_minutes": 120,
+        "total_marks": 100,
+        "pass_percentage": 50,
+        "randomize_questions": true,
+        "show_result_immediately": false,
+        "allow_review": true,
+        "max_attempts": 1
+      },
+      "question_bank_references": [
+        {
+          "bank_name": "Chemistry Organic Question Bank",
+          "question_count": 40,
+          "selection_criteria": {
+            "difficulty": [
+              "intermediate",
+              "advanced",
+              "expert"
+            ],
+            "topics": [
+              "reactions",
+              "mechanisms",
+              "synthesis",
+              "stereochemistry",
+              "spectroscopy"
+            ],
+            "question_types": [
+              "mcq",
+              "assertion_reason",
+              "structural"
+            ]
+          }
+        }
+      ],
+      "instructions": [
+        "Draw clear structural formulas where required",
+        "Show reaction mechanisms with proper arrow pushing",
+        "Each question carries different marks as indicated",
+        "Negative marking: -1 mark for wrong answers",
+        "Periodic table is provided",
+        "No calculators allowed for this section"
+      ],
+      "metadata": {
+        "created_for": "Advanced organic chemistry assessment",
+        "target_audience": "Engineering and medical entrance aspirants",
+        "estimated_completion_time": "100-120 minutes",
+        "prerequisites": [
+          "Basic organic chemistry",
+          "Chemical bonding",
+          "Thermodynamics"
+        ]
+      }
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:09.315Z",
+    "updated_at": "2025-10-05T18:02:09.315Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "c57a0448-329f-4d82-87fd-6f3699af3517",
+  "fields": {
+    "exam": "92cc2268-0eee-4709-99b8-3d605d426d41",
+    "title": "Mathematics Foundation",
+    "description": "Basic mathematics covering arithmetic, basic algebra, and geometry",
+    "duration_minutes": 60,
+    "total_marks": 60,
+    "pass_percentage": "40.00",
+    "status": "active",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "School Foundation Exam_20251005_180212",
+    "original_json_data": {
+      "name": "Mathematics Foundation",
+      "description": "Basic mathematics covering arithmetic, basic algebra, and geometry",
+      "duration_minutes": 60,
+      "total_marks": 60,
+      "question_count": 20,
+      "question_bank_references": [
+        {
+          "bank_name": "Basic Mathematics Question Bank",
+          "question_count": 20,
+          "selection_criteria": {
+            "difficulty": [
+              "basic",
+              "intermediate"
+            ],
+            "topics": [
+              "arithmetic",
+              "basic_algebra",
+              "geometry",
+              "mensuration"
+            ],
+            "question_types": [
+              "mcq",
+              "numerical",
+              "word_problems"
+            ]
+          }
+        }
+      ]
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:12.693Z",
+    "updated_at": "2025-10-05T18:02:12.693Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "cf5588b3-6719-4b97-8c81-1ed3e7db9fcd",
+  "fields": {
+    "exam": "13b8270b-eb58-4f63-8442-877130bfd903",
+    "title": "Computer Science Fundamentals",
+    "description": "Basic programming concepts, data structures, and computer fundamentals",
+    "duration_minutes": 50,
+    "total_marks": 60,
+    "pass_percentage": "40.00",
+    "status": "active",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "General Aptitude & Reasoning Exam_20251005_180211",
+    "original_json_data": {
+      "name": "Computer Science Fundamentals",
+      "description": "Basic programming concepts, data structures, and computer fundamentals",
+      "duration_minutes": 50,
+      "total_marks": 60,
+      "question_count": 15,
+      "question_bank_references": [
+        {
+          "bank_name": "Computer Science Question Bank",
+          "question_count": 15,
+          "selection_criteria": {
+            "difficulty": [
+              "basic",
+              "intermediate"
+            ],
+            "topics": [
+              "programming_basics",
+              "data_structures",
+              "algorithms",
+              "computer_fundamentals"
+            ],
+            "question_types": [
+              "mcq",
+              "code_analysis"
+            ]
+          }
+        }
+      ]
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:11.909Z",
+    "updated_at": "2025-10-05T18:02:11.909Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "e01927bb-d4b4-4b5a-a24d-314399826974",
+  "fields": {
+    "exam": "1093cfca-caba-4a24-a5fe-902f94b7dedf",
+    "title": "Physics Section",
+    "description": "Physics questions covering mechanics, thermodynamics, and waves",
+    "duration_minutes": 60,
+    "total_marks": 100,
+    "pass_percentage": "40.00",
+    "status": "active",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "JEE Main Science Mock Exam_20251005_180210",
+    "original_json_data": {
+      "name": "Physics Section",
+      "description": "Physics questions covering mechanics, thermodynamics, and waves",
+      "duration_minutes": 60,
+      "total_marks": 100,
+      "question_count": 25,
+      "question_bank_references": [
+        {
+          "bank_name": "Physics Mechanics Question Bank",
+          "question_count": 10,
+          "selection_criteria": {
+            "difficulty": [
+              "intermediate",
+              "advanced"
+            ],
+            "topics": [
+              "kinematics",
+              "dynamics",
+              "work_energy"
+            ],
+            "question_types": [
+              "mcq",
+              "numerical"
+            ]
+          }
+        },
+        {
+          "bank_name": "Physics Thermodynamics Question Bank",
+          "question_count": 10,
+          "selection_criteria": {
+            "difficulty": [
+              "intermediate",
+              "advanced"
+            ],
+            "topics": [
+              "laws_of_thermodynamics",
+              "heat_engines",
+              "kinetic_theory"
+            ],
+            "question_types": [
+              "mcq",
+              "numerical"
+            ]
+          }
+        },
+        {
+          "bank_name": "Advanced Physics Question Bank",
+          "question_count": 5,
+          "selection_criteria": {
+            "difficulty": [
+              "advanced",
+              "expert"
+            ],
+            "topics": [
+              "waves",
+              "optics",
+              "modern_physics"
+            ],
+            "question_types": [
+              "mcq",
+              "numerical"
+            ]
+          }
+        }
+      ]
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:10.832Z",
+    "updated_at": "2025-10-05T18:32:41.800Z"
+  }
+},
+{
+  "model": "exams.testattempt",
+  "pk": "238a1951-2a2b-4e3c-af87-7f2c71270f70",
+  "fields": {
+    "test": "cf5588b3-6719-4b97-8c81-1ed3e7db9fcd",
+    "user": "1ff1f672-938a-41ea-bde9-d593d8fe2391",
+    "attempt_number": 1,
+    "status": "submitted",
+    "start_time": "2025-10-09T06:09:58.604Z",
+    "end_time": "2025-10-09T06:10:49.263Z",
+    "time_spent_seconds": 50,
+    "total_questions": 15,
+    "attempted_questions": 15,
+    "correct_answers": 0,
+    "marks_obtained": "0.00",
+    "percentage": "0.00"
+  }
+},
+{
+  "model": "exams.testattempt",
+  "pk": "270d516d-ab61-439e-acfd-2dad2c490f12",
+  "fields": {
+    "test": "be85234d-eb43-4931-b1fc-fb39eeaaa06d",
+    "user": "1ff1f672-938a-41ea-bde9-d593d8fe2391",
+    "attempt_number": 1,
+    "status": "in_progress",
+    "start_time": "2025-10-05T18:36:19.069Z",
+    "end_time": null,
+    "time_spent_seconds": 0,
+    "total_questions": 0,
+    "attempted_questions": 0,
+    "correct_answers": 0,
+    "marks_obtained": "0.00",
+    "percentage": "0.00"
+  }
+},
+{
+  "model": "exams.testattempt",
+  "pk": "5b86a743-7276-4ac1-8aad-270ac730348c",
+  "fields": {
+    "test": "70974de9-ff0a-47fd-802f-2936f24bf392",
+    "user": "1ff1f672-938a-41ea-bde9-d593d8fe2391",
+    "attempt_number": 1,
+    "status": "submitted",
+    "start_time": "2025-10-09T08:35:44.984Z",
+    "end_time": "2025-10-09T08:36:23.056Z",
+    "time_spent_seconds": 38,
+    "total_questions": 25,
+    "attempted_questions": 7,
+    "correct_answers": 0,
+    "marks_obtained": "0.00",
+    "percentage": "0.00"
+  }
+},
+{
+  "model": "exams.testattempt",
+  "pk": "6746558d-795b-4aca-9f16-ad712bdba456",
+  "fields": {
+    "test": "7a4b65a9-4ce8-4e99-aec7-ec9a22a43ddc",
+    "user": "1ff1f672-938a-41ea-bde9-d593d8fe2391",
+    "attempt_number": 1,
+    "status": "in_progress",
+    "start_time": "2025-10-05T18:35:11.968Z",
+    "end_time": null,
+    "time_spent_seconds": 0,
+    "total_questions": 0,
+    "attempted_questions": 0,
+    "correct_answers": 0,
+    "marks_obtained": "0.00",
+    "percentage": "0.00"
+  }
+},
+{
+  "model": "exams.testattempt",
+  "pk": "9e28b860-abf0-41aa-a37b-0f770ccd392c",
+  "fields": {
+    "test": "a265efd8-e9e1-48fb-8c7c-b974bf796396",
+    "user": "1ff1f672-938a-41ea-bde9-d593d8fe2391",
+    "attempt_number": 1,
+    "status": "submitted",
+    "start_time": "2025-10-05T18:57:14.779Z",
+    "end_time": "2025-10-05T18:57:46.668Z",
+    "time_spent_seconds": 31,
+    "total_questions": 10,
+    "attempted_questions": 10,
+    "correct_answers": 0,
+    "marks_obtained": "0.00",
+    "percentage": "0.00"
+  }
+},
+{
+  "model": "exams.testattempt",
+  "pk": "e354b2fc-e81a-4c74-8e59-c354569f0b14",
+  "fields": {
+    "test": "e01927bb-d4b4-4b5a-a24d-314399826974",
+    "user": "1ff1f672-938a-41ea-bde9-d593d8fe2391",
+    "attempt_number": 1,
+    "status": "in_progress",
+    "start_time": "2025-10-05T18:35:18.417Z",
+    "end_time": null,
+    "time_spent_seconds": 0,
+    "total_questions": 0,
+    "attempted_questions": 0,
+    "correct_answers": 0,
+    "marks_obtained": "0.00",
+    "percentage": "0.00"
+  }
+},
+{
+  "model": "exams.testattempt",
+  "pk": "fad99327-321c-47ac-9315-8eecde68b5f8",
+  "fields": {
+    "test": "8912c0c1-3e54-47af-ab24-75fdc5a5cf95",
+    "user": "1ff1f672-938a-41ea-bde9-d593d8fe2391",
+    "attempt_number": 1,
+    "status": "submitted",
+    "start_time": "2025-10-05T19:18:12.262Z",
+    "end_time": "2025-10-05T19:18:28.155Z",
+    "time_spent_seconds": 15,
+    "total_questions": 15,
+    "attempted_questions": 2,
+    "correct_answers": 0,
+    "marks_obtained": "0.00",
+    "percentage": "0.00"
+  }
+},
+{
+  "model": "exams.testattempt",
+  "pk": "fcf5a4ad-3a0c-4174-8385-89d91c187284",
+  "fields": {
+    "test": "c57a0448-329f-4d82-87fd-6f3699af3517",
+    "user": "1ff1f672-938a-41ea-bde9-d593d8fe2391",
+    "attempt_number": 1,
+    "status": "submitted",
+    "start_time": "2025-10-05T19:03:29.251Z",
+    "end_time": "2025-10-05T19:04:07.677Z",
+    "time_spent_seconds": 38,
+    "total_questions": 20,
+    "attempted_questions": 4,
+    "correct_answers": 0,
+    "marks_obtained": "0.00",
+    "percentage": "0.00"
+  }
+},
+{
+  "model": "exams.organization",
+  "pk": "0c47bf55-bb65-4a68-a872-7ea3d8ffe0a2",
+  "fields": {
+    "name": "UPSC - Union Public Service Commission",
+    "short_name": "",
+    "organization_type": "government",
+    "logo": "",
+    "website": "https://upsc.gov.in",
+    "description": "Premier central recruiting agency for the Government of India",
+    "email": "",
+    "phone": "",
+    "address": "",
+    "is_active": true,
+    "created_at": "2025-08-25T15:10:25.854Z",
+    "updated_at": "2025-08-25T15:10:25.855Z",
+    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba"
+  }
+},
+{
+  "model": "exams.organization",
+  "pk": "5bcfa708-ed31-4024-88b7-c90b69d64f08",
+  "fields": {
+    "name": "Banking - IBPS",
+    "short_name": "",
+    "organization_type": "government",
+    "logo": "",
+    "website": "https://ibps.in",
+    "description": "Institute of Banking Personnel Selection",
+    "email": "",
+    "phone": "",
+    "address": "",
+    "is_active": true,
+    "created_at": "2025-08-25T15:10:25.866Z",
+    "updated_at": "2025-08-25T15:10:25.866Z",
+    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba"
+  }
+},
+{
+  "model": "exams.organization",
+  "pk": "ac08101c-24ea-4a62-a9ae-a03ce606a427",
+  "fields": {
+    "name": "SSC - Staff Selection Commission",
+    "short_name": "",
+    "organization_type": "government",
+    "logo": "",
+    "website": "https://ssc.nic.in",
+    "description": "Government organization to recruit staff for various posts",
+    "email": "",
+    "phone": "",
+    "address": "",
+    "is_active": true,
+    "created_at": "2025-08-25T15:10:25.861Z",
+    "updated_at": "2025-08-25T15:10:25.861Z",
+    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba"
+  }
+},
+{
   "model": "questions.questionbank",
   "pk": "0198a8ce-14d6-40b8-b9a6-463e229c5821",
   "fields": {
@@ -72204,6 +74761,2637 @@
     "selection_method": "random",
     "weightage_percentage": "100.00",
     "created_at": "2025-10-05T18:32:41.871Z"
+  }
+},
+{
+  "model": "payments.subscriptionplan",
+  "pk": "5f04ef2b-81b5-4281-9248-441850d75cc8",
+  "fields": {
+    "name": "Pro Plan",
+    "plan_type": "pro",
+    "description": "Best value for serious exam preparation",
+    "price": "599.00",
+    "billing_cycle": "monthly",
+    "max_tests": 50,
+    "max_questions": 500,
+    "pdf_extraction": true,
+    "analytics_access": true,
+    "priority_support": true,
+    "custom_branding": false,
+    "api_access": false,
+    "is_active": true,
+    "is_popular": true,
+    "trial_days": 14,
+    "created_at": "2025-08-25T14:14:13.753Z",
+    "updated_at": "2025-08-25T14:14:13.753Z"
+  }
+},
+{
+  "model": "payments.subscriptionplan",
+  "pk": "ada7f790-7e7d-46b7-8601-2dfcbc8d7813",
+  "fields": {
+    "name": "Annual Pro",
+    "plan_type": "pro",
+    "description": "2 months free with annual billing",
+    "price": "5990.00",
+    "billing_cycle": "yearly",
+    "max_tests": 50,
+    "max_questions": 500,
+    "pdf_extraction": true,
+    "analytics_access": true,
+    "priority_support": true,
+    "custom_branding": false,
+    "api_access": false,
+    "is_active": true,
+    "is_popular": false,
+    "trial_days": 14,
+    "created_at": "2025-08-25T14:14:13.771Z",
+    "updated_at": "2025-08-25T14:14:13.771Z"
+  }
+},
+{
+  "model": "payments.subscriptionplan",
+  "pk": "c7974985-74ff-4f23-b84e-0cd90334ec1a",
+  "fields": {
+    "name": "Basic Plan",
+    "plan_type": "basic",
+    "description": "Perfect for students starting their exam preparation",
+    "price": "299.00",
+    "billing_cycle": "monthly",
+    "max_tests": 10,
+    "max_questions": 100,
+    "pdf_extraction": false,
+    "analytics_access": false,
+    "priority_support": false,
+    "custom_branding": false,
+    "api_access": false,
+    "is_active": true,
+    "is_popular": false,
+    "trial_days": 7,
+    "created_at": "2025-08-25T14:14:13.742Z",
+    "updated_at": "2025-08-25T14:14:13.743Z"
+  }
+},
+{
+  "model": "payments.subscriptionplan",
+  "pk": "f56c616f-c36a-41b7-ba80-db36419e6e99",
+  "fields": {
+    "name": "Enterprise Plan",
+    "plan_type": "enterprise",
+    "description": "Unlimited access for institutes and professionals",
+    "price": "1299.00",
+    "billing_cycle": "monthly",
+    "max_tests": -1,
+    "max_questions": -1,
+    "pdf_extraction": true,
+    "analytics_access": true,
+    "priority_support": true,
+    "custom_branding": true,
+    "api_access": true,
+    "is_active": true,
+    "is_popular": false,
+    "trial_days": 30,
+    "created_at": "2025-08-25T14:14:13.764Z",
+    "updated_at": "2025-08-25T14:14:13.764Z"
+  }
+},
+{
+  "model": "payments.usersubscription",
+  "pk": "6f308cdc-dc3b-46ed-8cce-f5f1b551fdee",
+  "fields": {
+    "user": "4c249882-c2a3-46f3-af84-14d33b6c1208",
+    "plan": "c7974985-74ff-4f23-b84e-0cd90334ec1a",
+    "status": "active",
+    "start_date": "2025-08-25T14:30:33.596Z",
+    "end_date": "2025-09-24T14:30:33.596Z",
+    "next_billing_date": null,
+    "stripe_subscription_id": null,
+    "stripe_customer_id": null,
+    "tests_used": 0,
+    "questions_used": 0,
+    "auto_renew": true,
+    "cancelled_at": null,
+    "created_at": "2025-08-25T14:30:33.599Z",
+    "updated_at": "2025-08-25T14:30:33.599Z"
+  }
+},
+{
+  "model": "payments.usersubscription",
+  "pk": "985fbb3a-9fbc-429e-9d84-1937a53a17bb",
+  "fields": {
+    "user": "f3c9cafb-065a-4746-b4c0-278a760bf931",
+    "plan": "c7974985-74ff-4f23-b84e-0cd90334ec1a",
+    "status": "active",
+    "start_date": "2025-08-25T14:26:50.454Z",
+    "end_date": "2025-09-24T14:26:50.454Z",
+    "next_billing_date": null,
+    "stripe_subscription_id": null,
+    "stripe_customer_id": null,
+    "tests_used": 0,
+    "questions_used": 0,
+    "auto_renew": true,
+    "cancelled_at": null,
+    "created_at": "2025-08-25T14:26:50.455Z",
+    "updated_at": "2025-08-25T14:26:50.455Z"
+  }
+},
+{
+  "model": "payments.usersubscription",
+  "pk": "9adfb0ca-64a4-41a0-802b-35e4ec763b93",
+  "fields": {
+    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
+    "plan": "c7974985-74ff-4f23-b84e-0cd90334ec1a",
+    "status": "active",
+    "start_date": "2025-08-25T14:28:15.922Z",
+    "end_date": "2025-09-24T14:28:15.922Z",
+    "next_billing_date": null,
+    "stripe_subscription_id": null,
+    "stripe_customer_id": null,
+    "tests_used": 0,
+    "questions_used": 0,
+    "auto_renew": true,
+    "cancelled_at": null,
+    "created_at": "2025-08-25T14:28:15.923Z",
+    "updated_at": "2025-08-25T14:28:15.923Z"
+  }
+},
+{
+  "model": "payments.payment",
+  "pk": "aa8d017e-8537-4408-9ebc-3de657e6311a",
+  "fields": {
+    "user": "4c249882-c2a3-46f3-af84-14d33b6c1208",
+    "subscription": "6f308cdc-dc3b-46ed-8cce-f5f1b551fdee",
+    "plan": "c7974985-74ff-4f23-b84e-0cd90334ec1a",
+    "amount": "299.00",
+    "currency": "INR",
+    "status": "completed",
+    "gateway": "mock",
+    "gateway_transaction_id": "2420ca07-5a8e-45e8-8a5b-add6ebfb8d40",
+    "gateway_payment_intent_id": null,
+    "description": null,
+    "metadata": {},
+    "paid_at": "2025-08-25T14:30:33.607Z",
+    "refunded_at": null,
+    "created_at": "2025-08-25T14:30:33.608Z",
+    "updated_at": "2025-08-25T14:30:33.608Z"
+  }
+},
+{
+  "model": "payments.paymenthistory",
+  "pk": "af9845b4-52d0-4213-8264-3ec1b0e5e987",
+  "fields": {
+    "user": "4c249882-c2a3-46f3-af84-14d33b6c1208",
+    "payment": null,
+    "subscription": "6f308cdc-dc3b-46ed-8cce-f5f1b551fdee",
+    "action": "subscription_created",
+    "description": "New Basic Plan subscription created via Mock Gateway (Development)",
+    "metadata": {},
+    "created_at": "2025-08-25T14:30:33.613Z"
+  }
+},
+{
+  "model": "core.featurecategory",
+  "pk": 1,
+  "fields": {
+    "name": "STUDENT_UI",
+    "display_name": "Student Interface",
+    "description": "Features related to student-facing interface and interactions",
+    "icon": "user-circle",
+    "order": 1,
+    "created_at": "2025-10-09T05:00:45.203Z",
+    "updated_at": "2025-10-09T05:00:45.203Z"
+  }
+},
+{
+  "model": "core.featurecategory",
+  "pk": 2,
+  "fields": {
+    "name": "STUDENT_DASHBOARD",
+    "display_name": "Student Dashboard",
+    "description": "Dashboard-specific features for students",
+    "icon": "chart-bar",
+    "order": 2,
+    "created_at": "2025-10-09T05:00:45.205Z",
+    "updated_at": "2025-10-09T05:00:45.205Z"
+  }
+},
+{
+  "model": "core.featurecategory",
+  "pk": 3,
+  "fields": {
+    "name": "EXAM_FEATURES",
+    "display_name": "Exam Features",
+    "description": "Core examination functionality and features",
+    "icon": "document-text",
+    "order": 3,
+    "created_at": "2025-10-09T05:00:45.207Z",
+    "updated_at": "2025-10-09T05:00:45.207Z"
+  }
+},
+{
+  "model": "core.featurecategory",
+  "pk": 4,
+  "fields": {
+    "name": "CONTENT_MANAGEMENT",
+    "display_name": "Content Management",
+    "description": "Content creation, management, and organization features",
+    "icon": "folder",
+    "order": 4,
+    "created_at": "2025-10-09T05:00:45.208Z",
+    "updated_at": "2025-10-09T05:00:45.208Z"
+  }
+},
+{
+  "model": "core.featurecategory",
+  "pk": 5,
+  "fields": {
+    "name": "ANALYTICS",
+    "display_name": "Analytics & Reporting",
+    "description": "Analytics, reporting, and insights features",
+    "icon": "presentation-chart-line",
+    "order": 5,
+    "created_at": "2025-10-09T05:00:45.210Z",
+    "updated_at": "2025-10-09T05:00:45.210Z"
+  }
+},
+{
+  "model": "core.featurecategory",
+  "pk": 6,
+  "fields": {
+    "name": "ADMIN_TOOLS",
+    "display_name": "Admin Tools",
+    "description": "Administrative tools and management features",
+    "icon": "cog",
+    "order": 6,
+    "created_at": "2025-10-09T05:00:45.212Z",
+    "updated_at": "2025-10-09T05:00:45.212Z"
+  }
+},
+{
+  "model": "core.featurecategory",
+  "pk": 7,
+  "fields": {
+    "name": "PAYMENT_SYSTEM",
+    "display_name": "Payment System",
+    "description": "Payment processing and subscription features",
+    "icon": "credit-card",
+    "order": 7,
+    "created_at": "2025-10-09T05:00:45.213Z",
+    "updated_at": "2025-10-09T05:00:45.213Z"
+  }
+},
+{
+  "model": "core.featurecategory",
+  "pk": 8,
+  "fields": {
+    "name": "COMMUNICATION",
+    "display_name": "Communication",
+    "description": "Notifications, messaging, and communication features",
+    "icon": "chat-bubble-left",
+    "order": 8,
+    "created_at": "2025-10-09T05:00:45.216Z",
+    "updated_at": "2025-10-09T05:00:45.216Z"
+  }
+},
+{
+  "model": "core.featurecategory",
+  "pk": 9,
+  "fields": {
+    "name": "SECURITY",
+    "display_name": "Security Features",
+    "description": "Security, authentication, and privacy features",
+    "icon": "shield-check",
+    "order": 9,
+    "created_at": "2025-10-09T05:00:45.217Z",
+    "updated_at": "2025-10-09T05:00:45.217Z"
+  }
+},
+{
+  "model": "core.featurecategory",
+  "pk": 10,
+  "fields": {
+    "name": "INTEGRATIONS",
+    "display_name": "External Integrations",
+    "description": "Third-party integrations and API features",
+    "icon": "link",
+    "order": 10,
+    "created_at": "2025-10-09T05:00:45.218Z",
+    "updated_at": "2025-10-09T05:00:45.219Z"
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 1,
+  "fields": {
+    "key": "student_sidebar_navigation",
+    "name": "Student Sidebar Navigation",
+    "description": "Enhanced sidebar navigation with quick access to exams, results, and profile",
+    "category": 1,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "UI_COMPONENT",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.221Z",
+    "updated_at": "2025-10-09T05:30:09.631Z",
+    "enabled_at": "2025-10-09T05:30:09.631Z",
+    "enabled_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 2,
+  "fields": {
+    "key": "student_dark_mode",
+    "name": "Dark Mode for Students",
+    "description": "Dark theme option for student interface",
+    "category": 1,
+    "is_enabled": false,
+    "is_beta": true,
+    "priority": "LOW",
+    "feature_type": "UI_COMPONENT",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.224Z",
+    "updated_at": "2025-10-09T05:00:45.224Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": [
+      5
+    ]
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 3,
+  "fields": {
+    "key": "student_profile_customization",
+    "name": "Profile Customization",
+    "description": "Allow students to customize their profile with avatar, bio, and preferences",
+    "category": 1,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "MEDIUM",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.226Z",
+    "updated_at": "2025-10-09T05:00:45.226Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 4,
+  "fields": {
+    "key": "student_quick_search",
+    "name": "Quick Search",
+    "description": "Global search functionality for exams, subjects, and content",
+    "category": 1,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "MEDIUM",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.227Z",
+    "updated_at": "2025-10-09T05:30:26.584Z",
+    "enabled_at": "2025-10-09T05:30:26.584Z",
+    "enabled_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 5,
+  "fields": {
+    "key": "dashboard_performance_analytics",
+    "name": "Performance Analytics Dashboard",
+    "description": "Comprehensive performance analytics with charts and insights",
+    "category": 2,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "ANALYTICS",
+    "requires_restart": false,
+    "affects_performance": true,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.228Z",
+    "updated_at": "2025-10-09T05:00:45.228Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 6,
+  "fields": {
+    "key": "dashboard_progress_tracking",
+    "name": "Progress Tracking",
+    "description": "Visual progress tracking for courses and exam preparation",
+    "category": 2,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.230Z",
+    "updated_at": "2025-10-09T05:00:45.230Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 7,
+  "fields": {
+    "key": "dashboard_recommended_exams",
+    "name": "Recommended Exams",
+    "description": "AI-powered exam recommendations based on performance and interests",
+    "category": 2,
+    "is_enabled": false,
+    "is_beta": true,
+    "priority": "MEDIUM",
+    "feature_type": "ANALYTICS",
+    "requires_restart": false,
+    "affects_performance": true,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.231Z",
+    "updated_at": "2025-10-09T05:00:45.231Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [
+      5
+    ],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 8,
+  "fields": {
+    "key": "dashboard_study_streaks",
+    "name": "Study Streaks",
+    "description": "Gamified study streak tracking and achievements",
+    "category": 2,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "LOW",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.233Z",
+    "updated_at": "2025-10-09T05:00:45.233Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 9,
+  "fields": {
+    "key": "dashboard_upcoming_deadlines",
+    "name": "Upcoming Deadlines",
+    "description": "Calendar view of upcoming exam deadlines and important dates",
+    "category": 2,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.234Z",
+    "updated_at": "2025-10-09T05:00:45.234Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 10,
+  "fields": {
+    "key": "exam_auto_save",
+    "name": "Auto-save Functionality",
+    "description": "Automatically save exam progress to prevent data loss",
+    "category": 3,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "CRITICAL",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.235Z",
+    "updated_at": "2025-10-09T05:00:45.236Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 11,
+  "fields": {
+    "key": "exam_timer_warnings",
+    "name": "Timer Warnings",
+    "description": "Visual and audio warnings when exam time is running low",
+    "category": 3,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.237Z",
+    "updated_at": "2025-10-09T05:00:45.237Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 12,
+  "fields": {
+    "key": "exam_question_bookmarking",
+    "name": "Question Bookmarking",
+    "description": "Allow students to bookmark questions for review",
+    "category": 3,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "MEDIUM",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.238Z",
+    "updated_at": "2025-10-09T05:00:45.238Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 13,
+  "fields": {
+    "key": "exam_offline_mode",
+    "name": "Offline Mode",
+    "description": "Allow exams to be taken offline with sync when connection is restored",
+    "category": 3,
+    "is_enabled": false,
+    "is_beta": true,
+    "priority": "HIGH",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": true,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.240Z",
+    "updated_at": "2025-10-09T05:00:45.240Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [
+      10
+    ],
+    "conflicts_with": [
+      14
+    ]
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 14,
+  "fields": {
+    "key": "exam_proctoring",
+    "name": "AI Proctoring",
+    "description": "AI-powered exam proctoring with camera and behavior monitoring",
+    "category": 3,
+    "is_enabled": false,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "SECURITY",
+    "requires_restart": false,
+    "affects_performance": true,
+    "user_roles": [
+      "student",
+      "teacher"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.242Z",
+    "updated_at": "2025-10-09T05:09:08.161Z",
+    "enabled_at": "2025-10-09T05:09:07.227Z",
+    "enabled_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "depends_on": [
+      33
+    ],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 15,
+  "fields": {
+    "key": "exam_instant_results",
+    "name": "Instant Results",
+    "description": "Show exam results immediately after completion",
+    "category": 3,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "MEDIUM",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.244Z",
+    "updated_at": "2025-10-09T05:00:45.244Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 16,
+  "fields": {
+    "key": "content_bulk_upload",
+    "name": "Bulk Content Upload",
+    "description": "Upload multiple questions and media files in batch",
+    "category": 4,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.245Z",
+    "updated_at": "2025-10-09T05:00:45.246Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 17,
+  "fields": {
+    "key": "content_version_control",
+    "name": "Version Control",
+    "description": "Track changes and maintain version history of questions and exams",
+    "category": 4,
+    "is_enabled": false,
+    "is_beta": false,
+    "priority": "MEDIUM",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.248Z",
+    "updated_at": "2025-10-09T05:00:45.248Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 18,
+  "fields": {
+    "key": "content_ai_generation",
+    "name": "AI Question Generation",
+    "description": "Generate questions automatically using AI based on topics and difficulty",
+    "category": 4,
+    "is_enabled": false,
+    "is_beta": true,
+    "priority": "MEDIUM",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": true,
+    "user_roles": [
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.249Z",
+    "updated_at": "2025-10-09T05:00:45.249Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [
+      16
+    ],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 19,
+  "fields": {
+    "key": "content_plagiarism_detection",
+    "name": "Plagiarism Detection",
+    "description": "Detect duplicate or similar questions across question banks",
+    "category": 4,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "MEDIUM",
+    "feature_type": "ANALYTICS",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.251Z",
+    "updated_at": "2025-10-09T05:00:45.251Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 20,
+  "fields": {
+    "key": "analytics_detailed_reports",
+    "name": "Detailed Analytics Reports",
+    "description": "Comprehensive analytics reports with insights and recommendations",
+    "category": 5,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "ANALYTICS",
+    "requires_restart": false,
+    "affects_performance": true,
+    "user_roles": [
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.253Z",
+    "updated_at": "2025-10-09T05:00:45.253Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 21,
+  "fields": {
+    "key": "analytics_real_time_monitoring",
+    "name": "Real-time Monitoring",
+    "description": "Real-time monitoring of ongoing exams and student performance",
+    "category": 5,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "ANALYTICS",
+    "requires_restart": false,
+    "affects_performance": true,
+    "user_roles": [
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.255Z",
+    "updated_at": "2025-10-09T05:00:45.255Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 22,
+  "fields": {
+    "key": "analytics_predictive_insights",
+    "name": "Predictive Insights",
+    "description": "AI-powered predictive analytics for student performance",
+    "category": 5,
+    "is_enabled": false,
+    "is_beta": true,
+    "priority": "MEDIUM",
+    "feature_type": "ANALYTICS",
+    "requires_restart": false,
+    "affects_performance": true,
+    "user_roles": [
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.260Z",
+    "updated_at": "2025-10-09T05:00:45.260Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [
+      20,
+      21
+    ],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 23,
+  "fields": {
+    "key": "admin_user_management",
+    "name": "Advanced User Management",
+    "description": "Comprehensive user management with roles, permissions, and bulk operations",
+    "category": 6,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "CRITICAL",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.261Z",
+    "updated_at": "2025-10-09T05:00:45.262Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 24,
+  "fields": {
+    "key": "admin_system_monitoring",
+    "name": "System Monitoring",
+    "description": "Monitor system performance, usage statistics, and health metrics",
+    "category": 6,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "ANALYTICS",
+    "requires_restart": false,
+    "affects_performance": true,
+    "user_roles": [
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.266Z",
+    "updated_at": "2025-10-09T05:00:45.266Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 25,
+  "fields": {
+    "key": "admin_backup_restore",
+    "name": "Backup & Restore",
+    "description": "Automated backup and restore functionality for data protection",
+    "category": 6,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "CRITICAL",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": true,
+    "affects_performance": false,
+    "user_roles": [
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.271Z",
+    "updated_at": "2025-10-09T05:00:45.271Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 26,
+  "fields": {
+    "key": "payment_multiple_gateways",
+    "name": "Multiple Payment Gateways",
+    "description": "Support for multiple payment processors and methods",
+    "category": 7,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "INTEGRATION",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.273Z",
+    "updated_at": "2025-10-09T05:00:45.273Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 27,
+  "fields": {
+    "key": "payment_subscription_management",
+    "name": "Subscription Management",
+    "description": "Comprehensive subscription and recurring payment management",
+    "category": 7,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.278Z",
+    "updated_at": "2025-10-09T05:00:45.278Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 28,
+  "fields": {
+    "key": "payment_refund_processing",
+    "name": "Automated Refund Processing",
+    "description": "Automated refund processing with configurable rules",
+    "category": 7,
+    "is_enabled": false,
+    "is_beta": false,
+    "priority": "MEDIUM",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.279Z",
+    "updated_at": "2025-10-09T05:00:45.280Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [
+      27
+    ],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 29,
+  "fields": {
+    "key": "notifications_email",
+    "name": "Email Notifications",
+    "description": "Comprehensive email notification system for various events",
+    "category": 8,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student",
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.284Z",
+    "updated_at": "2025-10-09T05:00:45.284Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 30,
+  "fields": {
+    "key": "notifications_push",
+    "name": "Push Notifications",
+    "description": "Browser and mobile push notifications",
+    "category": 8,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "MEDIUM",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student",
+      "teacher"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.287Z",
+    "updated_at": "2025-10-09T05:00:45.287Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 31,
+  "fields": {
+    "key": "messaging_system",
+    "name": "Internal Messaging",
+    "description": "Internal messaging system between students and teachers",
+    "category": 8,
+    "is_enabled": false,
+    "is_beta": false,
+    "priority": "LOW",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student",
+      "teacher"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.291Z",
+    "updated_at": "2025-10-09T05:00:45.291Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 32,
+  "fields": {
+    "key": "security_two_factor_auth",
+    "name": "Two-Factor Authentication",
+    "description": "Enhanced security with 2FA for all user accounts",
+    "category": 9,
+    "is_enabled": false,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "SECURITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student",
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.296Z",
+    "updated_at": "2025-10-09T05:00:45.296Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [
+      33
+    ],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 33,
+  "fields": {
+    "key": "security_session_management",
+    "name": "Advanced Session Management",
+    "description": "Enhanced session security with device tracking and forced logout",
+    "category": 9,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "SECURITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student",
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.300Z",
+    "updated_at": "2025-10-09T05:00:45.300Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 34,
+  "fields": {
+    "key": "security_audit_logging",
+    "name": "Audit Logging",
+    "description": "Comprehensive audit logging for all user actions and system events",
+    "category": 9,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "SECURITY",
+    "requires_restart": false,
+    "affects_performance": true,
+    "user_roles": [
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.303Z",
+    "updated_at": "2025-10-09T05:00:45.303Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 35,
+  "fields": {
+    "key": "integration_google_classroom",
+    "name": "Google Classroom Integration",
+    "description": "Seamless integration with Google Classroom for assignment sync",
+    "category": 10,
+    "is_enabled": false,
+    "is_beta": false,
+    "priority": "MEDIUM",
+    "feature_type": "INTEGRATION",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "teacher"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.305Z",
+    "updated_at": "2025-10-09T05:00:45.305Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [
+      34
+    ],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 36,
+  "fields": {
+    "key": "integration_lms",
+    "name": "LMS Integration",
+    "description": "Integration with popular Learning Management Systems",
+    "category": 10,
+    "is_enabled": false,
+    "is_beta": false,
+    "priority": "LOW",
+    "feature_type": "INTEGRATION",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.307Z",
+    "updated_at": "2025-10-09T05:00:45.307Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [
+      34
+    ],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 37,
+  "fields": {
+    "key": "integration_calendar",
+    "name": "Calendar Integration",
+    "description": "Sync exam schedules with external calendar applications",
+    "category": 10,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "MEDIUM",
+    "feature_type": "INTEGRATION",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student",
+      "teacher"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.313Z",
+    "updated_at": "2025-10-09T05:00:45.313Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.featurechangelog",
+  "pk": 1,
+  "fields": {
+    "feature": 14,
+    "changed_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "action": "ENABLED",
+    "previous_state": false,
+    "new_state": true,
+    "reason": "",
+    "timestamp": "2025-10-09T05:09:07.228Z",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+  }
+},
+{
+  "model": "core.featurechangelog",
+  "pk": 2,
+  "fields": {
+    "feature": 14,
+    "changed_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "action": "DISABLED",
+    "previous_state": true,
+    "new_state": false,
+    "reason": "",
+    "timestamp": "2025-10-09T05:09:08.163Z",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+  }
+},
+{
+  "model": "core.featurechangelog",
+  "pk": 3,
+  "fields": {
+    "feature": 1,
+    "changed_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "action": "DISABLED",
+    "previous_state": true,
+    "new_state": false,
+    "reason": "",
+    "timestamp": "2025-10-09T05:30:08.004Z",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+  }
+},
+{
+  "model": "core.featurechangelog",
+  "pk": 4,
+  "fields": {
+    "feature": 1,
+    "changed_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "action": "ENABLED",
+    "previous_state": false,
+    "new_state": true,
+    "reason": "",
+    "timestamp": "2025-10-09T05:30:09.633Z",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+  }
+},
+{
+  "model": "core.featurechangelog",
+  "pk": 5,
+  "fields": {
+    "feature": 4,
+    "changed_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "action": "DISABLED",
+    "previous_state": true,
+    "new_state": false,
+    "reason": "",
+    "timestamp": "2025-10-09T05:30:25.251Z",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+  }
+},
+{
+  "model": "core.featurechangelog",
+  "pk": 6,
+  "fields": {
+    "feature": 4,
+    "changed_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "action": "ENABLED",
+    "previous_state": false,
+    "new_state": true,
+    "reason": "",
+    "timestamp": "2025-10-09T05:30:26.586Z",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 1,
+  "fields": {
+    "feature": 1,
+    "role": "STUDENT",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:12.933Z",
+    "updated_at": "2025-10-09T05:35:12.933Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 2,
+  "fields": {
+    "feature": 1,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:12.944Z",
+    "updated_at": "2025-10-09T05:35:12.944Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 3,
+  "fields": {
+    "feature": 1,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:12.953Z",
+    "updated_at": "2025-10-09T05:35:12.953Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 4,
+  "fields": {
+    "feature": 2,
+    "role": "STUDENT",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:12.961Z",
+    "updated_at": "2025-10-09T05:35:12.961Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 5,
+  "fields": {
+    "feature": 2,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:12.967Z",
+    "updated_at": "2025-10-09T05:35:12.967Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 6,
+  "fields": {
+    "feature": 2,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:12.977Z",
+    "updated_at": "2025-10-09T05:35:12.977Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 7,
+  "fields": {
+    "feature": 3,
+    "role": "STUDENT",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:12.988Z",
+    "updated_at": "2025-10-09T05:35:12.988Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 8,
+  "fields": {
+    "feature": 3,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:12.997Z",
+    "updated_at": "2025-10-09T05:35:12.997Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 9,
+  "fields": {
+    "feature": 3,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.005Z",
+    "updated_at": "2025-10-09T05:35:13.005Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 10,
+  "fields": {
+    "feature": 4,
+    "role": "STUDENT",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.014Z",
+    "updated_at": "2025-10-09T05:35:13.015Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 11,
+  "fields": {
+    "feature": 4,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.024Z",
+    "updated_at": "2025-10-09T05:35:13.024Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 12,
+  "fields": {
+    "feature": 4,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.033Z",
+    "updated_at": "2025-10-09T05:35:13.033Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 13,
+  "fields": {
+    "feature": 5,
+    "role": "STUDENT",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.042Z",
+    "updated_at": "2025-10-09T05:35:13.042Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 14,
+  "fields": {
+    "feature": 5,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.049Z",
+    "updated_at": "2025-10-09T05:35:13.049Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 15,
+  "fields": {
+    "feature": 5,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.057Z",
+    "updated_at": "2025-10-09T05:35:13.057Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 16,
+  "fields": {
+    "feature": 6,
+    "role": "STUDENT",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.068Z",
+    "updated_at": "2025-10-09T05:35:13.068Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 17,
+  "fields": {
+    "feature": 6,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.078Z",
+    "updated_at": "2025-10-09T05:35:13.078Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 18,
+  "fields": {
+    "feature": 6,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.088Z",
+    "updated_at": "2025-10-09T05:35:13.088Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 19,
+  "fields": {
+    "feature": 9,
+    "role": "STUDENT",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.098Z",
+    "updated_at": "2025-10-09T05:35:13.098Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 20,
+  "fields": {
+    "feature": 9,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.112Z",
+    "updated_at": "2025-10-09T05:35:13.112Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 21,
+  "fields": {
+    "feature": 9,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.119Z",
+    "updated_at": "2025-10-09T05:35:13.119Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 22,
+  "fields": {
+    "feature": 8,
+    "role": "STUDENT",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.129Z",
+    "updated_at": "2025-10-09T05:35:13.129Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 23,
+  "fields": {
+    "feature": 8,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.134Z",
+    "updated_at": "2025-10-09T05:35:13.134Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 24,
+  "fields": {
+    "feature": 8,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.140Z",
+    "updated_at": "2025-10-09T05:35:13.140Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 25,
+  "fields": {
+    "feature": 7,
+    "role": "STUDENT",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.147Z",
+    "updated_at": "2025-10-09T05:35:13.147Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 26,
+  "fields": {
+    "feature": 7,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.157Z",
+    "updated_at": "2025-10-09T05:35:13.157Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 27,
+  "fields": {
+    "feature": 7,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.170Z",
+    "updated_at": "2025-10-09T05:35:13.170Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 28,
+  "fields": {
+    "feature": 10,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.184Z",
+    "updated_at": "2025-10-09T05:35:13.184Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 29,
+  "fields": {
+    "feature": 10,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.192Z",
+    "updated_at": "2025-10-09T05:35:13.192Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 30,
+  "fields": {
+    "feature": 10,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.199Z",
+    "updated_at": "2025-10-09T05:35:13.199Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 31,
+  "fields": {
+    "feature": 14,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.206Z",
+    "updated_at": "2025-10-09T05:35:13.206Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 32,
+  "fields": {
+    "feature": 14,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.212Z",
+    "updated_at": "2025-10-09T05:35:13.212Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 33,
+  "fields": {
+    "feature": 14,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.220Z",
+    "updated_at": "2025-10-09T05:35:13.220Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 34,
+  "fields": {
+    "feature": 13,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.227Z",
+    "updated_at": "2025-10-09T05:35:13.227Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 35,
+  "fields": {
+    "feature": 13,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.232Z",
+    "updated_at": "2025-10-09T05:35:13.232Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 36,
+  "fields": {
+    "feature": 13,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.237Z",
+    "updated_at": "2025-10-09T05:35:13.237Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 37,
+  "fields": {
+    "feature": 11,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.244Z",
+    "updated_at": "2025-10-09T05:35:13.244Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 38,
+  "fields": {
+    "feature": 11,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.254Z",
+    "updated_at": "2025-10-09T05:35:13.254Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 39,
+  "fields": {
+    "feature": 11,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.260Z",
+    "updated_at": "2025-10-09T05:35:13.260Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 40,
+  "fields": {
+    "feature": 15,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.269Z",
+    "updated_at": "2025-10-09T05:35:13.269Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 41,
+  "fields": {
+    "feature": 15,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.276Z",
+    "updated_at": "2025-10-09T05:35:13.276Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 42,
+  "fields": {
+    "feature": 15,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.283Z",
+    "updated_at": "2025-10-09T05:35:13.283Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 43,
+  "fields": {
+    "feature": 12,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.291Z",
+    "updated_at": "2025-10-09T05:35:13.291Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 44,
+  "fields": {
+    "feature": 12,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.297Z",
+    "updated_at": "2025-10-09T05:35:13.297Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 45,
+  "fields": {
+    "feature": 12,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.308Z",
+    "updated_at": "2025-10-09T05:35:13.308Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 46,
+  "fields": {
+    "feature": 16,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.314Z",
+    "updated_at": "2025-10-09T05:35:13.314Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 47,
+  "fields": {
+    "feature": 16,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.321Z",
+    "updated_at": "2025-10-09T05:35:13.321Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 48,
+  "fields": {
+    "feature": 16,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.328Z",
+    "updated_at": "2025-10-09T05:35:13.328Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 49,
+  "fields": {
+    "feature": 18,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.334Z",
+    "updated_at": "2025-10-09T05:35:13.334Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 50,
+  "fields": {
+    "feature": 18,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.343Z",
+    "updated_at": "2025-10-09T05:35:13.343Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 51,
+  "fields": {
+    "feature": 18,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.354Z",
+    "updated_at": "2025-10-09T05:35:13.354Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 52,
+  "fields": {
+    "feature": 19,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.369Z",
+    "updated_at": "2025-10-09T05:35:13.370Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 53,
+  "fields": {
+    "feature": 19,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.386Z",
+    "updated_at": "2025-10-09T05:35:13.386Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 54,
+  "fields": {
+    "feature": 19,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.397Z",
+    "updated_at": "2025-10-09T05:35:13.397Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 55,
+  "fields": {
+    "feature": 17,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.408Z",
+    "updated_at": "2025-10-09T05:35:13.408Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 56,
+  "fields": {
+    "feature": 17,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.416Z",
+    "updated_at": "2025-10-09T05:35:13.416Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 57,
+  "fields": {
+    "feature": 17,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.425Z",
+    "updated_at": "2025-10-09T05:35:13.425Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 58,
+  "fields": {
+    "feature": 20,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.431Z",
+    "updated_at": "2025-10-09T05:35:13.431Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 59,
+  "fields": {
+    "feature": 20,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.440Z",
+    "updated_at": "2025-10-09T05:35:13.440Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 60,
+  "fields": {
+    "feature": 20,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.449Z",
+    "updated_at": "2025-10-09T05:35:13.449Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 61,
+  "fields": {
+    "feature": 21,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.457Z",
+    "updated_at": "2025-10-09T05:35:13.457Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 62,
+  "fields": {
+    "feature": 21,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.464Z",
+    "updated_at": "2025-10-09T05:35:13.464Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 63,
+  "fields": {
+    "feature": 21,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.471Z",
+    "updated_at": "2025-10-09T05:35:13.471Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 64,
+  "fields": {
+    "feature": 22,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.478Z",
+    "updated_at": "2025-10-09T05:35:13.478Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 65,
+  "fields": {
+    "feature": 22,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.488Z",
+    "updated_at": "2025-10-09T05:35:13.488Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 66,
+  "fields": {
+    "feature": 22,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.496Z",
+    "updated_at": "2025-10-09T05:35:13.496Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 67,
+  "fields": {
+    "feature": 23,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.503Z",
+    "updated_at": "2025-10-09T05:35:13.503Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 68,
+  "fields": {
+    "feature": 23,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.514Z",
+    "updated_at": "2025-10-09T05:35:13.514Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 69,
+  "fields": {
+    "feature": 23,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.522Z",
+    "updated_at": "2025-10-09T05:35:13.522Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 70,
+  "fields": {
+    "feature": 25,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.531Z",
+    "updated_at": "2025-10-09T05:35:13.531Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 71,
+  "fields": {
+    "feature": 25,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.536Z",
+    "updated_at": "2025-10-09T05:35:13.536Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 72,
+  "fields": {
+    "feature": 25,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.542Z",
+    "updated_at": "2025-10-09T05:35:13.542Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 73,
+  "fields": {
+    "feature": 24,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.549Z",
+    "updated_at": "2025-10-09T05:35:13.549Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 74,
+  "fields": {
+    "feature": 24,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.555Z",
+    "updated_at": "2025-10-09T05:35:13.555Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 75,
+  "fields": {
+    "feature": 24,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.564Z",
+    "updated_at": "2025-10-09T05:35:13.564Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 76,
+  "fields": {
+    "feature": 26,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.577Z",
+    "updated_at": "2025-10-09T05:35:13.577Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 77,
+  "fields": {
+    "feature": 26,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.587Z",
+    "updated_at": "2025-10-09T05:35:13.587Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 78,
+  "fields": {
+    "feature": 26,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.598Z",
+    "updated_at": "2025-10-09T05:35:13.598Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 79,
+  "fields": {
+    "feature": 27,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.610Z",
+    "updated_at": "2025-10-09T05:35:13.610Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 80,
+  "fields": {
+    "feature": 27,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.617Z",
+    "updated_at": "2025-10-09T05:35:13.623Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 81,
+  "fields": {
+    "feature": 27,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.628Z",
+    "updated_at": "2025-10-09T05:35:13.628Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 82,
+  "fields": {
+    "feature": 28,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.636Z",
+    "updated_at": "2025-10-09T05:35:13.636Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 83,
+  "fields": {
+    "feature": 28,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.649Z",
+    "updated_at": "2025-10-09T05:35:13.649Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 84,
+  "fields": {
+    "feature": 28,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.660Z",
+    "updated_at": "2025-10-09T05:35:13.660Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 85,
+  "fields": {
+    "feature": 29,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.668Z",
+    "updated_at": "2025-10-09T05:35:13.668Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 86,
+  "fields": {
+    "feature": 29,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.676Z",
+    "updated_at": "2025-10-09T05:35:13.676Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 87,
+  "fields": {
+    "feature": 29,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.689Z",
+    "updated_at": "2025-10-09T05:35:13.689Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 88,
+  "fields": {
+    "feature": 31,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.699Z",
+    "updated_at": "2025-10-09T05:35:13.700Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 89,
+  "fields": {
+    "feature": 31,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.705Z",
+    "updated_at": "2025-10-09T05:35:13.705Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 90,
+  "fields": {
+    "feature": 31,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.715Z",
+    "updated_at": "2025-10-09T05:35:13.715Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 91,
+  "fields": {
+    "feature": 30,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.726Z",
+    "updated_at": "2025-10-09T05:35:13.726Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 92,
+  "fields": {
+    "feature": 30,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.732Z",
+    "updated_at": "2025-10-09T05:35:13.732Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 93,
+  "fields": {
+    "feature": 30,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.740Z",
+    "updated_at": "2025-10-09T05:35:13.740Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 94,
+  "fields": {
+    "feature": 33,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.750Z",
+    "updated_at": "2025-10-09T05:35:13.750Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 95,
+  "fields": {
+    "feature": 33,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.757Z",
+    "updated_at": "2025-10-09T05:35:13.757Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 96,
+  "fields": {
+    "feature": 33,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.767Z",
+    "updated_at": "2025-10-09T05:35:13.767Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 97,
+  "fields": {
+    "feature": 34,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.778Z",
+    "updated_at": "2025-10-09T05:35:13.786Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 98,
+  "fields": {
+    "feature": 34,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.797Z",
+    "updated_at": "2025-10-09T05:35:13.797Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 99,
+  "fields": {
+    "feature": 34,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.806Z",
+    "updated_at": "2025-10-09T05:35:13.806Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 100,
+  "fields": {
+    "feature": 32,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.814Z",
+    "updated_at": "2025-10-09T05:35:13.814Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 101,
+  "fields": {
+    "feature": 32,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.822Z",
+    "updated_at": "2025-10-09T05:35:13.822Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 102,
+  "fields": {
+    "feature": 32,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.828Z",
+    "updated_at": "2025-10-09T05:35:13.828Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 103,
+  "fields": {
+    "feature": 36,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.836Z",
+    "updated_at": "2025-10-09T05:35:13.836Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 104,
+  "fields": {
+    "feature": 36,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.844Z",
+    "updated_at": "2025-10-09T05:35:13.844Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 105,
+  "fields": {
+    "feature": 36,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.851Z",
+    "updated_at": "2025-10-09T05:35:13.851Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 106,
+  "fields": {
+    "feature": 37,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.858Z",
+    "updated_at": "2025-10-09T05:35:13.858Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 107,
+  "fields": {
+    "feature": 37,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.864Z",
+    "updated_at": "2025-10-09T05:35:13.864Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 108,
+  "fields": {
+    "feature": 37,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.871Z",
+    "updated_at": "2025-10-09T05:35:13.871Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 109,
+  "fields": {
+    "feature": 35,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.880Z",
+    "updated_at": "2025-10-09T05:35:13.880Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 110,
+  "fields": {
+    "feature": 35,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.885Z",
+    "updated_at": "2025-10-09T05:35:13.886Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 111,
+  "fields": {
+    "feature": 35,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.894Z",
+    "updated_at": "2025-10-09T05:35:13.894Z"
   }
 }
 ]

@@ -1,197 +1,272 @@
 [
 {
   "model": "exams.exam",
-  "pk": "09df375c-4f4f-4120-9c33-9e8f98a25bd6",
+  "pk": "1093cfca-caba-4a24-a5fe-902f94b7dedf",
   "fields": {
-    "name": "Central Teacher Eligibility Test (CTET)",
-    "description": "Eligibility test for teaching in central government schools",
+    "name": "JEE Main Science Mock Exam",
+    "description": "Complete JEE Main mock examination covering Physics, Chemistry, and Mathematics",
     "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "teaching",
-    "subject": "",
-    "topic": "",
+    "category": "exam",
+    "exam_type": "engineering",
+    "subject": "Mixed Sciences",
+    "topic": "JEE Main Preparation",
     "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
+    "difficulty_level": "advanced",
+    "target_audience": "competitive_exam",
     "language": "english",
     "state_specific": "",
     "tags": [],
     "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
     "year": 2024,
+    "status": "active",
     "is_active": true,
     "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.357Z",
-    "updated_at": "2025-08-25T16:14:30.357Z"
+    "imported_from_json": true,
+    "json_import_batch": "JEE Main Science Mock Exam_20251005_180210",
+    "original_json_data": {
+      "name": "JEE Main Science Mock Exam",
+      "description": "Complete JEE Main mock examination covering Physics, Chemistry, and Mathematics",
+      "category": "exam",
+      "exam_type": "engineering",
+      "subject": "Mixed Sciences",
+      "topic": "JEE Main Preparation",
+      "difficulty_level": "advanced",
+      "language": "english",
+      "year": 2024,
+      "target_audience": "competitive_exam",
+      "exam_settings": {
+        "total_duration_minutes": 180,
+        "total_marks": 300,
+        "pass_percentage": 40,
+        "negative_marking": true,
+        "negative_marks_per_wrong": -1,
+        "randomize_questions": true,
+        "show_result_immediately": false,
+        "allow_review": false,
+        "max_attempts": 1
+      },
+      "tests": [
+        {
+          "name": "Physics Section",
+          "description": "Physics questions covering mechanics, thermodynamics, and waves",
+          "duration_minutes": 60,
+          "total_marks": 100,
+          "question_count": 25,
+          "question_bank_references": [
+            {
+              "bank_name": "Physics Mechanics Question Bank",
+              "question_count": 10,
+              "selection_criteria": {
+                "difficulty": [
+                  "intermediate",
+                  "advanced"
+                ],
+                "topics": [
+                  "kinematics",
+                  "dynamics",
+                  "work_energy"
+                ],
+                "question_types": [
+                  "mcq",
+                  "numerical"
+                ]
+              }
+            },
+            {
+              "bank_name": "Physics Thermodynamics Question Bank",
+              "question_count": 10,
+              "selection_criteria": {
+                "difficulty": [
+                  "intermediate",
+                  "advanced"
+                ],
+                "topics": [
+                  "laws_of_thermodynamics",
+                  "heat_engines",
+                  "kinetic_theory"
+                ],
+                "question_types": [
+                  "mcq",
+                  "numerical"
+                ]
+              }
+            },
+            {
+              "bank_name": "Physics Advanced Question Bank",
+              "question_count": 5,
+              "selection_criteria": {
+                "difficulty": [
+                  "advanced",
+                  "expert"
+                ],
+                "topics": [
+                  "waves",
+                  "optics",
+                  "modern_physics"
+                ],
+                "question_types": [
+                  "mcq",
+                  "numerical"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Chemistry Section",
+          "description": "Chemistry questions covering organic, inorganic, and physical chemistry",
+          "duration_minutes": 60,
+          "total_marks": 100,
+          "question_count": 25,
+          "question_bank_references": [
+            {
+              "bank_name": "Chemistry Organic Question Bank",
+              "question_count": 10,
+              "selection_criteria": {
+                "difficulty": [
+                  "intermediate",
+                  "advanced"
+                ],
+                "topics": [
+                  "reactions",
+                  "mechanisms",
+                  "synthesis"
+                ],
+                "question_types": [
+                  "mcq",
+                  "assertion_reason"
+                ]
+              }
+            },
+            {
+              "bank_name": "Chemistry Inorganic Question Bank",
+              "question_count": 10,
+              "selection_criteria": {
+                "difficulty": [
+                  "intermediate",
+                  "advanced"
+                ],
+                "topics": [
+                  "periodic_table",
+                  "coordination_compounds",
+                  "metallurgy"
+                ],
+                "question_types": [
+                  "mcq",
+                  "structural"
+                ]
+              }
+            },
+            {
+              "bank_name": "Chemistry Organic Question Bank",
+              "question_count": 5,
+              "selection_criteria": {
+                "difficulty": [
+                  "advanced",
+                  "expert"
+                ],
+                "topics": [
+                  "spectroscopy",
+                  "stereochemistry"
+                ],
+                "question_types": [
+                  "mcq",
+                  "numerical"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Mathematics Section",
+          "description": "Mathematics questions covering algebra, calculus, and coordinate geometry",
+          "duration_minutes": 60,
+          "total_marks": 100,
+          "question_count": 25,
+          "question_bank_references": [
+            {
+              "bank_name": "Basic Mathematics Question Bank",
+              "question_count": 8,
+              "selection_criteria": {
+                "difficulty": [
+                  "intermediate",
+                  "advanced"
+                ],
+                "topics": [
+                  "algebra",
+                  "geometry",
+                  "trigonometry"
+                ],
+                "question_types": [
+                  "mcq",
+                  "numerical"
+                ]
+              }
+            },
+            {
+              "bank_name": "Advanced Mathematics Question Bank",
+              "question_count": 17,
+              "selection_criteria": {
+                "difficulty": [
+                  "advanced",
+                  "expert"
+                ],
+                "topics": [
+                  "calculus",
+                  "coordinate_geometry",
+                  "probability",
+                  "vectors"
+                ],
+                "question_types": [
+                  "mcq",
+                  "numerical"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "instructions": [
+        "This exam consists of 3 sections: Physics, Chemistry, and Mathematics",
+        "Each section has 60 minutes and 25 questions",
+        "Each question carries 4 marks",
+        "Wrong answers carry -1 mark (negative marking)",
+        "Use the on-screen calculator for numerical calculations",
+        "You can navigate between sections during the exam",
+        "Submit each section before moving to the next",
+        "Final submission cannot be undone"
+      ],
+      "metadata": {
+        "created_for": "JEE Main mock test preparation",
+        "target_audience": "Class 12 students and JEE aspirants",
+        "estimated_completion_time": "165-180 minutes",
+        "prerequisites": [
+          "Class 11-12 PCM syllabus",
+          "JEE Main syllabus knowledge"
+        ],
+        "difficulty_distribution": {
+          "easy": "20%",
+          "medium": "50%",
+          "hard": "30%"
+        }
+      }
+    },
+    "created_at": "2025-10-05T18:02:10.816Z",
+    "updated_at": "2025-10-05T18:02:10.816Z"
   }
 },
 {
   "model": "exams.exam",
-  "pk": "0c12c07a-fef4-47cc-a51c-76a03bbcd23f",
+  "pk": "13b8270b-eb58-4f63-8442-877130bfd903",
   "fields": {
-    "name": "Assistant General Manager (AGM) Examination",
-    "description": "Recruitment to AGM positions in various disciplines",
+    "name": "General Aptitude & Reasoning Exam",
+    "description": "Comprehensive exam covering logical reasoning, general knowledge, and computer science fundamentals",
     "organization": null,
-    "category": "business_studies",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.255Z",
-    "updated_at": "2025-08-25T16:14:30.255Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "13c0cd11-6c70-44ab-9b04-6b0aaba158ae",
-  "fields": {
-    "name": "National Eligibility cum Entrance Test (NEET)",
-    "description": "National level entrance exam for medical and dental courses",
-    "organization": null,
-    "category": "medical",
-    "exam_type": "medical",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.366Z",
-    "updated_at": "2025-08-25T16:14:30.366Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "15b3508c-b76f-4efa-be69-85ce42fbaacb",
-  "fields": {
-    "name": "AIIMS Fellowship Entrance Examination",
-    "description": "Fellowship entrance examination for super-specialization",
-    "organization": null,
-    "category": "medical",
-    "exam_type": "medical",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.266Z",
-    "updated_at": "2025-08-25T16:14:30.266Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "19992bb9-0828-4f4d-9c49-24fb01d45b4d",
-  "fields": {
-    "name": "Watchman Examination",
-    "description": "Recruitment to Watchman positions",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.233Z",
-    "updated_at": "2025-08-25T16:14:30.233Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "1bac5799-5fd2-4aec-9dd3-c0b2a9ddf430",
-  "fields": {
-    "name": "Circle Based Officer (CBO) Examination",
-    "description": "Recruitment to Circle Based Officer positions",
-    "organization": null,
-    "category": "banking",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.370Z",
-    "updated_at": "2025-08-25T16:14:30.370Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "1d73438a-3a19-475a-a789-0ddd26b51fa7",
-  "fields": {
-    "name": "Railway Recruitment Board Group D",
-    "description": "Recruitment to Level 1 posts in Indian Railways",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "railway",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.440Z",
-    "updated_at": "2025-08-25T16:14:30.440Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "1f70c40b-1519-4ab0-bddb-c086242761ac",
-  "fields": {
-    "name": "Assistant Provident Fund Commisioner (APFC - EPFO)",
-    "description": "Recruitment of APFC",
-    "organization": null,
-    "category": "other",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
+    "category": "exam",
+    "exam_type": "aptitude",
+    "subject": "General Aptitude",
+    "topic": "Competitive Exam Preparation",
     "subtopic": "",
     "difficulty_level": "intermediate",
     "target_audience": "competitive_exam",
@@ -199,124 +274,179 @@
     "state_specific": "",
     "tags": [],
     "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2025,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.220Z",
-    "updated_at": "2025-08-25T16:14:30.220Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "2440bbb6-50fd-4c7d-ad5f-b78b70863b30",
-  "fields": {
-    "name": "Common University Entrance Test (CUET)",
-    "description": "Common entrance test for admission to central universities",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
     "year": 2024,
+    "status": "draft",
     "is_active": true,
     "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.306Z",
-    "updated_at": "2025-08-25T16:14:30.306Z"
+    "imported_from_json": true,
+    "json_import_batch": "General Aptitude & Reasoning Exam_20251005_180211",
+    "original_json_data": {
+      "name": "General Aptitude & Reasoning Exam",
+      "description": "Comprehensive exam covering logical reasoning, general knowledge, and computer science fundamentals",
+      "category": "exam",
+      "exam_type": "aptitude",
+      "subject": "General Aptitude",
+      "topic": "Competitive Exam Preparation",
+      "difficulty_level": "intermediate",
+      "language": "english",
+      "year": 2024,
+      "target_audience": "competitive_exam",
+      "exam_settings": {
+        "total_duration_minutes": 120,
+        "total_marks": 200,
+        "pass_percentage": 50,
+        "negative_marking": true,
+        "negative_marks_per_wrong": -0.5,
+        "randomize_questions": true,
+        "show_result_immediately": true,
+        "allow_review": true,
+        "max_attempts": 2
+      },
+      "tests": [
+        {
+          "name": "Logical Reasoning",
+          "description": "Questions testing logical thinking and problem-solving abilities",
+          "duration_minutes": 40,
+          "total_marks": 80,
+          "question_count": 20,
+          "question_bank_references": [
+            {
+              "bank_name": "Logical Reasoning Question Bank",
+              "question_count": 15,
+              "selection_criteria": {
+                "difficulty": [
+                  "basic",
+                  "intermediate"
+                ],
+                "topics": [
+                  "logical_sequences",
+                  "patterns",
+                  "analogies",
+                  "syllogisms"
+                ],
+                "question_types": [
+                  "mcq",
+                  "analytical"
+                ]
+              }
+            },
+            {
+              "bank_name": "Reasoning Logical Question Bank",
+              "question_count": 5,
+              "selection_criteria": {
+                "difficulty": [
+                  "intermediate",
+                  "advanced"
+                ],
+                "topics": [
+                  "critical_reasoning",
+                  "logical_puzzles"
+                ],
+                "question_types": [
+                  "mcq",
+                  "scenario_based"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "General Knowledge",
+          "description": "Current affairs, history, geography, and general awareness",
+          "duration_minutes": 30,
+          "total_marks": 60,
+          "question_count": 15,
+          "question_bank_references": [
+            {
+              "bank_name": "General Knowledge Question Bank",
+              "question_count": 15,
+              "selection_criteria": {
+                "difficulty": [
+                  "basic",
+                  "intermediate"
+                ],
+                "topics": [
+                  "current_affairs",
+                  "history",
+                  "geography",
+                  "politics",
+                  "economics"
+                ],
+                "question_types": [
+                  "mcq",
+                  "factual"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Computer Science Fundamentals",
+          "description": "Basic programming concepts, data structures, and computer fundamentals",
+          "duration_minutes": 50,
+          "total_marks": 60,
+          "question_count": 15,
+          "question_bank_references": [
+            {
+              "bank_name": "Computer Science Question Bank",
+              "question_count": 15,
+              "selection_criteria": {
+                "difficulty": [
+                  "basic",
+                  "intermediate"
+                ],
+                "topics": [
+                  "programming_basics",
+                  "data_structures",
+                  "algorithms",
+                  "computer_fundamentals"
+                ],
+                "question_types": [
+                  "mcq",
+                  "code_analysis"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "instructions": [
+        "This exam has 3 sections with different time allocations",
+        "Section 1: Logical Reasoning (40 minutes, 20 questions)",
+        "Section 2: General Knowledge (30 minutes, 15 questions)",
+        "Section 3: Computer Science (50 minutes, 15 questions)",
+        "Each correct answer: +4 marks, Wrong answer: -0.5 marks",
+        "You can switch between sections during the exam",
+        "Time spent in each section is tracked separately",
+        "Ensure you attempt questions across all sections"
+      ],
+      "metadata": {
+        "created_for": "General aptitude assessment for competitive exams",
+        "target_audience": "College students and job seekers",
+        "estimated_completion_time": "100-120 minutes",
+        "prerequisites": [
+          "Basic computer knowledge",
+          "General awareness",
+          "Logical thinking skills"
+        ],
+        "difficulty_distribution": {
+          "easy": "40%",
+          "medium": "45%",
+          "hard": "15%"
+        }
+      }
+    },
+    "created_at": "2025-10-05T18:02:11.805Z",
+    "updated_at": "2025-10-05T18:02:11.805Z"
   }
 },
 {
   "model": "exams.exam",
-  "pk": "2dae9857-2ae1-45db-aa85-b89b1f2c1cad",
+  "pk": "144317f1-7815-4df7-9390-1d2bfcf9899b",
   "fields": {
-    "name": "Specialist Officer (SO) Examination",
-    "description": "Recruitment to specialist officer posts in various fields",
-    "organization": null,
-    "category": "banking",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.411Z",
-    "updated_at": "2025-08-25T16:14:30.411Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "307cddba-fef3-4a30-bb5e-23e0d719ee5b",
-  "fields": {
-    "name": "Housing Finance Assistant (HFA) Examination",
-    "description": "Recruitment to HFA positions in LIC Housing Finance",
-    "organization": null,
-    "category": "commerce",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.332Z",
-    "updated_at": "2025-08-25T16:14:30.332Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "35b018b3-cbcf-46a5-a0ef-67eb9673f7b3",
-  "fields": {
-    "name": "Regional Rural Bank (RRB) Office Assistant",
-    "description": "Recruitment to Office Assistant (Multipurpose) in RRBs",
-    "organization": null,
-    "category": "banking",
-    "exam_type": "banking",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.400Z",
-    "updated_at": "2025-08-25T16:14:30.400Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "4498db3c-ad7e-4227-8129-38f20e847d01",
-  "fields": {
-    "name": "asda",
-    "description": "asda",
+    "name": "Standalone Tests Container",
+    "description": "Container for standalone tests imported from JSON",
     "organization": null,
     "category": "other",
     "exam_type": "other",
@@ -329,1674 +459,1585 @@
     "state_specific": "",
     "tags": [],
     "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
     "year": null,
+    "status": "draft",
     "is_active": true,
     "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.524Z",
-    "updated_at": "2025-08-25T16:14:30.524Z"
+    "imported_from_json": true,
+    "json_import_batch": "auto_created_for_tests",
+    "original_json_data": null,
+    "created_at": "2025-10-05T18:02:06.285Z",
+    "updated_at": "2025-10-05T18:02:06.285Z"
   }
 },
 {
   "model": "exams.exam",
-  "pk": "4c32aacf-aee0-41c0-8968-168da833ae12",
+  "pk": "630d268b-be48-4837-ad6a-36d0b58e911e",
   "fields": {
-    "name": "Stenographer Grade C & D Examination",
-    "description": "Recruitment to Stenographer positions",
+    "name": "Complete JEE Main Mock Exam",
+    "description": "Full JEE Main examination linking existing subject-wise tests",
     "organization": null,
-    "category": "general_knowledge",
+    "category": "exam",
     "exam_type": "other",
-    "subject": "",
-    "topic": "",
+    "subject": "Mixed Sciences",
+    "topic": "JEE Main Preparation",
     "subtopic": "",
-    "difficulty_level": "intermediate",
+    "difficulty_level": "advanced",
     "target_audience": "general",
     "language": "english",
     "state_specific": "",
     "tags": [],
     "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.455Z",
-    "updated_at": "2025-08-25T16:14:30.455Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "54843402-594a-47fb-aab6-ee71a24182a2",
-  "fields": {
-    "name": "Steno Grade II Examination",
-    "description": "Recruitment to Stenographer Grade II positions",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.239Z",
-    "updated_at": "2025-08-25T16:14:30.239Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "588e9c31-2604-4b0d-8fa0-f368fc72baf9",
-  "fields": {
-    "name": "Engineering Services Examination (ESE)",
-    "description": "Recruitment to Group A and Group B engineering services",
-    "organization": null,
-    "category": "engineering",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.483Z",
-    "updated_at": "2025-08-25T16:14:30.483Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "5ed1d782-4456-407f-a082-40d1a822e951",
-  "fields": {
-    "name": "Clerk (Junior Associate) Examination",
-    "description": "Recruitment to Junior Associate positions",
-    "organization": null,
-    "category": "banking",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.389Z",
-    "updated_at": "2025-08-25T16:14:30.389Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "5ee02e56-dd4e-4c3f-97e9-4997f3a9ccf6",
-  "fields": {
-    "name": "Probationary Officer (PO) Examination",
-    "description": "Recruitment to Probationary Officer posts in public sector banks",
-    "organization": null,
-    "category": "banking",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.423Z",
-    "updated_at": "2025-08-25T16:14:30.423Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "5f924141-1518-4fca-a511-6ada70673da3",
-  "fields": {
-    "name": "Common Management Admission Test (CMAT)",
-    "description": "National level test for admission to MBA/PGDM programs",
-    "organization": null,
-    "category": "business_studies",
-    "exam_type": "management",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.288Z",
-    "updated_at": "2025-08-25T16:14:30.288Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "6139f96d-26e3-4f7c-bd08-bb7a37e9bf61",
-  "fields": {
-    "name": "Multi Tasking Staff (MTS) Examination",
-    "description": "Recruitment to Multi Tasking (Non-Technical) Staff positions",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.464Z",
-    "updated_at": "2025-08-25T16:14:30.464Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "62484f1f-1708-44e2-912d-72a7e379c688",
-  "fields": {
-    "name": "Indian Forest Service Examination (IFS)",
-    "description": "Recruitment to Indian Forest Service",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.477Z",
-    "updated_at": "2025-08-25T16:14:30.477Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "6546849d-b789-47cc-8073-4df0d10cb128",
-  "fields": {
-    "name": "Junior Engineer (JE) Examination",
-    "description": "Recruitment to Junior Engineer posts in various departments",
-    "organization": null,
-    "category": "engineering",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.460Z",
-    "updated_at": "2025-08-25T16:14:30.460Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "66601c99-edcf-4876-b2f1-ab375169bc4c",
-  "fields": {
-    "name": "DCIO 2025",
-    "description": "Deputy Central Intelligence Officer (DCIO - Tech) (MHA)",
-    "organization": null,
-    "category": "engineering",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
     "year": null,
+    "status": "active",
     "is_active": true,
     "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.512Z",
-    "updated_at": "2025-08-25T16:14:30.512Z"
+    "imported_from_json": true,
+    "json_import_batch": "Complete JEE Main Mock Exam_20251005_180206",
+    "original_json_data": {
+      "name": "Complete JEE Main Mock Exam",
+      "description": "Full JEE Main examination linking existing subject-wise tests",
+      "category": "exam",
+      "subject": "Mixed Sciences",
+      "topic": "JEE Main Preparation",
+      "difficulty_level": "advanced",
+      "language": "english",
+      "exam_settings": {
+        "total_duration_minutes": 180,
+        "total_marks": 300,
+        "allow_section_navigation": true,
+        "show_timer": true,
+        "auto_submit_on_timeout": true
+      },
+      "linked_tests": [
+        {
+          "reference_type": "name",
+          "reference_value": "JEE Mathematics Test",
+          "section_name": "Mathematics",
+          "allocated_time_minutes": 60
+        },
+        {
+          "reference_type": "name",
+          "reference_value": "Quick Science Test",
+          "section_name": "Physics & Chemistry",
+          "allocated_time_minutes": 120
+        }
+      ],
+      "instructions": [
+        "Total duration: 3 hours (180 minutes)",
+        "The exam consists of multiple sections",
+        "You can navigate between sections",
+        "Each section has its own time allocation",
+        "Negative marking applies as per individual test settings",
+        "Auto-submit will occur when time expires",
+        "Ensure stable internet connection throughout the exam"
+      ],
+      "embedded_tests": [
+        {
+          "name": "Logical Reasoning Section",
+          "description": "Additional reasoning questions for comprehensive assessment",
+          "duration_minutes": 30,
+          "total_marks": 40,
+          "questions": [
+            {
+              "text": "Find the next term in series: 1, 4, 9, 16, ?",
+              "question_type": "mcq",
+              "options": [
+                "20",
+                "25",
+                "30",
+                "36"
+              ],
+              "correct_answer": 1,
+              "explanation": "This is a series of perfect squares: 1², 2², 3², 4², 5² = 25",
+              "difficulty": "basic",
+              "marks": 4,
+              "topic": "Number Series",
+              "tags": [
+                "patterns",
+                "sequences"
+              ]
+            },
+            {
+              "text": "If CODING is written as DPEJOH, how is FLOWER written?",
+              "question_type": "mcq",
+              "options": [
+                "GMPXFS",
+                "GMPUDS",
+                "GKPXFS",
+                "HMPXFS"
+              ],
+              "correct_answer": 0,
+              "explanation": "Each letter is shifted by +1 position in alphabet: F→G, L→M, O→P, W→X, E→F, R→S",
+              "difficulty": "intermediate",
+              "marks": 4,
+              "topic": "Coding-Decoding",
+              "tags": [
+                "logical_reasoning",
+                "coding"
+              ]
+            }
+          ]
+        }
+      ],
+      "exam_metadata": {
+        "exam_type": "engineering",
+        "organization": "Mock Test Series",
+        "year": 2024,
+        "tags": [
+          "jee_main",
+          "engineering_entrance",
+          "mock_test"
+        ],
+        "target_audience": "competitive_exam"
+      }
+    },
+    "created_at": "2025-10-05T18:02:07.028Z",
+    "updated_at": "2025-10-05T18:02:07.028Z"
   }
 },
 {
   "model": "exams.exam",
-  "pk": "6687bb30-3940-4089-8d0f-c239c66ae6af",
+  "pk": "92cc2268-0eee-4709-99b8-3d605d426d41",
   "fields": {
-    "name": "AIIMS Nursing Entrance Examination",
-    "description": "Entrance examination for B.Sc Nursing programs",
+    "name": "School Foundation Exam",
+    "description": "Comprehensive foundation exam covering basic mathematics, general science, and English language",
     "organization": null,
-    "category": "medical",
-    "exam_type": "medical",
-    "subject": "",
-    "topic": "",
+    "category": "exam",
+    "exam_type": "academic",
+    "subject": "Foundation Subjects",
+    "topic": "School Level Assessment",
     "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
+    "difficulty_level": "basic",
+    "target_audience": "school_students",
     "language": "english",
     "state_specific": "",
     "tags": [],
     "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
     "year": 2024,
+    "status": "draft",
     "is_active": true,
     "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.276Z",
-    "updated_at": "2025-08-25T16:14:30.276Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "67c9e8e1-60d9-43c8-b64a-85eb468bde97",
-  "fields": {
-    "name": "Assistant Development Officer (ADO) Examination",
-    "description": "Recruitment to ADO positions",
-    "organization": null,
-    "category": "commerce",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.337Z",
-    "updated_at": "2025-08-25T16:14:30.337Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "6877c8d9-1d08-4f2f-9666-3147346fe111",
-  "fields": {
-    "name": "National Defence Academy & Naval Academy Examination (NDA & NA)",
-    "description": "Examination for entry into NDA and Naval Academy",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "defense",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.494Z",
-    "updated_at": "2025-08-25T16:14:30.494Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "7dfafa55-f9ff-4f29-840a-b8f93ea74967",
-  "fields": {
-    "name": "Central Armed Police Forces (Assistant Commandant) Examination",
-    "description": "Recruitment to CAPF as Assistant Commandant",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "defense",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.488Z",
-    "updated_at": "2025-08-25T16:14:30.489Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "816ba554-32d3-4ed4-96b2-7bf71ebe7392",
-  "fields": {
-    "name": "Kendriya Vidyalaya Sangathan (KVS) Teacher Recruitment",
-    "description": "Recruitment of teachers in Kendriya Vidyalayas",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.348Z",
-    "updated_at": "2025-08-25T16:14:30.348Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "860fad27-6098-4d49-8148-7cd7b5d9c6d6",
-  "fields": {
-    "name": "AIIMS Ph.D Entrance Examination",
-    "description": "Entrance examination for Ph.D programs",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "medical",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.261Z",
-    "updated_at": "2025-08-25T16:14:30.261Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "86f48f49-7995-4865-88ca-411fc7310416",
-  "fields": {
-    "name": "Combined Graduate Level Examination (CGL)",
-    "description": "Recruitment to Group B and Group C posts in various ministries",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.473Z",
-    "updated_at": "2025-08-25T16:14:30.473Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "891ecedb-4f81-4ee2-a44f-54bc919c53c8",
-  "fields": {
-    "name": "Civil Services Examination (CSE)",
-    "description": "Premier examination for recruitment to various civil services of India",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "upsc",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.505Z",
-    "updated_at": "2025-08-25T16:14:30.505Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "904dae03-e96b-432a-8fdf-e34ce1f22f77",
-  "fields": {
-    "name": "Clerk Examination",
-    "description": "Recruitment to Clerical cadre in public sector banks",
-    "organization": null,
-    "category": "banking",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.419Z",
-    "updated_at": "2025-08-25T16:14:30.419Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "9076ff6e-7c86-41d1-b0bf-886b5957e060",
-  "fields": {
-    "name": "National Eligibility Test (NET)",
-    "description": "Eligibility test for Assistant Professor and JRF",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "teaching",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.294Z",
-    "updated_at": "2025-08-25T16:14:30.294Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "948042df-ae4d-4ae5-9c2b-16ca89324aeb",
-  "fields": {
-    "name": "Combined Defence Services Examination (CDS)",
-    "description": "Examination for recruitment to Indian Military Academy, Naval Academy, and Air Force Academy",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "defense",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.500Z",
-    "updated_at": "2025-08-25T16:14:30.500Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "986ecb10-3dd3-425c-9c65-dd5140052467",
-  "fields": {
-    "name": "Railway Protection Force (RPF) Constable",
-    "description": "Recruitment to RPF Constable and Sub-Inspector posts",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "railway",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.429Z",
-    "updated_at": "2025-08-25T16:14:30.429Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "a14a0b64-e5a8-4f2a-956a-143bc82a3103",
-  "fields": {
-    "name": "Railway Recruitment Board NTPC (Non-Technical Popular Categories)",
-    "description": "Recruitment to non-technical popular categories in Indian Railways",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "railway",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.451Z",
-    "updated_at": "2025-08-25T16:14:30.451Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "a3ca4a0f-8871-45ef-ae0d-3b7b2ac72fd0",
-  "fields": {
-    "name": "Graduate Aptitude Test in Engineering (GATE)",
-    "description": "National level examination for postgraduate engineering admissions",
-    "organization": null,
-    "category": "engineering",
-    "exam_type": "engineering",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.300Z",
-    "updated_at": "2025-08-25T16:14:30.300Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "a50dff68-3007-46ca-a446-808ef824e417",
-  "fields": {
-    "name": "Technical Assistant (Architect) Examination",
-    "description": "Recruitment to technical assistant positions for architects",
-    "organization": null,
-    "category": "engineering",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.319Z",
-    "updated_at": "2025-08-25T16:14:30.319Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "a87340d5-4365-4b77-8dd5-af3ebf8a3059",
-  "fields": {
-    "name": "Apprentice Development Officer (AppDO) Examination",
-    "description": "Recruitment to apprentice development officer positions",
-    "organization": null,
-    "category": "commerce",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.327Z",
-    "updated_at": "2025-08-25T16:14:30.327Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "ab57522d-d21d-49de-b9eb-e4828ec4a1cf",
-  "fields": {
-    "name": "Joint Entrance Examination (JEE) Advanced",
-    "description": "Advanced level entrance exam for IITs",
-    "organization": null,
-    "category": "engineering",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.312Z",
-    "updated_at": "2025-08-25T16:14:30.312Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "b525b7c3-68df-4764-b716-9175f22e3fbb",
-  "fields": {
-    "name": "Joint Entrance Examination (JEE) Main",
-    "description": "National level entrance exam for engineering courses",
-    "organization": null,
-    "category": "engineering",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.361Z",
-    "updated_at": "2025-08-25T16:14:30.361Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "b645fb78-c05c-4d00-b84c-9a981521e580",
-  "fields": {
-    "name": "Typist Examination",
-    "description": "Recruitment to Typist positions",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.243Z",
-    "updated_at": "2025-08-25T16:14:30.243Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "be67e543-a53f-47fc-afcb-b6b0db74b749",
-  "fields": {
-    "name": "AIIMS PG Entrance Examination",
-    "description": "Postgraduate medical entrance examination",
-    "organization": null,
-    "category": "medical",
-    "exam_type": "medical",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.272Z",
-    "updated_at": "2025-08-25T16:14:30.272Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "bf9f24b0-f8b2-4579-98ea-7049696fcb8f",
-  "fields": {
-    "name": "AIIMS MBBS Entrance Examination",
-    "description": "Entrance examination for MBBS admission in AIIMS",
-    "organization": null,
-    "category": "medical",
-    "exam_type": "medical",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.283Z",
-    "updated_at": "2025-08-25T16:14:30.283Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "c61d923d-ab04-4d58-a3fb-2d0ca5418117",
-  "fields": {
-    "name": "Probationary Officer (PO) Examination",
-    "description": "Recruitment to PO positions in SBI",
-    "organization": null,
-    "category": "banking",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.395Z",
-    "updated_at": "2025-08-25T16:14:30.395Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "c96b1a69-daf3-4c83-af2e-5884250798f2",
-  "fields": {
-    "name": "Assistant Administrative Officer (AAO) Examination",
-    "description": "Recruitment to AAO positions in LIC",
-    "organization": null,
-    "category": "commerce",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.343Z",
-    "updated_at": "2025-08-25T16:14:30.343Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "cbe2e39e-a304-4fda-bf79-b61be9ea32fa",
-  "fields": {
-    "name": "hee2025",
-    "description": "Comprehensive preparation for hee2025",
-    "organization": null,
-    "category": "engineering",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": null,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.530Z",
-    "updated_at": "2025-08-25T16:14:30.530Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "d11253d7-0b1b-42d5-a802-6e54ee2958c5",
-  "fields": {
-    "name": "Junior Engineer (JE) Examination",
-    "description": "Recruitment to Junior Engineer posts",
-    "organization": null,
-    "category": "engineering",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.249Z",
-    "updated_at": "2025-08-25T16:14:30.249Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "dacb8581-4cfb-4974-8342-d1464dbf6f8b",
-  "fields": {
-    "name": "Assistant Loco Pilot (ALP) Examination",
-    "description": "Recruitment to Assistant Loco Pilot and Technician posts",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.435Z",
-    "updated_at": "2025-08-25T16:14:30.435Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "dc84cbd5-f97e-47d9-97b2-69b9eab01caf",
-  "fields": {
-    "name": "Apprentice Examination",
-    "description": "Recruitment to Apprentice positions",
-    "organization": null,
-    "category": "banking",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.377Z",
-    "updated_at": "2025-08-25T16:14:30.377Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "dcc028d2-88c0-40db-8137-9a377a407132",
-  "fields": {
-    "name": "Railway Recruitment Board JE (Junior Engineer)",
-    "description": "Recruitment to Junior Engineer and allied posts",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "railway",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.446Z",
-    "updated_at": "2025-08-25T16:14:30.446Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "df91137c-d025-4003-bd5f-4ef2853127f9",
-  "fields": {
-    "name": "Specialist Cadre Officer (SCO) Examination",
-    "description": "Recruitment to specialist positions in various fields",
-    "organization": null,
-    "category": "banking",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.382Z",
-    "updated_at": "2025-08-25T16:14:30.382Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "e852f48b-245a-4553-bb1a-53e7beecafce",
-  "fields": {
-    "name": "Regional Rural Bank (RRB) Officer Scale I",
-    "description": "Recruitment to Officer Scale I in Regional Rural Banks",
-    "organization": null,
-    "category": "banking",
-    "exam_type": "banking",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.405Z",
-    "updated_at": "2025-08-25T16:14:30.405Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "eec89acc-27e2-4fc1-b203-eab595c6690e",
-  "fields": {
-    "name": "National Talent Search Examination (NTSE)",
-    "description": "National level scholarship examination for students",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.352Z",
-    "updated_at": "2025-08-25T16:14:30.352Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "f2f74fcf-2a51-40b1-8834-5324b6f766bd",
-  "fields": {
-    "name": "Combined Higher Secondary Level Examination (CHSL)",
-    "description": "Recruitment to posts like LDC, JSA, PA, SA, DEO",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "defense",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2024,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.468Z",
-    "updated_at": "2025-08-25T16:14:30.469Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "f77bf90e-809d-4f38-aa70-d52fc78683bb",
-  "fields": {
-    "name": "Deputy Central Intelligence Officer (DCIO - Tech)",
-    "description": "Recruitment Test for Post of Deputy Central Intelligence Office (DCIO - TECH)",
-    "organization": null,
-    "category": "engineering",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "professionals",
-    "language": "english",
-    "state_specific": "",
-    "tags": [
-      "MHA",
-      "Ministry of Home Affairs"
-    ],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": 2025,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.229Z",
-    "updated_at": "2025-08-25T16:14:30.229Z"
-  }
-},
-{
-  "model": "exams.exam",
-  "pk": "f9c4ec76-344d-4e11-b14d-b24200ed5f4a",
-  "fields": {
-    "name": "Sample Comprehensive Exam",
-    "description": "A sample exam demonstrating the platform capabilities with 100 questions",
-    "organization": null,
-    "category": "general_knowledge",
-    "exam_type": "other",
-    "subject": "",
-    "topic": "",
-    "subtopic": "",
-    "difficulty_level": "intermediate",
-    "target_audience": "general",
-    "language": "english",
-    "state_specific": "",
-    "tags": [],
-    "custom_fields": {},
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "year": null,
-    "is_active": true,
-    "is_featured": false,
-    "created_at": "2025-08-25T16:14:30.517Z",
-    "updated_at": "2025-08-25T16:14:30.517Z"
+    "imported_from_json": true,
+    "json_import_batch": "School Foundation Exam_20251005_180212",
+    "original_json_data": {
+      "name": "School Foundation Exam",
+      "description": "Comprehensive foundation exam covering basic mathematics, general science, and English language",
+      "category": "exam",
+      "exam_type": "academic",
+      "subject": "Foundation Subjects",
+      "topic": "School Level Assessment",
+      "difficulty_level": "basic",
+      "language": "english",
+      "year": 2024,
+      "target_audience": "school_students",
+      "exam_settings": {
+        "total_duration_minutes": 150,
+        "total_marks": 150,
+        "pass_percentage": 35,
+        "negative_marking": false,
+        "negative_marks_per_wrong": 0,
+        "randomize_questions": false,
+        "show_result_immediately": true,
+        "allow_review": true,
+        "max_attempts": 3
+      },
+      "tests": [
+        {
+          "name": "Mathematics Foundation",
+          "description": "Basic mathematics covering arithmetic, basic algebra, and geometry",
+          "duration_minutes": 60,
+          "total_marks": 60,
+          "question_count": 20,
+          "question_bank_references": [
+            {
+              "bank_name": "Basic Mathematics Question Bank",
+              "question_count": 20,
+              "selection_criteria": {
+                "difficulty": [
+                  "basic",
+                  "intermediate"
+                ],
+                "topics": [
+                  "arithmetic",
+                  "basic_algebra",
+                  "geometry",
+                  "mensuration"
+                ],
+                "question_types": [
+                  "mcq",
+                  "numerical",
+                  "word_problems"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "General Science",
+          "description": "Basic concepts from biology, chemistry, and physics",
+          "duration_minutes": 45,
+          "total_marks": 45,
+          "question_count": 15,
+          "question_bank_references": [
+            {
+              "bank_name": "Biology Genetics Question Bank",
+              "question_count": 5,
+              "selection_criteria": {
+                "difficulty": [
+                  "basic"
+                ],
+                "topics": [
+                  "basic_biology",
+                  "human_body",
+                  "plants"
+                ],
+                "question_types": [
+                  "mcq",
+                  "factual"
+                ]
+              }
+            },
+            {
+              "bank_name": "Chemistry Organic Question Bank",
+              "question_count": 5,
+              "selection_criteria": {
+                "difficulty": [
+                  "basic"
+                ],
+                "topics": [
+                  "basic_chemistry",
+                  "elements",
+                  "compounds"
+                ],
+                "question_types": [
+                  "mcq",
+                  "factual"
+                ]
+              }
+            },
+            {
+              "bank_name": "Physics Advanced Question Bank",
+              "question_count": 5,
+              "selection_criteria": {
+                "difficulty": [
+                  "basic"
+                ],
+                "topics": [
+                  "basic_physics",
+                  "motion",
+                  "energy",
+                  "light"
+                ],
+                "question_types": [
+                  "mcq",
+                  "conceptual"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "English Language",
+          "description": "Grammar, vocabulary, and basic literature comprehension",
+          "duration_minutes": 45,
+          "total_marks": 45,
+          "question_count": 15,
+          "question_bank_references": [
+            {
+              "bank_name": "English Grammar Question Bank",
+              "question_count": 10,
+              "selection_criteria": {
+                "difficulty": [
+                  "basic",
+                  "intermediate"
+                ],
+                "topics": [
+                  "grammar",
+                  "vocabulary",
+                  "sentence_formation"
+                ],
+                "question_types": [
+                  "mcq",
+                  "fill_blanks",
+                  "error_correction"
+                ]
+              }
+            },
+            {
+              "bank_name": "English Literature Question Bank",
+              "question_count": 5,
+              "selection_criteria": {
+                "difficulty": [
+                  "basic"
+                ],
+                "topics": [
+                  "comprehension",
+                  "basic_literature"
+                ],
+                "question_types": [
+                  "mcq",
+                  "short_answer"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "instructions": [
+        "This is a foundation level examination for school students",
+        "Section 1: Mathematics (60 minutes, 20 questions)",
+        "Section 2: General Science (45 minutes, 15 questions)",
+        "Section 3: English Language (45 minutes, 15 questions)",
+        "Each question carries 3 marks",
+        "No negative marking - attempt all questions",
+        "Read questions carefully before answering",
+        "Use rough paper for calculations where needed"
+      ],
+      "metadata": {
+        "created_for": "School foundation level assessment",
+        "target_audience": "Class 8-10 students",
+        "estimated_completion_time": "120-150 minutes",
+        "prerequisites": [
+          "Basic school level education",
+          "Elementary subject knowledge"
+        ],
+        "difficulty_distribution": {
+          "easy": "60%",
+          "medium": "35%",
+          "hard": "5%"
+        }
+      }
+    },
+    "created_at": "2025-10-05T18:02:12.678Z",
+    "updated_at": "2025-10-05T18:02:12.678Z"
   }
 },
 {
   "model": "exams.test",
-  "pk": "214610eb-9c70-4af4-8ef5-4f374f1965c8",
+  "pk": "346c5291-88a1-4f13-b2df-a5d1df93419f",
   "fields": {
-    "exam": "4498db3c-ad7e-4227-8129-38f20e847d01",
-    "title": "asda - Practice Test 2",
-    "description": "Comprehensive practice test for asda. Test your knowledge and preparation level.",
-    "duration_minutes": 160,
-    "total_marks": 194,
-    "pass_percentage": "41.47",
-    "is_published": true,
-    "randomize_questions": true,
-    "show_result_immediately": true,
-    "allow_review": true,
-    "max_attempts": 1,
-    "start_time": null,
-    "end_time": null,
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "created_at": "2025-08-25T18:03:33.374Z",
-    "updated_at": "2025-08-25T18:03:33.374Z"
-  }
-},
-{
-  "model": "exams.test",
-  "pk": "2292ee05-3170-4c4b-9f2e-cc0b0bd1b56d",
-  "fields": {
-    "exam": "4498db3c-ad7e-4227-8129-38f20e847d01",
-    "title": "asda - Practice Test 1",
-    "description": "Comprehensive practice test for asda. Test your knowledge and preparation level.",
-    "duration_minutes": 67,
-    "total_marks": 172,
-    "pass_percentage": "53.91",
-    "is_published": true,
-    "randomize_questions": true,
-    "show_result_immediately": true,
-    "allow_review": true,
-    "max_attempts": 1,
-    "start_time": null,
-    "end_time": null,
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "created_at": "2025-08-25T18:03:33.373Z",
-    "updated_at": "2025-08-25T18:03:33.373Z"
-  }
-},
-{
-  "model": "exams.test",
-  "pk": "27b9eaee-c73e-46dc-9b9d-9c7ffee64cfe",
-  "fields": {
-    "exam": "cbe2e39e-a304-4fda-bf79-b61be9ea32fa",
-    "title": "hee2025 - Practice Test 1",
-    "description": "Comprehensive practice test for hee2025. Test your knowledge and preparation level.",
-    "duration_minutes": 159,
-    "total_marks": 121,
-    "pass_percentage": "53.48",
-    "is_published": true,
-    "randomize_questions": true,
-    "show_result_immediately": true,
-    "allow_review": true,
-    "max_attempts": 2,
-    "start_time": null,
-    "end_time": null,
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "created_at": "2025-08-25T18:03:33.360Z",
-    "updated_at": "2025-08-25T18:03:33.360Z"
-  }
-},
-{
-  "model": "exams.test",
-  "pk": "4768051e-5fa1-4c91-8cb0-0fc24b6b8e69",
-  "fields": {
-    "exam": "66601c99-edcf-4876-b2f1-ab375169bc4c",
-    "title": "DCIO 2025 - Practice Test 1",
-    "description": "Comprehensive practice test for DCIO 2025. Test your knowledge and preparation level.",
-    "duration_minutes": 107,
-    "total_marks": 161,
-    "pass_percentage": "44.26",
-    "is_published": true,
+    "exam": "144317f1-7815-4df7-9390-1d2bfcf9899b",
+    "title": "English Language Comprehensive Test",
+    "description": "Complete English assessment covering grammar, literature, and comprehension from English question banks",
+    "duration_minutes": 180,
+    "total_marks": 100,
+    "pass_percentage": "40.00",
+    "status": "draft",
+    "is_published": false,
     "randomize_questions": false,
     "show_result_immediately": true,
     "allow_review": true,
     "max_attempts": 1,
     "start_time": null,
     "end_time": null,
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "created_at": "2025-08-25T18:03:33.385Z",
-    "updated_at": "2025-08-25T18:03:33.385Z"
+    "imported_from_json": true,
+    "json_import_batch": "English Language Comprehensive Test_20251005_180209",
+    "original_json_data": {
+      "name": "English Language Comprehensive Test",
+      "description": "Complete English assessment covering grammar, literature, and comprehension from English question banks",
+      "category": "test",
+      "subject": "English",
+      "topic": "Language & Literature",
+      "difficulty_level": "intermediate",
+      "language": "english",
+      "test_settings": {
+        "duration_minutes": 75,
+        "total_marks": 80,
+        "pass_percentage": 45,
+        "randomize_questions": false,
+        "show_result_immediately": true,
+        "allow_review": true,
+        "max_attempts": 2
+      },
+      "question_bank_references": [
+        {
+          "bank_name": "English Grammar Question Bank",
+          "question_count": 20,
+          "selection_criteria": {
+            "difficulty": [
+              "basic",
+              "intermediate"
+            ],
+            "topics": [
+              "grammar",
+              "syntax",
+              "vocabulary",
+              "sentence_structure"
+            ],
+            "question_types": [
+              "mcq",
+              "fill_blanks",
+              "error_correction"
+            ]
+          }
+        },
+        {
+          "bank_name": "English Literature Question Bank",
+          "question_count": 15,
+          "selection_criteria": {
+            "difficulty": [
+              "intermediate",
+              "advanced"
+            ],
+            "topics": [
+              "poetry",
+              "prose",
+              "drama",
+              "literary_devices"
+            ],
+            "question_types": [
+              "mcq",
+              "short_answer",
+              "analytical"
+            ]
+          }
+        }
+      ],
+      "sections": [
+        {
+          "name": "Grammar & Language",
+          "question_count": 20,
+          "marks": 40,
+          "time_limit": 35
+        },
+        {
+          "name": "Literature & Comprehension",
+          "question_count": 15,
+          "marks": 40,
+          "time_limit": 40
+        }
+      ],
+      "instructions": [
+        "Section A: Grammar & Language (35 minutes)",
+        "Section B: Literature & Comprehension (40 minutes)",
+        "Each question carries equal marks unless specified",
+        "No negative marking for this test",
+        "Read passages carefully before answering comprehension questions"
+      ],
+      "metadata": {
+        "created_for": "General English proficiency assessment",
+        "target_audience": "High school and college students",
+        "estimated_completion_time": "65-75 minutes",
+        "prerequisites": [
+          "Basic English knowledge",
+          "Familiarity with common literary works"
+        ]
+      }
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:10.050Z",
+    "updated_at": "2025-10-05T18:02:10.050Z"
   }
 },
 {
   "model": "exams.test",
-  "pk": "4d8b26ff-def2-49db-ac73-59c2f9e3c8ef",
+  "pk": "5906ec19-cf94-4153-a8c8-c6bb470201b5",
   "fields": {
-    "exam": "891ecedb-4f81-4ee2-a44f-54bc919c53c8",
-    "title": "Civil Services Examination (CSE) - Practice Test 2",
-    "description": "Comprehensive practice test for Civil Services Examination (CSE). Test your knowledge and preparation level.",
-    "duration_minutes": 160,
-    "total_marks": 117,
-    "pass_percentage": "49.03",
-    "is_published": true,
-    "randomize_questions": true,
-    "show_result_immediately": true,
-    "allow_review": true,
-    "max_attempts": 3,
-    "start_time": null,
-    "end_time": null,
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "created_at": "2025-08-25T18:03:33.392Z",
-    "updated_at": "2025-08-25T18:03:33.392Z"
-  }
-},
-{
-  "model": "exams.test",
-  "pk": "709aa36a-40b5-4e17-8bee-3924c0c1d544",
-  "fields": {
-    "exam": "891ecedb-4f81-4ee2-a44f-54bc919c53c8",
-    "title": "Civil Services Examination (CSE) - Practice Test 3",
-    "description": "Comprehensive practice test for Civil Services Examination (CSE). Test your knowledge and preparation level.",
-    "duration_minutes": 99,
-    "total_marks": 141,
-    "pass_percentage": "53.54",
-    "is_published": true,
-    "randomize_questions": true,
-    "show_result_immediately": true,
-    "allow_review": true,
-    "max_attempts": 3,
-    "start_time": null,
-    "end_time": null,
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "created_at": "2025-08-25T18:03:33.394Z",
-    "updated_at": "2025-08-25T18:03:33.394Z"
-  }
-},
-{
-  "model": "exams.test",
-  "pk": "728ed94d-a072-4d78-b292-2e116485a1cc",
-  "fields": {
-    "exam": "cbe2e39e-a304-4fda-bf79-b61be9ea32fa",
-    "title": "hee2025 - Practice Test 2",
-    "description": "Comprehensive practice test for hee2025. Test your knowledge and preparation level.",
-    "duration_minutes": 170,
-    "total_marks": 145,
-    "pass_percentage": "51.59",
-    "is_published": true,
+    "exam": "144317f1-7815-4df7-9390-1d2bfcf9899b",
+    "title": "Physics Mechanics Test",
+    "description": "Comprehensive mechanics test covering kinematics, dynamics, and energy from physics mechanics question bank",
+    "duration_minutes": 180,
+    "total_marks": 100,
+    "pass_percentage": "40.00",
+    "status": "active",
+    "is_published": false,
     "randomize_questions": false,
     "show_result_immediately": true,
     "allow_review": true,
-    "max_attempts": 3,
+    "max_attempts": 1,
     "start_time": null,
     "end_time": null,
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "created_at": "2025-08-25T18:03:33.366Z",
-    "updated_at": "2025-08-25T18:03:33.366Z"
+    "imported_from_json": true,
+    "json_import_batch": "Physics Mechanics Test_20251005_180208",
+    "original_json_data": {
+      "name": "Physics Mechanics Test",
+      "description": "Comprehensive mechanics test covering kinematics, dynamics, and energy from physics mechanics question bank",
+      "category": "test",
+      "subject": "Physics",
+      "topic": "Mechanics",
+      "difficulty_level": "intermediate",
+      "language": "english",
+      "test_settings": {
+        "duration_minutes": 90,
+        "total_marks": 75,
+        "pass_percentage": 45,
+        "randomize_questions": true,
+        "show_result_immediately": false,
+        "allow_review": true,
+        "max_attempts": 1
+      },
+      "question_bank_references": [
+        {
+          "bank_name": "Physics Mechanics Question Bank",
+          "question_count": 30,
+          "selection_criteria": {
+            "difficulty": [
+              "intermediate",
+              "advanced"
+            ],
+            "topics": [
+              "kinematics",
+              "dynamics",
+              "work_energy",
+              "momentum"
+            ],
+            "question_types": [
+              "mcq",
+              "numerical",
+              "conceptual"
+            ]
+          }
+        }
+      ],
+      "instructions": [
+        "Use g = 9.8 m/s² unless specified otherwise",
+        "Show all calculation steps for numerical problems",
+        "Each MCQ carries 2 marks, numerical problems carry 3 marks",
+        "Negative marking: -0.5 marks for wrong MCQ answers",
+        "Calculator and formula sheet are allowed"
+      ],
+      "metadata": {
+        "created_for": "JEE Main Physics preparation",
+        "target_audience": "Class 11-12 students",
+        "estimated_completion_time": "75-90 minutes",
+        "prerequisites": [
+          "Basic mathematics",
+          "Vector knowledge",
+          "Trigonometry"
+        ]
+      }
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:08.565Z",
+    "updated_at": "2025-10-05T18:02:08.565Z"
   }
 },
 {
   "model": "exams.test",
-  "pk": "762730fb-17d6-473b-ae77-0678f2c54aeb",
+  "pk": "598a235d-e32f-4321-98c2-814d72faa709",
   "fields": {
-    "exam": "f9c4ec76-344d-4e11-b14d-b24200ed5f4a",
-    "title": "Sample Comprehensive Exam - Practice Test 2",
-    "description": "Comprehensive practice test for Sample Comprehensive Exam. Test your knowledge and preparation level.",
+    "exam": "92cc2268-0eee-4709-99b8-3d605d426d41",
+    "title": "English Language",
+    "description": "Grammar, vocabulary, and basic literature comprehension",
+    "duration_minutes": 45,
+    "total_marks": 45,
+    "pass_percentage": "40.00",
+    "status": "draft",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "School Foundation Exam_20251005_180212",
+    "original_json_data": {
+      "name": "English Language",
+      "description": "Grammar, vocabulary, and basic literature comprehension",
+      "duration_minutes": 45,
+      "total_marks": 45,
+      "question_count": 15,
+      "question_bank_references": [
+        {
+          "bank_name": "English Grammar Question Bank",
+          "question_count": 10,
+          "selection_criteria": {
+            "difficulty": [
+              "basic",
+              "intermediate"
+            ],
+            "topics": [
+              "grammar",
+              "vocabulary",
+              "sentence_formation"
+            ],
+            "question_types": [
+              "mcq",
+              "fill_blanks",
+              "error_correction"
+            ]
+          }
+        },
+        {
+          "bank_name": "English Literature Question Bank",
+          "question_count": 5,
+          "selection_criteria": {
+            "difficulty": [
+              "basic"
+            ],
+            "topics": [
+              "comprehension",
+              "basic_literature"
+            ],
+            "question_types": [
+              "mcq",
+              "short_answer"
+            ]
+          }
+        }
+      ]
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:12.826Z",
+    "updated_at": "2025-10-05T18:02:12.826Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "60e9eb5a-f726-4734-b1f9-42ea3ffabc8e",
+  "fields": {
+    "exam": "13b8270b-eb58-4f63-8442-877130bfd903",
+    "title": "Logical Reasoning",
+    "description": "Questions testing logical thinking and problem-solving abilities",
+    "duration_minutes": 40,
+    "total_marks": 80,
+    "pass_percentage": "40.00",
+    "status": "draft",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "General Aptitude & Reasoning Exam_20251005_180211",
+    "original_json_data": {
+      "name": "Logical Reasoning",
+      "description": "Questions testing logical thinking and problem-solving abilities",
+      "duration_minutes": 40,
+      "total_marks": 80,
+      "question_count": 20,
+      "question_bank_references": [
+        {
+          "bank_name": "Logical Reasoning Question Bank",
+          "question_count": 15,
+          "selection_criteria": {
+            "difficulty": [
+              "basic",
+              "intermediate"
+            ],
+            "topics": [
+              "logical_sequences",
+              "patterns",
+              "analogies",
+              "syllogisms"
+            ],
+            "question_types": [
+              "mcq",
+              "analytical"
+            ]
+          }
+        },
+        {
+          "bank_name": "Reasoning Logical Question Bank",
+          "question_count": 5,
+          "selection_criteria": {
+            "difficulty": [
+              "intermediate",
+              "advanced"
+            ],
+            "topics": [
+              "critical_reasoning",
+              "logical_puzzles"
+            ],
+            "question_types": [
+              "mcq",
+              "scenario_based"
+            ]
+          }
+        }
+      ]
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:11.820Z",
+    "updated_at": "2025-10-05T18:02:11.820Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "70974de9-ff0a-47fd-802f-2936f24bf392",
+  "fields": {
+    "exam": "144317f1-7815-4df7-9390-1d2bfcf9899b",
+    "title": "Basic Mathematics Test",
+    "description": "Comprehensive test covering fundamental mathematics concepts from basic mathematics question bank",
+    "duration_minutes": 180,
+    "total_marks": 100,
+    "pass_percentage": "40.00",
+    "status": "active",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "Basic Mathematics Test_20251005_180207",
+    "original_json_data": {
+      "name": "Basic Mathematics Test",
+      "description": "Comprehensive test covering fundamental mathematics concepts from basic mathematics question bank",
+      "category": "test",
+      "subject": "Mathematics",
+      "topic": "Basic Mathematics",
+      "difficulty_level": "basic",
+      "language": "english",
+      "test_settings": {
+        "duration_minutes": 60,
+        "total_marks": 50,
+        "pass_percentage": 40,
+        "randomize_questions": true,
+        "show_result_immediately": true,
+        "allow_review": true,
+        "max_attempts": 2
+      },
+      "question_bank_references": [
+        {
+          "bank_name": "Basic Mathematics Question Bank",
+          "question_count": 25,
+          "selection_criteria": {
+            "difficulty": [
+              "basic",
+              "intermediate"
+            ],
+            "topics": [
+              "arithmetic",
+              "algebra",
+              "geometry"
+            ],
+            "question_types": [
+              "mcq",
+              "numerical"
+            ]
+          }
+        }
+      ],
+      "instructions": [
+        "Read each question carefully before answering",
+        "Each question carries 2 marks",
+        "There is no negative marking",
+        "Use calculator where necessary",
+        "Submit your answers before time expires"
+      ],
+      "metadata": {
+        "created_for": "Students preparing for basic mathematics proficiency",
+        "target_audience": "High school students",
+        "estimated_completion_time": "45-60 minutes",
+        "prerequisites": [
+          "Basic arithmetic knowledge",
+          "Elementary algebra"
+        ]
+      }
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:07.788Z",
+    "updated_at": "2025-10-05T18:02:07.788Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "7a4b65a9-4ce8-4e99-aec7-ec9a22a43ddc",
+  "fields": {
+    "exam": "1093cfca-caba-4a24-a5fe-902f94b7dedf",
+    "title": "Mathematics Section",
+    "description": "Mathematics questions covering algebra, calculus, and coordinate geometry",
     "duration_minutes": 60,
-    "total_marks": 118,
-    "pass_percentage": "43.03",
-    "is_published": true,
-    "randomize_questions": true,
-    "show_result_immediately": true,
-    "allow_review": true,
-    "max_attempts": 1,
-    "start_time": null,
-    "end_time": null,
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "created_at": "2025-08-25T18:03:33.380Z",
-    "updated_at": "2025-08-25T18:03:33.380Z"
-  }
-},
-{
-  "model": "exams.test",
-  "pk": "774c7d4f-1987-4c65-8b9c-683f4a7d7d4a",
-  "fields": {
-    "exam": "66601c99-edcf-4876-b2f1-ab375169bc4c",
-    "title": "DCIO 2025 - Practice Test 2",
-    "description": "Comprehensive practice test for DCIO 2025. Test your knowledge and preparation level.",
-    "duration_minutes": 87,
-    "total_marks": 184,
-    "pass_percentage": "54.80",
-    "is_published": true,
-    "randomize_questions": true,
-    "show_result_immediately": true,
-    "allow_review": true,
-    "max_attempts": 2,
-    "start_time": null,
-    "end_time": null,
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "created_at": "2025-08-25T18:03:33.386Z",
-    "updated_at": "2025-08-25T18:03:33.386Z"
-  }
-},
-{
-  "model": "exams.test",
-  "pk": "82774f46-815d-46d0-8bb4-51f32a806beb",
-  "fields": {
-    "exam": "66601c99-edcf-4876-b2f1-ab375169bc4c",
-    "title": "DCIO 2025 - Practice Test 3",
-    "description": "Comprehensive practice test for DCIO 2025. Test your knowledge and preparation level.",
-    "duration_minutes": 98,
-    "total_marks": 143,
-    "pass_percentage": "50.82",
-    "is_published": true,
-    "randomize_questions": false,
-    "show_result_immediately": true,
-    "allow_review": true,
-    "max_attempts": 3,
-    "start_time": null,
-    "end_time": null,
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "created_at": "2025-08-25T18:03:33.389Z",
-    "updated_at": "2025-08-25T18:03:33.389Z"
-  }
-},
-{
-  "model": "exams.test",
-  "pk": "983a31f3-3fce-4cf6-b4e5-2656d43c4c21",
-  "fields": {
-    "exam": "f9c4ec76-344d-4e11-b14d-b24200ed5f4a",
-    "title": "Sample Comprehensive Exam - Practice Test 3",
-    "description": "Comprehensive practice test for Sample Comprehensive Exam. Test your knowledge and preparation level.",
-    "duration_minutes": 64,
-    "total_marks": 148,
-    "pass_percentage": "44.55",
-    "is_published": true,
-    "randomize_questions": true,
-    "show_result_immediately": true,
-    "allow_review": true,
-    "max_attempts": 3,
-    "start_time": null,
-    "end_time": null,
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "created_at": "2025-08-25T18:03:33.382Z",
-    "updated_at": "2025-08-25T18:03:33.382Z"
-  }
-},
-{
-  "model": "exams.test",
-  "pk": "9a567663-a915-4997-9103-ba4027be94cc",
-  "fields": {
-    "exam": "4498db3c-ad7e-4227-8129-38f20e847d01",
-    "title": "asda - Practice Test 3",
-    "description": "Comprehensive practice test for asda. Test your knowledge and preparation level.",
-    "duration_minutes": 114,
-    "total_marks": 195,
-    "pass_percentage": "40.32",
-    "is_published": true,
-    "randomize_questions": true,
-    "show_result_immediately": true,
-    "allow_review": true,
-    "max_attempts": 2,
-    "start_time": null,
-    "end_time": null,
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "created_at": "2025-08-25T18:03:33.375Z",
-    "updated_at": "2025-08-25T18:03:33.375Z"
-  }
-},
-{
-  "model": "exams.test",
-  "pk": "9fa412cf-4186-42fd-9da1-7a4675c89a3e",
-  "fields": {
-    "exam": "4498db3c-ad7e-4227-8129-38f20e847d01",
-    "title": "asda - Practice Test 4",
-    "description": "Comprehensive practice test for asda. Test your knowledge and preparation level.",
-    "duration_minutes": 145,
-    "total_marks": 66,
-    "pass_percentage": "59.05",
-    "is_published": true,
-    "randomize_questions": true,
-    "show_result_immediately": true,
-    "allow_review": true,
-    "max_attempts": 3,
-    "start_time": null,
-    "end_time": null,
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "created_at": "2025-08-25T18:03:33.377Z",
-    "updated_at": "2025-08-25T18:03:33.377Z"
-  }
-},
-{
-  "model": "exams.test",
-  "pk": "ca885c4d-33d9-4857-950c-632cc45efe14",
-  "fields": {
-    "exam": "891ecedb-4f81-4ee2-a44f-54bc919c53c8",
-    "title": "Civil Services Examination (CSE) - Practice Test 1",
-    "description": "Comprehensive practice test for Civil Services Examination (CSE). Test your knowledge and preparation level.",
-    "duration_minutes": 137,
-    "total_marks": 106,
-    "pass_percentage": "48.45",
-    "is_published": true,
+    "total_marks": 100,
+    "pass_percentage": "40.00",
+    "status": "active",
+    "is_published": false,
     "randomize_questions": false,
     "show_result_immediately": true,
     "allow_review": true,
     "max_attempts": 1,
     "start_time": null,
     "end_time": null,
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "created_at": "2025-08-25T18:03:33.390Z",
-    "updated_at": "2025-08-25T18:03:33.390Z"
+    "imported_from_json": true,
+    "json_import_batch": "JEE Main Science Mock Exam_20251005_180210",
+    "original_json_data": {
+      "name": "Mathematics Section",
+      "description": "Mathematics questions covering algebra, calculus, and coordinate geometry",
+      "duration_minutes": 60,
+      "total_marks": 100,
+      "question_count": 25,
+      "question_bank_references": [
+        {
+          "bank_name": "Basic Mathematics Question Bank",
+          "question_count": 8,
+          "selection_criteria": {
+            "difficulty": [
+              "intermediate",
+              "advanced"
+            ],
+            "topics": [
+              "algebra",
+              "geometry",
+              "trigonometry"
+            ],
+            "question_types": [
+              "mcq",
+              "numerical"
+            ]
+          }
+        },
+        {
+          "bank_name": "Advanced Mathematics Question Bank",
+          "question_count": 17,
+          "selection_criteria": {
+            "difficulty": [
+              "advanced",
+              "expert"
+            ],
+            "topics": [
+              "calculus",
+              "coordinate_geometry",
+              "probability",
+              "vectors"
+            ],
+            "question_types": [
+              "mcq",
+              "numerical"
+            ]
+          }
+        }
+      ]
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:10.977Z",
+    "updated_at": "2025-10-05T18:02:10.977Z"
   }
 },
 {
   "model": "exams.test",
-  "pk": "cacfc92f-adce-4469-91f1-c414c857eacc",
+  "pk": "8912c0c1-3e54-47af-ab24-75fdc5a5cf95",
   "fields": {
-    "exam": "f9c4ec76-344d-4e11-b14d-b24200ed5f4a",
-    "title": "Sample Comprehensive Exam - Practice Test 4",
-    "description": "Comprehensive practice test for Sample Comprehensive Exam. Test your knowledge and preparation level.",
-    "duration_minutes": 174,
-    "total_marks": 146,
-    "pass_percentage": "41.57",
-    "is_published": true,
-    "randomize_questions": true,
+    "exam": "13b8270b-eb58-4f63-8442-877130bfd903",
+    "title": "General Knowledge",
+    "description": "Current affairs, history, geography, and general awareness",
+    "duration_minutes": 30,
+    "total_marks": 60,
+    "pass_percentage": "40.00",
+    "status": "active",
+    "is_published": false,
+    "randomize_questions": false,
     "show_result_immediately": true,
     "allow_review": true,
     "max_attempts": 1,
     "start_time": null,
     "end_time": null,
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "created_at": "2025-08-25T18:03:33.383Z",
-    "updated_at": "2025-08-25T18:03:33.383Z"
+    "imported_from_json": true,
+    "json_import_batch": "General Aptitude & Reasoning Exam_20251005_180211",
+    "original_json_data": {
+      "name": "General Knowledge",
+      "description": "Current affairs, history, geography, and general awareness",
+      "duration_minutes": 30,
+      "total_marks": 60,
+      "question_count": 15,
+      "question_bank_references": [
+        {
+          "bank_name": "General Knowledge Question Bank",
+          "question_count": 15,
+          "selection_criteria": {
+            "difficulty": [
+              "basic",
+              "intermediate"
+            ],
+            "topics": [
+              "current_affairs",
+              "history",
+              "geography",
+              "politics",
+              "economics"
+            ],
+            "question_types": [
+              "mcq",
+              "factual"
+            ]
+          }
+        }
+      ]
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:11.858Z",
+    "updated_at": "2025-10-05T18:02:11.858Z"
   }
 },
 {
   "model": "exams.test",
-  "pk": "d3704690-603d-493f-8881-1a752d232ea9",
+  "pk": "a265efd8-e9e1-48fb-8c7c-b974bf796396",
   "fields": {
-    "exam": "cbe2e39e-a304-4fda-bf79-b61be9ea32fa",
-    "title": "hee2025 - Practice Test 3",
-    "description": "Comprehensive practice test for hee2025. Test your knowledge and preparation level.",
-    "duration_minutes": 152,
-    "total_marks": 160,
-    "pass_percentage": "47.79",
-    "is_published": true,
-    "randomize_questions": true,
+    "exam": "92cc2268-0eee-4709-99b8-3d605d426d41",
+    "title": "General Science",
+    "description": "Basic concepts from biology, chemistry, and physics",
+    "duration_minutes": 45,
+    "total_marks": 45,
+    "pass_percentage": "40.00",
+    "status": "active",
+    "is_published": false,
+    "randomize_questions": false,
     "show_result_immediately": true,
     "allow_review": true,
     "max_attempts": 1,
     "start_time": null,
     "end_time": null,
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "created_at": "2025-08-25T18:03:33.369Z",
-    "updated_at": "2025-08-25T18:03:33.369Z"
+    "imported_from_json": true,
+    "json_import_batch": "School Foundation Exam_20251005_180212",
+    "original_json_data": {
+      "name": "General Science",
+      "description": "Basic concepts from biology, chemistry, and physics",
+      "duration_minutes": 45,
+      "total_marks": 45,
+      "question_count": 15,
+      "question_bank_references": [
+        {
+          "bank_name": "Biology Genetics Question Bank",
+          "question_count": 5,
+          "selection_criteria": {
+            "difficulty": [
+              "basic"
+            ],
+            "topics": [
+              "basic_biology",
+              "human_body",
+              "plants"
+            ],
+            "question_types": [
+              "mcq",
+              "factual"
+            ]
+          }
+        },
+        {
+          "bank_name": "Chemistry Organic Question Bank",
+          "question_count": 5,
+          "selection_criteria": {
+            "difficulty": [
+              "basic"
+            ],
+            "topics": [
+              "basic_chemistry",
+              "elements",
+              "compounds"
+            ],
+            "question_types": [
+              "mcq",
+              "factual"
+            ]
+          }
+        },
+        {
+          "bank_name": "Physics Advanced Question Bank",
+          "question_count": 5,
+          "selection_criteria": {
+            "difficulty": [
+              "basic"
+            ],
+            "topics": [
+              "basic_physics",
+              "motion",
+              "energy",
+              "light"
+            ],
+            "question_types": [
+              "mcq",
+              "conceptual"
+            ]
+          }
+        }
+      ]
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:12.744Z",
+    "updated_at": "2025-10-05T18:02:12.744Z"
   }
 },
 {
   "model": "exams.test",
-  "pk": "d6311527-1cb4-4cc3-b1cf-cd480c1976fd",
+  "pk": "b3c744f1-55e5-4a00-b6f7-730a7f4a4bd1",
   "fields": {
-    "exam": "f9c4ec76-344d-4e11-b14d-b24200ed5f4a",
-    "title": "Sample Comprehensive Exam - Practice Test 1",
-    "description": "Comprehensive practice test for Sample Comprehensive Exam. Test your knowledge and preparation level.",
-    "duration_minutes": 178,
-    "total_marks": 109,
-    "pass_percentage": "45.74",
-    "is_published": true,
+    "exam": "144317f1-7815-4df7-9390-1d2bfcf9899b",
+    "title": "JEE Mathematics Test",
+    "description": "Comprehensive mathematics test linking existing question banks",
+    "duration_minutes": 180,
+    "total_marks": 100,
+    "pass_percentage": "40.00",
+    "status": "active",
+    "is_published": false,
     "randomize_questions": false,
     "show_result_immediately": true,
     "allow_review": true,
-    "max_attempts": 2,
+    "max_attempts": 1,
     "start_time": null,
     "end_time": null,
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "created_at": "2025-08-25T18:03:33.379Z",
-    "updated_at": "2025-08-25T18:03:33.379Z"
+    "imported_from_json": true,
+    "json_import_batch": "JEE Mathematics Test_20251005_180206",
+    "original_json_data": {
+      "name": "JEE Mathematics Test",
+      "description": "Comprehensive mathematics test linking existing question banks",
+      "category": "test",
+      "subject": "Mathematics",
+      "topic": "JEE Preparation",
+      "difficulty_level": "advanced",
+      "language": "english",
+      "test_settings": {
+        "duration_minutes": 90,
+        "total_marks": 120,
+        "negative_marking": true,
+        "negative_marks_per_wrong": -1,
+        "shuffle_questions": true,
+        "show_results_immediately": false,
+        "allow_review": true
+      },
+      "linked_question_banks": [
+        {
+          "reference_type": "name",
+          "reference_value": "Basic Mathematics Question Bank",
+          "question_count": 15,
+          "difficulty_filter": "intermediate",
+          "selection_method": "random",
+          "weightage_percentage": 40.0
+        },
+        {
+          "reference_type": "name",
+          "reference_value": "Advanced Physics Question Bank",
+          "question_count": 10,
+          "difficulty_filter": "advanced",
+          "selection_method": "difficulty_asc",
+          "weightage_percentage": 60.0
+        }
+      ],
+      "question_selection": {
+        "Basic Mathematics Question Bank": {
+          "count": 15,
+          "difficulty": "intermediate",
+          "topics": [
+            "algebra",
+            "geometry"
+          ]
+        },
+        "Advanced Physics Question Bank": {
+          "count": 10,
+          "difficulty": "advanced",
+          "topics": [
+            "mechanics",
+            "thermodynamics"
+          ]
+        }
+      },
+      "embedded_questions": [
+        {
+          "text": "If f(x) = x² + 2x + 1, what is f'(x)?",
+          "question_type": "mcq",
+          "options": [
+            "2x + 2",
+            "x² + 2",
+            "2x + 1",
+            "x + 1"
+          ],
+          "correct_answer": 0,
+          "explanation": "The derivative of x² + 2x + 1 is 2x + 2",
+          "difficulty": "intermediate",
+          "marks": 4,
+          "topic": "Calculus",
+          "tags": [
+            "differentiation",
+            "polynomial"
+          ]
+        }
+      ],
+      "instructions": [
+        "Total duration: 90 minutes",
+        "Total questions: 26 (25 from linked banks + 1 embedded)",
+        "Each correct answer: +4 marks, wrong answer: -1 mark",
+        "Questions will be shuffled randomly",
+        "Review is allowed during the test"
+      ]
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:06.300Z",
+    "updated_at": "2025-10-05T18:02:06.300Z"
   }
 },
 {
   "model": "exams.test",
-  "pk": "f0e412c9-7fd0-492c-aa18-e9935f53a209",
+  "pk": "be85234d-eb43-4931-b1fc-fb39eeaaa06d",
   "fields": {
-    "exam": "cbe2e39e-a304-4fda-bf79-b61be9ea32fa",
-    "title": "hee2025 - Practice Test 4",
-    "description": "Comprehensive practice test for hee2025. Test your knowledge and preparation level.",
-    "duration_minutes": 114,
-    "total_marks": 61,
-    "pass_percentage": "57.78",
-    "is_published": true,
+    "exam": "1093cfca-caba-4a24-a5fe-902f94b7dedf",
+    "title": "Chemistry Section",
+    "description": "Chemistry questions covering organic, inorganic, and physical chemistry",
+    "duration_minutes": 60,
+    "total_marks": 100,
+    "pass_percentage": "40.00",
+    "status": "active",
+    "is_published": false,
     "randomize_questions": false,
     "show_result_immediately": true,
     "allow_review": true,
-    "max_attempts": 10,
+    "max_attempts": 1,
     "start_time": null,
     "end_time": null,
-    "created_by": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "created_at": "2025-08-25T18:03:33.370Z",
-    "updated_at": "2025-09-27T06:29:38.079Z"
+    "imported_from_json": true,
+    "json_import_batch": "JEE Main Science Mock Exam_20251005_180210",
+    "original_json_data": {
+      "name": "Chemistry Section",
+      "description": "Chemistry questions covering organic, inorganic, and physical chemistry",
+      "duration_minutes": 60,
+      "total_marks": 100,
+      "question_count": 25,
+      "question_bank_references": [
+        {
+          "bank_name": "Chemistry Organic Question Bank",
+          "question_count": 10,
+          "selection_criteria": {
+            "difficulty": [
+              "intermediate",
+              "advanced"
+            ],
+            "topics": [
+              "reactions",
+              "mechanisms",
+              "synthesis"
+            ],
+            "question_types": [
+              "mcq",
+              "assertion_reason"
+            ]
+          }
+        },
+        {
+          "bank_name": "Chemistry Inorganic Question Bank",
+          "question_count": 10,
+          "selection_criteria": {
+            "difficulty": [
+              "intermediate",
+              "advanced"
+            ],
+            "topics": [
+              "periodic_table",
+              "coordination_compounds",
+              "metallurgy"
+            ],
+            "question_types": [
+              "mcq",
+              "structural"
+            ]
+          }
+        },
+        {
+          "bank_name": "Chemistry Organic Question Bank",
+          "question_count": 5,
+          "selection_criteria": {
+            "difficulty": [
+              "advanced",
+              "expert"
+            ],
+            "topics": [
+              "spectroscopy",
+              "stereochemistry"
+            ],
+            "question_types": [
+              "mcq",
+              "numerical"
+            ]
+          }
+        }
+      ]
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:10.908Z",
+    "updated_at": "2025-10-05T18:02:10.908Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "bef4f9d7-a389-4b15-93f2-f0e81f4764ef",
+  "fields": {
+    "exam": "144317f1-7815-4df7-9390-1d2bfcf9899b",
+    "title": "Organic Chemistry Test",
+    "description": "Advanced organic chemistry test covering reactions, mechanisms, and synthesis from organic chemistry question bank",
+    "duration_minutes": 180,
+    "total_marks": 100,
+    "pass_percentage": "40.00",
+    "status": "draft",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "Organic Chemistry Test_20251005_180209",
+    "original_json_data": {
+      "name": "Organic Chemistry Test",
+      "description": "Advanced organic chemistry test covering reactions, mechanisms, and synthesis from organic chemistry question bank",
+      "category": "test",
+      "subject": "Chemistry",
+      "topic": "Organic Chemistry",
+      "difficulty_level": "advanced",
+      "language": "english",
+      "test_settings": {
+        "duration_minutes": 120,
+        "total_marks": 100,
+        "pass_percentage": 50,
+        "randomize_questions": true,
+        "show_result_immediately": false,
+        "allow_review": true,
+        "max_attempts": 1
+      },
+      "question_bank_references": [
+        {
+          "bank_name": "Chemistry Organic Question Bank",
+          "question_count": 40,
+          "selection_criteria": {
+            "difficulty": [
+              "intermediate",
+              "advanced",
+              "expert"
+            ],
+            "topics": [
+              "reactions",
+              "mechanisms",
+              "synthesis",
+              "stereochemistry",
+              "spectroscopy"
+            ],
+            "question_types": [
+              "mcq",
+              "assertion_reason",
+              "structural"
+            ]
+          }
+        }
+      ],
+      "instructions": [
+        "Draw clear structural formulas where required",
+        "Show reaction mechanisms with proper arrow pushing",
+        "Each question carries different marks as indicated",
+        "Negative marking: -1 mark for wrong answers",
+        "Periodic table is provided",
+        "No calculators allowed for this section"
+      ],
+      "metadata": {
+        "created_for": "Advanced organic chemistry assessment",
+        "target_audience": "Engineering and medical entrance aspirants",
+        "estimated_completion_time": "100-120 minutes",
+        "prerequisites": [
+          "Basic organic chemistry",
+          "Chemical bonding",
+          "Thermodynamics"
+        ]
+      }
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:09.315Z",
+    "updated_at": "2025-10-05T18:02:09.315Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "c57a0448-329f-4d82-87fd-6f3699af3517",
+  "fields": {
+    "exam": "92cc2268-0eee-4709-99b8-3d605d426d41",
+    "title": "Mathematics Foundation",
+    "description": "Basic mathematics covering arithmetic, basic algebra, and geometry",
+    "duration_minutes": 60,
+    "total_marks": 60,
+    "pass_percentage": "40.00",
+    "status": "active",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "School Foundation Exam_20251005_180212",
+    "original_json_data": {
+      "name": "Mathematics Foundation",
+      "description": "Basic mathematics covering arithmetic, basic algebra, and geometry",
+      "duration_minutes": 60,
+      "total_marks": 60,
+      "question_count": 20,
+      "question_bank_references": [
+        {
+          "bank_name": "Basic Mathematics Question Bank",
+          "question_count": 20,
+          "selection_criteria": {
+            "difficulty": [
+              "basic",
+              "intermediate"
+            ],
+            "topics": [
+              "arithmetic",
+              "basic_algebra",
+              "geometry",
+              "mensuration"
+            ],
+            "question_types": [
+              "mcq",
+              "numerical",
+              "word_problems"
+            ]
+          }
+        }
+      ]
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:12.693Z",
+    "updated_at": "2025-10-05T18:02:12.693Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "cf5588b3-6719-4b97-8c81-1ed3e7db9fcd",
+  "fields": {
+    "exam": "13b8270b-eb58-4f63-8442-877130bfd903",
+    "title": "Computer Science Fundamentals",
+    "description": "Basic programming concepts, data structures, and computer fundamentals",
+    "duration_minutes": 50,
+    "total_marks": 60,
+    "pass_percentage": "40.00",
+    "status": "active",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "General Aptitude & Reasoning Exam_20251005_180211",
+    "original_json_data": {
+      "name": "Computer Science Fundamentals",
+      "description": "Basic programming concepts, data structures, and computer fundamentals",
+      "duration_minutes": 50,
+      "total_marks": 60,
+      "question_count": 15,
+      "question_bank_references": [
+        {
+          "bank_name": "Computer Science Question Bank",
+          "question_count": 15,
+          "selection_criteria": {
+            "difficulty": [
+              "basic",
+              "intermediate"
+            ],
+            "topics": [
+              "programming_basics",
+              "data_structures",
+              "algorithms",
+              "computer_fundamentals"
+            ],
+            "question_types": [
+              "mcq",
+              "code_analysis"
+            ]
+          }
+        }
+      ]
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:11.909Z",
+    "updated_at": "2025-10-05T18:02:11.909Z"
+  }
+},
+{
+  "model": "exams.test",
+  "pk": "e01927bb-d4b4-4b5a-a24d-314399826974",
+  "fields": {
+    "exam": "1093cfca-caba-4a24-a5fe-902f94b7dedf",
+    "title": "Physics Section",
+    "description": "Physics questions covering mechanics, thermodynamics, and waves",
+    "duration_minutes": 60,
+    "total_marks": 100,
+    "pass_percentage": "40.00",
+    "status": "active",
+    "is_published": false,
+    "randomize_questions": false,
+    "show_result_immediately": true,
+    "allow_review": true,
+    "max_attempts": 1,
+    "start_time": null,
+    "end_time": null,
+    "imported_from_json": true,
+    "json_import_batch": "JEE Main Science Mock Exam_20251005_180210",
+    "original_json_data": {
+      "name": "Physics Section",
+      "description": "Physics questions covering mechanics, thermodynamics, and waves",
+      "duration_minutes": 60,
+      "total_marks": 100,
+      "question_count": 25,
+      "question_bank_references": [
+        {
+          "bank_name": "Physics Mechanics Question Bank",
+          "question_count": 10,
+          "selection_criteria": {
+            "difficulty": [
+              "intermediate",
+              "advanced"
+            ],
+            "topics": [
+              "kinematics",
+              "dynamics",
+              "work_energy"
+            ],
+            "question_types": [
+              "mcq",
+              "numerical"
+            ]
+          }
+        },
+        {
+          "bank_name": "Physics Thermodynamics Question Bank",
+          "question_count": 10,
+          "selection_criteria": {
+            "difficulty": [
+              "intermediate",
+              "advanced"
+            ],
+            "topics": [
+              "laws_of_thermodynamics",
+              "heat_engines",
+              "kinetic_theory"
+            ],
+            "question_types": [
+              "mcq",
+              "numerical"
+            ]
+          }
+        },
+        {
+          "bank_name": "Advanced Physics Question Bank",
+          "question_count": 5,
+          "selection_criteria": {
+            "difficulty": [
+              "advanced",
+              "expert"
+            ],
+            "topics": [
+              "waves",
+              "optics",
+              "modern_physics"
+            ],
+            "question_types": [
+              "mcq",
+              "numerical"
+            ]
+          }
+        }
+      ]
+    },
+    "created_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "created_at": "2025-10-05T18:02:10.832Z",
+    "updated_at": "2025-10-05T18:32:41.800Z"
   }
 },
 {
   "model": "exams.testattempt",
-  "pk": "0419237c-8459-4dfc-85bd-335554cf7c1d",
+  "pk": "238a1951-2a2b-4e3c-af87-7f2c71270f70",
   "fields": {
-    "test": "2292ee05-3170-4c4b-9f2e-cc0b0bd1b56d",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
+    "test": "cf5588b3-6719-4b97-8c81-1ed3e7db9fcd",
+    "user": "1ff1f672-938a-41ea-bde9-d593d8fe2391",
     "attempt_number": 1,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.373Z",
-    "end_time": "2025-08-23T12:37:53.373Z",
-    "time_spent_seconds": 2060,
-    "total_questions": 47,
-    "attempted_questions": 47,
-    "correct_answers": 31,
-    "marks_obtained": "113.45",
-    "percentage": "65.96"
+    "status": "submitted",
+    "start_time": "2025-10-09T06:09:58.604Z",
+    "end_time": "2025-10-09T06:10:49.263Z",
+    "time_spent_seconds": 50,
+    "total_questions": 15,
+    "attempted_questions": 15,
+    "correct_answers": 0,
+    "marks_obtained": "0.00",
+    "percentage": "0.00"
   }
 },
 {
   "model": "exams.testattempt",
-  "pk": "05143431-9f1b-4e10-a19c-643a4168ec72",
+  "pk": "270d516d-ab61-439e-acfd-2dad2c490f12",
   "fields": {
-    "test": "728ed94d-a072-4d78-b292-2e116485a1cc",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
+    "test": "be85234d-eb43-4931-b1fc-fb39eeaaa06d",
+    "user": "1ff1f672-938a-41ea-bde9-d593d8fe2391",
     "attempt_number": 1,
     "status": "in_progress",
-    "start_time": "2025-08-25T18:03:33.367Z",
+    "start_time": "2025-10-05T18:36:19.069Z",
     "end_time": null,
-    "time_spent_seconds": 661,
-    "total_questions": 54,
-    "attempted_questions": 17,
-    "correct_answers": 12,
-    "marks_obtained": "32.22",
-    "percentage": "22.22"
+    "time_spent_seconds": 0,
+    "total_questions": 0,
+    "attempted_questions": 0,
+    "correct_answers": 0,
+    "marks_obtained": "0.00",
+    "percentage": "0.00"
   }
 },
 {
   "model": "exams.testattempt",
-  "pk": "172edad7-7797-4bae-800a-e774bbf7c4b6",
+  "pk": "5b86a743-7276-4ac1-8aad-270ac730348c",
   "fields": {
-    "test": "762730fb-17d6-473b-ae77-0678f2c54aeb",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
+    "test": "70974de9-ff0a-47fd-802f-2936f24bf392",
+    "user": "1ff1f672-938a-41ea-bde9-d593d8fe2391",
     "attempt_number": 1,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.380Z",
-    "end_time": "2025-08-22T12:38:26.380Z",
-    "time_spent_seconds": 2093,
-    "total_questions": 29,
-    "attempted_questions": 25,
-    "correct_answers": 18,
-    "marks_obtained": "73.24",
-    "percentage": "62.07"
+    "status": "submitted",
+    "start_time": "2025-10-09T08:35:44.984Z",
+    "end_time": "2025-10-09T08:36:23.056Z",
+    "time_spent_seconds": 38,
+    "total_questions": 25,
+    "attempted_questions": 7,
+    "correct_answers": 0,
+    "marks_obtained": "0.00",
+    "percentage": "0.00"
   }
 },
 {
   "model": "exams.testattempt",
-  "pk": "17f5d802-f556-4ab7-9dd5-00e41ffaa740",
+  "pk": "6746558d-795b-4aca-9f16-ad712bdba456",
   "fields": {
-    "test": "728ed94d-a072-4d78-b292-2e116485a1cc",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 2,
-    "status": "abandoned",
-    "start_time": "2025-08-25T18:03:33.368Z",
-    "end_time": "2025-08-01T17:19:31.367Z",
-    "time_spent_seconds": 4558,
-    "total_questions": 64,
+    "test": "7a4b65a9-4ce8-4e99-aec7-ec9a22a43ddc",
+    "user": "1ff1f672-938a-41ea-bde9-d593d8fe2391",
+    "attempt_number": 1,
+    "status": "in_progress",
+    "start_time": "2025-10-05T18:35:11.968Z",
+    "end_time": null,
+    "time_spent_seconds": 0,
+    "total_questions": 0,
+    "attempted_questions": 0,
+    "correct_answers": 0,
+    "marks_obtained": "0.00",
+    "percentage": "0.00"
+  }
+},
+{
+  "model": "exams.testattempt",
+  "pk": "9e28b860-abf0-41aa-a37b-0f770ccd392c",
+  "fields": {
+    "test": "a265efd8-e9e1-48fb-8c7c-b974bf796396",
+    "user": "1ff1f672-938a-41ea-bde9-d593d8fe2391",
+    "attempt_number": 1,
+    "status": "submitted",
+    "start_time": "2025-10-05T18:57:14.779Z",
+    "end_time": "2025-10-05T18:57:46.668Z",
+    "time_spent_seconds": 31,
+    "total_questions": 10,
     "attempted_questions": 10,
-    "correct_answers": 7,
-    "marks_obtained": "15.86",
-    "percentage": "10.94"
+    "correct_answers": 0,
+    "marks_obtained": "0.00",
+    "percentage": "0.00"
   }
 },
 {
   "model": "exams.testattempt",
-  "pk": "1e0f2da9-dca1-4ff1-9c2e-2c7d57edeb83",
+  "pk": "e354b2fc-e81a-4c74-8e59-c354569f0b14",
   "fields": {
-    "test": "4d8b26ff-def2-49db-ac73-59c2f9e3c8ef",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 2,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.393Z",
-    "end_time": "2025-08-06T16:33:13.393Z",
-    "time_spent_seconds": 5380,
-    "total_questions": 42,
-    "attempted_questions": 37,
-    "correct_answers": 12,
-    "marks_obtained": "33.43",
-    "percentage": "28.57"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "1ef73324-1155-451e-8994-4ee9c18d7571",
-  "fields": {
-    "test": "d3704690-603d-493f-8881-1a752d232ea9",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 1,
-    "status": "abandoned",
-    "start_time": "2025-08-25T18:03:33.370Z",
-    "end_time": "2025-07-29T16:46:45.369Z",
-    "time_spent_seconds": 2592,
-    "total_questions": 56,
-    "attempted_questions": 6,
-    "correct_answers": 6,
-    "marks_obtained": "17.14",
-    "percentage": "10.71"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "23c45013-7fda-4ac0-8da1-f4d10c7fc359",
-  "fields": {
-    "test": "983a31f3-3fce-4cf6-b4e5-2656d43c4c21",
-    "user": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
+    "test": "e01927bb-d4b4-4b5a-a24d-314399826974",
+    "user": "1ff1f672-938a-41ea-bde9-d593d8fe2391",
     "attempt_number": 1,
     "status": "in_progress",
-    "start_time": "2025-09-27T06:37:48.952Z",
+    "start_time": "2025-10-05T18:35:18.417Z",
     "end_time": null,
     "time_spent_seconds": 0,
     "total_questions": 0,
@@ -2008,35 +2049,17 @@
 },
 {
   "model": "exams.testattempt",
-  "pk": "23cfe555-4651-4572-bc96-b4949399b1a5",
+  "pk": "fad99327-321c-47ac-9315-8eecde68b5f8",
   "fields": {
-    "test": "9a567663-a915-4997-9103-ba4027be94cc",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 2,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.377Z",
-    "end_time": "2025-08-06T18:16:12.376Z",
-    "time_spent_seconds": 4359,
-    "total_questions": 47,
-    "attempted_questions": 37,
-    "correct_answers": 32,
-    "marks_obtained": "132.77",
-    "percentage": "68.08"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "24ec6e0c-1726-42f8-aa60-bfa98a838496",
-  "fields": {
-    "test": "728ed94d-a072-4d78-b292-2e116485a1cc",
-    "user": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
+    "test": "8912c0c1-3e54-47af-ab24-75fdc5a5cf95",
+    "user": "1ff1f672-938a-41ea-bde9-d593d8fe2391",
     "attempt_number": 1,
-    "status": "in_progress",
-    "start_time": "2025-09-27T06:24:32.710Z",
-    "end_time": null,
-    "time_spent_seconds": 0,
-    "total_questions": 0,
-    "attempted_questions": 0,
+    "status": "submitted",
+    "start_time": "2025-10-05T19:18:12.262Z",
+    "end_time": "2025-10-05T19:18:28.155Z",
+    "time_spent_seconds": 15,
+    "total_questions": 15,
+    "attempted_questions": 2,
     "correct_answers": 0,
     "marks_obtained": "0.00",
     "percentage": "0.00"
@@ -2044,614 +2067,20 @@
 },
 {
   "model": "exams.testattempt",
-  "pk": "26fe417f-8178-4246-b69e-47b1a16aaec5",
+  "pk": "fcf5a4ad-3a0c-4174-8385-89d91c187284",
   "fields": {
-    "test": "9fa412cf-4186-42fd-9da1-7a4675c89a3e",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
+    "test": "c57a0448-329f-4d82-87fd-6f3699af3517",
+    "user": "1ff1f672-938a-41ea-bde9-d593d8fe2391",
     "attempt_number": 1,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.378Z",
-    "end_time": "2025-08-02T14:51:07.378Z",
-    "time_spent_seconds": 2854,
-    "total_questions": 46,
-    "attempted_questions": 40,
-    "correct_answers": 16,
-    "marks_obtained": "22.96",
-    "percentage": "34.78"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "27f6ea58-3faa-429f-ae9b-5df0af31e24b",
-  "fields": {
-    "test": "d6311527-1cb4-4cc3-b1cf-cd480c1976fd",
-    "user": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "attempt_number": 1,
-    "status": "in_progress",
-    "start_time": "2025-09-27T06:49:39.967Z",
-    "end_time": null,
-    "time_spent_seconds": 0,
-    "total_questions": 0,
-    "attempted_questions": 0,
+    "status": "submitted",
+    "start_time": "2025-10-05T19:03:29.251Z",
+    "end_time": "2025-10-05T19:04:07.677Z",
+    "time_spent_seconds": 38,
+    "total_questions": 20,
+    "attempted_questions": 4,
     "correct_answers": 0,
     "marks_obtained": "0.00",
     "percentage": "0.00"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "34f96e8f-6de9-40c2-9532-ef93c8de6e7b",
-  "fields": {
-    "test": "709aa36a-40b5-4e17-8bee-3924c0c1d544",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 1,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.395Z",
-    "end_time": "2025-07-26T17:53:02.394Z",
-    "time_spent_seconds": 2969,
-    "total_questions": 77,
-    "attempted_questions": 57,
-    "correct_answers": 25,
-    "marks_obtained": "45.78",
-    "percentage": "32.47"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "4badff1e-e1e0-4a7c-8c7e-6bb848cc1075",
-  "fields": {
-    "test": "762730fb-17d6-473b-ae77-0678f2c54aeb",
-    "user": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "attempt_number": 1,
-    "status": "in_progress",
-    "start_time": "2025-08-25T18:05:03.820Z",
-    "end_time": null,
-    "time_spent_seconds": 0,
-    "total_questions": 0,
-    "attempted_questions": 0,
-    "correct_answers": 0,
-    "marks_obtained": "0.00",
-    "percentage": "0.00"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "4d5451e1-0c62-4f76-86a0-12170800f620",
-  "fields": {
-    "test": "27b9eaee-c73e-46dc-9b9d-9c7ffee64cfe",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 1,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.365Z",
-    "end_time": "2025-08-16T14:35:40.364Z",
-    "time_spent_seconds": 1927,
-    "total_questions": 91,
-    "attempted_questions": 83,
-    "correct_answers": 26,
-    "marks_obtained": "34.57",
-    "percentage": "28.57"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "5375546b-3c8e-4825-b12a-cf434da72182",
-  "fields": {
-    "test": "214610eb-9c70-4af4-8ef5-4f374f1965c8",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 1,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.375Z",
-    "end_time": "2025-08-05T18:16:31.375Z",
-    "time_spent_seconds": 4378,
-    "total_questions": 97,
-    "attempted_questions": 97,
-    "correct_answers": 51,
-    "marks_obtained": "102.00",
-    "percentage": "52.58"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "56dc2317-3da3-4f37-9b44-a7570b2aef4a",
-  "fields": {
-    "test": "f0e412c9-7fd0-492c-aa18-e9935f53a209",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 3,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.372Z",
-    "end_time": "2025-08-16T18:49:39.372Z",
-    "time_spent_seconds": 6366,
-    "total_questions": 58,
-    "attempted_questions": 53,
-    "correct_answers": 16,
-    "marks_obtained": "16.83",
-    "percentage": "27.59"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "5d8c1d26-ad00-405d-8269-7ad5bab02ecd",
-  "fields": {
-    "test": "d6311527-1cb4-4cc3-b1cf-cd480c1976fd",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 1,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.379Z",
-    "end_time": "2025-08-20T18:58:55.379Z",
-    "time_spent_seconds": 6922,
-    "total_questions": 42,
-    "attempted_questions": 36,
-    "correct_answers": 27,
-    "marks_obtained": "70.07",
-    "percentage": "64.29"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "61632908-6e8c-4ce8-9ad3-a931b70fd715",
-  "fields": {
-    "test": "2292ee05-3170-4c4b-9f2e-cc0b0bd1b56d",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 2,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.374Z",
-    "end_time": "2025-07-27T15:57:31.373Z",
-    "time_spent_seconds": 3238,
-    "total_questions": 43,
-    "attempted_questions": 35,
-    "correct_answers": 13,
-    "marks_obtained": "52.00",
-    "percentage": "30.23"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "6e49345e-f5b3-435a-ac67-3348db2620a5",
-  "fields": {
-    "test": "762730fb-17d6-473b-ae77-0678f2c54aeb",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 2,
-    "status": "in_progress",
-    "start_time": "2025-08-25T18:03:33.381Z",
-    "end_time": null,
-    "time_spent_seconds": 2871,
-    "total_questions": 90,
-    "attempted_questions": 22,
-    "correct_answers": 20,
-    "marks_obtained": "26.22",
-    "percentage": "22.22"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "7bf4ff94-56ea-429d-a3d9-49583bd33b04",
-  "fields": {
-    "test": "983a31f3-3fce-4cf6-b4e5-2656d43c4c21",
-    "user": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "attempt_number": 1,
-    "status": "in_progress",
-    "start_time": "2025-09-27T06:30:55.557Z",
-    "end_time": null,
-    "time_spent_seconds": 0,
-    "total_questions": 0,
-    "attempted_questions": 0,
-    "correct_answers": 0,
-    "marks_obtained": "0.00",
-    "percentage": "0.00"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "7c1de137-faf7-48cb-8efa-aa602ccdffa9",
-  "fields": {
-    "test": "f0e412c9-7fd0-492c-aa18-e9935f53a209",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 1,
-    "status": "abandoned",
-    "start_time": "2025-08-25T18:03:33.371Z",
-    "end_time": "2025-07-29T17:37:04.371Z",
-    "time_spent_seconds": 5611,
-    "total_questions": 61,
-    "attempted_questions": 18,
-    "correct_answers": 5,
-    "marks_obtained": "5.00",
-    "percentage": "8.20"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "8b1f61c5-581c-4cc1-9057-2d359a1d4071",
-  "fields": {
-    "test": "cacfc92f-adce-4469-91f1-c414c857eacc",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 2,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.384Z",
-    "end_time": "2025-08-23T18:09:15.384Z",
-    "time_spent_seconds": 7542,
-    "total_questions": 49,
-    "attempted_questions": 47,
-    "correct_answers": 15,
-    "marks_obtained": "44.69",
-    "percentage": "30.61"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "90709aba-5499-4da3-9d1e-ed82d005b554",
-  "fields": {
-    "test": "774c7d4f-1987-4c65-8b9c-683f4a7d7d4a",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 2,
-    "status": "abandoned",
-    "start_time": "2025-08-25T18:03:33.388Z",
-    "end_time": "2025-08-15T16:09:45.387Z",
-    "time_spent_seconds": 3972,
-    "total_questions": 45,
-    "attempted_questions": 13,
-    "correct_answers": 7,
-    "marks_obtained": "28.62",
-    "percentage": "15.56"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "96e5a2fd-e634-4a1d-8383-3ce9a4ea4acd",
-  "fields": {
-    "test": "ca885c4d-33d9-4857-950c-632cc45efe14",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 1,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.391Z",
-    "end_time": "2025-08-24T16:49:10.390Z",
-    "time_spent_seconds": 2737,
-    "total_questions": 75,
-    "attempted_questions": 65,
-    "correct_answers": 20,
-    "marks_obtained": "28.27",
-    "percentage": "26.67"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "9c1d40f6-414f-49f8-863f-d18a0990494d",
-  "fields": {
-    "test": "728ed94d-a072-4d78-b292-2e116485a1cc",
-    "user": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "attempt_number": 1,
-    "status": "in_progress",
-    "start_time": "2025-09-27T06:24:20.245Z",
-    "end_time": null,
-    "time_spent_seconds": 0,
-    "total_questions": 0,
-    "attempted_questions": 0,
-    "correct_answers": 0,
-    "marks_obtained": "0.00",
-    "percentage": "0.00"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "a0b41763-caed-4213-84c7-ebc417f9f142",
-  "fields": {
-    "test": "983a31f3-3fce-4cf6-b4e5-2656d43c4c21",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 1,
-    "status": "in_progress",
-    "start_time": "2025-08-25T18:03:33.382Z",
-    "end_time": null,
-    "time_spent_seconds": 3154,
-    "total_questions": 88,
-    "attempted_questions": 30,
-    "correct_answers": 19,
-    "marks_obtained": "31.95",
-    "percentage": "21.59"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "a22ca96f-21dd-4284-be38-88c0a3f0dbb4",
-  "fields": {
-    "test": "82774f46-815d-46d0-8bb4-51f32a806beb",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 1,
-    "status": "in_progress",
-    "start_time": "2025-08-25T18:03:33.389Z",
-    "end_time": null,
-    "time_spent_seconds": 3526,
-    "total_questions": 75,
-    "attempted_questions": 16,
-    "correct_answers": 1,
-    "marks_obtained": "1.91",
-    "percentage": "1.33"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "a241de47-fe76-43fa-9bf2-15ead615f231",
-  "fields": {
-    "test": "f0e412c9-7fd0-492c-aa18-e9935f53a209",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 2,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.371Z",
-    "end_time": "2025-08-08T14:52:02.371Z",
-    "time_spent_seconds": 2909,
-    "total_questions": 27,
-    "attempted_questions": 24,
-    "correct_answers": 21,
-    "marks_obtained": "47.44",
-    "percentage": "77.78"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "a3f8a43d-1d3b-4473-9da5-f09f4eaf827f",
-  "fields": {
-    "test": "ca885c4d-33d9-4857-950c-632cc45efe14",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 2,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.391Z",
-    "end_time": "2025-07-29T17:04:15.391Z",
-    "time_spent_seconds": 7242,
-    "total_questions": 97,
-    "attempted_questions": 69,
-    "correct_answers": 47,
-    "marks_obtained": "51.36",
-    "percentage": "48.45"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "bad34e95-2053-44bc-a6ba-1bfbd6cd7ae9",
-  "fields": {
-    "test": "4d8b26ff-def2-49db-ac73-59c2f9e3c8ef",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 1,
-    "status": "in_progress",
-    "start_time": "2025-08-25T18:03:33.392Z",
-    "end_time": null,
-    "time_spent_seconds": 2909,
-    "total_questions": 90,
-    "attempted_questions": 30,
-    "correct_answers": 6,
-    "marks_obtained": "7.80",
-    "percentage": "6.67"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "c64770e3-8f46-4d65-8664-4a2f7b3f9b86",
-  "fields": {
-    "test": "27b9eaee-c73e-46dc-9b9d-9c7ffee64cfe",
-    "user": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "attempt_number": 1,
-    "status": "in_progress",
-    "start_time": "2025-09-27T06:29:41.195Z",
-    "end_time": null,
-    "time_spent_seconds": 0,
-    "total_questions": 0,
-    "attempted_questions": 0,
-    "correct_answers": 0,
-    "marks_obtained": "0.00",
-    "percentage": "0.00"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "cbcdd713-cff1-44da-9aee-a9e214a2e9b7",
-  "fields": {
-    "test": "cacfc92f-adce-4469-91f1-c414c857eacc",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 1,
-    "status": "in_progress",
-    "start_time": "2025-08-25T18:03:33.383Z",
-    "end_time": null,
-    "time_spent_seconds": 986,
-    "total_questions": 85,
-    "attempted_questions": 21,
-    "correct_answers": 3,
-    "marks_obtained": "5.15",
-    "percentage": "3.53"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "ce540868-1480-453b-b57d-444283f7e8d5",
-  "fields": {
-    "test": "4d8b26ff-def2-49db-ac73-59c2f9e3c8ef",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 3,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.393Z",
-    "end_time": "2025-08-23T18:00:55.393Z",
-    "time_spent_seconds": 3442,
-    "total_questions": 55,
-    "attempted_questions": 40,
-    "correct_answers": 26,
-    "marks_obtained": "55.31",
-    "percentage": "47.27"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "cebdc841-a3fd-4cc2-bf5f-ae28205df2ae",
-  "fields": {
-    "test": "774c7d4f-1987-4c65-8b9c-683f4a7d7d4a",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 1,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.387Z",
-    "end_time": "2025-08-06T17:56:05.387Z",
-    "time_spent_seconds": 3152,
-    "total_questions": 45,
-    "attempted_questions": 40,
-    "correct_answers": 32,
-    "marks_obtained": "130.84",
-    "percentage": "71.11"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "d35dad71-cab3-4321-bfb9-6357e3af1c01",
-  "fields": {
-    "test": "9a567663-a915-4997-9103-ba4027be94cc",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 1,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.376Z",
-    "end_time": "2025-08-18T15:48:06.376Z",
-    "time_spent_seconds": 6273,
-    "total_questions": 45,
-    "attempted_questions": 34,
-    "correct_answers": 30,
-    "marks_obtained": "130.00",
-    "percentage": "66.67"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "d38c4b68-ef61-4a98-9bba-10051b4d7104",
-  "fields": {
-    "test": "27b9eaee-c73e-46dc-9b9d-9c7ffee64cfe",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 2,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.366Z",
-    "end_time": "2025-08-01T16:36:09.365Z",
-    "time_spent_seconds": 5556,
-    "total_questions": 67,
-    "attempted_questions": 48,
-    "correct_answers": 30,
-    "marks_obtained": "54.18",
-    "percentage": "44.78"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "d8c91de2-7722-491b-bb63-0c52eb1e4e4d",
-  "fields": {
-    "test": "f0e412c9-7fd0-492c-aa18-e9935f53a209",
-    "user": "11f731a7-6df4-4e21-b090-89c8ee4580d3",
-    "attempt_number": 1,
-    "status": "in_progress",
-    "start_time": "2025-09-27T06:29:52.563Z",
-    "end_time": null,
-    "time_spent_seconds": 0,
-    "total_questions": 0,
-    "attempted_questions": 0,
-    "correct_answers": 0,
-    "marks_obtained": "0.00",
-    "percentage": "0.00"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "e1eb95ff-88c6-4304-a927-0d85281ece32",
-  "fields": {
-    "test": "728ed94d-a072-4d78-b292-2e116485a1cc",
-    "user": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "attempt_number": 1,
-    "status": "in_progress",
-    "start_time": "2025-09-27T06:26:05.141Z",
-    "end_time": null,
-    "time_spent_seconds": 0,
-    "total_questions": 0,
-    "attempted_questions": 0,
-    "correct_answers": 0,
-    "marks_obtained": "0.00",
-    "percentage": "0.00"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "e35adf0f-4bba-4da6-a9cf-acce213c9642",
-  "fields": {
-    "test": "cacfc92f-adce-4469-91f1-c414c857eacc",
-    "user": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
-    "attempt_number": 1,
-    "status": "in_progress",
-    "start_time": "2025-09-27T08:20:57.655Z",
-    "end_time": null,
-    "time_spent_seconds": 0,
-    "total_questions": 0,
-    "attempted_questions": 0,
-    "correct_answers": 0,
-    "marks_obtained": "0.00",
-    "percentage": "0.00"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "e57b9ee3-afc1-4d24-9145-25c5326e9e9e",
-  "fields": {
-    "test": "728ed94d-a072-4d78-b292-2e116485a1cc",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 3,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.368Z",
-    "end_time": "2025-08-24T16:51:47.368Z",
-    "time_spent_seconds": 2894,
-    "total_questions": 92,
-    "attempted_questions": 89,
-    "correct_answers": 37,
-    "marks_obtained": "58.32",
-    "percentage": "40.22"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "e6938684-cee3-4773-a94c-bd5f57296b98",
-  "fields": {
-    "test": "4768051e-5fa1-4c91-8cb0-0fc24b6b8e69",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 1,
-    "status": "completed",
-    "start_time": "2025-08-25T18:03:33.386Z",
-    "end_time": "2025-08-23T17:44:52.385Z",
-    "time_spent_seconds": 2479,
-    "total_questions": 98,
-    "attempted_questions": 97,
-    "correct_answers": 61,
-    "marks_obtained": "100.21",
-    "percentage": "62.24"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "e974fe4d-e504-4910-86ac-d0e97795fea9",
-  "fields": {
-    "test": "cacfc92f-adce-4469-91f1-c414c857eacc",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 3,
-    "status": "abandoned",
-    "start_time": "2025-08-25T18:03:33.384Z",
-    "end_time": "2025-07-29T14:04:03.384Z",
-    "time_spent_seconds": 3630,
-    "total_questions": 23,
-    "attempted_questions": 6,
-    "correct_answers": 1,
-    "marks_obtained": "6.35",
-    "percentage": "4.35"
-  }
-},
-{
-  "model": "exams.testattempt",
-  "pk": "f496ba3e-16a2-4958-afe9-1e66c8badd64",
-  "fields": {
-    "test": "774c7d4f-1987-4c65-8b9c-683f4a7d7d4a",
-    "user": "01a6d509-c8a1-4ebd-a9c6-a473a05670e7",
-    "attempt_number": 3,
-    "status": "in_progress",
-    "start_time": "2025-08-25T18:03:33.388Z",
-    "end_time": null,
-    "time_spent_seconds": 3188,
-    "total_questions": 64,
-    "attempted_questions": 3,
-    "correct_answers": 2,
-    "marks_obtained": "5.75",
-    "percentage": "3.12"
   }
 },
 {

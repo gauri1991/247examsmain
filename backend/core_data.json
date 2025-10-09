@@ -1,2 +1,2447 @@
 [
+{
+  "model": "core.featurecategory",
+  "pk": 1,
+  "fields": {
+    "name": "STUDENT_UI",
+    "display_name": "Student Interface",
+    "description": "Features related to student-facing interface and interactions",
+    "icon": "user-circle",
+    "order": 1,
+    "created_at": "2025-10-09T05:00:45.203Z",
+    "updated_at": "2025-10-09T05:00:45.203Z"
+  }
+},
+{
+  "model": "core.featurecategory",
+  "pk": 2,
+  "fields": {
+    "name": "STUDENT_DASHBOARD",
+    "display_name": "Student Dashboard",
+    "description": "Dashboard-specific features for students",
+    "icon": "chart-bar",
+    "order": 2,
+    "created_at": "2025-10-09T05:00:45.205Z",
+    "updated_at": "2025-10-09T05:00:45.205Z"
+  }
+},
+{
+  "model": "core.featurecategory",
+  "pk": 3,
+  "fields": {
+    "name": "EXAM_FEATURES",
+    "display_name": "Exam Features",
+    "description": "Core examination functionality and features",
+    "icon": "document-text",
+    "order": 3,
+    "created_at": "2025-10-09T05:00:45.207Z",
+    "updated_at": "2025-10-09T05:00:45.207Z"
+  }
+},
+{
+  "model": "core.featurecategory",
+  "pk": 4,
+  "fields": {
+    "name": "CONTENT_MANAGEMENT",
+    "display_name": "Content Management",
+    "description": "Content creation, management, and organization features",
+    "icon": "folder",
+    "order": 4,
+    "created_at": "2025-10-09T05:00:45.208Z",
+    "updated_at": "2025-10-09T05:00:45.208Z"
+  }
+},
+{
+  "model": "core.featurecategory",
+  "pk": 5,
+  "fields": {
+    "name": "ANALYTICS",
+    "display_name": "Analytics & Reporting",
+    "description": "Analytics, reporting, and insights features",
+    "icon": "presentation-chart-line",
+    "order": 5,
+    "created_at": "2025-10-09T05:00:45.210Z",
+    "updated_at": "2025-10-09T05:00:45.210Z"
+  }
+},
+{
+  "model": "core.featurecategory",
+  "pk": 6,
+  "fields": {
+    "name": "ADMIN_TOOLS",
+    "display_name": "Admin Tools",
+    "description": "Administrative tools and management features",
+    "icon": "cog",
+    "order": 6,
+    "created_at": "2025-10-09T05:00:45.212Z",
+    "updated_at": "2025-10-09T05:00:45.212Z"
+  }
+},
+{
+  "model": "core.featurecategory",
+  "pk": 7,
+  "fields": {
+    "name": "PAYMENT_SYSTEM",
+    "display_name": "Payment System",
+    "description": "Payment processing and subscription features",
+    "icon": "credit-card",
+    "order": 7,
+    "created_at": "2025-10-09T05:00:45.213Z",
+    "updated_at": "2025-10-09T05:00:45.213Z"
+  }
+},
+{
+  "model": "core.featurecategory",
+  "pk": 8,
+  "fields": {
+    "name": "COMMUNICATION",
+    "display_name": "Communication",
+    "description": "Notifications, messaging, and communication features",
+    "icon": "chat-bubble-left",
+    "order": 8,
+    "created_at": "2025-10-09T05:00:45.216Z",
+    "updated_at": "2025-10-09T05:00:45.216Z"
+  }
+},
+{
+  "model": "core.featurecategory",
+  "pk": 9,
+  "fields": {
+    "name": "SECURITY",
+    "display_name": "Security Features",
+    "description": "Security, authentication, and privacy features",
+    "icon": "shield-check",
+    "order": 9,
+    "created_at": "2025-10-09T05:00:45.217Z",
+    "updated_at": "2025-10-09T05:00:45.217Z"
+  }
+},
+{
+  "model": "core.featurecategory",
+  "pk": 10,
+  "fields": {
+    "name": "INTEGRATIONS",
+    "display_name": "External Integrations",
+    "description": "Third-party integrations and API features",
+    "icon": "link",
+    "order": 10,
+    "created_at": "2025-10-09T05:00:45.218Z",
+    "updated_at": "2025-10-09T05:00:45.219Z"
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 1,
+  "fields": {
+    "key": "student_sidebar_navigation",
+    "name": "Student Sidebar Navigation",
+    "description": "Enhanced sidebar navigation with quick access to exams, results, and profile",
+    "category": 1,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "UI_COMPONENT",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.221Z",
+    "updated_at": "2025-10-09T05:30:09.631Z",
+    "enabled_at": "2025-10-09T05:30:09.631Z",
+    "enabled_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 2,
+  "fields": {
+    "key": "student_dark_mode",
+    "name": "Dark Mode for Students",
+    "description": "Dark theme option for student interface",
+    "category": 1,
+    "is_enabled": false,
+    "is_beta": true,
+    "priority": "LOW",
+    "feature_type": "UI_COMPONENT",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.224Z",
+    "updated_at": "2025-10-09T05:00:45.224Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": [
+      5
+    ]
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 3,
+  "fields": {
+    "key": "student_profile_customization",
+    "name": "Profile Customization",
+    "description": "Allow students to customize their profile with avatar, bio, and preferences",
+    "category": 1,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "MEDIUM",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.226Z",
+    "updated_at": "2025-10-09T05:00:45.226Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 4,
+  "fields": {
+    "key": "student_quick_search",
+    "name": "Quick Search",
+    "description": "Global search functionality for exams, subjects, and content",
+    "category": 1,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "MEDIUM",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.227Z",
+    "updated_at": "2025-10-09T05:30:26.584Z",
+    "enabled_at": "2025-10-09T05:30:26.584Z",
+    "enabled_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 5,
+  "fields": {
+    "key": "dashboard_performance_analytics",
+    "name": "Performance Analytics Dashboard",
+    "description": "Comprehensive performance analytics with charts and insights",
+    "category": 2,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "ANALYTICS",
+    "requires_restart": false,
+    "affects_performance": true,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.228Z",
+    "updated_at": "2025-10-09T05:00:45.228Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 6,
+  "fields": {
+    "key": "dashboard_progress_tracking",
+    "name": "Progress Tracking",
+    "description": "Visual progress tracking for courses and exam preparation",
+    "category": 2,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.230Z",
+    "updated_at": "2025-10-09T05:00:45.230Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 7,
+  "fields": {
+    "key": "dashboard_recommended_exams",
+    "name": "Recommended Exams",
+    "description": "AI-powered exam recommendations based on performance and interests",
+    "category": 2,
+    "is_enabled": false,
+    "is_beta": true,
+    "priority": "MEDIUM",
+    "feature_type": "ANALYTICS",
+    "requires_restart": false,
+    "affects_performance": true,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.231Z",
+    "updated_at": "2025-10-09T05:00:45.231Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [
+      5
+    ],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 8,
+  "fields": {
+    "key": "dashboard_study_streaks",
+    "name": "Study Streaks",
+    "description": "Gamified study streak tracking and achievements",
+    "category": 2,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "LOW",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.233Z",
+    "updated_at": "2025-10-09T05:00:45.233Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 9,
+  "fields": {
+    "key": "dashboard_upcoming_deadlines",
+    "name": "Upcoming Deadlines",
+    "description": "Calendar view of upcoming exam deadlines and important dates",
+    "category": 2,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.234Z",
+    "updated_at": "2025-10-09T05:00:45.234Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 10,
+  "fields": {
+    "key": "exam_auto_save",
+    "name": "Auto-save Functionality",
+    "description": "Automatically save exam progress to prevent data loss",
+    "category": 3,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "CRITICAL",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.235Z",
+    "updated_at": "2025-10-09T05:00:45.236Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 11,
+  "fields": {
+    "key": "exam_timer_warnings",
+    "name": "Timer Warnings",
+    "description": "Visual and audio warnings when exam time is running low",
+    "category": 3,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.237Z",
+    "updated_at": "2025-10-09T05:00:45.237Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 12,
+  "fields": {
+    "key": "exam_question_bookmarking",
+    "name": "Question Bookmarking",
+    "description": "Allow students to bookmark questions for review",
+    "category": 3,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "MEDIUM",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.238Z",
+    "updated_at": "2025-10-09T05:00:45.238Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 13,
+  "fields": {
+    "key": "exam_offline_mode",
+    "name": "Offline Mode",
+    "description": "Allow exams to be taken offline with sync when connection is restored",
+    "category": 3,
+    "is_enabled": false,
+    "is_beta": true,
+    "priority": "HIGH",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": true,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.240Z",
+    "updated_at": "2025-10-09T05:00:45.240Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [
+      10
+    ],
+    "conflicts_with": [
+      14
+    ]
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 14,
+  "fields": {
+    "key": "exam_proctoring",
+    "name": "AI Proctoring",
+    "description": "AI-powered exam proctoring with camera and behavior monitoring",
+    "category": 3,
+    "is_enabled": false,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "SECURITY",
+    "requires_restart": false,
+    "affects_performance": true,
+    "user_roles": [
+      "student",
+      "teacher"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.242Z",
+    "updated_at": "2025-10-09T05:09:08.161Z",
+    "enabled_at": "2025-10-09T05:09:07.227Z",
+    "enabled_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "depends_on": [
+      33
+    ],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 15,
+  "fields": {
+    "key": "exam_instant_results",
+    "name": "Instant Results",
+    "description": "Show exam results immediately after completion",
+    "category": 3,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "MEDIUM",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.244Z",
+    "updated_at": "2025-10-09T05:00:45.244Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 16,
+  "fields": {
+    "key": "content_bulk_upload",
+    "name": "Bulk Content Upload",
+    "description": "Upload multiple questions and media files in batch",
+    "category": 4,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.245Z",
+    "updated_at": "2025-10-09T05:00:45.246Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 17,
+  "fields": {
+    "key": "content_version_control",
+    "name": "Version Control",
+    "description": "Track changes and maintain version history of questions and exams",
+    "category": 4,
+    "is_enabled": false,
+    "is_beta": false,
+    "priority": "MEDIUM",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.248Z",
+    "updated_at": "2025-10-09T05:00:45.248Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 18,
+  "fields": {
+    "key": "content_ai_generation",
+    "name": "AI Question Generation",
+    "description": "Generate questions automatically using AI based on topics and difficulty",
+    "category": 4,
+    "is_enabled": false,
+    "is_beta": true,
+    "priority": "MEDIUM",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": true,
+    "user_roles": [
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.249Z",
+    "updated_at": "2025-10-09T05:00:45.249Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [
+      16
+    ],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 19,
+  "fields": {
+    "key": "content_plagiarism_detection",
+    "name": "Plagiarism Detection",
+    "description": "Detect duplicate or similar questions across question banks",
+    "category": 4,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "MEDIUM",
+    "feature_type": "ANALYTICS",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.251Z",
+    "updated_at": "2025-10-09T05:00:45.251Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 20,
+  "fields": {
+    "key": "analytics_detailed_reports",
+    "name": "Detailed Analytics Reports",
+    "description": "Comprehensive analytics reports with insights and recommendations",
+    "category": 5,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "ANALYTICS",
+    "requires_restart": false,
+    "affects_performance": true,
+    "user_roles": [
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.253Z",
+    "updated_at": "2025-10-09T05:00:45.253Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 21,
+  "fields": {
+    "key": "analytics_real_time_monitoring",
+    "name": "Real-time Monitoring",
+    "description": "Real-time monitoring of ongoing exams and student performance",
+    "category": 5,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "ANALYTICS",
+    "requires_restart": false,
+    "affects_performance": true,
+    "user_roles": [
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.255Z",
+    "updated_at": "2025-10-09T05:00:45.255Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 22,
+  "fields": {
+    "key": "analytics_predictive_insights",
+    "name": "Predictive Insights",
+    "description": "AI-powered predictive analytics for student performance",
+    "category": 5,
+    "is_enabled": false,
+    "is_beta": true,
+    "priority": "MEDIUM",
+    "feature_type": "ANALYTICS",
+    "requires_restart": false,
+    "affects_performance": true,
+    "user_roles": [
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.260Z",
+    "updated_at": "2025-10-09T05:00:45.260Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [
+      20,
+      21
+    ],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 23,
+  "fields": {
+    "key": "admin_user_management",
+    "name": "Advanced User Management",
+    "description": "Comprehensive user management with roles, permissions, and bulk operations",
+    "category": 6,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "CRITICAL",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.261Z",
+    "updated_at": "2025-10-09T05:00:45.262Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 24,
+  "fields": {
+    "key": "admin_system_monitoring",
+    "name": "System Monitoring",
+    "description": "Monitor system performance, usage statistics, and health metrics",
+    "category": 6,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "ANALYTICS",
+    "requires_restart": false,
+    "affects_performance": true,
+    "user_roles": [
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.266Z",
+    "updated_at": "2025-10-09T05:00:45.266Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 25,
+  "fields": {
+    "key": "admin_backup_restore",
+    "name": "Backup & Restore",
+    "description": "Automated backup and restore functionality for data protection",
+    "category": 6,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "CRITICAL",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": true,
+    "affects_performance": false,
+    "user_roles": [
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.271Z",
+    "updated_at": "2025-10-09T05:00:45.271Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 26,
+  "fields": {
+    "key": "payment_multiple_gateways",
+    "name": "Multiple Payment Gateways",
+    "description": "Support for multiple payment processors and methods",
+    "category": 7,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "INTEGRATION",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.273Z",
+    "updated_at": "2025-10-09T05:00:45.273Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 27,
+  "fields": {
+    "key": "payment_subscription_management",
+    "name": "Subscription Management",
+    "description": "Comprehensive subscription and recurring payment management",
+    "category": 7,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.278Z",
+    "updated_at": "2025-10-09T05:00:45.278Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 28,
+  "fields": {
+    "key": "payment_refund_processing",
+    "name": "Automated Refund Processing",
+    "description": "Automated refund processing with configurable rules",
+    "category": 7,
+    "is_enabled": false,
+    "is_beta": false,
+    "priority": "MEDIUM",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.279Z",
+    "updated_at": "2025-10-09T05:00:45.280Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [
+      27
+    ],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 29,
+  "fields": {
+    "key": "notifications_email",
+    "name": "Email Notifications",
+    "description": "Comprehensive email notification system for various events",
+    "category": 8,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student",
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.284Z",
+    "updated_at": "2025-10-09T05:00:45.284Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 30,
+  "fields": {
+    "key": "notifications_push",
+    "name": "Push Notifications",
+    "description": "Browser and mobile push notifications",
+    "category": 8,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "MEDIUM",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student",
+      "teacher"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.287Z",
+    "updated_at": "2025-10-09T05:00:45.287Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 31,
+  "fields": {
+    "key": "messaging_system",
+    "name": "Internal Messaging",
+    "description": "Internal messaging system between students and teachers",
+    "category": 8,
+    "is_enabled": false,
+    "is_beta": false,
+    "priority": "LOW",
+    "feature_type": "FUNCTIONALITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student",
+      "teacher"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.291Z",
+    "updated_at": "2025-10-09T05:00:45.291Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 32,
+  "fields": {
+    "key": "security_two_factor_auth",
+    "name": "Two-Factor Authentication",
+    "description": "Enhanced security with 2FA for all user accounts",
+    "category": 9,
+    "is_enabled": false,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "SECURITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student",
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.296Z",
+    "updated_at": "2025-10-09T05:00:45.296Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [
+      33
+    ],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 33,
+  "fields": {
+    "key": "security_session_management",
+    "name": "Advanced Session Management",
+    "description": "Enhanced session security with device tracking and forced logout",
+    "category": 9,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "SECURITY",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student",
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.300Z",
+    "updated_at": "2025-10-09T05:00:45.300Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 34,
+  "fields": {
+    "key": "security_audit_logging",
+    "name": "Audit Logging",
+    "description": "Comprehensive audit logging for all user actions and system events",
+    "category": 9,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "HIGH",
+    "feature_type": "SECURITY",
+    "requires_restart": false,
+    "affects_performance": true,
+    "user_roles": [
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.303Z",
+    "updated_at": "2025-10-09T05:00:45.303Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 35,
+  "fields": {
+    "key": "integration_google_classroom",
+    "name": "Google Classroom Integration",
+    "description": "Seamless integration with Google Classroom for assignment sync",
+    "category": 10,
+    "is_enabled": false,
+    "is_beta": false,
+    "priority": "MEDIUM",
+    "feature_type": "INTEGRATION",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "teacher"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.305Z",
+    "updated_at": "2025-10-09T05:00:45.305Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [
+      34
+    ],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 36,
+  "fields": {
+    "key": "integration_lms",
+    "name": "LMS Integration",
+    "description": "Integration with popular Learning Management Systems",
+    "category": 10,
+    "is_enabled": false,
+    "is_beta": false,
+    "priority": "LOW",
+    "feature_type": "INTEGRATION",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "teacher",
+      "admin"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.307Z",
+    "updated_at": "2025-10-09T05:00:45.307Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [
+      34
+    ],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.feature",
+  "pk": 37,
+  "fields": {
+    "key": "integration_calendar",
+    "name": "Calendar Integration",
+    "description": "Sync exam schedules with external calendar applications",
+    "category": 10,
+    "is_enabled": true,
+    "is_beta": false,
+    "priority": "MEDIUM",
+    "feature_type": "INTEGRATION",
+    "requires_restart": false,
+    "affects_performance": false,
+    "user_roles": [
+      "student",
+      "teacher"
+    ],
+    "config_options": {},
+    "created_at": "2025-10-09T05:00:45.313Z",
+    "updated_at": "2025-10-09T05:00:45.313Z",
+    "enabled_at": null,
+    "enabled_by": null,
+    "depends_on": [],
+    "conflicts_with": []
+  }
+},
+{
+  "model": "core.featurechangelog",
+  "pk": 1,
+  "fields": {
+    "feature": 14,
+    "changed_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "action": "ENABLED",
+    "previous_state": false,
+    "new_state": true,
+    "reason": "",
+    "timestamp": "2025-10-09T05:09:07.228Z",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+  }
+},
+{
+  "model": "core.featurechangelog",
+  "pk": 2,
+  "fields": {
+    "feature": 14,
+    "changed_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "action": "DISABLED",
+    "previous_state": true,
+    "new_state": false,
+    "reason": "",
+    "timestamp": "2025-10-09T05:09:08.163Z",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+  }
+},
+{
+  "model": "core.featurechangelog",
+  "pk": 3,
+  "fields": {
+    "feature": 1,
+    "changed_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "action": "DISABLED",
+    "previous_state": true,
+    "new_state": false,
+    "reason": "",
+    "timestamp": "2025-10-09T05:30:08.004Z",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+  }
+},
+{
+  "model": "core.featurechangelog",
+  "pk": 4,
+  "fields": {
+    "feature": 1,
+    "changed_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "action": "ENABLED",
+    "previous_state": false,
+    "new_state": true,
+    "reason": "",
+    "timestamp": "2025-10-09T05:30:09.633Z",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+  }
+},
+{
+  "model": "core.featurechangelog",
+  "pk": 5,
+  "fields": {
+    "feature": 4,
+    "changed_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "action": "DISABLED",
+    "previous_state": true,
+    "new_state": false,
+    "reason": "",
+    "timestamp": "2025-10-09T05:30:25.251Z",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+  }
+},
+{
+  "model": "core.featurechangelog",
+  "pk": 6,
+  "fields": {
+    "feature": 4,
+    "changed_by": "c5622537-2223-45d9-8580-10585f1175a9",
+    "action": "ENABLED",
+    "previous_state": false,
+    "new_state": true,
+    "reason": "",
+    "timestamp": "2025-10-09T05:30:26.586Z",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 1,
+  "fields": {
+    "feature": 1,
+    "role": "STUDENT",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:12.933Z",
+    "updated_at": "2025-10-09T05:35:12.933Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 2,
+  "fields": {
+    "feature": 1,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:12.944Z",
+    "updated_at": "2025-10-09T05:35:12.944Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 3,
+  "fields": {
+    "feature": 1,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:12.953Z",
+    "updated_at": "2025-10-09T05:35:12.953Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 4,
+  "fields": {
+    "feature": 2,
+    "role": "STUDENT",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:12.961Z",
+    "updated_at": "2025-10-09T05:35:12.961Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 5,
+  "fields": {
+    "feature": 2,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:12.967Z",
+    "updated_at": "2025-10-09T05:35:12.967Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 6,
+  "fields": {
+    "feature": 2,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:12.977Z",
+    "updated_at": "2025-10-09T05:35:12.977Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 7,
+  "fields": {
+    "feature": 3,
+    "role": "STUDENT",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:12.988Z",
+    "updated_at": "2025-10-09T05:35:12.988Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 8,
+  "fields": {
+    "feature": 3,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:12.997Z",
+    "updated_at": "2025-10-09T05:35:12.997Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 9,
+  "fields": {
+    "feature": 3,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.005Z",
+    "updated_at": "2025-10-09T05:35:13.005Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 10,
+  "fields": {
+    "feature": 4,
+    "role": "STUDENT",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.014Z",
+    "updated_at": "2025-10-09T05:35:13.015Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 11,
+  "fields": {
+    "feature": 4,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.024Z",
+    "updated_at": "2025-10-09T05:35:13.024Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 12,
+  "fields": {
+    "feature": 4,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.033Z",
+    "updated_at": "2025-10-09T05:35:13.033Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 13,
+  "fields": {
+    "feature": 5,
+    "role": "STUDENT",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.042Z",
+    "updated_at": "2025-10-09T05:35:13.042Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 14,
+  "fields": {
+    "feature": 5,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.049Z",
+    "updated_at": "2025-10-09T05:35:13.049Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 15,
+  "fields": {
+    "feature": 5,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.057Z",
+    "updated_at": "2025-10-09T05:35:13.057Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 16,
+  "fields": {
+    "feature": 6,
+    "role": "STUDENT",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.068Z",
+    "updated_at": "2025-10-09T05:35:13.068Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 17,
+  "fields": {
+    "feature": 6,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.078Z",
+    "updated_at": "2025-10-09T05:35:13.078Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 18,
+  "fields": {
+    "feature": 6,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.088Z",
+    "updated_at": "2025-10-09T05:35:13.088Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 19,
+  "fields": {
+    "feature": 9,
+    "role": "STUDENT",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.098Z",
+    "updated_at": "2025-10-09T05:35:13.098Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 20,
+  "fields": {
+    "feature": 9,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.112Z",
+    "updated_at": "2025-10-09T05:35:13.112Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 21,
+  "fields": {
+    "feature": 9,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.119Z",
+    "updated_at": "2025-10-09T05:35:13.119Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 22,
+  "fields": {
+    "feature": 8,
+    "role": "STUDENT",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.129Z",
+    "updated_at": "2025-10-09T05:35:13.129Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 23,
+  "fields": {
+    "feature": 8,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.134Z",
+    "updated_at": "2025-10-09T05:35:13.134Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 24,
+  "fields": {
+    "feature": 8,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.140Z",
+    "updated_at": "2025-10-09T05:35:13.140Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 25,
+  "fields": {
+    "feature": 7,
+    "role": "STUDENT",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.147Z",
+    "updated_at": "2025-10-09T05:35:13.147Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 26,
+  "fields": {
+    "feature": 7,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.157Z",
+    "updated_at": "2025-10-09T05:35:13.157Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 27,
+  "fields": {
+    "feature": 7,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.170Z",
+    "updated_at": "2025-10-09T05:35:13.170Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 28,
+  "fields": {
+    "feature": 10,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.184Z",
+    "updated_at": "2025-10-09T05:35:13.184Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 29,
+  "fields": {
+    "feature": 10,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.192Z",
+    "updated_at": "2025-10-09T05:35:13.192Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 30,
+  "fields": {
+    "feature": 10,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.199Z",
+    "updated_at": "2025-10-09T05:35:13.199Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 31,
+  "fields": {
+    "feature": 14,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.206Z",
+    "updated_at": "2025-10-09T05:35:13.206Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 32,
+  "fields": {
+    "feature": 14,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.212Z",
+    "updated_at": "2025-10-09T05:35:13.212Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 33,
+  "fields": {
+    "feature": 14,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.220Z",
+    "updated_at": "2025-10-09T05:35:13.220Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 34,
+  "fields": {
+    "feature": 13,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.227Z",
+    "updated_at": "2025-10-09T05:35:13.227Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 35,
+  "fields": {
+    "feature": 13,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.232Z",
+    "updated_at": "2025-10-09T05:35:13.232Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 36,
+  "fields": {
+    "feature": 13,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.237Z",
+    "updated_at": "2025-10-09T05:35:13.237Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 37,
+  "fields": {
+    "feature": 11,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.244Z",
+    "updated_at": "2025-10-09T05:35:13.244Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 38,
+  "fields": {
+    "feature": 11,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.254Z",
+    "updated_at": "2025-10-09T05:35:13.254Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 39,
+  "fields": {
+    "feature": 11,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.260Z",
+    "updated_at": "2025-10-09T05:35:13.260Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 40,
+  "fields": {
+    "feature": 15,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.269Z",
+    "updated_at": "2025-10-09T05:35:13.269Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 41,
+  "fields": {
+    "feature": 15,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.276Z",
+    "updated_at": "2025-10-09T05:35:13.276Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 42,
+  "fields": {
+    "feature": 15,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.283Z",
+    "updated_at": "2025-10-09T05:35:13.283Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 43,
+  "fields": {
+    "feature": 12,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.291Z",
+    "updated_at": "2025-10-09T05:35:13.291Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 44,
+  "fields": {
+    "feature": 12,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.297Z",
+    "updated_at": "2025-10-09T05:35:13.297Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 45,
+  "fields": {
+    "feature": 12,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.308Z",
+    "updated_at": "2025-10-09T05:35:13.308Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 46,
+  "fields": {
+    "feature": 16,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.314Z",
+    "updated_at": "2025-10-09T05:35:13.314Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 47,
+  "fields": {
+    "feature": 16,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.321Z",
+    "updated_at": "2025-10-09T05:35:13.321Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 48,
+  "fields": {
+    "feature": 16,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.328Z",
+    "updated_at": "2025-10-09T05:35:13.328Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 49,
+  "fields": {
+    "feature": 18,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.334Z",
+    "updated_at": "2025-10-09T05:35:13.334Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 50,
+  "fields": {
+    "feature": 18,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.343Z",
+    "updated_at": "2025-10-09T05:35:13.343Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 51,
+  "fields": {
+    "feature": 18,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.354Z",
+    "updated_at": "2025-10-09T05:35:13.354Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 52,
+  "fields": {
+    "feature": 19,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.369Z",
+    "updated_at": "2025-10-09T05:35:13.370Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 53,
+  "fields": {
+    "feature": 19,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.386Z",
+    "updated_at": "2025-10-09T05:35:13.386Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 54,
+  "fields": {
+    "feature": 19,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.397Z",
+    "updated_at": "2025-10-09T05:35:13.397Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 55,
+  "fields": {
+    "feature": 17,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.408Z",
+    "updated_at": "2025-10-09T05:35:13.408Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 56,
+  "fields": {
+    "feature": 17,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.416Z",
+    "updated_at": "2025-10-09T05:35:13.416Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 57,
+  "fields": {
+    "feature": 17,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.425Z",
+    "updated_at": "2025-10-09T05:35:13.425Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 58,
+  "fields": {
+    "feature": 20,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.431Z",
+    "updated_at": "2025-10-09T05:35:13.431Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 59,
+  "fields": {
+    "feature": 20,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.440Z",
+    "updated_at": "2025-10-09T05:35:13.440Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 60,
+  "fields": {
+    "feature": 20,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.449Z",
+    "updated_at": "2025-10-09T05:35:13.449Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 61,
+  "fields": {
+    "feature": 21,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.457Z",
+    "updated_at": "2025-10-09T05:35:13.457Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 62,
+  "fields": {
+    "feature": 21,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.464Z",
+    "updated_at": "2025-10-09T05:35:13.464Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 63,
+  "fields": {
+    "feature": 21,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.471Z",
+    "updated_at": "2025-10-09T05:35:13.471Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 64,
+  "fields": {
+    "feature": 22,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.478Z",
+    "updated_at": "2025-10-09T05:35:13.478Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 65,
+  "fields": {
+    "feature": 22,
+    "role": "TEACHER",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.488Z",
+    "updated_at": "2025-10-09T05:35:13.488Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 66,
+  "fields": {
+    "feature": 22,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.496Z",
+    "updated_at": "2025-10-09T05:35:13.496Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 67,
+  "fields": {
+    "feature": 23,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.503Z",
+    "updated_at": "2025-10-09T05:35:13.503Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 68,
+  "fields": {
+    "feature": 23,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.514Z",
+    "updated_at": "2025-10-09T05:35:13.514Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 69,
+  "fields": {
+    "feature": 23,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.522Z",
+    "updated_at": "2025-10-09T05:35:13.522Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 70,
+  "fields": {
+    "feature": 25,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.531Z",
+    "updated_at": "2025-10-09T05:35:13.531Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 71,
+  "fields": {
+    "feature": 25,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.536Z",
+    "updated_at": "2025-10-09T05:35:13.536Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 72,
+  "fields": {
+    "feature": 25,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.542Z",
+    "updated_at": "2025-10-09T05:35:13.542Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 73,
+  "fields": {
+    "feature": 24,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.549Z",
+    "updated_at": "2025-10-09T05:35:13.549Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 74,
+  "fields": {
+    "feature": 24,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.555Z",
+    "updated_at": "2025-10-09T05:35:13.555Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 75,
+  "fields": {
+    "feature": 24,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.564Z",
+    "updated_at": "2025-10-09T05:35:13.564Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 76,
+  "fields": {
+    "feature": 26,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.577Z",
+    "updated_at": "2025-10-09T05:35:13.577Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 77,
+  "fields": {
+    "feature": 26,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.587Z",
+    "updated_at": "2025-10-09T05:35:13.587Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 78,
+  "fields": {
+    "feature": 26,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.598Z",
+    "updated_at": "2025-10-09T05:35:13.598Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 79,
+  "fields": {
+    "feature": 27,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.610Z",
+    "updated_at": "2025-10-09T05:35:13.610Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 80,
+  "fields": {
+    "feature": 27,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.617Z",
+    "updated_at": "2025-10-09T05:35:13.623Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 81,
+  "fields": {
+    "feature": 27,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.628Z",
+    "updated_at": "2025-10-09T05:35:13.628Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 82,
+  "fields": {
+    "feature": 28,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.636Z",
+    "updated_at": "2025-10-09T05:35:13.636Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 83,
+  "fields": {
+    "feature": 28,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.649Z",
+    "updated_at": "2025-10-09T05:35:13.649Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 84,
+  "fields": {
+    "feature": 28,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.660Z",
+    "updated_at": "2025-10-09T05:35:13.660Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 85,
+  "fields": {
+    "feature": 29,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.668Z",
+    "updated_at": "2025-10-09T05:35:13.668Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 86,
+  "fields": {
+    "feature": 29,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.676Z",
+    "updated_at": "2025-10-09T05:35:13.676Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 87,
+  "fields": {
+    "feature": 29,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.689Z",
+    "updated_at": "2025-10-09T05:35:13.689Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 88,
+  "fields": {
+    "feature": 31,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.699Z",
+    "updated_at": "2025-10-09T05:35:13.700Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 89,
+  "fields": {
+    "feature": 31,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.705Z",
+    "updated_at": "2025-10-09T05:35:13.705Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 90,
+  "fields": {
+    "feature": 31,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.715Z",
+    "updated_at": "2025-10-09T05:35:13.715Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 91,
+  "fields": {
+    "feature": 30,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.726Z",
+    "updated_at": "2025-10-09T05:35:13.726Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 92,
+  "fields": {
+    "feature": 30,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.732Z",
+    "updated_at": "2025-10-09T05:35:13.732Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 93,
+  "fields": {
+    "feature": 30,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.740Z",
+    "updated_at": "2025-10-09T05:35:13.740Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 94,
+  "fields": {
+    "feature": 33,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.750Z",
+    "updated_at": "2025-10-09T05:35:13.750Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 95,
+  "fields": {
+    "feature": 33,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.757Z",
+    "updated_at": "2025-10-09T05:35:13.757Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 96,
+  "fields": {
+    "feature": 33,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.767Z",
+    "updated_at": "2025-10-09T05:35:13.767Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 97,
+  "fields": {
+    "feature": 34,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.778Z",
+    "updated_at": "2025-10-09T05:35:13.786Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 98,
+  "fields": {
+    "feature": 34,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.797Z",
+    "updated_at": "2025-10-09T05:35:13.797Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 99,
+  "fields": {
+    "feature": 34,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.806Z",
+    "updated_at": "2025-10-09T05:35:13.806Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 100,
+  "fields": {
+    "feature": 32,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.814Z",
+    "updated_at": "2025-10-09T05:35:13.814Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 101,
+  "fields": {
+    "feature": 32,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.822Z",
+    "updated_at": "2025-10-09T05:35:13.822Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 102,
+  "fields": {
+    "feature": 32,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.828Z",
+    "updated_at": "2025-10-09T05:35:13.828Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 103,
+  "fields": {
+    "feature": 36,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.836Z",
+    "updated_at": "2025-10-09T05:35:13.836Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 104,
+  "fields": {
+    "feature": 36,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.844Z",
+    "updated_at": "2025-10-09T05:35:13.844Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 105,
+  "fields": {
+    "feature": 36,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.851Z",
+    "updated_at": "2025-10-09T05:35:13.851Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 106,
+  "fields": {
+    "feature": 37,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.858Z",
+    "updated_at": "2025-10-09T05:35:13.858Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 107,
+  "fields": {
+    "feature": 37,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.864Z",
+    "updated_at": "2025-10-09T05:35:13.864Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 108,
+  "fields": {
+    "feature": 37,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.871Z",
+    "updated_at": "2025-10-09T05:35:13.871Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 109,
+  "fields": {
+    "feature": 35,
+    "role": "STUDENT",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.880Z",
+    "updated_at": "2025-10-09T05:35:13.880Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 110,
+  "fields": {
+    "feature": 35,
+    "role": "TEACHER",
+    "is_enabled": false,
+    "created_at": "2025-10-09T05:35:13.885Z",
+    "updated_at": "2025-10-09T05:35:13.886Z"
+  }
+},
+{
+  "model": "core.featurerolepermission",
+  "pk": 111,
+  "fields": {
+    "feature": 35,
+    "role": "ADMIN",
+    "is_enabled": true,
+    "created_at": "2025-10-09T05:35:13.894Z",
+    "updated_at": "2025-10-09T05:35:13.894Z"
+  }
+}
 ]

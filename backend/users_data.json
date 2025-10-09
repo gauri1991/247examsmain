@@ -16,8 +16,12 @@
     "first_name": "Test",
     "last_name": "Teacher",
     "is_verified": false,
+    "subscription_type": "free",
+    "subscription_start": null,
+    "subscription_end": null,
+    "is_active_subscriber": false,
     "created_at": "2025-08-25T14:05:50.854Z",
-    "updated_at": "2025-09-26T07:13:15.363Z",
+    "updated_at": "2025-10-04T16:37:28.144Z",
     "groups": [],
     "user_permissions": []
   }
@@ -39,8 +43,39 @@
     "first_name": "Test",
     "last_name": "Student",
     "is_verified": false,
+    "subscription_type": "free",
+    "subscription_start": null,
+    "subscription_end": null,
+    "is_active_subscriber": false,
     "created_at": "2025-08-25T14:29:34.545Z",
     "updated_at": "2025-09-26T07:13:18.844Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "1ff1f672-938a-41ea-bde9-d593d8fe2391",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$LyLFAdNSigCXVwymcRhQVd$o7Uh/wGWoiLTy4gCEtlL7jO+EzLCnadrfSLOXp1y4/U=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "8302012630",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-10-03T14:31:41.562Z",
+    "email": "8302012630@247exams.com",
+    "phone": "8302012630",
+    "role": "student",
+    "first_name": "Default",
+    "last_name": "User",
+    "is_verified": true,
+    "subscription_type": "premium",
+    "subscription_start": "2025-10-03T14:31:43.082Z",
+    "subscription_end": "2026-10-03T14:31:43.082Z",
+    "is_active_subscriber": true,
+    "created_at": "2025-10-03T14:31:43.070Z",
+    "updated_at": "2025-10-03T14:31:43.082Z",
     "groups": [],
     "user_permissions": []
   }
@@ -62,6 +97,10 @@
     "first_name": "Test",
     "last_name": "Teacher",
     "is_verified": false,
+    "subscription_type": "free",
+    "subscription_start": null,
+    "subscription_end": null,
+    "is_active_subscriber": false,
     "created_at": "2025-08-25T14:29:36.082Z",
     "updated_at": "2025-09-26T07:13:20.508Z",
     "groups": [],
@@ -85,8 +124,66 @@
     "first_name": "Test",
     "last_name": "Admin",
     "is_verified": false,
+    "subscription_type": "free",
+    "subscription_start": null,
+    "subscription_end": null,
+    "is_active_subscriber": false,
     "created_at": "2025-08-25T14:05:51.683Z",
     "updated_at": "2025-09-26T07:13:16.974Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "a96b698e-d5aa-4821-9215-6a1dee9daaca",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$nymoTpRAGeGijbYNLcp9uT$E2bfN+cBbV2zEK7OJ2saYJzcgdP2V6KFws9cSfHxgR0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "918302012630",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-10-03T13:34:44.921Z",
+    "email": "918302012630@mobile.247exams.com",
+    "phone": "+918302012630",
+    "role": "student",
+    "first_name": "",
+    "last_name": "",
+    "is_verified": false,
+    "subscription_type": "free",
+    "subscription_start": null,
+    "subscription_end": null,
+    "is_active_subscriber": false,
+    "created_at": "2025-10-03T13:34:46.272Z",
+    "updated_at": "2025-10-03T13:34:46.272Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "af9847e7-7a8b-49b4-9f59-38798f0488a7",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$n7kaC9j7Tkp93gvluWRqfA$EbBVWCoGRKr3Heq9XPxLtF/joWKl9Ax+o74awIBLc5I=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "test_admin",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-10-05T11:24:22.590Z",
+    "email": "test@example.com",
+    "phone": null,
+    "role": "student",
+    "first_name": "",
+    "last_name": "",
+    "is_verified": false,
+    "subscription_type": "free",
+    "subscription_start": null,
+    "subscription_end": null,
+    "is_active_subscriber": false,
+    "created_at": "2025-10-05T11:24:22.591Z",
+    "updated_at": "2025-10-05T11:24:24.236Z",
     "groups": [],
     "user_permissions": []
   }
@@ -96,7 +193,7 @@
   "pk": "ba8dacb3-7340-4fc8-a81c-d4465776beba",
   "fields": {
     "password": "pbkdf2_sha256$1000000$96cxlzT7f7ywmo5i5piCbz$Fs79SzeP/3oe0BEdR9FZJmSof5rss8xz4MZM6nNspy8=",
-    "last_login": null,
+    "last_login": "2025-10-05T10:46:54.507Z",
     "is_superuser": true,
     "username": "admin247",
     "is_staff": true,
@@ -108,8 +205,66 @@
     "first_name": "Test",
     "last_name": "Admin",
     "is_verified": false,
+    "subscription_type": "free",
+    "subscription_start": null,
+    "subscription_end": null,
+    "is_active_subscriber": false,
     "created_at": "2025-08-25T14:29:36.902Z",
     "updated_at": "2025-09-26T07:13:22.063Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "c5622537-2223-45d9-8580-10585f1175a9",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$0hACCWuqamBS6wPD2MpJ2A$kd0ALXKHlAXXOQu+ABDyHO+SA7M6F+vpKuP4Jlf36NI=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "9252517941",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-10-04T14:10:48.267Z",
+    "email": "admin9252517941@247exams.com",
+    "phone": "9252517941",
+    "role": "student",
+    "first_name": "Admin",
+    "last_name": "User",
+    "is_verified": false,
+    "subscription_type": "free",
+    "subscription_start": null,
+    "subscription_end": null,
+    "is_active_subscriber": false,
+    "created_at": "2025-10-04T14:10:49.762Z",
+    "updated_at": "2025-10-04T14:25:49.075Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": "cd1995ab-1480-491a-a815-2bd4ae6e1406",
+  "fields": {
+    "password": "!2O67yknjlDkIf2LMvWrkWzCEURT2HxipUy02I9ik",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "9876543211",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-10-03T14:04:51.529Z",
+    "email": "9876543211@mobile.247exams.com",
+    "phone": "9876543211",
+    "role": "student",
+    "first_name": "Test",
+    "last_name": "User",
+    "is_verified": true,
+    "subscription_type": "free",
+    "subscription_start": null,
+    "subscription_end": null,
+    "is_active_subscriber": false,
+    "created_at": "2025-10-03T14:04:51.529Z",
+    "updated_at": "2025-10-03T14:04:51.529Z",
     "groups": [],
     "user_permissions": []
   }
@@ -131,10 +286,133 @@
     "first_name": "Test",
     "last_name": "Student",
     "is_verified": false,
+    "subscription_type": "free",
+    "subscription_start": null,
+    "subscription_end": null,
+    "is_active_subscriber": false,
     "created_at": "2025-08-25T14:05:50.042Z",
     "updated_at": "2025-09-26T07:13:13.604Z",
     "groups": [],
     "user_permissions": []
+  }
+},
+{
+  "model": "users.userprofile",
+  "pk": 1,
+  "fields": {
+    "user": "a96b698e-d5aa-4821-9215-6a1dee9daaca",
+    "bio": "",
+    "avatar": null,
+    "date_of_birth": null,
+    "city": "",
+    "state": "",
+    "country": "",
+    "language": "en",
+    "timezone": "UTC",
+    "email_notifications": true,
+    "created_at": "2025-10-03T13:34:46.279Z",
+    "updated_at": "2025-10-03T13:34:46.279Z"
+  }
+},
+{
+  "model": "users.userprofile",
+  "pk": 2,
+  "fields": {
+    "user": "cd1995ab-1480-491a-a815-2bd4ae6e1406",
+    "bio": "",
+    "avatar": null,
+    "date_of_birth": null,
+    "city": "",
+    "state": "",
+    "country": "",
+    "language": "en",
+    "timezone": "UTC",
+    "email_notifications": true,
+    "created_at": "2025-10-03T14:04:51.549Z",
+    "updated_at": "2025-10-03T14:04:51.549Z"
+  }
+},
+{
+  "model": "users.userprofile",
+  "pk": 3,
+  "fields": {
+    "user": "1ff1f672-938a-41ea-bde9-d593d8fe2391",
+    "bio": "",
+    "avatar": null,
+    "date_of_birth": null,
+    "city": "",
+    "state": "",
+    "country": "",
+    "language": "en",
+    "timezone": "UTC",
+    "email_notifications": true,
+    "created_at": "2025-10-03T14:31:43.091Z",
+    "updated_at": "2025-10-03T14:31:43.091Z"
+  }
+},
+{
+  "model": "users.mobileotp",
+  "pk": 1,
+  "fields": {
+    "phone": "1234567890",
+    "otp": "962196",
+    "purpose": "registration",
+    "is_verified": false,
+    "created_at": "2025-10-03T14:02:06.333Z",
+    "expires_at": "2025-10-03T14:07:06.332Z",
+    "attempts": 0
+  }
+},
+{
+  "model": "users.mobileotp",
+  "pk": 2,
+  "fields": {
+    "phone": "9876543210",
+    "otp": "123456",
+    "purpose": "registration",
+    "is_verified": true,
+    "created_at": "2025-10-03T14:04:27.321Z",
+    "expires_at": "2025-10-03T14:09:27.321Z",
+    "attempts": 1
+  }
+},
+{
+  "model": "users.mobileotp",
+  "pk": 3,
+  "fields": {
+    "phone": "9876543211",
+    "otp": "123456",
+    "purpose": "registration",
+    "is_verified": true,
+    "created_at": "2025-10-03T14:04:51.456Z",
+    "expires_at": "2025-10-03T14:09:51.454Z",
+    "attempts": 1
+  }
+},
+{
+  "model": "users.mobileotp",
+  "pk": 4,
+  "fields": {
+    "phone": "8302012630",
+    "otp": "123456",
+    "purpose": "login",
+    "is_verified": true,
+    "created_at": "2025-10-03T16:43:49.494Z",
+    "expires_at": "2025-10-03T16:48:49.494Z",
+    "attempts": 1
+  }
+},
+{
+  "model": "users.mobileotp",
+  "pk": 5,
+  "fields": {
+    "phone": "8302012630",
+    "otp": "123456",
+    "purpose": "login",
+    "is_verified": true,
+    "created_at": "2025-10-04T13:01:27.029Z",
+    "expires_at": "2025-10-04T13:06:27.029Z",
+    "attempts": 1
   }
 }
 ]
