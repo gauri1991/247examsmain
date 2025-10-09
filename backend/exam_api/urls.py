@@ -37,7 +37,7 @@ def api_root(request):
             'exams': '/api/v1/exams/',
             'questions': '/api/v1/questions/',
             'payments': '/api/v1/payments/',
-            'admin': '/admin/',
+            'django_admin': '/django-admin/',
         }
     })
 
@@ -53,7 +53,7 @@ def health_check(request):
     })
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('django-admin/', admin.site.urls),
     path('health/', core_health_check, name='core_health_check'),
     path('api/v1/', api_root, name='api_root'),
     path('api/v1/health/', health_check, name='health_check'),
