@@ -122,22 +122,22 @@ export default function TestResultsPage() {
       {/* Enhanced Header with Achievement Celebration */}
       <div className={`bg-gradient-to-r ${Number(result.percentage || 0) >= 75 ? 'from-green-600 to-emerald-600' : Number(result.percentage || 0) >= 60 ? 'from-blue-600 to-cyan-600' : 'from-slate-600 to-gray-600'} text-white relative overflow-hidden`}>
         <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-4">
-              <div className={`p-3 rounded-full ${Number(result.percentage || 0) >= 75 ? 'bg-green-500/20' : Number(result.percentage || 0) >= 60 ? 'bg-blue-500/20' : 'bg-gray-500/20'}`}>
-                <Trophy className="h-8 w-8" />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className={`p-2 sm:p-3 rounded-full ${Number(result.percentage || 0) >= 75 ? 'bg-green-500/20' : Number(result.percentage || 0) >= 60 ? 'bg-blue-500/20' : 'bg-gray-500/20'}`}>
+                <Trophy className="h-6 w-6 sm:h-8 sm:w-8" />
               </div>
               <div>
-                <h1 className="text-4xl font-bold">Test Results</h1>
-                <p className="text-white/90 text-lg mt-1">{result.test_name}</p>
-                <p className="text-white/70 text-sm">{result.exam_name}</p>
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold">Test Results</h1>
+                <p className="text-white/90 text-base sm:text-lg mt-1">{result.test_name}</p>
+                <p className="text-white/70 text-xs sm:text-sm">{result.exam_name}</p>
               </div>
             </div>
             <Button
               variant="outline"
               onClick={() => router.push('/exams')}
-              className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+              className="bg-white/10 border-white/20 text-white hover:bg-white/20 text-sm sm:text-base w-full sm:w-auto"
             >
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Exams
@@ -145,38 +145,38 @@ export default function TestResultsPage() {
           </div>
 
           {/* Overall Score Showcase */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2 bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+            <div className="md:col-span-2 bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8">
               <div className="text-center">
-                <div className={`inline-flex items-center px-6 py-3 rounded-full text-lg font-semibold mb-6 ${performance.bg} ${performance.color}`}>
-                  <Award className="mr-3 h-6 w-6" />
+                <div className={`inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base lg:text-lg font-semibold mb-4 sm:mb-6 ${performance.bg} ${performance.color}`}>
+                  <Award className="mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
                   {performance.level}
                 </div>
-                
-                <div className="text-7xl font-bold mb-4">
+
+                <div className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-3 sm:mb-4">
                   {Number(result.percentage || 0).toFixed(1)}%
                 </div>
-                
-                <p className="text-2xl text-white/90 mb-6">
+
+                <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-4 sm:mb-6">
                   {Number(result.score || 0)} out of {Number(result.total_marks || 0)} marks
                 </p>
-                
+
                 <div className="bg-white/20 rounded-full p-1 max-w-md mx-auto">
-                  <Progress value={Number(result.percentage || 0)} className="h-4 bg-transparent" />
+                  <Progress value={Number(result.percentage || 0)} className="h-3 sm:h-4 bg-transparent" />
                 </div>
               </div>
             </div>
 
-            <div className="space-y-4">
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-                <Clock className="h-8 w-8 mx-auto mb-2 text-white/90" />
-                <div className="text-2xl font-bold">{formatDuration(Number(result.duration_minutes || 0))}</div>
-                <div className="text-white/70 text-sm">Time Taken</div>
+            <div className="grid grid-cols-2 md:grid-cols-1 gap-4">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 sm:p-4 text-center">
+                <Clock className="h-6 w-6 sm:h-8 sm:w-8 mx-auto mb-2 text-white/90" />
+                <div className="text-xl sm:text-2xl font-bold">{formatDuration(Number(result.duration_minutes || 0))}</div>
+                <div className="text-white/70 text-xs sm:text-sm">Time Taken</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-                <Target className="h-8 w-8 mx-auto mb-2 text-white/90" />
-                <div className="text-2xl font-bold">{Number(result.questions_count || 0)}</div>
-                <div className="text-white/70 text-sm">Total Questions</div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 sm:p-4 text-center">
+                <Target className="h-6 w-6 sm:h-8 sm:w-8 mx-auto mb-2 text-white/90" />
+                <div className="text-xl sm:text-2xl font-bold">{Number(result.questions_count || 0)}</div>
+                <div className="text-white/70 text-xs sm:text-sm">Total Questions</div>
               </div>
             </div>
           </div>
@@ -185,14 +185,14 @@ export default function TestResultsPage() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Enhanced Statistics Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
           <Card className="border-0 shadow-lg bg-gradient-to-br from-green-50 to-emerald-50">
-            <CardContent className="p-6 text-center">
-              <div className="bg-green-100 rounded-full p-3 w-fit mx-auto mb-4">
-                <CheckCircle2 className="h-8 w-8 text-green-600" />
+            <CardContent className="p-4 sm:p-6 text-center">
+              <div className="bg-green-100 rounded-full p-2 sm:p-3 w-fit mx-auto mb-3 sm:mb-4">
+                <CheckCircle2 className="h-6 w-6 sm:h-8 sm:w-8 text-green-600" />
               </div>
-              <div className="text-3xl font-bold text-green-600 mb-1">{Number(result.correct_answers || 0)}</div>
-              <div className="text-sm text-green-700 font-medium">Correct Answers</div>
+              <div className="text-2xl sm:text-3xl font-bold text-green-600 mb-1">{Number(result.correct_answers || 0)}</div>
+              <div className="text-xs sm:text-sm text-green-700 font-medium">Correct Answers</div>
               <div className="text-xs text-green-600 mt-1">
                 {Number(result.questions_count || 0) > 0 ? ((Number(result.correct_answers || 0) / Number(result.questions_count || 0)) * 100).toFixed(1) : 0}% accuracy
               </div>
@@ -200,12 +200,12 @@ export default function TestResultsPage() {
           </Card>
 
           <Card className="border-0 shadow-lg bg-gradient-to-br from-red-50 to-rose-50">
-            <CardContent className="p-6 text-center">
-              <div className="bg-red-100 rounded-full p-3 w-fit mx-auto mb-4">
-                <XCircle className="h-8 w-8 text-red-600" />
+            <CardContent className="p-4 sm:p-6 text-center">
+              <div className="bg-red-100 rounded-full p-2 sm:p-3 w-fit mx-auto mb-3 sm:mb-4">
+                <XCircle className="h-6 w-6 sm:h-8 sm:w-8 text-red-600" />
               </div>
-              <div className="text-3xl font-bold text-red-600 mb-1">{Number(result.wrong_answers || 0)}</div>
-              <div className="text-sm text-red-700 font-medium">Wrong Answers</div>
+              <div className="text-2xl sm:text-3xl font-bold text-red-600 mb-1">{Number(result.wrong_answers || 0)}</div>
+              <div className="text-xs sm:text-sm text-red-700 font-medium">Wrong Answers</div>
               <div className="text-xs text-red-600 mt-1">
                 {Number(result.questions_count || 0) > 0 ? ((Number(result.wrong_answers || 0) / Number(result.questions_count || 0)) * 100).toFixed(1) : 0}% of total
               </div>
@@ -213,12 +213,12 @@ export default function TestResultsPage() {
           </Card>
 
           <Card className="border-0 shadow-lg bg-gradient-to-br from-gray-50 to-slate-50">
-            <CardContent className="p-6 text-center">
-              <div className="bg-gray-100 rounded-full p-3 w-fit mx-auto mb-4">
-                <Target className="h-8 w-8 text-gray-600" />
+            <CardContent className="p-4 sm:p-6 text-center">
+              <div className="bg-gray-100 rounded-full p-2 sm:p-3 w-fit mx-auto mb-3 sm:mb-4">
+                <Target className="h-6 w-6 sm:h-8 sm:w-8 text-gray-600" />
               </div>
-              <div className="text-3xl font-bold text-gray-600 mb-1">{Number(result.unanswered || 0)}</div>
-              <div className="text-sm text-gray-700 font-medium">Unanswered</div>
+              <div className="text-2xl sm:text-3xl font-bold text-gray-600 mb-1">{Number(result.unanswered || 0)}</div>
+              <div className="text-xs sm:text-sm text-gray-700 font-medium">Unanswered</div>
               <div className="text-xs text-gray-600 mt-1">
                 {Number(result.questions_count || 0) > 0 ? ((Number(result.unanswered || 0) / Number(result.questions_count || 0)) * 100).toFixed(1) : 0}% skipped
               </div>
@@ -226,42 +226,46 @@ export default function TestResultsPage() {
           </Card>
 
           <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-cyan-50">
-            <CardContent className="p-6 text-center">
-              <div className="bg-blue-100 rounded-full p-3 w-fit mx-auto mb-4">
-                <Zap className="h-8 w-8 text-blue-600" />
+            <CardContent className="p-4 sm:p-6 text-center">
+              <div className="bg-blue-100 rounded-full p-2 sm:p-3 w-fit mx-auto mb-3 sm:mb-4">
+                <Zap className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600" />
               </div>
-              <div className="text-3xl font-bold text-blue-600 mb-1">
+              <div className="text-2xl sm:text-3xl font-bold text-blue-600 mb-1">
                 {Number(result.duration_minutes || 0) > 0 ? (Number(result.questions_count || 0) / Number(result.duration_minutes || 0)).toFixed(1) : 0}
               </div>
-              <div className="text-sm text-blue-700 font-medium">Q/min Speed</div>
+              <div className="text-xs sm:text-sm text-blue-700 font-medium">Q/min Speed</div>
               <div className="text-xs text-blue-600 mt-1">Questions per minute</div>
             </CardContent>
           </Card>
         </div>
 
         {/* Comprehensive Analysis Tabs */}
-        <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4 lg:w-fit lg:grid-cols-4">
-            <TabsTrigger value="overview" className="flex items-center gap-2">
-              <BarChart3 className="h-4 w-4" />
-              Overview
+        <Tabs defaultValue="overview" className="space-y-4 sm:space-y-6">
+          <TabsList className="grid w-full grid-cols-4 gap-1 sm:gap-2 lg:w-fit">
+            <TabsTrigger value="overview" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm px-2 sm:px-3">
+              <BarChart3 className="h-3 w-3 sm:h-4 sm:w-4" />
+              <span className="hidden sm:inline">Overview</span>
+              <span className="sm:hidden">Info</span>
             </TabsTrigger>
-            <TabsTrigger value="analysis" className="flex items-center gap-2">
-              <TrendingUp className="h-4 w-4" />
-              Analysis
+            <TabsTrigger value="analysis" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm px-2 sm:px-3">
+              <TrendingUp className="h-3 w-3 sm:h-4 sm:w-4" />
+              <span className="hidden sm:inline">Analysis</span>
+              <span className="sm:hidden">Stats</span>
             </TabsTrigger>
-            <TabsTrigger value="insights" className="flex items-center gap-2">
-              <Lightbulb className="h-4 w-4" />
-              Insights
+            <TabsTrigger value="insights" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm px-2 sm:px-3">
+              <Lightbulb className="h-3 w-3 sm:h-4 sm:w-4" />
+              <span className="hidden sm:inline">Insights</span>
+              <span className="sm:hidden">Tips</span>
             </TabsTrigger>
-            <TabsTrigger value="actions" className="flex items-center gap-2">
-              <Star className="h-4 w-4" />
-              Actions
+            <TabsTrigger value="actions" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm px-2 sm:px-3">
+              <Star className="h-3 w-3 sm:h-4 sm:w-4" />
+              <span className="hidden sm:inline">Actions</span>
+              <span className="sm:hidden">Do</span>
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="overview" className="space-y-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <TabsContent value="overview" className="space-y-4 sm:space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
               {/* Performance Breakdown */}
               <Card className="border-0 shadow-lg">
                 <CardHeader>
@@ -339,8 +343,8 @@ export default function TestResultsPage() {
             </div>
           </TabsContent>
 
-          <TabsContent value="analysis" className="space-y-6">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <TabsContent value="analysis" className="space-y-4 sm:space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               <Card className="border-0 shadow-lg">
                 <CardHeader>
                   <CardTitle className="text-lg">Time Analysis</CardTitle>
@@ -411,8 +415,8 @@ export default function TestResultsPage() {
             </div>
           </TabsContent>
 
-          <TabsContent value="insights" className="space-y-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <TabsContent value="insights" className="space-y-4 sm:space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
               <Card className="border-0 shadow-lg">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
@@ -516,15 +520,15 @@ export default function TestResultsPage() {
             </div>
           </TabsContent>
 
-          <TabsContent value="actions" className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <TabsContent value="actions" className="space-y-4 sm:space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               <Card className="border-0 shadow-lg cursor-pointer hover:shadow-xl transition-shadow">
-                <CardContent className="p-6 text-center">
-                  <div className="bg-blue-100 rounded-full p-4 w-fit mx-auto mb-4">
-                    <Share2 className="h-8 w-8 text-blue-600" />
+                <CardContent className="p-4 sm:p-6 text-center">
+                  <div className="bg-blue-100 rounded-full p-3 sm:p-4 w-fit mx-auto mb-3 sm:mb-4">
+                    <Share2 className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600" />
                   </div>
-                  <h3 className="font-semibold mb-2">Share Results</h3>
-                  <p className="text-sm text-muted-foreground mb-4">Share your achievement with friends and family</p>
+                  <h3 className="font-semibold mb-2 text-sm sm:text-base">Share Results</h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">Share your achievement with friends and family</p>
                   <Button className="w-full" onClick={() => {
                     if (navigator.share) {
                       navigator.share({
@@ -543,12 +547,12 @@ export default function TestResultsPage() {
               </Card>
 
               <Card className="border-0 shadow-lg cursor-pointer hover:shadow-xl transition-shadow">
-                <CardContent className="p-6 text-center">
-                  <div className="bg-green-100 rounded-full p-4 w-fit mx-auto mb-4">
-                    <Download className="h-8 w-8 text-green-600" />
+                <CardContent className="p-4 sm:p-6 text-center">
+                  <div className="bg-green-100 rounded-full p-3 sm:p-4 w-fit mx-auto mb-3 sm:mb-4">
+                    <Download className="h-6 w-6 sm:h-8 sm:w-8 text-green-600" />
                   </div>
-                  <h3 className="font-semibold mb-2">Download Certificate</h3>
-                  <p className="text-sm text-muted-foreground mb-4">Get a printable performance certificate</p>
+                  <h3 className="font-semibold mb-2 text-sm sm:text-base">Download Certificate</h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">Get a printable performance certificate</p>
                   <Button className="w-full" variant="outline" onClick={() => {
                     toast.info('Certificate download will be available soon!');
                   }}>
@@ -558,12 +562,12 @@ export default function TestResultsPage() {
               </Card>
 
               <Card className="border-0 shadow-lg cursor-pointer hover:shadow-xl transition-shadow">
-                <CardContent className="p-6 text-center">
-                  <div className="bg-purple-100 rounded-full p-4 w-fit mx-auto mb-4">
-                    <BarChart3 className="h-8 w-8 text-purple-600" />
+                <CardContent className="p-4 sm:p-6 text-center">
+                  <div className="bg-purple-100 rounded-full p-3 sm:p-4 w-fit mx-auto mb-3 sm:mb-4">
+                    <BarChart3 className="h-6 w-6 sm:h-8 sm:w-8 text-purple-600" />
                   </div>
-                  <h3 className="font-semibold mb-2">View Progress</h3>
-                  <p className="text-sm text-muted-foreground mb-4">Track your performance over time</p>
+                  <h3 className="font-semibold mb-2 text-sm sm:text-base">View Progress</h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">Track your performance over time</p>
                   <Button className="w-full" variant="outline" onClick={() => router.push('/dashboard')}>
                     Go to Dashboard
                   </Button>
@@ -574,19 +578,19 @@ export default function TestResultsPage() {
         </Tabs>
 
         {/* Enhanced Action Buttons */}
-        <div className="flex flex-col sm:flex-row justify-center gap-4 mt-12">
-          <Button onClick={() => router.push('/exams')} variant="outline" size="lg" className="flex items-center gap-2">
-            <ArrowLeft className="h-5 w-5" />
+        <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mt-8 sm:mt-12">
+          <Button onClick={() => router.push('/exams')} variant="outline" size="lg" className="flex items-center justify-center gap-2 w-full sm:w-auto text-sm sm:text-base">
+            <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
             Back to Exams
           </Button>
-          
-          <Button onClick={() => router.push(`/exams/${result.exam_name.toLowerCase().replace(/\s+/g, '-')}`)} size="lg" className="flex items-center gap-2">
-            <Target className="h-5 w-5" />
+
+          <Button onClick={() => router.push(`/exams/${result.exam_name.toLowerCase().replace(/\s+/g, '-')}`)} size="lg" className="flex items-center justify-center gap-2 w-full sm:w-auto text-sm sm:text-base">
+            <Target className="h-4 w-4 sm:h-5 sm:w-5" />
             Take Another Test
           </Button>
-          
-          <Button onClick={() => router.push('/dashboard')} variant="outline" size="lg" className="flex items-center gap-2">
-            <BarChart3 className="h-5 w-5" />
+
+          <Button onClick={() => router.push('/dashboard')} variant="outline" size="lg" className="flex items-center justify-center gap-2 w-full sm:w-auto text-sm sm:text-base">
+            <BarChart3 className="h-4 w-4 sm:h-5 sm:w-5" />
             View Dashboard
           </Button>
         </div>
