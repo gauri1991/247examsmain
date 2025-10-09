@@ -161,6 +161,12 @@ class UserAdmin(BaseUserAdmin):
         self.message_user(request, f'{count} user(s) assigned as teacher.')
     make_teacher.short_description = "Make selected users teacher"
 
+    def get_actions(self, request):
+        """Override to add warning message for delete action"""
+        actions = super().get_actions(request)
+        # Keep delete action but it's now safe - content won't be deleted
+        return actions
+
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):

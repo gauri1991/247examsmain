@@ -124,7 +124,7 @@ class Exam(models.Model):
     custom_fields = models.JSONField(default=dict, blank=True, help_text="Custom fields for specific needs")
     
     # Settings
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='created_exams')
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, related_name='created_exams')
     year = models.IntegerField(null=True, blank=True, help_text="Year of exam or creation")
     # Status for requirement validation
     STATUS_CHOICES = [
@@ -257,7 +257,7 @@ class SelectionRuleTemplate(models.Model):
     """Reusable templates for question selection rules"""
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='selection_templates')
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, related_name='selection_templates')
     
     # Copy all rule fields from TestSelectionRule
     selection_mode = models.CharField(max_length=20, choices=TestSelectionRule.SELECTION_MODES, default='random')
@@ -317,8 +317,8 @@ class Test(models.Model):
     imported_from_json = models.BooleanField(default=False)
     json_import_batch = models.CharField(max_length=100, blank=True, help_text="Batch ID from JSON import")
     original_json_data = models.JSONField(null=True, blank=True, help_text="Original JSON data from import")
-    
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='created_tests')
+
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, related_name='created_tests')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     

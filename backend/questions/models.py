@@ -127,9 +127,9 @@ class QuestionBank(models.Model):
     
     # Question Type Distribution (for analytics)
     question_types_included = models.JSONField(default=list, blank=True, help_text="Types of questions in this bank")
-    
+
     # Settings
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='question_banks')
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, related_name='question_banks')
     is_public = models.BooleanField(default=False)
     is_featured = models.BooleanField(default=False, help_text="Featured question banks appear first")
     
@@ -215,9 +215,9 @@ class QuestionBankPermission(models.Model):
     question_bank = models.ForeignKey(QuestionBank, on_delete=models.CASCADE, related_name='permissions')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='question_bank_permissions')
     permission_type = models.CharField(max_length=10, choices=PERMISSION_TYPES, default='view')
-    
+
     # Permission details
-    granted_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='granted_permissions')
+    granted_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, related_name='granted_permissions')
     granted_at = models.DateTimeField(auto_now_add=True)
     expires_at = models.DateTimeField(null=True, blank=True, help_text="Leave blank for permanent access")
     
@@ -356,8 +356,8 @@ class Question(models.Model):
     # Import tracking
     imported_from_json = models.BooleanField(default=False)
     json_import_batch = models.CharField(max_length=100, blank=True, help_text="Batch ID from JSON import")
-    
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='created_questions')
+
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, related_name='created_questions')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
@@ -402,9 +402,9 @@ class ContentUpload(models.Model):
     content_type = models.CharField(max_length=20, choices=CONTENT_TYPES)
     file_size = models.BigIntegerField(help_text="File size in bytes")
     file_hash = models.CharField(max_length=64, help_text="SHA-256 hash of file content")
-    
+
     # Upload details
-    uploaded_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='content_uploads')
+    uploaded_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, related_name='content_uploads')
     uploaded_at = models.DateTimeField(auto_now_add=True)
     
     # Processing status
